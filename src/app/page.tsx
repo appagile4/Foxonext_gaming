@@ -4,6 +4,7 @@ import { Hero } from "@/components/hero/Hero";
 import { BackgroundGlow } from "@/components/ui/BackgroundGlow";
 import { TopGameProviders } from "@/components/providers/TopGameProviders";
 import { IGamingProducts } from "@/components/products/IGamingProducts";
+import { IGamingSolutions } from "@/components/solutions/IGamingSolutions";
 
 export default function Home() {
   return (
@@ -33,6 +34,9 @@ export default function Home() {
 
       {/* Our iGaming Products Section */}
       <IGamingProducts />
+
+      {/* Our iGaming Solutions Section */}
+      <IGamingSolutions />
     </div>
   );
 }
