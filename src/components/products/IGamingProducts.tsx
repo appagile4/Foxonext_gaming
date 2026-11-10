@@ -155,7 +155,7 @@ export function IGamingProducts() {
               </div>
 
               {/* Animated Square Blur Hover Overlay: Smoothly expands from bottom-right corner up, covering the card below title */}
-              <div className="card-hover-blur-overlay absolute top-[76px] sm:top-[88px] inset-x-0 bottom-0 z-20 backdrop-blur-2xl bg-[#090a0f]/85 flex flex-col justify-between p-6 sm:p-7 lg:p-8">
+              <div className="card-hover-blur-overlay absolute top-[76px] sm:top-[88px] inset-x-0 bottom-0 z-20 backdrop-blur-xl bg-[#090a0f]/85 flex flex-col justify-between p-6 sm:p-7 lg:p-8">
                 {/* Description in Poppins font */}
                 <p
                   className="font-poppins text-xs sm:text-[13px] text-zinc-300 font-normal leading-relaxed"

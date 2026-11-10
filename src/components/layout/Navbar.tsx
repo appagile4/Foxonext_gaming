@@ -37,10 +37,10 @@ export function Navbar({ logoSrc = "/images/logo.png" }: NavbarProps) {
           </div>
         </Link>
 
-        {/* Center: Navigation Links (Desktop) */}
+        {/* Center: Navigation Pill (Desktop) */}
         <nav
           aria-label="Main Navigation"
-          className="hidden md:flex items-center gap-8 lg:gap-12 xl:gap-14 py-2 bg-transparent"
+          className="hidden md:flex items-center gap-14 md:gap-16 lg:gap-20 xl:gap-24 px-10 lg:px-14 py-3 sm:py-3.5 rounded-[10px] bg-white/[0.03] backdrop-blur-sm border border-white/[0.08] shadow-[0_4px_20px_rgba(0,0,0,0.2)]"
         >
           {NAV_ITEMS.map((item) => (
             <Link
