@@ -115,16 +115,16 @@ export function BackgroundGlow() {
         }}
       />
 
-      {/* Bottom Right Glowing Network Globe (Rotated 45 degrees to left / 315deg with bottom fade) */}
+      {/* Bottom Right Glowing Network Globe (Rotated 45 degrees to left / 315deg with bottom & right fade) */}
       <div
-        className="absolute bottom-0 -right-40 w-[1250px] sm:w-[1650px] lg:w-[2100px] xl:w-[2600px] h-auto pointer-events-none select-none opacity-25"
+        className="absolute bottom-190 -right-50 w-[1250px] sm:w-[1650px] lg:w-[2100px] xl:w-[2600px] h-auto pointer-events-none select-none opacity-10"
         style={{
           transform: "rotate(315deg)",
           transformOrigin: "bottom right",
           maskImage:
-            "linear-gradient(to bottom, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 88%)",
+            "radial-gradient(ellipse 80% 80% at 25% 25%, rgba(0,0,0,1) 25%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0) 88%)",
           WebkitMaskImage:
-            "linear-gradient(to bottom, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 88%)",
+            "radial-gradient(ellipse 80% 80% at 25% 25%, rgba(0,0,0,1) 25%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0) 88%)",
         }}
       >
         <Image
@@ -143,6 +143,15 @@ export function BackgroundGlow() {
         style={{
           background:
             "linear-gradient(to bottom, transparent 0%, rgba(7, 8, 12, 0.7) 45%, #07080c 100%)",
+        }}
+      />
+
+      {/* Smooth right side fade overlay to seamless #07080c */}
+      <div
+        className="absolute inset-y-0 right-0 w-36 sm:w-56 pointer-events-none z-10"
+        style={{
+          background:
+            "linear-gradient(to right, transparent 0%, rgba(7, 8, 12, 0.7) 45%, #07080c 100%)",
         }}
       />
     </div>
