@@ -14,7 +14,7 @@ interface ProductCardProps {
 const PRODUCTS_DATA: ProductCardProps[] = [
   {
     title: "Game Aggregator",
-    imageSrc: "/images/products/game-aggregator.png",
+    imageSrc: "/images/products/game-aggregator.png?v=real-3d-v2",
     imageAlt: "Game Aggregator 3D Floating Modular Cubes",
     description:
       "Whether you're interested in rapidly launching a brand through our White Label solutions, seeking complete control with a customizable Turnkey package.",
@@ -22,7 +22,7 @@ const PRODUCTS_DATA: ProductCardProps[] = [
   },
   {
     title: "CRM - Data Analytics",
-    imageSrc: "/images/products/crm-analytics.png",
+    imageSrc: "/images/products/crm-analytics.png?v=real-3d-v2",
     imageAlt: "CRM Data Analytics 3D Glass Dashboard & Charts",
     description:
       "Whether you're interested in rapidly launching a brand through our White Label solutions, seeking complete control with a customizable Turnkey package.",
@@ -93,14 +93,15 @@ export function IGamingProducts() {
               </div>
 
               {/* Card 3D Illustration Graphic in Center */}
-              <div className="absolute inset-0 flex items-center justify-center pt-8 pb-20 pointer-events-none">
+              <div className="absolute inset-0 flex items-center justify-center p-6 sm:p-8 pt-10 pb-24 pointer-events-none">
                 <div className="relative w-full h-full max-h-[380px] flex items-center justify-center">
                   <Image
                     src={product.imageSrc}
                     alt={product.imageAlt}
                     width={1024}
-                    height={969}
-                    className="w-full h-full object-contain filter group-hover:scale-105 transition-transform duration-700 ease-out"
+                    height={1024}
+                    unoptimized
+                    className="w-full h-full object-contain filter drop-shadow-[0_15px_35px_rgba(0,0,0,0.6)] group-hover:scale-105 transition-transform duration-700 ease-out"
                     priority
                   />
                 </div>
