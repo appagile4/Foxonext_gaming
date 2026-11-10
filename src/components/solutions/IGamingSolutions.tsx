@@ -71,11 +71,11 @@ export function IGamingSolutions() {
               }}
             />
 
-            <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-8 lg:gap-12 p-6 sm:p-10 lg:p-14 relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-8 lg:gap-10 xl:gap-14 p-6 sm:p-10 lg:p-12 xl:p-14 relative z-10">
               {/* Left Column: Heading, Description, Bullets & Buttons */}
-              <div className="lg:col-span-6 flex flex-col items-start space-y-6 sm:space-y-7">
+              <div className="lg:col-span-6 flex flex-col items-start space-y-6 sm:space-y-7 xl:space-y-8">
                 <h3
-                  className="font-red-rose text-2xl sm:text-3xl lg:text-[38px] font-bold text-white tracking-tight leading-tight"
+                  className="font-red-rose text-3xl sm:text-4xl lg:text-[46px] xl:text-[52px] font-bold text-white tracking-tight leading-[1.12]"
                   style={{
                     fontFamily: "var(--font-red-rose), 'Red Rose', serif",
                   }}
@@ -84,7 +84,7 @@ export function IGamingSolutions() {
                 </h3>
 
                 <p
-                  className="font-poppins text-xs sm:text-[13px] lg:text-sm text-zinc-400 font-normal leading-relaxed max-w-lg"
+                  className="font-poppins text-sm sm:text-base lg:text-[17px] xl:text-[18px] text-zinc-300 font-normal leading-[1.68] max-w-xl"
                   style={{
                     fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                   }}
@@ -95,20 +95,20 @@ export function IGamingSolutions() {
                 </p>
 
                 {/* 4 Feature Bullets */}
-                <div className="space-y-3 pt-1">
+                <div className="space-y-3.5 sm:space-y-4 pt-1">
                   {BULLET_POINTS.map((bullet) => (
-                    <div key={bullet} className="flex items-center gap-2.5">
+                    <div key={bullet} className="flex items-center gap-3 sm:gap-3.5">
                       <svg
-                        className="w-3.5 h-3.5 text-[#FF5722] flex-shrink-0"
+                        className="w-4 h-4 sm:w-5 sm:h-5 text-[#FF5722] flex-shrink-0"
                         viewBox="0 0 12 12"
                         fill="none"
                         stroke="currentColor"
-                        strokeWidth="1.6"
+                        strokeWidth="1.8"
                       >
                         <path d="M6 1.5 L10.5 6 L6 10.5 L1.5 6 Z" />
                       </svg>
                       <span
-                        className="font-poppins text-xs sm:text-[13px] text-zinc-300"
+                        className="font-poppins text-sm sm:text-[15px] lg:text-base text-zinc-200 font-medium"
                         style={{
                           fontFamily:
                             "var(--font-poppins), 'Poppins', sans-serif",
@@ -121,10 +121,10 @@ export function IGamingSolutions() {
                 </div>
 
                 {/* Action Buttons */}
-                <div className="flex items-center gap-4 pt-2">
+                <div className="flex items-center gap-4 sm:gap-5 pt-3">
                   <a
                     href="#quote"
-                    className="font-poppins inline-flex items-center justify-center px-6 py-2.5 rounded-[4px] bg-[#FF5722] hover:bg-[#ff6e3d] text-white text-xs sm:text-sm font-medium shadow-[0_4px_16px_rgba(255,87,34,0.35)] hover:shadow-[0_4px_22px_rgba(255,87,34,0.55)] transition-all duration-300"
+                    className="font-poppins inline-flex items-center justify-center px-7 py-3 sm:px-8 sm:py-3.5 rounded-[6px] bg-[#FF5722] hover:bg-[#ff6e3d] text-white text-sm sm:text-base font-medium shadow-[0_4px_18px_rgba(255,87,34,0.4)] hover:shadow-[0_4px_24px_rgba(255,87,34,0.6)] transition-all duration-300"
                     style={{
                       fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                     }}
@@ -134,7 +134,7 @@ export function IGamingSolutions() {
 
                   <a
                     href="#white-label"
-                    className="font-poppins inline-flex items-center justify-center px-6 py-2.5 rounded-[4px] bg-black/95 hover:bg-zinc-900 text-white border border-white/60 hover:border-white text-xs sm:text-sm font-medium transition-all duration-300"
+                    className="font-poppins inline-flex items-center justify-center px-7 py-3 sm:px-8 sm:py-3.5 rounded-[6px] bg-black/95 hover:bg-zinc-900 text-white border border-white/60 hover:border-white text-sm sm:text-base font-medium transition-all duration-300"
                     style={{
                       fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                     }}
@@ -146,14 +146,14 @@ export function IGamingSolutions() {
 
               {/* Right Column: 3D White Label Core Illustration */}
               <div className="lg:col-span-6 flex items-center justify-center">
-                <div className="relative w-full max-w-[420px] lg:max-w-[480px] aspect-square flex items-center justify-center">
+                <div className="relative w-full max-w-[520px] sm:max-w-[580px] lg:max-w-[640px] xl:max-w-[700px] aspect-square flex items-center justify-center">
                   <Image
                     src="/images/solutions/white-label.png"
                     alt="White-Label Solution 3D Isometric Brand Illustration"
                     width={1024}
                     height={1024}
                     unoptimized
-                    className="w-full h-full object-contain filter drop-shadow-[0_20px_45px_rgba(233,78,27,0.22)] group-hover:scale-105 transition-transform duration-700 ease-out"
+                    className="w-full h-full object-contain filter drop-shadow-[0_25px_55px_rgba(233,78,27,0.28)] group-hover:scale-105 transition-transform duration-700 ease-out"
                     priority
                   />
                 </div>
@@ -177,26 +177,26 @@ export function IGamingSolutions() {
               }}
             />
 
-            <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-8 lg:gap-12 p-6 sm:p-10 lg:p-14 relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-8 lg:gap-10 xl:gap-14 p-6 sm:p-10 lg:p-12 xl:p-14 relative z-10">
               {/* Left Column: 3D PlayStation Gaming Controller Illustration */}
               <div className="lg:col-span-6 flex items-center justify-center order-2 lg:order-1">
-                <div className="relative w-full max-w-[440px] lg:max-w-[500px] flex items-center justify-center">
+                <div className="relative w-full max-w-[540px] sm:max-w-[620px] lg:max-w-[680px] xl:max-w-[740px] flex items-center justify-center">
                   <Image
                     src="/images/solutions/remote-desktop.png"
                     alt="Remote-Desktop Gaming Controller Illustration"
                     width={1024}
                     height={735}
                     unoptimized
-                    className="w-full h-auto object-contain filter drop-shadow-[0_25px_50px_rgba(233,78,27,0.25)] group-hover:scale-105 transition-transform duration-700 ease-out"
+                    className="w-full h-auto object-contain filter drop-shadow-[0_30px_60px_rgba(233,78,27,0.3)] group-hover:scale-105 transition-transform duration-700 ease-out"
                     priority
                   />
                 </div>
               </div>
 
               {/* Right Column: Heading, Description, Bullets & Buttons */}
-              <div className="lg:col-span-6 flex flex-col items-start space-y-6 sm:space-y-7 order-1 lg:order-2">
+              <div className="lg:col-span-6 flex flex-col items-start space-y-6 sm:space-y-7 xl:space-y-8 order-1 lg:order-2">
                 <h3
-                  className="font-red-rose text-2xl sm:text-3xl lg:text-[38px] font-bold text-white tracking-tight leading-tight"
+                  className="font-red-rose text-3xl sm:text-4xl lg:text-[46px] xl:text-[52px] font-bold text-white tracking-tight leading-[1.12]"
                   style={{
                     fontFamily: "var(--font-red-rose), 'Red Rose', serif",
                   }}
@@ -205,7 +205,7 @@ export function IGamingSolutions() {
                 </h3>
 
                 <p
-                  className="font-poppins text-xs sm:text-[13px] lg:text-sm text-zinc-400 font-normal leading-relaxed max-w-lg"
+                  className="font-poppins text-sm sm:text-base lg:text-[17px] xl:text-[18px] text-zinc-300 font-normal leading-[1.68] max-w-xl"
                   style={{
                     fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                   }}
@@ -216,20 +216,20 @@ export function IGamingSolutions() {
                 </p>
 
                 {/* 4 Feature Bullets */}
-                <div className="space-y-3 pt-1">
+                <div className="space-y-3.5 sm:space-y-4 pt-1">
                   {BULLET_POINTS.map((bullet) => (
-                    <div key={bullet} className="flex items-center gap-2.5">
+                    <div key={bullet} className="flex items-center gap-3 sm:gap-3.5">
                       <svg
-                        className="w-3.5 h-3.5 text-[#FF5722] flex-shrink-0"
+                        className="w-4 h-4 sm:w-5 sm:h-5 text-[#FF5722] flex-shrink-0"
                         viewBox="0 0 12 12"
                         fill="none"
                         stroke="currentColor"
-                        strokeWidth="1.6"
+                        strokeWidth="1.8"
                       >
                         <path d="M6 1.5 L10.5 6 L6 10.5 L1.5 6 Z" />
                       </svg>
                       <span
-                        className="font-poppins text-xs sm:text-[13px] text-zinc-300"
+                        className="font-poppins text-sm sm:text-[15px] lg:text-base text-zinc-200 font-medium"
                         style={{
                           fontFamily:
                             "var(--font-poppins), 'Poppins', sans-serif",
@@ -242,10 +242,10 @@ export function IGamingSolutions() {
                 </div>
 
                 {/* Action Buttons */}
-                <div className="flex items-center gap-4 pt-2">
+                <div className="flex items-center gap-4 sm:gap-5 pt-3">
                   <a
                     href="#quote"
-                    className="font-poppins inline-flex items-center justify-center px-6 py-2.5 rounded-[4px] bg-[#FF5722] hover:bg-[#ff6e3d] text-white text-xs sm:text-sm font-medium shadow-[0_4px_16px_rgba(255,87,34,0.35)] hover:shadow-[0_4px_22px_rgba(255,87,34,0.55)] transition-all duration-300"
+                    className="font-poppins inline-flex items-center justify-center px-7 py-3 sm:px-8 sm:py-3.5 rounded-[6px] bg-[#FF5722] hover:bg-[#ff6e3d] text-white text-sm sm:text-base font-medium shadow-[0_4px_18px_rgba(255,87,34,0.4)] hover:shadow-[0_4px_24px_rgba(255,87,34,0.6)] transition-all duration-300"
                     style={{
                       fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                     }}
@@ -255,7 +255,7 @@ export function IGamingSolutions() {
 
                   <a
                     href="#remote-desktop"
-                    className="font-poppins inline-flex items-center justify-center px-6 py-2.5 rounded-[4px] bg-black/95 hover:bg-zinc-900 text-white border border-white/60 hover:border-white text-xs sm:text-sm font-medium transition-all duration-300"
+                    className="font-poppins inline-flex items-center justify-center px-7 py-3 sm:px-8 sm:py-3.5 rounded-[6px] bg-black/95 hover:bg-zinc-900 text-white border border-white/60 hover:border-white text-sm sm:text-base font-medium transition-all duration-300"
                     style={{
                       fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                     }}
