@@ -30,9 +30,9 @@ export function Hero({
   useComposite = true,
 }: HeroProps) {
   return (
-    <main className="relative w-full flex-1 flex flex-col justify-between pt-6 sm:pt-10 lg:pt-12 px-4 sm:px-8 lg:px-16 overflow-hidden z-10">
+    <main className="relative w-[92%] sm:w-[85%] lg:w-[75%] mx-auto flex-1 flex flex-col justify-between pt-6 sm:pt-10 lg:pt-12 overflow-hidden z-10">
       {/* Top / Mid Split Content Section */}
-      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center flex-1">
+      <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center flex-1">
         {/* Left Column: Headlines & Call to Action */}
         <div className="lg:col-span-6 flex flex-col items-start space-y-6 sm:space-y-7 z-10">
           {/* Top category pill */}

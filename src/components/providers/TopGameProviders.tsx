@@ -81,10 +81,10 @@ const STATS_DATA = [
 
 export function TopGameProviders() {
   return (
-    <section className="relative w-full pt-6 pb-16 sm:pt-8 sm:pb-20 lg:pt-10 lg:pb-24 px-4 sm:px-8 lg:px-12 bg-transparent select-none z-10">
+    <section className="relative w-[92%] sm:w-[85%] lg:w-[75%] mx-auto pt-6 pb-16 sm:pt-8 sm:pb-20 lg:pt-10 lg:pb-24 bg-transparent select-none z-10">
       {/* Soft connecting ambient glow behind provider title */}
 
-      <div className="max-w-6xl mx-auto space-y-9 sm:space-y-11 lg:space-y-12">
+      <div className="w-full space-y-9 sm:space-y-11 lg:space-y-12">
         {/* Section Heading & Subtitle */}
         <div className="text-center space-y-3 max-w-2xl mx-auto">
           <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-normal font-poppins">
@@ -119,7 +119,7 @@ export function TopGameProviders() {
         </div>
 
         {/* Futuristic Chamfered Stats Container (Exact polygon cut corners from reference) */}
-        <div className="relative max-w-5xl mx-auto mt-4 sm:mt-6">
+        <div className="relative w-full mt-4 sm:mt-6">
           {/* Border layer with polygon clip-path */}
           <div
             className="p-[1px] bg-white/[0.09] shadow-[0_25px_60px_rgba(0,0,0,0.9)]"

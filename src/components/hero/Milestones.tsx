@@ -16,7 +16,7 @@ export function Milestones() {
   }, []);
 
   return (
-    <div className="w-full max-w-5xl mx-auto pt-6 sm:pt-8 pb-4 sm:pb-6 px-4 select-none pointer-events-none">
+    <div className="w-full mx-auto pt-6 sm:pt-8 pb-4 sm:pb-6 select-none pointer-events-none">
       <div className="relative flex items-start justify-between">
         {/* Background connecting timeline track */}
         <div className="absolute top-[8px] left-[8%] right-[8%] h-[1px] bg-gradient-to-r from-zinc-800 via-zinc-600/70 to-zinc-800 -z-0" />

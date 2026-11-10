@@ -17,7 +17,7 @@ export function Navbar({ logoSrc = "/images/logo.png" }: NavbarProps) {
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
 
   return (
-    <header className="relative w-[75%] mx-auto z-40 pt-5 pb-4 transition-all duration-300">
+    <header className="relative w-[92%] sm:w-[85%] lg:w-[75%] mx-auto z-40 pt-5 pb-4 transition-all duration-300">
       <div className="w-full flex items-center justify-between">
         {/* Left: Brand Logo */}
         <Link
