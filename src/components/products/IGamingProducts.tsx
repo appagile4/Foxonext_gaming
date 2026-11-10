@@ -36,18 +36,26 @@ export function IGamingProducts() {
       <div className="w-full space-y-10 sm:space-y-12 lg:space-y-14">
         {/* Section Header: Title on Left, Description & Know More on Right */}
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 md:gap-12">
-          {/* Left: Bold 2-Line Headline */}
+          {/* Left: Bold 2-Line Headline in Red Rose font */}
           <div className="max-w-md">
-            <h2 className="font-[family-name:var(--font-red-rose)] text-3xl sm:text-4xl lg:text-[44px] font-bold text-white tracking-tight leading-[1.12]">
+            <h2
+              className="font-red-rose text-3xl sm:text-4xl lg:text-[44px] font-bold text-white tracking-tight leading-[1.12]"
+              style={{ fontFamily: "var(--font-red-rose), 'Red Rose', serif" }}
+            >
               Our iGaming
               <br />
               Products
             </h2>
           </div>
 
-          {/* Right: Paragraph + Know More Bordered Button */}
+          {/* Right: Paragraph + Know More Bordered Button in Poppins font */}
           <div className="flex flex-col items-start space-y-4 max-w-md lg:max-w-lg">
-            <p className="font-[family-name:var(--font-poppins)] text-xs sm:text-[13px] lg:text-sm text-zinc-400 font-normal leading-relaxed">
+            <p
+              className="font-poppins text-xs sm:text-[13px] lg:text-sm text-zinc-400 font-normal leading-relaxed"
+              style={{
+                fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
+              }}
+            >
               Whether you&apos;re interested in rapidly launching a brand
               through our White Label solutions, seeking complete control with a
               customizable Turnkey package.
@@ -55,7 +63,10 @@ export function IGamingProducts() {
 
             <a
               href="#products"
-              className="inline-flex items-center justify-center px-4 py-2 border border-white/20 hover:border-[#FF5722] text-xs sm:text-[13px] text-zinc-300 hover:text-white font-[family-name:var(--font-poppins)] tracking-wide transition-all duration-300 hover:bg-white/[0.04]"
+              className="font-poppins inline-flex items-center justify-center px-4 py-2 border border-white/20 hover:border-[#FF5722] text-xs sm:text-[13px] text-zinc-300 hover:text-white tracking-wide transition-all duration-300 hover:bg-white/[0.04]"
+              style={{
+                fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
+              }}
             >
               Know More
             </a>
@@ -71,7 +82,12 @@ export function IGamingProducts() {
             >
               {/* Card Top Title */}
               <div className="p-6 sm:p-7 lg:p-8 z-10">
-                <h3 className="font-[family-name:var(--font-poppins)] text-xl sm:text-2xl font-bold text-white tracking-tight">
+                <h3
+                  className="font-poppins text-xl sm:text-2xl font-bold text-white tracking-tight"
+                  style={{
+                    fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
+                  }}
+                >
                   {product.title}
                 </h3>
               </div>
@@ -90,9 +106,14 @@ export function IGamingProducts() {
                 </div>
               </div>
 
-              {/* Bottom Frosted Glass Container with Description and Orange Arrow Action Button */}
+              {/* Bottom Frosted Glass Container with Description in Poppins font and Orange Arrow Action Button */}
               <div className="relative z-10 p-5 sm:p-6 lg:p-7 bg-gradient-to-t from-black/95 via-black/75 to-transparent backdrop-blur-[2px] flex items-end justify-between gap-4">
-                <p className="font-[family-name:var(--font-poppins)] text-[11px] sm:text-xs text-zinc-300 font-normal leading-relaxed max-w-[82%] sm:max-w-[85%]">
+                <p
+                  className="font-poppins text-[11px] sm:text-xs text-zinc-300 font-normal leading-relaxed max-w-[82%] sm:max-w-[85%]"
+                  style={{
+                    fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
+                  }}
+                >
                   Whether you&apos;re interested in rapidly launching a brand
                   through our{" "}
                   <span className="text-zinc-100 font-medium">White Label</span>{" "}
