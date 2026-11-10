@@ -11,9 +11,7 @@ export function BackgroundGlow() {
       <div className="absolute inset-0 bg-[#07080c]" />
 
       {/* Top Left Orange Circular Ring */}
-      <div
-        className="absolute -top-24 -left-24 sm:-top-32 sm:-left-32 lg:-top-36 lg:-left-36 w-[360px] h-[360px] sm:w-[480px] sm:h-[480px] lg:w-[600px] lg:h-[600px] rounded-full border-2 border-[#FF5722] shadow-[0_0_35px_rgba(255,87,34,0.55),inset_0_0_25px_rgba(255,87,34,0.25)] pointer-events-none"
-      />
+      <div className="absolute -top-24 -left-24 sm:-top-32 sm:-left-32 lg:-top-36 lg:-left-36 w-[360px] h-[360px] sm:w-[480px] sm:h-[480px] lg:w-[600px] lg:h-[600px] rounded-full border-2 border-[#FF5722] shadow-[0_0_35px_rgba(255,87,34,0.55),inset_0_0_25px_rgba(255,87,34,0.25)] pointer-events-none" />
 
       {/* Top right purple/indigo ambient glow (behind dashboard) */}
       <div
@@ -41,13 +39,25 @@ export function BackgroundGlow() {
         viewBox="0 0 1440 1800"
       >
         <defs>
-          <linearGradient id="orangeArcGrad1" x1="0%" y1="20%" x2="100%" y2="40%">
+          <linearGradient
+            id="orangeArcGrad1"
+            x1="0%"
+            y1="20%"
+            x2="100%"
+            y2="40%"
+          >
             <stop offset="0%" stopColor="#E94E1B" stopOpacity="0.0" />
             <stop offset="35%" stopColor="#E94E1B" stopOpacity="0.55" />
             <stop offset="65%" stopColor="#FF7733" stopOpacity="0.4" />
             <stop offset="100%" stopColor="#E94E1B" stopOpacity="0.0" />
           </linearGradient>
-          <linearGradient id="orangeArcGrad2" x1="0%" y1="30%" x2="90%" y2="60%">
+          <linearGradient
+            id="orangeArcGrad2"
+            x1="0%"
+            y1="30%"
+            x2="90%"
+            y2="60%"
+          >
             <stop offset="0%" stopColor="#FF5500" stopOpacity="0.0" />
             <stop offset="25%" stopColor="#FF5500" stopOpacity="0.3" />
             <stop offset="60%" stopColor="#FFA040" stopOpacity="0.25" />
@@ -107,18 +117,18 @@ export function BackgroundGlow() {
 
       {/* Ambient glow behind bottom right globe */}
       <div
-        className="absolute -bottom-[8%] -right-[8%] w-[650px] h-[650px] rounded-full blur-[140px] opacity-25 pointer-events-none"
+        className="absolute bottom-0 right-0 w-[750px] h-[750px] rounded-full blur-[140px] opacity-30 pointer-events-none"
         style={{
           background:
             "radial-gradient(circle, rgba(233, 78, 27, 0.45) 0%, rgba(59, 130, 246, 0.18) 45%, transparent 75%)",
         }}
       />
 
-      {/* Bottom Right Glowing Network Globe (Rotated 45 degrees to left / -45deg) */}
+      {/* Bottom Right Glowing Network Globe (Rotated 45 degrees to left / 315deg without negative CSS) */}
       <div
-        className="absolute -bottom-20 -right-20 sm:-bottom-28 sm:-right-28 lg:-bottom-32 lg:-right-32 w-[480px] sm:w-[680px] lg:w-[860px] xl:w-[980px] h-auto pointer-events-none select-none opacity-55"
+        className="absolute bottom-0 right-0 w-[850px] sm:w-[1150px] lg:w-[1450px] xl:w-[1750px] h-auto pointer-events-none select-none opacity-65"
         style={{
-          transform: "rotate(-45deg)",
+          transform: "rotate(315deg)",
           transformOrigin: "bottom right",
         }}
       >
@@ -127,7 +137,7 @@ export function BackgroundGlow() {
           alt="Glowing Network Globe Background"
           width={1024}
           height={574}
-          className="w-full h-auto object-contain filter drop-shadow-[0_0_50px_rgba(233,78,27,0.3)]"
+          className="w-full h-auto object-contain filter drop-shadow-[0_0_60px_rgba(233,78,27,0.35)]"
           priority
         />
       </div>
