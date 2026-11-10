@@ -39,7 +39,7 @@ export function IGamingProducts() {
           {/* Left: Bold 2-Line Headline in Red Rose font */}
           <div className="max-w-xl">
             <h2
-              className="font-red-rose text-3xl sm:text-5xl lg:text-[64px] font-bold text-white tracking-tight leading-[1.08]"
+              className="font-red-rose text-3xl sm:text-5xl lg:text-[84px] font-[400] text-white tracking-tight leading-[1.08]"
               style={{ fontFamily: "var(--font-red-rose), 'Red Rose', serif" }}
             >
               Our iGaming
@@ -49,9 +49,9 @@ export function IGamingProducts() {
           </div>
 
           {/* Right: Paragraph + Know More Bordered Button in Poppins font */}
-          <div className="flex flex-col items-start space-y-4 max-w-md lg:max-w-lg">
+          <div className="flex flex-col items-start space-y-5 sm:space-y-6 max-w-lg lg:max-w-xl">
             <p
-              className="font-poppins text-xs sm:text-[13px] lg:text-sm text-zinc-400 font-normal leading-relaxed"
+              className="font-poppins text-sm sm:text-base lg:text-[18px] text-zinc-300/90 font-normal leading-[1.65]"
               style={{
                 fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
               }}
@@ -63,7 +63,7 @@ export function IGamingProducts() {
 
             <a
               href="#products"
-              className="font-poppins inline-flex items-center justify-center px-4 py-2 border border-white/20 hover:border-[#FF5722] text-xs sm:text-[13px] text-zinc-300 hover:text-white tracking-wide transition-all duration-300 hover:bg-white/[0.04]"
+              className="font-poppins inline-flex items-center justify-center px-6 py-2.5 sm:px-7 sm:py-3 border border-white/25 hover:border-[#FF5722] text-sm sm:text-[15px] font-medium text-white tracking-wide transition-all duration-300 hover:bg-white/[0.05]"
               style={{
                 fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
               }}
