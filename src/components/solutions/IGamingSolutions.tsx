@@ -12,14 +12,14 @@ const BULLET_POINTS = [
 
 export function IGamingSolutions() {
   return (
-    <section className="relative w-[92%] sm:w-[85%] lg:w-[75%] mx-auto pt-8 pb-20 sm:pt-14 sm:pb-28 lg:pt-16 lg:pb-36 select-none z-10">
-      <div className="w-full space-y-10 sm:space-y-12 lg:space-y-14">
+    <section className="relative w-[92%] sm:w-[85%] lg:w-[75%] mx-auto pt-4 pb-12 sm:pt-6 sm:pb-16 lg:pt-8 lg:pb-20 select-none z-10">
+      <div className="w-full space-y-6 sm:space-y-8 lg:space-y-10">
         {/* Section Header: Title on Left, Description & Know More on Right */}
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 md:gap-12">
           {/* Left: Bold 2-Line Headline in Red Rose font */}
           <div className="max-w-xl">
             <h2
-              className="font-red-rose text-3xl sm:text-5xl lg:text-[64px] font-bold text-white tracking-tight leading-[1.08]"
+              className="font-red-rose text-3xl sm:text-5xl lg:text-[84px] font-[400] text-white tracking-tight leading-[1.08]"
               style={{ fontFamily: "var(--font-red-rose), 'Red Rose', serif" }}
             >
               Our iGaming
@@ -29,7 +29,7 @@ export function IGamingSolutions() {
           </div>
 
           {/* Right: Paragraph + Know More Bordered Button in Poppins font */}
-          <div className="flex flex-col items-start space-y-5 sm:space-y-6 max-w-lg lg:max-w-xl">
+          <div className="flex flex-col items-start space-y-4 sm:space-y-5 max-w-lg lg:max-w-xl">
             <p
               className="font-poppins text-sm sm:text-base lg:text-[18px] text-zinc-300/90 font-normal leading-[1.65]"
               style={{
@@ -43,7 +43,7 @@ export function IGamingSolutions() {
 
             <a
               href="#solutions"
-              className="font-poppins inline-flex items-center justify-center px-6 py-2.5 sm:px-7 sm:py-3 border border-white/25 hover:border-[#FF5722] text-sm sm:text-[15px] font-medium text-white tracking-wide transition-all duration-300 hover:bg-white/[0.05]"
+              className="font-poppins inline-flex items-center justify-center px-6 py-2.5 sm:px-7 sm:py-2.5 border border-white/25 hover:border-[#FF5722] text-sm sm:text-[15px] font-medium text-white tracking-wide transition-all duration-300 hover:bg-white/[0.05]"
               style={{
                 fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
               }}
@@ -54,7 +54,7 @@ export function IGamingSolutions() {
         </div>
 
         {/* 2 Big Full-Width Solution Cards Stacked */}
-        <div className="space-y-8 sm:space-y-10 lg:space-y-12">
+        <div className="space-y-5 sm:space-y-6 lg:space-y-8">
           {/* Card 1: White-Label Solution */}
           <div className="group relative rounded-2xl sm:rounded-3xl bg-[#0c0d12] border border-white/[0.08] hover:border-[#FF5722]/40 shadow-[0_12px_40px_rgba(0,0,0,0.85)] hover:shadow-[0_0_35px_rgba(255,87,34,0.22)] overflow-hidden transition-all duration-500">
             {/* Subtle Cyber Grid mesh on bottom-right */}
@@ -71,9 +71,9 @@ export function IGamingSolutions() {
               }}
             />
 
-            <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-8 lg:gap-10 xl:gap-14 p-6 sm:p-10 lg:p-12 xl:p-14 relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-8 lg:gap-10 xl:gap-14 px-6 py-6 sm:px-10 sm:py-7 lg:px-12 lg:py-8 xl:px-14 xl:py-9 relative z-10">
               {/* Left Column: Heading, Description, Bullets & Buttons */}
-              <div className="lg:col-span-6 flex flex-col items-start space-y-6 sm:space-y-7 xl:space-y-8">
+              <div className="lg:col-span-6 flex flex-col items-start space-y-4 sm:space-y-5 lg:space-y-6">
                 <h3
                   className="font-red-rose text-3xl sm:text-4xl lg:text-[46px] xl:text-[52px] font-bold text-white tracking-tight leading-[1.12]"
                   style={{
@@ -95,9 +95,12 @@ export function IGamingSolutions() {
                 </p>
 
                 {/* 4 Feature Bullets */}
-                <div className="space-y-3.5 sm:space-y-4 pt-1">
+                <div className="space-y-2.5 sm:space-y-3 pt-0.5">
                   {BULLET_POINTS.map((bullet) => (
-                    <div key={bullet} className="flex items-center gap-3 sm:gap-3.5">
+                    <div
+                      key={bullet}
+                      className="flex items-center gap-3 sm:gap-3.5"
+                    >
                       <svg
                         className="w-4 h-4 sm:w-5 sm:h-5 text-[#FF5722] flex-shrink-0"
                         viewBox="0 0 12 12"
@@ -121,7 +124,7 @@ export function IGamingSolutions() {
                 </div>
 
                 {/* Action Buttons */}
-                <div className="flex items-center gap-4 sm:gap-5 pt-3">
+                <div className="flex items-center gap-4 sm:gap-5 pt-1.5">
                   <a
                     href="#quote"
                     className="font-poppins inline-flex items-center justify-center px-7 py-3 sm:px-8 sm:py-3.5 rounded-[6px] bg-[#FF5722] hover:bg-[#ff6e3d] text-white text-sm sm:text-base font-medium shadow-[0_4px_18px_rgba(255,87,34,0.4)] hover:shadow-[0_4px_24px_rgba(255,87,34,0.6)] transition-all duration-300"
@@ -177,7 +180,7 @@ export function IGamingSolutions() {
               }}
             />
 
-            <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-8 lg:gap-10 xl:gap-14 p-6 sm:p-10 lg:p-12 xl:p-14 relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-8 lg:gap-10 xl:gap-14 px-6 py-6 sm:px-10 sm:py-7 lg:px-12 lg:py-8 xl:px-14 xl:py-9 relative z-10">
               {/* Left Column: 3D PlayStation Gaming Controller Illustration */}
               <div className="lg:col-span-6 flex items-center justify-center order-2 lg:order-1">
                 <div className="relative w-full max-w-[540px] sm:max-w-[620px] lg:max-w-[680px] xl:max-w-[740px] flex items-center justify-center">
@@ -194,7 +197,7 @@ export function IGamingSolutions() {
               </div>
 
               {/* Right Column: Heading, Description, Bullets & Buttons */}
-              <div className="lg:col-span-6 flex flex-col items-start space-y-6 sm:space-y-7 xl:space-y-8 order-1 lg:order-2">
+              <div className="lg:col-span-6 flex flex-col items-start space-y-4 sm:space-y-5 lg:space-y-6 order-1 lg:order-2">
                 <h3
                   className="font-red-rose text-3xl sm:text-4xl lg:text-[46px] xl:text-[52px] font-bold text-white tracking-tight leading-[1.12]"
                   style={{
@@ -216,9 +219,12 @@ export function IGamingSolutions() {
                 </p>
 
                 {/* 4 Feature Bullets */}
-                <div className="space-y-3.5 sm:space-y-4 pt-1">
+                <div className="space-y-2.5 sm:space-y-3 pt-0.5">
                   {BULLET_POINTS.map((bullet) => (
-                    <div key={bullet} className="flex items-center gap-3 sm:gap-3.5">
+                    <div
+                      key={bullet}
+                      className="flex items-center gap-3 sm:gap-3.5"
+                    >
                       <svg
                         className="w-4 h-4 sm:w-5 sm:h-5 text-[#FF5722] flex-shrink-0"
                         viewBox="0 0 12 12"
@@ -242,7 +248,7 @@ export function IGamingSolutions() {
                 </div>
 
                 {/* Action Buttons */}
-                <div className="flex items-center gap-4 sm:gap-5 pt-3">
+                <div className="flex items-center gap-4 sm:gap-5 pt-1.5">
                   <a
                     href="#quote"
                     className="font-poppins inline-flex items-center justify-center px-7 py-3 sm:px-8 sm:py-3.5 rounded-[6px] bg-[#FF5722] hover:bg-[#ff6e3d] text-white text-sm sm:text-base font-medium shadow-[0_4px_18px_rgba(255,87,34,0.4)] hover:shadow-[0_4px_24px_rgba(255,87,34,0.6)] transition-all duration-300"
