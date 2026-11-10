@@ -10,10 +10,46 @@ export function BackgroundGlow() {
       {/* Base deep background */}
       <div className="absolute inset-0 bg-[#07080c]" />
 
-      {/* Top Left Orange Circular Ring */}
-      <div className="absolute -top-24 -left-24 sm:-top-32 sm:-left-32 lg:-top-36 lg:-left-36 w-[360px] h-[360px] sm:w-[480px] sm:h-[480px] lg:w-[600px] lg:h-[600px] rounded-full border-2 border-[#FF5722] shadow-[0_0_35px_rgba(255,87,34,0.55),inset_0_0_25px_rgba(255,87,34,0.25)] pointer-events-none" />
+      {/* Top Left Orange Accent Curve (Replaces Circular Rings) */}
+      <svg
+        className="absolute top-0 left-0 w-[340px] sm:w-[460px] lg:w-[600px] xl:w-[720px] h-auto pointer-events-none select-none z-10 overflow-visible drop-shadow-[0_0_16px_rgba(255,87,34,0.65)]"
+        viewBox="0 -60 360 240"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <defs>
+          <linearGradient id="topLeftOrangeGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#FF5722" stopOpacity="0.8" />
+            <stop offset="50%" stopColor="#FF5722" stopOpacity="1" />
+            <stop offset="100%" stopColor="#FF7043" stopOpacity="0.9" />
+          </linearGradient>
+          <filter id="svgCurveGlow" x="-30%" y="-30%" width="160%" height="160%">
+            <feGaussianBlur stdDeviation="5" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
 
-      <div className="absolute -top-24 -left-24 sm:-top-32 sm:-left-32 lg:-top-36 lg:-left-36 w-[390px] h-[390px] sm:w-[520px] sm:h-[520px] lg:w-[660px] lg:h-[660px] rounded-full border-2 border-[#FF5722] shadow-[0_0_35px_rgba(255,87,34,0.55),inset_0_0_25px_rgba(255,87,34,0.25)] pointer-events-none" />
+        {/* Ambient Glow Stroke Behind */}
+        <path
+          d="M.36 176.652C96.146 173.438 270.681 101.759 354.574-58.955"
+          stroke="#FF5722"
+          strokeWidth="6"
+          strokeLinecap="round"
+          opacity="0.45"
+          filter="url(#svgCurveGlow)"
+        />
+
+        {/* Sharp Core Accent Curve */}
+        <path
+          d="M.36 176.652C96.146 173.438 270.681 101.759 354.574-58.955"
+          stroke="url(#topLeftOrangeGrad)"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+        />
+      </svg>
 
       {/* Top right purple/indigo ambient glow (behind dashboard) */}
       <div
