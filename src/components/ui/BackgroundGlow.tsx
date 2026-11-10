@@ -32,15 +32,6 @@ export function BackgroundGlow() {
         }}
       />
 
-      {/* Button ambient glow */}
-      <div
-        className="absolute top-[42%] left-[6%] w-[260px] h-[160px] rounded-full blur-[70px] opacity-30 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(circle, rgba(233, 78, 27, 0.5) 0%, transparent 70%)",
-        }}
-      />
-
       {/* Elegant swooshes & arcs flowing down across both sections */}
       <svg
         className="absolute inset-0 w-full h-full opacity-60 pointer-events-none"

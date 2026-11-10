@@ -30,7 +30,7 @@ export function Hero({
   useComposite = true,
 }: HeroProps) {
   return (
-    <main className="relative w-[92%] sm:w-[85%] lg:w-[75%] mx-auto flex-1 flex flex-col justify-between pt-6 sm:pt-10 lg:pt-12 overflow-hidden z-10">
+    <main className="relative w-[92%] sm:w-[85%] lg:w-[75%] mx-auto flex-1 flex flex-col justify-between pt-6 sm:pt-10 lg:pt-12 z-10">
       {/* Top / Mid Split Content Section */}
       <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center flex-1">
         {/* Left Column: Headlines & Call to Action */}
@@ -52,16 +52,16 @@ export function Hero({
             {description}
           </p>
 
-          {/* Primary Action Button with ambient glow */}
-          <div className="relative pt-2">
-            {/* Button localized orange glow */}
-            <div className="absolute inset-0 bg-[#E94E1B] blur-2xl opacity-40 rounded-full scale-90 pointer-events-none" />
+          {/* Primary Action Button with seamless glow */}
+          <div className="relative inline-flex items-center pt-2 group w-fit">
+            {/* Soft, centered, natural button glow (no clipping, exact button bounds) */}
+            <div className="absolute inset-x-0 inset-y-1 bg-[#E94E1B] blur-lg opacity-35 rounded-xl scale-95 pointer-events-none transition-opacity duration-300 group-hover:opacity-55" />
 
             <Button
               href={ctaHref}
               variant="primary"
               size="md"
-              className="font-poppins relative !px-7 !py-3 !rounded-xl !text-sm font-medium tracking-wide shadow-[0_6px_28px_rgba(233,78,27,0.5)] hover:shadow-[0_8px_36px_rgba(233,78,27,0.7)]"
+              className="font-poppins relative !px-7 !py-3 !rounded-xl !text-sm font-medium tracking-wide shadow-[0_4px_18px_rgba(233,78,27,0.45)] hover:shadow-[0_6px_26px_rgba(233,78,27,0.65)]"
             >
               {ctaText}
             </Button>
