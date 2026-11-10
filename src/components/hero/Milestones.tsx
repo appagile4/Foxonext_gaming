@@ -16,10 +16,10 @@ export function Milestones() {
   }, []);
 
   return (
-    <div className="w-full mx-auto pt-6 sm:pt-8 pb-4 sm:pb-6 select-none pointer-events-none">
+    <div className="w-full max-w-lg sm:max-w-xl lg:max-w-[620px] mx-auto pt-6 sm:pt-8 pb-4 sm:pb-6 select-none pointer-events-none">
       <div className="relative flex items-start justify-between">
         {/* Background connecting timeline track */}
-        <div className="absolute top-[8px] left-[8%] right-[8%] h-[1px] bg-gradient-to-r from-zinc-800 via-zinc-600/70 to-zinc-800 -z-0" />
+        <div className="absolute top-[8px] left-[10%] right-[10%] h-[1px] bg-gradient-to-r from-zinc-800 via-zinc-600/70 to-zinc-800 -z-0" />
 
         {/* 4 Nodes continuously cycling */}
         {MILESTONES.map((item, index) => {
@@ -28,7 +28,7 @@ export function Milestones() {
           return (
             <div
               key={item.id}
-              className="relative flex flex-col items-center z-10 transition-all duration-500 w-36 sm:w-48 lg:w-56"
+              className="relative flex flex-col items-center z-10 transition-all duration-500 w-28 sm:w-36"
             >
               {/* Milestone Node Dot with continuous automated #E94E1B animation */}
               <div className="relative flex items-center justify-center h-4 w-4">
