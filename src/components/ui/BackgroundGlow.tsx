@@ -115,12 +115,16 @@ export function BackgroundGlow() {
         }}
       />
 
-      {/* Bottom Right Glowing Network Globe (Rotated 45 degrees to left / 315deg) */}
+      {/* Bottom Right Glowing Network Globe (Rotated 45 degrees to left / 315deg with bottom fade) */}
       <div
-        className="absolute bottom-190 -right-40 w-[1250px] sm:w-[1650px] lg:w-[2100px] xl:w-[2600px] h-auto pointer-events-none select-none opacity-15"
+        className="absolute bottom-0 -right-40 w-[1250px] sm:w-[1650px] lg:w-[2100px] xl:w-[2600px] h-auto pointer-events-none select-none opacity-25"
         style={{
           transform: "rotate(315deg)",
           transformOrigin: "bottom right",
+          maskImage:
+            "linear-gradient(to bottom, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 88%)",
+          WebkitMaskImage:
+            "linear-gradient(to bottom, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 88%)",
         }}
       >
         <Image
@@ -132,6 +136,15 @@ export function BackgroundGlow() {
           priority
         />
       </div>
+
+      {/* Smooth bottom fade overlay to seamless #07080c */}
+      <div
+        className="absolute inset-x-0 bottom-0 h-48 sm:h-64 pointer-events-none z-10"
+        style={{
+          background:
+            "linear-gradient(to bottom, transparent 0%, rgba(7, 8, 12, 0.7) 45%, #07080c 100%)",
+        }}
+      />
     </div>
   );
 }

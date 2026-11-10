@@ -7,26 +7,29 @@ import { IGamingProducts } from "@/components/products/IGamingProducts";
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen flex flex-col justify-between overflow-hidden bg-[#07080c]">
-      {/* Background glowing swooshes, ambient lights, and mesh */}
-      <BackgroundGlow />
+    <div className="relative min-h-screen flex flex-col bg-[#07080c]">
+      {/* Hero & Game Providers Section (BackgroundGlow scoped strictly to this container) */}
+      <div className="relative overflow-hidden">
+        {/* Background glowing swooshes, ambient lights, and mesh */}
+        <BackgroundGlow />
 
-      {/* Top Navigation Component */}
-      <Navbar logoSrc="/images/logo.png" />
+        {/* Top Navigation Component */}
+        <Navbar logoSrc="/images/logo.png" />
 
-      {/* Main Hero Component */}
-      <Hero
-        badgeText="Online Casinos Software Provider"
-        headlineLine1="Modular iGaming Products"
-        headlineLine2="Built for Scale"
-        description="Popular casino games come together in one Game Aggregator hub. With our game aggregation platform it is easy and simple to add this massive portfolio to any gaming website through just one API integration."
-        ctaText="Book a Free Demo"
-        ctaHref="#demo"
-        iphoneImage="/images/iphone-rounded.png"
-      />
+        {/* Main Hero Component */}
+        <Hero
+          badgeText="Online Casinos Software Provider"
+          headlineLine1="Modular iGaming Products"
+          headlineLine2="Built for Scale"
+          description="Popular casino games come together in one Game Aggregator hub. With our game aggregation platform it is easy and simple to add this massive portfolio to any gaming website through just one API integration."
+          ctaText="Book a Free Demo"
+          ctaHref="#demo"
+          iphoneImage="/images/iphone-rounded.png"
+        />
 
-      {/* Top Game Providers & Statistics Section */}
-      <TopGameProviders />
+        {/* Top Game Providers & Statistics Section */}
+        <TopGameProviders />
+      </div>
 
       {/* Our iGaming Products Section */}
       <IGamingProducts />
