@@ -34,13 +34,13 @@ export function Hero({
       {/* Top / Mid Split Content Section */}
       <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center flex-1">
         {/* Left Column: Headlines & Call to Action */}
-        <div className="lg:col-span-6 flex flex-col items-start space-y-6 sm:space-y-7 z-10">
+        <div className="lg:col-span-6 flex flex-col items-start space-y-6 sm:space-y-8 z-10">
           {/* Top category pill */}
           <HeroBadge text={badgeText} />
 
           {/* Main Headline */}
           <div className="space-y-1 sm:space-y-2">
-            <h1 className="font-[family-name:var(--font-red-rose)] text-2xl sm:text-3xl md:text-[32px] lg:text-[36px] font-bold text-white tracking-normal leading-[1.12]">
+            <h1 className="font-[family-name:var(--font-red-rose)] text-3xl sm:text-4xl md:text-5xl lg:text-[48px] xl:text-[54px] font-bold text-white tracking-tight leading-[1.1]">
               {headlineLine1}
               <br />
               <span className="text-white">{headlineLine2}</span>
@@ -48,7 +48,7 @@ export function Hero({
           </div>
 
           {/* Subtitle / Description */}
-          <p className="font-[family-name:var(--font-poppins)] text-zinc-400 text-xs sm:text-[14px] leading-relaxed max-w-md font-normal tracking-normal">
+          <p className="font-[family-name:var(--font-poppins)] text-zinc-300/90 text-sm sm:text-base lg:text-[17px] xl:text-[18px] leading-[1.65] max-w-xl font-normal tracking-normal">
             {description}
           </p>
 
@@ -61,7 +61,7 @@ export function Hero({
               href={ctaHref}
               variant="primary"
               size="md"
-              className="font-poppins relative !px-7 !py-3 !rounded-xl !text-sm font-medium tracking-wide shadow-[0_4px_18px_rgba(233,78,27,0.45)] hover:shadow-[0_6px_26px_rgba(233,78,27,0.65)]"
+              className="font-poppins relative !px-8 !py-3.5 sm:!px-9 sm:!py-4 !rounded-xl !text-sm sm:!text-base font-medium tracking-wide shadow-[0_4px_18px_rgba(233,78,27,0.45)] hover:shadow-[0_6px_26px_rgba(233,78,27,0.65)]"
             >
               {ctaText}
             </Button>
