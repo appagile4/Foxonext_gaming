@@ -115,18 +115,9 @@ export function BackgroundGlow() {
         }}
       />
 
-      {/* Ambient glow behind bottom right globe */}
+      {/* Bottom Right Glowing Network Globe (Rotated 45 degrees to left / 315deg) */}
       <div
-        className="absolute bottom-0 right-0 w-[750px] h-[750px] rounded-full blur-[140px] opacity-30 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(circle, rgba(233, 78, 27, 0.45) 0%, rgba(59, 130, 246, 0.18) 45%, transparent 75%)",
-        }}
-      />
-
-      {/* Bottom Right Glowing Network Globe (Rotated 45 degrees to left / 315deg without negative CSS) */}
-      <div
-        className="absolute bottom-0 right-0 w-[850px] sm:w-[1150px] lg:w-[1450px] xl:w-[1750px] h-auto pointer-events-none select-none opacity-65"
+        className="absolute bottom-190 -right-40 w-[1250px] sm:w-[1650px] lg:w-[2100px] xl:w-[2600px] h-auto pointer-events-none select-none opacity-30"
         style={{
           transform: "rotate(315deg)",
           transformOrigin: "bottom right",
@@ -135,9 +126,9 @@ export function BackgroundGlow() {
         <Image
           src="/images/globe-network.png"
           alt="Glowing Network Globe Background"
-          width={1024}
-          height={574}
-          className="w-full h-auto object-contain filter drop-shadow-[0_0_60px_rgba(233,78,27,0.35)]"
+          width={2048}
+          height={1148}
+          className="w-full h-auto object-contain filter drop-shadow-[0_0_40px_rgba(233,78,27,0.2)]"
           priority
         />
       </div>
