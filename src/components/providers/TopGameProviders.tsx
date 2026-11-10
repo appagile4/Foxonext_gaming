@@ -112,9 +112,11 @@ export function TopGameProviders() {
             {MARQUEE_PROVIDERS.map((provider, index) => (
               <div
                 key={`${provider.id}-${index}`}
-                className="group flex-shrink-0 flex items-center justify-center h-14 sm:h-16 md:h-[66px] px-6 sm:px-8 rounded-xl bg-[#13141b] border border-white/[0.08] shadow-[0_4px_16px_rgba(0,0,0,0.65)] backdrop-blur-md transition-all duration-300 hover:border-[#FF5722]/60 hover:shadow-[0_0_24px_rgba(255,87,34,0.35)] hover:-translate-y-1 select-none"
+                className="group flex-shrink-0 flex items-center justify-center h-14 sm:h-16 md:h-[66px] px-6 sm:px-8 rounded-xl bg-[#13141b]  shadow-[0_4px_16px_rgba(0,0,0,0.65)] backdrop-blur-md transition-all duration-300 hover:border-[#FF5722]/60 hover:shadow-[0_0_24px_rgba(255,87,34,0.35)] hover:-translate-y-1 select-none"
                 style={{
-                  minWidth: provider.width ? `${provider.width * 2}px` : "140px",
+                  minWidth: provider.width
+                    ? `${provider.width * 2}px`
+                    : "140px",
                 }}
               >
                 <div className="relative h-8 sm:h-9 md:h-10 w-auto flex items-center justify-center">

@@ -3,6 +3,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Hero } from "@/components/hero/Hero";
 import { BackgroundGlow } from "@/components/ui/BackgroundGlow";
 import { TopGameProviders } from "@/components/providers/TopGameProviders";
+import { IGamingProducts } from "@/components/products/IGamingProducts";
 
 export default function Home() {
   return (
@@ -26,6 +27,9 @@ export default function Home() {
 
       {/* Top Game Providers & Statistics Section */}
       <TopGameProviders />
+
+      {/* Our iGaming Products Section */}
+      <IGamingProducts />
     </div>
   );
 }

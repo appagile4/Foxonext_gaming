@@ -117,7 +117,7 @@ export function BackgroundGlow() {
 
       {/* Bottom Right Glowing Network Globe (Rotated 45 degrees to left / 315deg) */}
       <div
-        className="absolute bottom-190 -right-40 w-[1250px] sm:w-[1650px] lg:w-[2100px] xl:w-[2600px] h-auto pointer-events-none select-none opacity-30"
+        className="absolute bottom-190 -right-40 w-[1250px] sm:w-[1650px] lg:w-[2100px] xl:w-[2600px] h-auto pointer-events-none select-none opacity-15"
         style={{
           transform: "rotate(315deg)",
           transformOrigin: "bottom right",
