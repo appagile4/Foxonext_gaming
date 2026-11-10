@@ -37,9 +37,9 @@ export function IGamingProducts() {
         {/* Section Header: Title on Left, Description & Know More on Right */}
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 md:gap-12">
           {/* Left: Bold 2-Line Headline in Red Rose font */}
-          <div className="max-w-md">
+          <div className="max-w-xl">
             <h2
-              className="font-red-rose text-8xl sm:text-4xl lg:text-[44px] font-bold text-white tracking-tight leading-[1.12]"
+              className="font-red-rose text-3xl sm:text-5xl lg:text-[64px] font-bold text-white tracking-tight leading-[1.08]"
               style={{ fontFamily: "var(--font-red-rose), 'Red Rose', serif" }}
             >
               Our iGaming
