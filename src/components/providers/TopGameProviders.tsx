@@ -108,7 +108,19 @@ export function TopGameProviders() {
               "linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%)",
           }}
         >
-          <div className="animate-marquee flex items-center gap-4 sm:gap-6">
+          <style>{`
+            @keyframes marqueeContinuous {
+              0% { transform: translateX(0%); }
+              100% { transform: translateX(-50%); }
+            }
+            .animate-marquee-scroll {
+              display: flex !important;
+              width: max-content !important;
+              animation: marqueeContinuous 22s linear infinite !important;
+              will-change: transform;
+            }
+          `}</style>
+          <div className="animate-marquee-scroll flex items-center gap-4 sm:gap-6">
             {MARQUEE_PROVIDERS.map((provider, index) => (
               <div
                 key={`${provider.id}-${index}`}

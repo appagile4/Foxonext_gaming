@@ -44,14 +44,10 @@ body {
 }
 
 .animate-marquee {
-  display: flex;
-  width: max-content;
-  animation: marquee 24s linear infinite;
+  display: flex !important;
+  width: max-content !important;
+  animation: marquee 22s linear infinite !important;
   will-change: transform;
-}
-
-.animate-marquee:hover {
-  animation-play-state: paused;
 }
 
 /* Custom subtle scrollbar */

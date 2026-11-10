@@ -39,7 +39,7 @@ export function IGamingProducts() {
           {/* Left: Bold 2-Line Headline in Red Rose font */}
           <div className="max-w-md">
             <h2
-              className="font-red-rose text-3xl sm:text-4xl lg:text-[44px] font-bold text-white tracking-tight leading-[1.12]"
+              className="font-red-rose text-8xl sm:text-4xl lg:text-[44px] font-bold text-white tracking-tight leading-[1.12]"
               style={{ fontFamily: "var(--font-red-rose), 'Red Rose', serif" }}
             >
               Our iGaming
