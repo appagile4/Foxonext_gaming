@@ -79,6 +79,8 @@ const STATS_DATA = [
   },
 ];
 
+const MARQUEE_PROVIDERS = [...PROVIDERS_LIST, ...PROVIDERS_LIST];
+
 export function TopGameProviders() {
   return (
     <section className="relative w-[92%] sm:w-[85%] lg:w-[75%] mx-auto pt-6 pb-16 sm:pt-8 sm:pb-20 lg:pt-10 lg:pb-24 bg-transparent select-none z-10">
@@ -96,24 +98,37 @@ export function TopGameProviders() {
           </p>
         </div>
 
-        {/* 8 Provider Badges Row (Exact same layout as screenshot) */}
-        <div className="flex items-center justify-center gap-2.5 sm:gap-3 md:gap-4 flex-wrap lg:flex-nowrap">
-          {PROVIDERS_LIST.map((provider) => (
-            <div
-              key={provider.id}
-              className="group relative flex items-center justify-center h-10 sm:h-11 px-3 sm:px-4 rounded-[10px] bg-[#13141b] border border-white/[0.08] shadow-[0_2px_10px_rgba(0,0,0,0.6)] backdrop-blur-sm transition-all duration-300 hover:border-[#FF5722]/60 hover:shadow-[0_0_20px_rgba(255,87,34,0.35)] hover:-translate-y-1"
-            >
-              <div className="relative h-6 sm:h-7 w-auto flex items-center justify-center">
-                <Image
-                  src={provider.logo}
-                  alt={provider.name}
-                  width={provider.width * 2}
-                  height={50}
-                  className="h-6 sm:h-7 w-auto object-contain filter brightness-95 group-hover:brightness-110 transition-all duration-200"
-                />
+        {/* Auto-scrolling Infinite Marquee with Wider & Prominent Cards */}
+        <div
+          className="relative w-full overflow-hidden py-3"
+          style={{
+            maskImage:
+              "linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%)",
+            WebkitMaskImage:
+              "linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%)",
+          }}
+        >
+          <div className="animate-marquee flex items-center gap-4 sm:gap-6">
+            {MARQUEE_PROVIDERS.map((provider, index) => (
+              <div
+                key={`${provider.id}-${index}`}
+                className="group flex-shrink-0 flex items-center justify-center h-14 sm:h-16 md:h-[66px] px-6 sm:px-8 rounded-xl bg-[#13141b] border border-white/[0.08] shadow-[0_4px_16px_rgba(0,0,0,0.65)] backdrop-blur-md transition-all duration-300 hover:border-[#FF5722]/60 hover:shadow-[0_0_24px_rgba(255,87,34,0.35)] hover:-translate-y-1 select-none"
+                style={{
+                  minWidth: provider.width ? `${provider.width * 2}px` : "140px",
+                }}
+              >
+                <div className="relative h-8 sm:h-9 md:h-10 w-auto flex items-center justify-center">
+                  <Image
+                    src={provider.logo}
+                    alt={provider.name}
+                    width={provider.width * 3}
+                    height={70}
+                    className="h-8 sm:h-9 md:h-10 w-auto object-contain filter brightness-95 group-hover:brightness-110 transition-all duration-200"
+                  />
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
         {/* Futuristic Chamfered Stats Container (Exact polygon cut corners from reference) */}
