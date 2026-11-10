@@ -11,13 +11,48 @@ interface ProviderItem {
 }
 
 const PROVIDERS_LIST: ProviderItem[] = [
-  { id: "pg-soft", name: "PG Soft", logo: "/images/providers/pg-soft.png", width: 72 },
-  { id: "jdb", name: "JDB Gaming", logo: "/images/providers/jdb.png", width: 72 },
-  { id: "pragmatic", name: "Pragmatic Play", logo: "/images/providers/pragmatic.png", width: 120 },
-  { id: "db-gaming", name: "DB Gaming", logo: "/images/providers/db-gaming.png", width: 72 },
-  { id: "spribe", name: "SPRIBE", logo: "/images/providers/spribe.png", width: 78 },
-  { id: "in-out", name: "IN OUT", logo: "/images/providers/in-out.png", width: 72 },
-  { id: "pescaria", name: "Pescaria", logo: "/images/providers/pescaria.png", width: 72 },
+  {
+    id: "pg-soft",
+    name: "PG Soft",
+    logo: "/images/providers/pg-soft.png",
+    width: 72,
+  },
+  {
+    id: "jdb",
+    name: "JDB Gaming",
+    logo: "/images/providers/jdb.png",
+    width: 72,
+  },
+  {
+    id: "pragmatic",
+    name: "Pragmatic Play",
+    logo: "/images/providers/pragmatic.png",
+    width: 120,
+  },
+  {
+    id: "db-gaming",
+    name: "DB Gaming",
+    logo: "/images/providers/db-gaming.png",
+    width: 72,
+  },
+  {
+    id: "spribe",
+    name: "SPRIBE",
+    logo: "/images/providers/spribe.png",
+    width: 78,
+  },
+  {
+    id: "in-out",
+    name: "IN OUT",
+    logo: "/images/providers/in-out.png",
+    width: 72,
+  },
+  {
+    id: "pescaria",
+    name: "Pescaria",
+    logo: "/images/providers/pescaria.png",
+    width: 72,
+  },
   { id: "cq9", name: "CQ9", logo: "/images/providers/cq9.png", width: 72 },
 ];
 
@@ -48,14 +83,6 @@ export function TopGameProviders() {
   return (
     <section className="relative w-full pt-6 pb-16 sm:pt-8 sm:pb-20 lg:pt-10 lg:pb-24 px-4 sm:px-8 lg:px-12 bg-transparent select-none z-10">
       {/* Soft connecting ambient glow behind provider title */}
-      <div
-        className="absolute top-2 left-1/2 -translate-x-1/2 w-[650px] h-[220px] opacity-35 pointer-events-none -z-0"
-        style={{
-          background:
-            "radial-gradient(ellipse 60% 70% at 50% 20%, rgba(233, 78, 27, 0.4) 0%, rgba(245, 158, 11, 0.12) 50%, transparent 80%)",
-          filter: "blur(40px)",
-        }}
-      />
 
       <div className="max-w-6xl mx-auto space-y-9 sm:space-y-11 lg:space-y-12">
         {/* Section Heading & Subtitle */}
@@ -64,7 +91,10 @@ export function TopGameProviders() {
             Top Game Providers
           </h2>
           <p className="font-poppins text-xs sm:text-[13px] text-zinc-400 font-normal leading-relaxed max-w-xl mx-auto">
-            Popular casino games come together in one Game Aggregator hub. With our game aggregation platform it is easy and simple to add this massive portfolio to any gaming website through just one API integration.
+            Popular casino games come together in one Game Aggregator hub. With
+            our game aggregation platform it is easy and simple to add this
+            massive portfolio to any gaming website through just one API
+            integration.
           </p>
         </div>
 
