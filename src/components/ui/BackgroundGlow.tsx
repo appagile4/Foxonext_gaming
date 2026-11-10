@@ -41,15 +41,6 @@ export function BackgroundGlow() {
         }}
       />
 
-      {/* Unified Transition Glow (between Timeline & Top Game Providers) */}
-      <div
-        className="absolute top-[52%] left-1/2 -translate-x-1/2 w-[850px] h-[450px] rounded-full blur-[130px] opacity-30 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(ellipse 70% 50% at 50% 50%, rgba(233, 78, 27, 0.45) 0%, rgba(255, 140, 0, 0.15) 50%, transparent 75%)",
-        }}
-      />
-
       {/* Elegant swooshes & arcs flowing down across both sections */}
       <svg
         className="absolute inset-0 w-full h-full opacity-60 pointer-events-none"

@@ -82,8 +82,6 @@ const STATS_DATA = [
 export function TopGameProviders() {
   return (
     <section className="relative w-[92%] sm:w-[85%] lg:w-[75%] mx-auto pt-6 pb-16 sm:pt-8 sm:pb-20 lg:pt-10 lg:pb-24 bg-transparent select-none z-10">
-      {/* Soft connecting ambient glow behind provider title */}
-
       <div className="w-full space-y-9 sm:space-y-11 lg:space-y-12">
         {/* Section Heading & Subtitle */}
         <div className="text-center space-y-3 max-w-2xl mx-auto">
