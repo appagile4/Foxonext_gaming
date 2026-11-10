@@ -10,47 +10,27 @@ export function BackgroundGlow() {
       {/* Base deep background */}
       <div className="absolute inset-0 bg-[#07080c]" />
 
-      {/* Top Left Orange Accent Curve (Replaces Circular Rings) */}
-      <svg
-        className="absolute top-0 left-0 w-[340px] sm:w-[460px] lg:w-[600px] xl:w-[720px] h-auto pointer-events-none select-none z-10 overflow-visible drop-shadow-[0_0_16px_rgba(255,87,34,0.65)]"
-        viewBox="0 -60 360 240"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <defs>
-          <linearGradient id="topLeftOrangeGrad" x1="0%" y1="100%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#FF5722" stopOpacity="0.8" />
-            <stop offset="50%" stopColor="#FF5722" stopOpacity="1" />
-            <stop offset="100%" stopColor="#FF7043" stopOpacity="0.9" />
-          </linearGradient>
-          <filter id="svgCurveGlow" x="-30%" y="-30%" width="160%" height="160%">
-            <feGaussianBlur stdDeviation="5" result="blur" />
-            <feMerge>
-              <feMergeNode in="blur" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
-        </defs>
+      {/* Top Left Orange Circular Ring - Main */}
+      <div
+        className="absolute top-32 left-32 sm:top-40 sm:left-40 lg:-top-328 lg:-left-278
+    w-[960px] h-[960px]
+    sm:w-[1240px] sm:h-[1240px]
+    lg:w-[1960px] lg:h-[1960px]
+    rounded-full border-2 border-transparent
+    shadow-[inset_0_0_45px_rgba(255,87,34,0.10),inset_0_0_90px_rgba(255,87,34,0.10)]
+    pointer-events-none"
+      />
 
-        {/* Ambient Glow Stroke Behind */}
-        <path
-          d="M.36 176.652C96.146 173.438 270.681 101.759 354.574-58.955"
-          stroke="#FF5722"
-          strokeWidth="6"
-          strokeLinecap="round"
-          opacity="0.45"
-          filter="url(#svgCurveGlow)"
-        />
-
-        {/* Sharp Core Accent Curve */}
-        <path
-          d="M.36 176.652C96.146 173.438 270.681 101.759 354.574-58.955"
-          stroke="url(#topLeftOrangeGrad)"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-        />
-      </svg>
-
+      {/* Top Left Orange Circular Ring - Outer */}
+      <div
+        className="absolute top-16 left-16 sm:top-20 sm:left-20 lg:-top-314 lg:-left-199
+    w-[960px] h-[960px]
+    sm:w-[1240px] sm:h-[1240px]
+    lg:w-[1960px] lg:h-[1960px]
+    rounded-full border-2 border-transparent
+    shadow-[inset_0_0_70px_rgba(255,87,34,0.10),inset_0_0_140px_rgba(255,87,34,0.10)]
+    pointer-events-none"
+      />
       {/* Top right purple/indigo ambient glow (behind dashboard) */}
       <div
         className="absolute -top-[5%] right-[-5%] w-[650px] h-[550px] rounded-full blur-[120px] opacity-40 mix-blend-screen"
