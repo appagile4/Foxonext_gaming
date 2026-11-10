@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 export function BackgroundGlow() {
   return (
@@ -103,6 +104,33 @@ export function BackgroundGlow() {
             "radial-gradient(ellipse 80% 60% at 50% 50%, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%)",
         }}
       />
+
+      {/* Ambient glow behind bottom right globe */}
+      <div
+        className="absolute -bottom-[8%] -right-[8%] w-[650px] h-[650px] rounded-full blur-[140px] opacity-25 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(233, 78, 27, 0.45) 0%, rgba(59, 130, 246, 0.18) 45%, transparent 75%)",
+        }}
+      />
+
+      {/* Bottom Right Glowing Network Globe (Rotated 45 degrees to left / -45deg) */}
+      <div
+        className="absolute -bottom-20 -right-20 sm:-bottom-28 sm:-right-28 lg:-bottom-32 lg:-right-32 w-[480px] sm:w-[680px] lg:w-[860px] xl:w-[980px] h-auto pointer-events-none select-none opacity-55"
+        style={{
+          transform: "rotate(-45deg)",
+          transformOrigin: "bottom right",
+        }}
+      >
+        <Image
+          src="/images/globe-network.png"
+          alt="Glowing Network Globe Background"
+          width={1024}
+          height={574}
+          className="w-full h-auto object-contain filter drop-shadow-[0_0_50px_rgba(233,78,27,0.3)]"
+          priority
+        />
+      </div>
     </div>
   );
 }
