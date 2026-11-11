@@ -8,6 +8,7 @@ import { WhyChooseUs } from "@/components/why-choose-us/WhyChooseUs";
 import { TopNewsAndBlogs } from "@/components/news/TopNewsAndBlogs";
 import { FaqSection } from "@/components/faq/FaqSection";
 import { TopGameProviders } from "@/components/providers/TopGameProviders";
+import { BackgroundGlow } from "@/components/ui/BackgroundGlow";
 
 export const metadata = {
   title: "Casino Game Aggregator | FOXONEXT",
@@ -18,17 +19,21 @@ export const metadata = {
 export default function GameAggregatorPage() {
   return (
     <main className="relative min-h-screen flex flex-col bg-[#07080c] overflow-x-hidden">
-      {/* 1. Casino Game Aggregator Hero Section */}
-      <AggregatorHero />
+      <div className="relative overflow-hidden">
+        <BackgroundGlow />
 
-      {/* Top Game Providers & Statistics Section */}
-      <TopGameProviders />
+        {/* 1. Casino Game Aggregator Hero Section */}
+        <AggregatorHero />
 
-      {/* 2. Top Game Providers & Aggregator Features Section */}
-      <AggregatorFeatures />
+        {/* Top Game Providers & Statistics Section */}
+        <TopGameProviders />
 
-      {/* 3. Aggregator Advantages Section */}
-      <AggregatorAdvantages />
+        {/* 2. Top Game Providers & Aggregator Features Section */}
+        <AggregatorFeatures />
+
+        {/* 3. Aggregator Advantages Section */}
+        <AggregatorAdvantages />
+      </div>
 
       {/* Frequently Asked Questions Section */}
       {/* <FaqSection /> */}

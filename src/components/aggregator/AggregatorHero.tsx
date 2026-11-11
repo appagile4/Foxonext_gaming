@@ -77,7 +77,7 @@ export function AggregatorHero() {
                 src="/images/aggregator/hero-dice-rotated.png"
                 alt="Casino Game Aggregator 3D Dice"
                 fill
-                className="object-contain animate-float"
+                className="object-contain animate-float rotate-320"
                 priority
               />
             </div>

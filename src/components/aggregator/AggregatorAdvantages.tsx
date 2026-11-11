@@ -137,8 +137,8 @@ export function AggregatorAdvantages() {
                   <div
                     className={`space-y-6 sm:space-y-7 ${
                       adv.imageOnLeft
-                        ? "lg:col-span-7 lg:order-2"
-                        : "lg:col-span-7 lg:order-1"
+                        ? "lg:col-span-6 lg:order-2"
+                        : "lg:col-span-6 lg:order-1"
                     }`}
                   >
                     {/* Title with Orange L-Shape Bracket */}
@@ -202,17 +202,17 @@ export function AggregatorAdvantages() {
                   <div
                     className={`flex items-center justify-center ${
                       adv.imageOnLeft
-                        ? "lg:col-span-5 lg:order-1"
-                        : "lg:col-span-5 lg:order-2"
+                        ? "lg:col-span-6 lg:order-1"
+                        : "lg:col-span-6 lg:order-2"
                     }`}
                   >
-                    <div className="relative w-full max-w-[380px] sm:max-w-[440px] aspect-square flex items-center justify-center">
+                    <div className="relative w-full max-w-[440px] sm:max-w-[520px] lg:max-w-[560px] xl:max-w-[620px] aspect-square flex items-center justify-center">
                       <Image
                         src={adv.image}
                         alt={adv.imageAlt}
-                        width={440}
-                        height={440}
-                        className="w-full h-full object-contain filter drop-shadow-[0_15px_35px_rgba(255,87,34,0.25)] hover:scale-105 transition-transform duration-500"
+                        width={640}
+                        height={640}
+                        className="w-full h-full object-contain filter drop-shadow-[0_20px_45px_rgba(255,87,34,0.3)] hover:scale-105 transition-transform duration-500"
                       />
                     </div>
                   </div>
