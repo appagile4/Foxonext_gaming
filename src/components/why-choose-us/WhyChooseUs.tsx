@@ -72,18 +72,19 @@ export function WhyChooseUs() {
   return (
     <section className="relative w-full py-16 sm:py-24 lg:py-32 overflow-hidden select-none z-10">
       {/* Faceted Geometric Background (user-provided ae6cb7712121e7db827caec067b955d83c4c9b7d.jpg) */}
+
+      {/* Background Image - Strong Left, Faded Right */}
       <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
         <Image
           src="/images/why-choose-us-bg.jpg"
           alt="Why Choose Us Faceted Geometric Background"
           fill
           priority
-          className="object-cover object-center brightness-[0.22] contrast-[1.35] opacity-75"
+          className="object-cover object-center brightness-[0.27] contrast-[1.35]"
         />
 
-        {/* Deep ambient dark gradient overlays to seamlessly match site theme */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#07080c] via-transparent to-[#07080c]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,87,34,0.06)_0%,rgba(7,8,12,0.85)_75%)]" />
+        {/* Left to Right Opacity Gradient */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/0 via-black/0 to-black/90" />
       </div>
 
       <div className="relative w-[92%] sm:w-[88%] lg:w-[82%] xl:w-[78%] max-w-[1440px] mx-auto space-y-12 sm:space-y-16 lg:space-y-20">
@@ -152,11 +153,11 @@ export function WhyChooseUs() {
           <div className="lg:col-span-7">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
               {/* Card 1: Quick Launch */}
-              <div className="relative rounded-xl p-6 sm:p-7 bg-white/[0.04] border border-white/[0.12] backdrop-blur-xl shadow-[inset_0_1px_1px_rgba(255,255,255,0.12),0_8px_32px_rgba(0,0,0,0.4)] flex flex-col justify-between min-h-[155px] sm:min-h-[165px]">
+              <div className="relative rounded-xl p-6 sm:p-7 bg-white/[0.04] border border-white/[0.12] backdrop-blur-xs shadow-[inset_0_1px_1px_rgba(255,255,255,0.12),0_8px_32px_rgba(0,0,0,0.4)] flex flex-col justify-between min-h-[165px] sm:min-h-[180px]">
                 {/* Top-Right: Fast Cube Speed Lines Icon */}
                 <div className="flex justify-end">
                   <svg
-                    className="w-11 h-11 sm:w-12 sm:h-12 text-white"
+                    className="w-14 h-14 sm:w-16 sm:h-16 lg:w-[72px] lg:h-[72px] text-white"
                     viewBox="0 0 48 48"
                     fill="none"
                     stroke="currentColor"
@@ -191,11 +192,11 @@ export function WhyChooseUs() {
               </div>
 
               {/* Card 2: Scalable By Design */}
-              <div className="relative rounded-xl p-6 sm:p-7 bg-white/[0.04] border border-white/[0.12] backdrop-blur-xl shadow-[inset_0_1px_1px_rgba(255,255,255,0.12),0_8px_32px_rgba(0,0,0,0.4)] flex flex-col justify-between min-h-[155px] sm:min-h-[165px]">
+              <div className="relative rounded-xl p-6 sm:p-7 bg-white/[0.04] border border-white/[0.12] backdrop-blur-xs shadow-[inset_0_1px_1px_rgba(255,255,255,0.12),0_8px_32px_rgba(0,0,0,0.4)] flex flex-col justify-between min-h-[165px] sm:min-h-[180px]">
                 {/* Top-Right: Scalable Network Node Icon */}
                 <div className="flex justify-end">
                   <svg
-                    className="w-11 h-11 sm:w-12 sm:h-12 text-white"
+                    className="w-14 h-14 sm:w-16 sm:h-16 lg:w-[72px] lg:h-[72px] text-white"
                     viewBox="0 0 48 48"
                     fill="none"
                     stroke="currentColor"
@@ -236,11 +237,11 @@ export function WhyChooseUs() {
               </div>
 
               {/* Card 5 (Tall Card on the Right): 100% Bespoke Development */}
-              <div className="relative rounded-xl p-7 sm:p-8 bg-white/[0.04] border border-white/[0.12] backdrop-blur-xl shadow-[inset_0_1px_1px_rgba(255,255,255,0.12),0_8px_32px_rgba(0,0,0,0.4)] flex flex-col justify-between sm:col-span-2 lg:col-span-1 lg:row-span-2 lg:col-start-3 lg:row-start-1 min-h-[260px] lg:min-h-[350px]">
+              <div className="relative rounded-xl p-7 sm:p-8 bg-white/[0.04] border border-white/[0.12] backdrop-blur-xs shadow-[inset_0_1px_1px_rgba(255,255,255,0.12),0_8px_32px_rgba(0,0,0,0.4)] flex flex-col justify-between sm:col-span-2 lg:col-span-1 lg:row-span-2 lg:col-start-3 lg:row-start-1 min-h-[280px] lg:min-h-[380px]">
                 {/* Large Code Brackets </ > */}
                 <div className="pt-2 flex items-center justify-center lg:justify-start">
                   <svg
-                    className="w-20 h-20 sm:w-24 sm:h-24 text-white"
+                    className="w-28 h-28 sm:w-36 sm:h-36 lg:w-44 lg:h-44 text-white"
                     viewBox="0 0 64 64"
                     fill="none"
                     stroke="currentColor"
@@ -277,11 +278,11 @@ export function WhyChooseUs() {
               </div>
 
               {/* Card 3: Flexible Launch */}
-              <div className="relative rounded-xl p-6 sm:p-7 bg-white/[0.04] border border-white/[0.12] backdrop-blur-xl shadow-[inset_0_1px_1px_rgba(255,255,255,0.12),0_8px_32px_rgba(0,0,0,0.4)] flex flex-col justify-between min-h-[155px] sm:min-h-[165px] lg:col-start-1 lg:row-start-2">
+              <div className="relative rounded-xl p-6 sm:p-7 bg-white/[0.04] border border-white/[0.12] backdrop-blur-xs shadow-[inset_0_1px_1px_rgba(255,255,255,0.12),0_8px_32px_rgba(0,0,0,0.4)] flex flex-col justify-between min-h-[165px] sm:min-h-[180px] lg:col-start-1 lg:row-start-2">
                 {/* Top-Right: 4-Way Swivel Arrows Icon */}
                 <div className="flex justify-end">
                   <svg
-                    className="w-11 h-11 sm:w-12 sm:h-12 text-white"
+                    className="w-14 h-14 sm:w-16 sm:h-16 lg:w-[72px] lg:h-[72px] text-white"
                     viewBox="0 0 48 48"
                     fill="none"
                     stroke="currentColor"
@@ -320,11 +321,11 @@ export function WhyChooseUs() {
               </div>
 
               {/* Card 4: All-In-One Platform */}
-              <div className="relative rounded-xl p-6 sm:p-7 bg-white/[0.04] border border-white/[0.12] backdrop-blur-xl shadow-[inset_0_1px_1px_rgba(255,255,255,0.12),0_8px_32px_rgba(0,0,0,0.4)] flex flex-col justify-between min-h-[155px] sm:min-h-[165px] lg:col-start-2 lg:row-start-2">
+              <div className="relative rounded-xl p-6 sm:p-7 bg-white/[0.04] border border-white/[0.12] backdrop-blur-xs shadow-[inset_0_1px_1px_rgba(255,255,255,0.12),0_8px_32px_rgba(0,0,0,0.4)] flex flex-col justify-between min-h-[165px] sm:min-h-[180px] lg:col-start-2 lg:row-start-2">
                 {/* Top-Right: Isometric Stacked Layers Icon */}
                 <div className="flex justify-end">
                   <svg
-                    className="w-11 h-11 sm:w-12 sm:h-12 text-white"
+                    className="w-14 h-14 sm:w-16 sm:h-16 lg:w-[72px] lg:h-[72px] text-white"
                     viewBox="0 0 48 48"
                     fill="none"
                     stroke="currentColor"
@@ -360,7 +361,7 @@ export function WhyChooseUs() {
         {/* Bottom Section: 4 Distinct Statistics Cards with Animated Counting (Glassmorphic Blur, No hover) */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 pt-2 sm:pt-4">
           {/* Stat 1: 3000+ Games */}
-          <div className="relative rounded-xl p-6 sm:p-7 lg:p-8 bg-white/[0.04] border border-white/[0.12] backdrop-blur-xl shadow-[inset_0_1px_1px_rgba(255,255,255,0.12),0_8px_32px_rgba(0,0,0,0.4)] flex flex-col justify-center space-y-2">
+          <div className="relative rounded-xl p-6 sm:p-7 lg:p-8 bg-white/[0.04] border border-white/[0.12] backdrop-blur-xs shadow-[inset_0_1px_1px_rgba(255,255,255,0.12),0_8px_32px_rgba(0,0,0,0.4)] flex flex-col justify-center space-y-2">
             <div
               className="font-red-rose text-4xl sm:text-5xl lg:text-[52px] xl:text-[56px] font-bold text-[#FF5722] tracking-tight leading-none"
               style={{ fontFamily: "var(--font-red-rose), 'Red Rose', serif" }}
@@ -378,7 +379,7 @@ export function WhyChooseUs() {
           </div>
 
           {/* Stat 2: 140+ Game Providers */}
-          <div className="relative rounded-xl p-6 sm:p-7 lg:p-8 bg-white/[0.04] border border-white/[0.12] backdrop-blur-xl shadow-[inset_0_1px_1px_rgba(255,255,255,0.12),0_8px_32px_rgba(0,0,0,0.4)] flex flex-col justify-center space-y-2">
+          <div className="relative rounded-xl p-6 sm:p-7 lg:p-8 bg-white/[0.04] border border-white/[0.12] backdrop-blur-xs shadow-[inset_0_1px_1px_rgba(255,255,255,0.12),0_8px_32px_rgba(0,0,0,0.4)] flex flex-col justify-center space-y-2">
             <div
               className="font-red-rose text-4xl sm:text-5xl lg:text-[52px] xl:text-[56px] font-bold text-[#FF5722] tracking-tight leading-none"
               style={{ fontFamily: "var(--font-red-rose), 'Red Rose', serif" }}
@@ -396,7 +397,7 @@ export function WhyChooseUs() {
           </div>
 
           {/* Stat 3: 32+ Years of Exp. */}
-          <div className="relative rounded-xl p-6 sm:p-7 lg:p-8 bg-white/[0.04] border border-white/[0.12] backdrop-blur-xl shadow-[inset_0_1px_1px_rgba(255,255,255,0.12),0_8px_32px_rgba(0,0,0,0.4)] flex flex-col justify-center space-y-2">
+          <div className="relative rounded-xl p-6 sm:p-7 lg:p-8 bg-white/[0.04] border border-white/[0.12] backdrop-blur-xs shadow-[inset_0_1px_1px_rgba(255,255,255,0.12),0_8px_32px_rgba(0,0,0,0.4)] flex flex-col justify-center space-y-2">
             <div
               className="font-red-rose text-4xl sm:text-5xl lg:text-[52px] xl:text-[56px] font-bold text-[#FF5722] tracking-tight leading-none"
               style={{ fontFamily: "var(--font-red-rose), 'Red Rose', serif" }}
@@ -414,7 +415,7 @@ export function WhyChooseUs() {
           </div>
 
           {/* Stat 4: 32+ Years of Exp. */}
-          <div className="relative rounded-xl p-6 sm:p-7 lg:p-8 bg-white/[0.04] border border-white/[0.12] backdrop-blur-xl shadow-[inset_0_1px_1px_rgba(255,255,255,0.12),0_8px_32px_rgba(0,0,0,0.4)] flex flex-col justify-center space-y-2">
+          <div className="relative rounded-xl p-6 sm:p-7 lg:p-8 bg-white/[0.04] border border-white/[0.12] backdrop-blur-xs shadow-[inset_0_1px_1px_rgba(255,255,255,0.12),0_8px_32px_rgba(0,0,0,0.4)] flex flex-col justify-center space-y-2">
             <div
               className="font-red-rose text-4xl sm:text-5xl lg:text-[52px] xl:text-[56px] font-bold text-[#FF5722] tracking-tight leading-none"
               style={{ fontFamily: "var(--font-red-rose), 'Red Rose', serif" }}
