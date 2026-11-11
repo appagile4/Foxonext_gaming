@@ -86,11 +86,17 @@ export function TopGameProviders() {
     <section className="relative w-[92%] sm:w-[85%] lg:w-[75%] mx-auto pt-6 pb-16 sm:pt-8 sm:pb-20 lg:pt-10 lg:pb-24 bg-transparent select-none z-10">
       <div className="w-full space-y-9 sm:space-y-11 lg:space-y-12">
         {/* Section Heading & Subtitle */}
-        <div className="text-center space-y-3 max-w-2xl mx-auto">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-normal font-poppins">
+        <div className="text-center space-y-4 sm:space-y-5 max-w-4xl mx-auto">
+          <h2
+            className="font-red-rose text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-bold text-white tracking-tight leading-tight"
+            style={{ fontFamily: "var(--font-red-rose), 'Red Rose', serif" }}
+          >
             Top Game Providers
           </h2>
-          <p className="font-poppins text-xs sm:text-[13px] text-zinc-400 font-normal leading-relaxed max-w-xl mx-auto">
+          <p
+            className="font-poppins text-sm sm:text-base md:text-lg lg:text-[19px] text-zinc-300 font-normal leading-relaxed max-w-3xl mx-auto"
+            style={{ fontFamily: "var(--font-poppins), 'Poppins', sans-serif" }}
+          >
             Popular casino games come together in one Game Aggregator hub. With
             our game aggregation platform it is easy and simple to add this
             massive portfolio to any gaming website through just one API

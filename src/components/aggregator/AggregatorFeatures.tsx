@@ -10,6 +10,7 @@ import {
   Wrench,
   ShieldCheck,
 } from "lucide-react";
+import { TopGameProviders } from "../providers/TopGameProviders";
 
 const PROVIDERS = [
   { name: "Pocket Games Soft", src: "/images/providers/pg-soft.png" },
@@ -64,49 +65,8 @@ export function AggregatorFeatures() {
     <section className="relative w-full py-16 sm:py-20 lg:py-24 select-none z-10 bg-[#07080c]">
       <div className="relative w-[92%] sm:w-[88%] lg:w-[82%] xl:w-[78%] max-w-[1440px] mx-auto space-y-20 sm:space-y-28">
         {/* Part 1: Top Game Providers */}
-        <div className="space-y-8 sm:space-y-10 text-center">
-          <div className="max-w-3xl mx-auto space-y-3">
-            <h2
-              className="font-red-rose text-2xl sm:text-3xl lg:text-[42px] font-bold text-white tracking-tight leading-tight"
-              style={{
-                fontFamily: "var(--font-red-rose), 'Red Rose', serif",
-              }}
-            >
-              Top Game Providers
-            </h2>
-            <p
-              className="font-poppins text-xs sm:text-sm text-zinc-400 font-normal leading-relaxed max-w-2xl mx-auto"
-              style={{
-                fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
-              }}
-            >
-              Popular casino games come together in one Game Aggregator hub.
-              With our game aggregation platform it is easy and simple to add
-              this massive portfolio to any gaming website through just one API
-              integration.
-            </p>
-          </div>
-
-          {/* Providers Row */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
-            {PROVIDERS.map((provider) => (
-              <div
-                key={provider.name}
-                className="relative rounded-xl bg-[#10121a]/80 border border-white/[0.08] hover:border-white/20 p-4 sm:p-5 flex items-center justify-center min-h-[70px] sm:min-h-[80px] transition-all duration-200 group"
-              >
-                <div className="relative w-full h-8 sm:h-9 flex items-center justify-center">
-                  <Image
-                    src={provider.src}
-                    alt={provider.name}
-                    width={130}
-                    height={40}
-                    className="max-h-8 sm:max-h-9 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+        {/* Top Game Providers & Statistics Section */}
+        <TopGameProviders />
 
         {/* Part 2: FOXOnext Aggregator Features */}
         <div className="space-y-8 sm:space-y-12">
