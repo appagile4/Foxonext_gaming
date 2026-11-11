@@ -5,6 +5,7 @@ import { BackgroundGlow } from "@/components/ui/BackgroundGlow";
 import { TopGameProviders } from "@/components/providers/TopGameProviders";
 import { IGamingProducts } from "@/components/products/IGamingProducts";
 import { IGamingSolutions } from "@/components/solutions/IGamingSolutions";
+import { WhyChooseUs } from "@/components/why-choose-us/WhyChooseUs";
 
 export default function Home() {
   return (
@@ -37,6 +38,9 @@ export default function Home() {
 
       {/* Our iGaming Solutions Section */}
       <IGamingSolutions />
+
+      {/* Why Choose Us Section */}
+      <WhyChooseUs />
     </div>
   );
 }
