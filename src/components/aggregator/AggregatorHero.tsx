@@ -9,7 +9,7 @@ export function AggregatorHero() {
   const milestones = ["Expertise", "Service", "Security", "Innovation"];
 
   return (
-    <section className="relative w-full min-h-[80vh] lg:min-h-[780px] xl:min-h-[840px] flex flex-col justify-between overflow-hidden bg-[#07080c] select-none">
+    <section className="relative w-full min-h-[88vh] lg:min-h-[860px] xl:min-h-[920px] flex flex-col justify-between overflow-hidden bg-[#07080c] select-none">
       {/* Dynamic warm diagonal gradient backdrop matching reference */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#200802] via-[#ab3203] to-[#e64a0c] pointer-events-none" />
 
@@ -24,8 +24,8 @@ export function AggregatorHero() {
       </div>
 
       {/* Main Hero Content */}
-      <div className="relative z-20 w-[92%] sm:w-[88%] lg:w-[82%] xl:w-[78%] max-w-[1440px] mx-auto pt-8 sm:pt-14 lg:pt-20 pb-12 sm:pb-16 lg:pb-20 flex-1 flex flex-col justify-between">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center my-auto">
+      <div className="relative z-20 w-[92%] sm:w-[88%] lg:w-[82%] xl:w-[78%] max-w-[1440px] mx-auto pt-10 sm:pt-16 lg:pt-24 xl:pt-28 pb-16 sm:pb-20 lg:pb-24 flex-1 flex flex-col justify-between">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center my-auto">
           {/* Left Column: Heading, Description & CTA */}
           <div className="lg:col-span-7 space-y-6 sm:space-y-8">
             <h1
@@ -85,7 +85,7 @@ export function AggregatorHero() {
         </div>
 
         {/* Bottom Milestones Line: Expertise · Service · Security · Innovation */}
-        <div className="relative w-full mt-12 sm:mt-16 lg:mt-20 pt-7 sm:pt-8 border-t border-white/20">
+        <div className="relative w-full mt-16 sm:mt-20 lg:mt-28 pt-8 sm:pt-10 border-t border-white/20">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
             {milestones.map((item, idx) => (
               <div
