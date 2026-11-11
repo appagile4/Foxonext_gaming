@@ -9,6 +9,7 @@ import { WhyChooseUs } from "@/components/why-choose-us/WhyChooseUs";
 import { TopNewsAndBlogs } from "@/components/news/TopNewsAndBlogs";
 import { FaqSection } from "@/components/faq/FaqSection";
 import { WorkWithUsCta } from "@/components/cta/WorkWithUsCta";
+import { Footer } from "@/components/layout/Footer";
 
 export default function Home() {
   return (
@@ -53,6 +54,9 @@ export default function Home() {
 
       {/* Work With Us CTA Section */}
       <WorkWithUsCta />
+
+      {/* Footer Section */}
+      <Footer />
     </div>
   );
 }
