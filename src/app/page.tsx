@@ -6,6 +6,9 @@ import { TopGameProviders } from "@/components/providers/TopGameProviders";
 import { IGamingProducts } from "@/components/products/IGamingProducts";
 import { IGamingSolutions } from "@/components/solutions/IGamingSolutions";
 import { WhyChooseUs } from "@/components/why-choose-us/WhyChooseUs";
+import { TopNewsAndBlogs } from "@/components/news/TopNewsAndBlogs";
+import { FaqSection } from "@/components/faq/FaqSection";
+import { WorkWithUsCta } from "@/components/cta/WorkWithUsCta";
 
 export default function Home() {
   return (
@@ -41,6 +44,15 @@ export default function Home() {
 
       {/* Why Choose Us Section */}
       <WhyChooseUs />
+
+      {/* Top News & Blogs Section */}
+      <TopNewsAndBlogs />
+
+      {/* Frequently Asked Questions Section */}
+      <FaqSection />
+
+      {/* Work With Us CTA Section */}
+      <WorkWithUsCta />
     </div>
   );
 }
