@@ -80,7 +80,7 @@ export function AggregatorFeatures() {
 
             <div className="relative z-10 flex items-center gap-3">
               <h2
-                className="font-red-rose text-2xl sm:text-3xl lg:text-[40px] font-bold text-white tracking-tight leading-tight"
+                className="font-red-rose text-3xl sm:text-4xl lg:text-[48px] xl:text-[52px] font-bold text-white tracking-tight leading-tight"
                 style={{
                   fontFamily: "var(--font-red-rose), 'Red Rose', serif",
                 }}
