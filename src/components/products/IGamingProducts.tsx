@@ -18,7 +18,7 @@ const PRODUCTS_DATA: ProductCardProps[] = [
     imageAlt: "Game Aggregator 3D Floating Modular Cubes",
     description:
       "Whether you're interested in rapidly launching a brand through our White Label solutions, seeking complete control with a customizable Turnkey package.",
-    href: "#game-aggregator",
+    href: "/game-aggregator",
   },
   {
     title: "CRM - Data Analytics",

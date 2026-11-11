@@ -27,7 +27,7 @@ export function Footer() {
             >
               <li>
                 <Link
-                  href="#game-aggregator"
+                  href="/game-aggregator"
                   className="hover:text-white transition-colors duration-200"
                 >
                   Game Aggregator
