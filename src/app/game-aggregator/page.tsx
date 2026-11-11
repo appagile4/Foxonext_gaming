@@ -5,6 +5,7 @@ import { AggregatorAdvantages } from "@/components/aggregator/AggregatorAdvantag
 import { WorkWithUsCta } from "@/components/cta/WorkWithUsCta";
 import { Footer } from "@/components/layout/Footer";
 import { WhyChooseUs } from "@/components/why-choose-us/WhyChooseUs";
+import { ExploreOtherProducts } from "@/components/aggregator/ExploreOtherProducts";
 import { TopNewsAndBlogs } from "@/components/news/TopNewsAndBlogs";
 import { FaqSection } from "@/components/faq/FaqSection";
 import { TopGameProviders } from "@/components/providers/TopGameProviders";
@@ -32,6 +33,9 @@ export default function GameAggregatorPage() {
 
       {/* Why Choose Us Section */}
       <WhyChooseUs />
+
+      {/* Explore Other Products & Solutions Section */}
+      <ExploreOtherProducts />
 
       {/* Top News & Blogs Section */}
       <TopNewsAndBlogs />
