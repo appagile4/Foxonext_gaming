@@ -71,8 +71,8 @@ export function AggregatorHero() {
           </div>
 
           {/* Right Column: Floating 3D Glossy White Dice */}
-          <div className="lg:col-span-5 flex items-center justify-center relative">
-            <div className="relative w-[340px] sm:w-[440px] md:w-[480px] lg:w-[500px] xl:w-[560px] aspect-[945/462] drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)]">
+          <div className="lg:col-span-5 flex items-center justify-center xl:justify-end relative">
+            <div className="relative w-[380px] sm:w-[500px] md:w-[580px] lg:w-[620px] xl:w-[720px] 2xl:w-[780px] aspect-[945/462] drop-shadow-[0_25px_50px_rgba(0,0,0,0.55)] lg:-mr-6 xl:-mr-12">
               <Image
                 src="/images/aggregator/hero-dice-rotated.png"
                 alt="Casino Game Aggregator 3D Dice"
