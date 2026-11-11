@@ -5,17 +5,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
 import { Milestones } from "@/components/hero/Milestones";
+import { BackgroundGlow } from "@/components/ui/BackgroundGlow";
 
 export function AggregatorHero() {
   return (
     <section className="relative w-full min-h-[92vh] lg:min-h-[900px] xl:min-h-[960px] flex flex-col justify-between overflow-hidden bg-[#07080c] select-none">
-      {/* Dynamic warm diagonal gradient backdrop matching reference */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#200802] via-[#ab3203] to-[#e64a0c] pointer-events-none" />
-
-      {/* Sweeping diagonal curved light highlights */}
-      <div className="absolute -top-[30%] -left-[10%] w-[120%] h-[120%] bg-[radial-gradient(ellipse_at_70%_50%,rgba(255,145,77,0.35),transparent_60%)] pointer-events-none" />
-      <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_85%_35%,rgba(255,255,255,0.12),transparent_45%)] pointer-events-none" />
-      <div className="absolute -bottom-10 left-0 right-0 h-40 bg-gradient-to-t from-[#07080c] to-transparent pointer-events-none" />
+      {/* Scoped Background Glow for Game Aggregator (two top-left circular rings matching Home, warm diagonal gradient, globe & constellation mesh) */}
+      <BackgroundGlow variant="aggregator" />
 
       {/* Scoped Top Navbar */}
       <div className="relative z-30">
