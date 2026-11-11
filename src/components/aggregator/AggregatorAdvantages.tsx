@@ -94,7 +94,7 @@ export function AggregatorAdvantages() {
             />
           </div>
 
-          <div className="relative z-10 flex items-center gap-3">
+          <div className="relative z-10 flex items-center justify-center gap-3">
             <h2
               className="font-red-rose text-3xl sm:text-4xl lg:text-[48px] xl:text-[52px] font-bold text-white tracking-tight leading-tight"
               style={{
@@ -173,11 +173,10 @@ export function AggregatorAdvantages() {
                       }}
                     >
                       {adv.bullets.map((bullet) => (
-                        <div
-                          key={bullet}
-                          className="flex items-center gap-3"
-                        >
-                          <span className="text-[#FF5722] text-base sm:text-lg">◇</span>
+                        <div key={bullet} className="flex items-center gap-3">
+                          <span className="text-[#FF5722] text-base sm:text-lg">
+                            ◇
+                          </span>
                           <span>{bullet}</span>
                         </div>
                       ))}

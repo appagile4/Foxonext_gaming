@@ -4,10 +4,9 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
+import { Milestones } from "@/components/hero/Milestones";
 
 export function AggregatorHero() {
-  const milestones = ["Expertise", "Service", "Security", "Innovation"];
-
   return (
     <section className="relative w-full min-h-[92vh] lg:min-h-[900px] xl:min-h-[960px] flex flex-col justify-between overflow-hidden bg-[#07080c] select-none">
       {/* Dynamic warm diagonal gradient backdrop matching reference */}
@@ -24,7 +23,7 @@ export function AggregatorHero() {
       </div>
 
       {/* Main Hero Content */}
-      <div className="relative z-20 w-[92%] sm:w-[88%] lg:w-[82%] xl:w-[78%] max-w-[1440px] mx-auto pt-12 sm:pt-20 lg:pt-28 xl:pt-32 pb-18 sm:pb-22 lg:pb-28 flex-1 flex flex-col justify-between">
+      <div className="relative z-20 w-[92%] sm:w-[88%] lg:w-[82%] xl:w-[78%] max-w-[1440px] mx-auto pt-12 sm:pt-20 lg:pt-28 xl:pt-32 pb-14 sm:pb-18 lg:pb-22 flex-1 flex flex-col justify-between">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center my-auto">
           {/* Left Column: Heading, Description & CTA */}
           <div className="lg:col-span-7 space-y-6 sm:space-y-8">
@@ -84,23 +83,9 @@ export function AggregatorHero() {
           </div>
         </div>
 
-        {/* Bottom Milestones Line: Expertise · Service · Security · Innovation */}
-        <div className="relative w-full mt-18 sm:mt-24 lg:mt-32 pt-8 sm:pt-10 border-t border-white/20">
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
-            {milestones.map((item, idx) => (
-              <div
-                key={item}
-                className="relative flex items-center justify-center gap-2.5 font-poppins text-xs sm:text-sm font-medium text-white/90"
-                style={{
-                  fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
-                }}
-              >
-                {/* Milestone dot */}
-                <span className="w-2 h-2 rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
-                <span>{item}</span>
-              </div>
-            ))}
-          </div>
+        {/* Bottom Milestones Line: Animated white timeline matching <Milestones /> */}
+        <div className="relative w-full mt-12 sm:mt-16 lg:mt-20 pt-2 sm:pt-4">
+          <Milestones theme="white" className="max-w-2xl lg:max-w-3xl" />
         </div>
       </div>
     </section>
