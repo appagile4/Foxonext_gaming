@@ -24,12 +24,12 @@ export function AggregatorHero() {
       </div>
 
       {/* Main Hero Content */}
-      <div className="relative z-20 w-[92%] sm:w-[88%] lg:w-[82%] xl:w-[78%] max-w-[1440px] mx-auto pt-10 sm:pt-16 lg:pt-20 pb-16 sm:pb-24">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+      <div className="relative z-20 w-[92%] sm:w-[88%] lg:w-[82%] xl:w-[78%] max-w-[1440px] mx-auto pt-4 sm:pt-6 lg:pt-8 pb-10 sm:pb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">
           {/* Left Column: Heading, Description & CTA */}
-          <div className="lg:col-span-7 space-y-6 sm:space-y-8">
+          <div className="lg:col-span-7 space-y-4 sm:space-y-6">
             <h1
-              className="font-red-rose text-3xl sm:text-5xl lg:text-[54px] xl:text-[62px] font-bold text-white tracking-tight leading-[1.15]"
+              className="font-red-rose text-3xl sm:text-5xl lg:text-[52px] xl:text-[58px] font-bold text-white tracking-tight leading-[1.12]"
               style={{
                 fontFamily: "var(--font-red-rose), 'Red Rose', serif",
               }}
@@ -38,7 +38,7 @@ export function AggregatorHero() {
             </h1>
 
             <div
-              className="font-poppins text-xs sm:text-sm md:text-[15px] text-white/90 font-normal leading-relaxed space-y-4 max-w-xl"
+              className="font-poppins text-xs sm:text-sm md:text-[15px] text-white/90 font-normal leading-relaxed space-y-3 max-w-xl"
               style={{
                 fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
               }}
@@ -57,7 +57,7 @@ export function AggregatorHero() {
             </div>
 
             {/* CTA Button */}
-            <div className="pt-2 sm:pt-4">
+            <div className="pt-1 sm:pt-2">
               <Link
                 href="#contact"
                 className="inline-block px-7 sm:px-8 py-3 sm:py-3.5 rounded bg-white text-[#d84315] font-poppins font-semibold text-sm sm:text-base tracking-wide shadow-[0_8px_24px_rgba(0,0,0,0.35)] hover:bg-zinc-100 hover:shadow-[0_10px_28px_rgba(0,0,0,0.45)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
@@ -72,12 +72,12 @@ export function AggregatorHero() {
 
           {/* Right Column: Floating 3D Glossy White Dice */}
           <div className="lg:col-span-5 flex items-center justify-center relative">
-            <div className="relative w-[320px] sm:w-[420px] md:w-[480px] lg:w-[480px] xl:w-[540px] aspect-[648/1000] drop-shadow-[0_25px_50px_rgba(0,0,0,0.5)]">
+            <div className="relative w-[340px] sm:w-[440px] md:w-[480px] lg:w-[500px] xl:w-[560px] aspect-[945/462] drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)]">
               <Image
-                src="/images/aggregator/hero-dice.png"
+                src="/images/aggregator/hero-dice-rotated.png"
                 alt="Casino Game Aggregator 3D Dice"
                 fill
-                className="object-contain animate-float rotate-250"
+                className="object-contain animate-float"
                 priority
               />
             </div>
@@ -85,7 +85,7 @@ export function AggregatorHero() {
         </div>
 
         {/* Bottom Milestones Line: Expertise · Service · Security · Innovation */}
-        <div className="relative w-full mt-16 sm:mt-24 pt-8 border-t border-white/20">
+        <div className="relative w-full mt-8 sm:mt-10 lg:mt-12 pt-6 border-t border-white/20">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
             {milestones.map((item, idx) => (
               <div
