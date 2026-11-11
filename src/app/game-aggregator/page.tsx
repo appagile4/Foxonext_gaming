@@ -7,6 +7,7 @@ import { Footer } from "@/components/layout/Footer";
 import { WhyChooseUs } from "@/components/why-choose-us/WhyChooseUs";
 import { TopNewsAndBlogs } from "@/components/news/TopNewsAndBlogs";
 import { FaqSection } from "@/components/faq/FaqSection";
+import { TopGameProviders } from "@/components/providers/TopGameProviders";
 
 export const metadata = {
   title: "Casino Game Aggregator | FOXONEXT",
@@ -19,6 +20,9 @@ export default function GameAggregatorPage() {
     <main className="relative min-h-screen flex flex-col bg-[#07080c] overflow-x-hidden">
       {/* 1. Casino Game Aggregator Hero Section */}
       <AggregatorHero />
+
+      {/* Top Game Providers & Statistics Section */}
+      <TopGameProviders />
 
       {/* 2. Top Game Providers & Aggregator Features Section */}
       <AggregatorFeatures />
