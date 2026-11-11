@@ -9,7 +9,7 @@ export function AggregatorHero() {
   const milestones = ["Expertise", "Service", "Security", "Innovation"];
 
   return (
-    <section className="relative w-full min-h-[88vh] lg:min-h-[860px] xl:min-h-[920px] flex flex-col justify-between overflow-hidden bg-[#07080c] select-none">
+    <section className="relative w-full min-h-[92vh] lg:min-h-[900px] xl:min-h-[960px] flex flex-col justify-between overflow-hidden bg-[#07080c] select-none">
       {/* Dynamic warm diagonal gradient backdrop matching reference */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#200802] via-[#ab3203] to-[#e64a0c] pointer-events-none" />
 
@@ -24,7 +24,7 @@ export function AggregatorHero() {
       </div>
 
       {/* Main Hero Content */}
-      <div className="relative z-20 w-[92%] sm:w-[88%] lg:w-[82%] xl:w-[78%] max-w-[1440px] mx-auto pt-10 sm:pt-16 lg:pt-24 xl:pt-28 pb-16 sm:pb-20 lg:pb-24 flex-1 flex flex-col justify-between">
+      <div className="relative z-20 w-[92%] sm:w-[88%] lg:w-[82%] xl:w-[78%] max-w-[1440px] mx-auto pt-12 sm:pt-20 lg:pt-28 xl:pt-32 pb-18 sm:pb-22 lg:pb-28 flex-1 flex flex-col justify-between">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center my-auto">
           {/* Left Column: Heading, Description & CTA */}
           <div className="lg:col-span-7 space-y-6 sm:space-y-8">
@@ -85,7 +85,7 @@ export function AggregatorHero() {
         </div>
 
         {/* Bottom Milestones Line: Expertise · Service · Security · Innovation */}
-        <div className="relative w-full mt-16 sm:mt-20 lg:mt-28 pt-8 sm:pt-10 border-t border-white/20">
+        <div className="relative w-full mt-18 sm:mt-24 lg:mt-32 pt-8 sm:pt-10 border-t border-white/20">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
             {milestones.map((item, idx) => (
               <div
