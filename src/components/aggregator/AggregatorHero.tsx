@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
+import { Milestones } from "../hero/Milestones";
 
 export function AggregatorHero() {
   const milestones = ["Expertise", "Service", "Security", "Innovation"];
@@ -84,23 +85,9 @@ export function AggregatorHero() {
           </div>
         </div>
 
-        {/* Bottom Milestones Line: Expertise · Service · Security · Innovation */}
-        <div className="relative w-full mt-18 sm:mt-24 lg:mt-32 pt-8 sm:pt-10 border-t border-white/20">
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
-            {milestones.map((item, idx) => (
-              <div
-                key={item}
-                className="relative flex items-center justify-center gap-2.5 font-poppins text-xs sm:text-sm font-medium text-white/90"
-                style={{
-                  fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
-                }}
-              >
-                {/* Milestone dot */}
-                <span className="w-2 h-2 rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
-                <span>{item}</span>
-              </div>
-            ))}
-          </div>
+        {/* Bottom Horizontal Timeline Component */}
+        <div className="w-full mt-8 lg:mt-12 z-10">
+          <Milestones />
         </div>
       </div>
     </section>

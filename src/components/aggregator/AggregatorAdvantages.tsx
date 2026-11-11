@@ -96,14 +96,14 @@ export function AggregatorAdvantages() {
 
           <div className="relative z-10 flex items-center gap-3">
             <h2
-              className="font-red-rose text-2xl sm:text-3xl lg:text-[40px] font-bold text-white tracking-tight leading-tight"
+              className="font-red-rose text-3xl sm:text-4xl lg:text-[48px] xl:text-[52px] font-bold text-white tracking-tight leading-tight"
               style={{
                 fontFamily: "var(--font-red-rose), 'Red Rose', serif",
               }}
             >
               FOXOnext Aggregator Advantages
             </h2>
-            <Sparkles className="w-5 h-5 text-[#FF5722] opacity-90 hidden sm:block" />
+            <Sparkles className="w-6 h-6 text-[#FF5722] opacity-90 hidden sm:block" />
           </div>
         </div>
 
@@ -142,9 +142,9 @@ export function AggregatorAdvantages() {
                     }`}
                   >
                     {/* Title with Orange L-Shape Bracket */}
-                    <div className="relative inline-block border-l-2 border-t-2 border-[#FF5722] pl-3.5 pt-1.5 pr-8">
+                    <div className="relative inline-block border-l-2 border-t-2 border-[#FF5722] pl-4 pt-2 pr-8">
                       <h3
-                        className="font-red-rose text-xl sm:text-2xl lg:text-[28px] font-bold text-white tracking-tight leading-tight"
+                        className="font-red-rose text-2xl sm:text-3xl lg:text-[34px] xl:text-[38px] font-bold text-white tracking-tight leading-tight"
                         style={{
                           fontFamily: "var(--font-red-rose), 'Red Rose', serif",
                         }}
@@ -155,7 +155,7 @@ export function AggregatorAdvantages() {
 
                     {/* Paragraph */}
                     <p
-                      className="font-poppins text-xs sm:text-sm text-zinc-300 font-normal leading-relaxed max-w-xl"
+                      className="font-poppins text-sm sm:text-base md:text-[17px] text-zinc-200 font-normal leading-relaxed max-w-xl"
                       style={{
                         fontFamily:
                           "var(--font-poppins), 'Poppins', sans-serif",
@@ -166,7 +166,7 @@ export function AggregatorAdvantages() {
 
                     {/* Bullet Points with Orange Hollow Diamond */}
                     <div
-                      className="space-y-2.5 pt-1 font-poppins text-xs sm:text-sm text-zinc-300"
+                      className="space-y-3 pt-1 font-poppins text-sm sm:text-base md:text-[16px] text-zinc-200"
                       style={{
                         fontFamily:
                           "var(--font-poppins), 'Poppins', sans-serif",
@@ -175,9 +175,9 @@ export function AggregatorAdvantages() {
                       {adv.bullets.map((bullet) => (
                         <div
                           key={bullet}
-                          className="flex items-center gap-2.5"
+                          className="flex items-center gap-3"
                         >
-                          <span className="text-[#FF5722] text-sm">◇</span>
+                          <span className="text-[#FF5722] text-base sm:text-lg">◇</span>
                           <span>{bullet}</span>
                         </div>
                       ))}
@@ -187,7 +187,7 @@ export function AggregatorAdvantages() {
                     <div className="pt-2">
                       <Link
                         href="#contact"
-                        className="inline-block px-6 sm:px-7 py-2.5 sm:py-3 rounded bg-gradient-to-r from-[#FF5722] to-[#E64A19] text-white font-poppins font-semibold text-xs sm:text-sm tracking-wide shadow-[0_4px_16px_rgba(255,87,34,0.4)] hover:shadow-[0_6px_22px_rgba(255,87,34,0.6)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
+                        className="inline-block px-7 sm:px-8 py-3 sm:py-3.5 rounded bg-gradient-to-r from-[#FF5722] to-[#E64A19] text-white font-poppins font-semibold text-sm sm:text-base tracking-wide shadow-[0_4px_16px_rgba(255,87,34,0.4)] hover:shadow-[0_6px_22px_rgba(255,87,34,0.6)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
                         style={{
                           fontFamily:
                             "var(--font-poppins), 'Poppins', sans-serif",

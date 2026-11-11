@@ -8,7 +8,6 @@ import { WhyChooseUs } from "@/components/why-choose-us/WhyChooseUs";
 import { TopNewsAndBlogs } from "@/components/news/TopNewsAndBlogs";
 import { FaqSection } from "@/components/faq/FaqSection";
 import { TopGameProviders } from "@/components/providers/TopGameProviders";
-import { BackgroundGlow } from "@/components/ui/BackgroundGlow";
 
 export const metadata = {
   title: "Casino Game Aggregator | FOXONEXT",
@@ -19,24 +18,26 @@ export const metadata = {
 export default function GameAggregatorPage() {
   return (
     <main className="relative min-h-screen flex flex-col bg-[#07080c] overflow-x-hidden">
-      <div className="relative overflow-hidden">
-        <BackgroundGlow />
+      {/* 1. Casino Game Aggregator Hero Section */}
+      <AggregatorHero />
 
-        {/* 1. Casino Game Aggregator Hero Section */}
-        <AggregatorHero />
+      {/* Top Game Providers & Statistics Section */}
+      <TopGameProviders />
 
-        {/* Top Game Providers & Statistics Section */}
-        <TopGameProviders />
+      {/* 2. Top Game Providers & Aggregator Features Section */}
+      <AggregatorFeatures />
 
-        {/* 2. Top Game Providers & Aggregator Features Section */}
-        <AggregatorFeatures />
+      {/* 3. Aggregator Advantages Section */}
+      <AggregatorAdvantages />
 
-        {/* 3. Aggregator Advantages Section */}
-        <AggregatorAdvantages />
-      </div>
+      {/* Why Choose Us Section */}
+      <WhyChooseUs />
+
+      {/* Top News & Blogs Section */}
+      <TopNewsAndBlogs />
 
       {/* Frequently Asked Questions Section */}
-      {/* <FaqSection /> */}
+      <FaqSection />
 
       {/* 4. Wants to Work With Us CTA Section (Reused Component) */}
       <WorkWithUsCta />
