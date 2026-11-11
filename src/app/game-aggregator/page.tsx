@@ -4,6 +4,9 @@ import { AggregatorFeatures } from "@/components/aggregator/AggregatorFeatures";
 import { AggregatorAdvantages } from "@/components/aggregator/AggregatorAdvantages";
 import { WorkWithUsCta } from "@/components/cta/WorkWithUsCta";
 import { Footer } from "@/components/layout/Footer";
+import { WhyChooseUs } from "@/components/why-choose-us/WhyChooseUs";
+import { TopNewsAndBlogs } from "@/components/news/TopNewsAndBlogs";
+import { FaqSection } from "@/components/faq/FaqSection";
 
 export const metadata = {
   title: "Casino Game Aggregator | FOXONEXT",
@@ -22,6 +25,9 @@ export default function GameAggregatorPage() {
 
       {/* 3. Aggregator Advantages Section */}
       <AggregatorAdvantages />
+
+      {/* Frequently Asked Questions Section */}
+      {/* <FaqSection /> */}
 
       {/* 4. Wants to Work With Us CTA Section (Reused Component) */}
       <WorkWithUsCta />

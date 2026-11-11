@@ -79,14 +79,19 @@ const STATS_DATA = [
   },
 ];
 
-const MARQUEE_PROVIDERS = [...PROVIDERS_LIST, ...PROVIDERS_LIST];
+const MARQUEE_PROVIDERS = [
+  ...PROVIDERS_LIST,
+  ...PROVIDERS_LIST,
+  ...PROVIDERS_LIST,
+  ...PROVIDERS_LIST,
+];
 
 export function TopGameProviders() {
   return (
-    <section className="relative w-[92%] sm:w-[85%] lg:w-[75%] mx-auto pt-6 pb-16 sm:pt-8 sm:pb-20 lg:pt-10 lg:pb-24 bg-transparent select-none z-10">
-      <div className="w-full space-y-9 sm:space-y-11 lg:space-y-12">
-        {/* Section Heading & Subtitle */}
-        <div className="text-center space-y-4 sm:space-y-5 max-w-4xl mx-auto">
+    <section className="relative w-full pt-6 pb-16 sm:pt-8 sm:pb-20 lg:pt-10 lg:pb-24 bg-transparent select-none z-10 overflow-hidden">
+      <div className="w-full space-y-10 sm:space-y-12 lg:space-y-16">
+        {/* Section Heading & Subtitle (Centered container) */}
+        <div className="w-[92%] sm:w-[85%] lg:w-[75%] max-w-[1440px] mx-auto text-center space-y-4 sm:space-y-5">
           <h2
             className="font-red-rose text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-bold text-white tracking-tight leading-tight"
             style={{ fontFamily: "var(--font-red-rose), 'Red Rose', serif" }}
@@ -104,14 +109,14 @@ export function TopGameProviders() {
           </p>
         </div>
 
-        {/* Auto-scrolling Infinite Marquee with Wider & Prominent Cards */}
+        {/* Auto-scrolling Infinite Marquee (100% Full Width Edge-to-Edge with Larger Cards) */}
         <div
-          className="relative w-full overflow-hidden py-3"
+          className="relative w-full overflow-hidden py-4 sm:py-6"
           style={{
             maskImage:
-              "linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%)",
+              "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
             WebkitMaskImage:
-              "linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%)",
+              "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
           }}
         >
           <style>{`
@@ -122,28 +127,31 @@ export function TopGameProviders() {
             .animate-marquee-scroll {
               display: flex !important;
               width: max-content !important;
-              animation: marqueeContinuous 22s linear infinite !important;
+              animation: marqueeContinuous 32s linear infinite !important;
               will-change: transform;
             }
+            .animate-marquee-scroll:hover {
+              animation-play-state: paused !important;
+            }
           `}</style>
-          <div className="animate-marquee-scroll flex items-center gap-4 sm:gap-6">
+          <div className="animate-marquee-scroll flex items-center gap-5 sm:gap-7">
             {MARQUEE_PROVIDERS.map((provider, index) => (
               <div
                 key={`${provider.id}-${index}`}
-                className="group flex-shrink-0 flex items-center justify-center h-14 sm:h-16 md:h-[66px] px-6 sm:px-8 rounded-xl bg-[#13141b]  shadow-[0_4px_16px_rgba(0,0,0,0.65)] backdrop-blur-md transition-all duration-300 hover:border-[#FF5722]/60 hover:shadow-[0_0_24px_rgba(255,87,34,0.35)] hover:-translate-y-1 select-none"
+                className="group flex-shrink-0 flex items-center justify-center h-16 sm:h-20 md:h-[84px] lg:h-[92px] px-8 sm:px-10 lg:px-12 rounded-2xl bg-[#13141b]/95 border border-white/[0.08] shadow-[0_6px_24px_rgba(0,0,0,0.7)] backdrop-blur-md transition-all duration-300 hover:border-[#FF5722]/70 hover:shadow-[0_0_30px_rgba(255,87,34,0.4)] hover:-translate-y-1.5 select-none cursor-pointer"
                 style={{
                   minWidth: provider.width
-                    ? `${provider.width * 2}px`
-                    : "140px",
+                    ? `${provider.width * 2.6}px`
+                    : "180px",
                 }}
               >
-                <div className="relative h-8 sm:h-9 md:h-10 w-auto flex items-center justify-center">
+                <div className="relative h-10 sm:h-12 md:h-14 lg:h-16 w-auto flex items-center justify-center">
                   <Image
                     src={provider.logo}
                     alt={provider.name}
-                    width={provider.width * 3}
-                    height={70}
-                    className="h-8 sm:h-9 md:h-10 w-auto object-contain filter brightness-95 group-hover:brightness-110 transition-all duration-200"
+                    width={provider.width * 4}
+                    height={90}
+                    className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto object-contain filter brightness-95 group-hover:brightness-110 transition-all duration-200"
                   />
                 </div>
               </div>
@@ -151,8 +159,9 @@ export function TopGameProviders() {
           </div>
         </div>
 
-        {/* Futuristic Chamfered Stats Container (Exact polygon cut corners from reference) */}
-        <div className="relative w-full mt-4 sm:mt-6">
+        {/* Futuristic Chamfered Stats Container (Centered container) */}
+        <div className="w-[92%] sm:w-[85%] lg:w-[75%] max-w-[1440px] mx-auto">
+          <div className="relative w-full mt-2 sm:mt-4">
           {/* Border layer with polygon clip-path */}
           <div
             className="p-[1px] bg-white/[0.09] shadow-[0_25px_60px_rgba(0,0,0,0.9)]"
@@ -193,6 +202,7 @@ export function TopGameProviders() {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </div>
+  </section>
+);
 }
