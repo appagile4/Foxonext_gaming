@@ -51,12 +51,21 @@ export function AggregatorHero() {
             <div className="pt-2 sm:pt-4">
               <Link
                 href="#contact"
-                className="inline-block px-7 sm:px-8 py-3 sm:py-3.5 rounded bg-white text-[#d84315] font-poppins font-semibold text-sm sm:text-base tracking-wide shadow-[0_8px_24px_rgba(0,0,0,0.35)] hover:bg-zinc-100 hover:shadow-[0_10px_28px_rgba(0,0,0,0.45)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
+                className="group relative inline-flex items-center justify-center px-7 sm:px-8 py-3 sm:py-3.5 rounded bg-white overflow-hidden shadow-[0_8px_24px_rgba(0,0,0,0.35)] hover:shadow-[0_12px_28px_rgba(216,67,21,0.45)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 select-none"
                 style={{
                   fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                 }}
               >
-                Get Casino Games
+                {/* Sliding Orange Background (Left-to-Right on Hover, Right-to-Left on Leave) */}
+                <span
+                  aria-hidden="true"
+                  className="absolute inset-0 bg-gradient-to-r from-[#d84315] to-[#ff5722] -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out pointer-events-none"
+                />
+
+                {/* Button Text (Orange initially, transitions smoothly to White on Hover) */}
+                <span className="relative z-10 font-semibold text-sm sm:text-base tracking-wide text-[#d84315] group-hover:text-white transition-colors duration-300">
+                  Get Casino Games
+                </span>
               </Link>
             </div>
           </div>
