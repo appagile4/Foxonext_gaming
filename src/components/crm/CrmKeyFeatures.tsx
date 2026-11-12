@@ -1,0 +1,314 @@
+"use client";
+
+import React, { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+
+export interface KeyFeatureTab {
+  id: string;
+  tabLabel: string;
+  cardTitle: string;
+  description: string;
+  bullets: string[];
+  image: string;
+  imageAlt: string;
+}
+
+const KEY_FEATURE_TABS: KeyFeatureTab[] = [
+  {
+    id: "data-migration",
+    tabLabel: "Data Migration & Setup",
+    cardTitle: "Data Migration & Setup",
+    description:
+      "Whether you're interested in rapidly launching a brand through our White Label solutions, seeking complete control with a customizable Turnkey package.",
+    bullets: [
+      "Extensive collection of top-tier content",
+      "Bonus Management Engine",
+      "Compatibility across all devices",
+      "Multi-currency Wallet Support",
+    ],
+    image: "/images/crm/key-features/data-migration.png",
+    imageAlt: "Data Migration & Setup - Holographic Engine",
+  },
+  {
+    id: "crm-configuration",
+    tabLabel: "CRM Configuration",
+    cardTitle: "CRM Configuration",
+    description:
+      "Whether you're interested in rapidly launching a brand through our White Label solutions, seeking complete control with a customizable Turnkey package.",
+    bullets: [
+      "Extensive collection of top-tier content",
+      "Bonus Management Engine",
+      "Compatibility across all devices",
+      "Multi-currency Wallet Support",
+    ],
+    image: "/images/crm/key-features/crm-configuration.png",
+    imageAlt: "CRM Configuration - 3D Dashboard Interface",
+  },
+  {
+    id: "segment-setup",
+    tabLabel: "Segment Setup",
+    cardTitle: "Segment Tool",
+    description:
+      "Whether you're interested in rapidly launching a brand through our White Label solutions, seeking complete control with a customizable Turnkey package.",
+    bullets: [
+      "Extensive collection of top-tier content",
+      "Bonus Management Engine",
+      "Compatibility across all devices",
+      "Multi-currency Wallet Support",
+    ],
+    image: "/images/crm/key-features/segment-setup.png",
+    imageAlt: "Segment Tool - 3D Analytical Cohort Segmentation",
+  },
+  {
+    id: "bonus-configuration",
+    tabLabel: "Bonus Configuration",
+    cardTitle: "Bonus Configuration",
+    description:
+      "Whether you're interested in rapidly launching a brand through our White Label solutions, seeking complete control with a customizable Turnkey package.",
+    bullets: [
+      "Extensive collection of top-tier content",
+      "Bonus Management Engine",
+      "Compatibility across all devices",
+      "Multi-currency Wallet Support",
+    ],
+    image: "/images/crm/key-features/bonus-configuration.png",
+    imageAlt: "Bonus Configuration - Gamified Rewards & Promotions",
+  },
+  {
+    id: "campaign-building",
+    tabLabel: "Campaign Building",
+    cardTitle: "Campaign Building",
+    description:
+      "Whether you're interested in rapidly launching a brand through our White Label solutions, seeking complete control with a customizable Turnkey package.",
+    bullets: [
+      "Extensive collection of top-tier content",
+      "Bonus Management Engine",
+      "Compatibility across all devices",
+      "Multi-currency Wallet Support",
+    ],
+    image: "/images/crm/key-features/campaign-building.png",
+    imageAlt: "Campaign Building - Omnichannel Marketing Megaphone",
+  },
+];
+
+export function CrmKeyFeatures() {
+  const [activeTab, setActiveTab] = useState(0);
+
+  const handlePrev = () => {
+    setActiveTab((prev) => (prev > 0 ? prev - 1 : KEY_FEATURE_TABS.length - 1));
+  };
+
+  const handleNext = () => {
+    setActiveTab((prev) => (prev < KEY_FEATURE_TABS.length - 1 ? prev + 1 : 0));
+  };
+
+  const currentTab = KEY_FEATURE_TABS[activeTab];
+
+  return (
+    <section className="relative w-full py-16 sm:py-20 lg:py-24 bg-[#0a0b0f] select-none z-10 overflow-hidden">
+      {/* Background Curved Warm Rust-Brown Backdrop Matching Design Exactly */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 overflow-hidden select-none z-0"
+      >
+        {/* Deep base background */}
+        <div className="absolute inset-0 bg-[#0a0b0f]" />
+
+        {/* Right Curved Warm Rust-Brown Backdrop */}
+        <svg
+          className="absolute top-0 right-0 w-[55%] lg:w-[50%] h-full min-w-[420px] pointer-events-none"
+          viewBox="0 0 550 700"
+          preserveAspectRatio="none"
+          fill="none"
+        >
+          <path
+            d="M 45,0 C 25,160 -10,310 18,480 C 35,580 75,660 65,700 L 550,700 L 550,0 Z"
+            fill="url(#crmRustBrownGrad)"
+          />
+          <defs>
+            <linearGradient id="crmRustBrownGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stopColor="#5d1e08" />
+              <stop offset="50%" stopColor="#4c1706" />
+              <stop offset="100%" stopColor="#300d02" />
+            </linearGradient>
+          </defs>
+        </svg>
+
+        {/* Soft Ambient Radial Light Accent */}
+        <div
+          className="absolute top-1/4 right-[5%] w-[450px] h-[450px] rounded-full blur-[140px] opacity-25 mix-blend-screen pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(233, 78, 27, 0.45) 0%, rgba(255, 87, 34, 0.15) 50%, transparent 70%)",
+          }}
+        />
+      </div>
+
+      <div className="relative z-10 w-[92%] sm:w-[88%] lg:w-[84%] xl:w-[80%] max-w-[1440px] mx-auto space-y-8 sm:space-y-10">
+        {/* 1. Header with Orange Accent Brush Mark & Geometric Icons */}
+        <div className="relative inline-flex items-center">
+          {/* Orange Brush Mark Behind Left Heading Text */}
+          <div className="absolute -left-3 sm:-left-4 -top-3 w-32 sm:w-40 h-14 -z-0 opacity-95 pointer-events-none">
+            <Image
+              src="/images/why-choose-us-mark.png"
+              alt="Accent Mark"
+              width={140}
+              height={70}
+              className="w-full h-full object-contain filter drop-shadow-[0_0_16px_rgba(255,87,34,0.7)]"
+            />
+          </div>
+
+          <div className="relative z-10 flex items-center gap-3.5">
+            <h2
+              className="font-red-rose text-3xl sm:text-4xl lg:text-[46px] xl:text-[50px] font-bold text-white tracking-tight leading-tight"
+              style={{
+                fontFamily: "var(--font-red-rose), 'Red Rose', serif",
+              }}
+            >
+              FOXOnext CRM Key Features
+            </h2>
+
+            {/* 2x2 Geometric Indicator Icons (▫ ★ / ▫ ▫) */}
+            <div className="hidden sm:grid grid-cols-2 gap-1 text-[#FF5722] opacity-80 pl-1">
+              <span className="w-2.5 h-2.5 border border-current rounded-[1px]" />
+              <span className="text-[11px] leading-none flex items-center justify-center font-bold">
+                ★
+              </span>
+              <span className="w-2.5 h-2.5 border border-current rounded-[1px]" />
+              <span className="w-2.5 h-2.5 border border-current rounded-[1px]" />
+            </div>
+          </div>
+        </div>
+
+        {/* 2. Carousel Tab Bar with Left/Right Buttons */}
+        <div className="flex items-center gap-3 sm:gap-4 w-full">
+          {/* Left Arrow Button */}
+          <button
+            type="button"
+            onClick={handlePrev}
+            aria-label="Previous Feature"
+            className={`w-11 h-11 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center transition-all duration-200 flex-shrink-0 cursor-pointer ${
+              activeTab === 0
+                ? "bg-[#23252d] text-white/70 border border-white/10 hover:bg-[#2c2f3a] hover:text-white"
+                : "bg-white text-zinc-900 shadow-[0_4px_14px_rgba(0,0,0,0.35)] hover:bg-zinc-100 hover:scale-105 active:scale-95"
+            }`}
+          >
+            <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.5]" />
+          </button>
+
+          {/* Frosted Glass Tabs Container */}
+          <div className="flex-1 flex items-center gap-1.5 sm:gap-2 p-1.5 rounded-xl sm:rounded-2xl bg-[#1a1b23]/80 backdrop-blur-md border border-white/10 overflow-x-auto scrollbar-none">
+            {KEY_FEATURE_TABS.map((tab, idx) => {
+              const isActive = idx === activeTab;
+              return (
+                <button
+                  key={tab.id}
+                  type="button"
+                  onClick={() => setActiveTab(idx)}
+                  className={`flex-1 min-w-max px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-lg sm:rounded-xl text-xs sm:text-sm font-poppins text-center transition-all duration-200 whitespace-nowrap cursor-pointer ${
+                    isActive
+                      ? "bg-gradient-to-r from-[#FF5722] to-[#E64A19] text-white font-semibold shadow-[0_4px_16px_rgba(255,87,34,0.45)]"
+                      : "text-zinc-300 hover:text-white hover:bg-white/[0.06] font-normal sm:font-medium"
+                  }`}
+                  style={{
+                    fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
+                  }}
+                >
+                  {tab.tabLabel}
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Right Arrow Button */}
+          <button
+            type="button"
+            onClick={handleNext}
+            aria-label="Next Feature"
+            className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center transition-all duration-200 flex-shrink-0 bg-white text-zinc-900 shadow-[0_4px_14px_rgba(0,0,0,0.35)] hover:bg-zinc-100 hover:scale-105 active:scale-95 cursor-pointer"
+          >
+            <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.5]" />
+          </button>
+        </div>
+
+        {/* 3. Main Feature Card with Seamless Backdrop */}
+        <div className="relative rounded-2xl sm:rounded-3xl border border-white/[0.12] bg-[#0c0d12]/35 backdrop-blur-[2px] p-6 sm:p-10 lg:p-12 shadow-[0_20px_60px_rgba(0,0,0,0.7)] overflow-hidden">
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            {/* Left Content Column */}
+            <div className="lg:col-span-6 space-y-6 sm:space-y-7">
+              {/* Title with bottom & right orange border frame */}
+              <div className="inline-block relative">
+                <div className="bg-[#0b0c10] border-b-[3px] border-r-[3px] border-[#FF5722] px-5 py-3 sm:px-6 sm:py-3.5 rounded-sm shadow-md">
+                  <h3
+                    className="font-red-rose text-2xl sm:text-3xl lg:text-[34px] font-bold text-white tracking-wide leading-tight"
+                    style={{
+                      fontFamily: "var(--font-red-rose), 'Red Rose', serif",
+                    }}
+                  >
+                    {currentTab.cardTitle}
+                  </h3>
+                </div>
+              </div>
+
+              {/* Description Paragraph */}
+              <p
+                className="font-poppins text-xs sm:text-sm lg:text-[15px] text-zinc-300 font-normal leading-relaxed max-w-lg"
+                style={{
+                  fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
+                }}
+              >
+                {currentTab.description}
+              </p>
+
+              {/* 4 Bullet Points with Diamond Markers */}
+              <ul className="space-y-3 sm:space-y-3.5">
+                {currentTab.bullets.map((bullet, idx) => (
+                  <li
+                    key={idx}
+                    className="flex items-center gap-3 font-poppins text-xs sm:text-sm text-zinc-200"
+                    style={{
+                      fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
+                    }}
+                  >
+                    <span className="w-2.5 h-2.5 border border-[#FF5722] rotate-45 flex-shrink-0" />
+                    <span>{bullet}</span>
+                  </li>
+                ))}
+              </ul>
+
+              {/* CTA Button with White Offset Box-Shadow */}
+              <div className="pt-2 sm:pt-4">
+                <Link
+                  href="#contact"
+                  className="relative inline-flex items-center justify-center px-6 sm:px-7 py-2.5 sm:py-3 rounded-[2px] bg-[#D84315] hover:bg-[#E64A19] text-white font-poppins font-medium text-xs sm:text-sm tracking-wide shadow-[3px_3px_0px_#ffffff] sm:shadow-[4px_4px_0px_#ffffff] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[2px_2px_0px_#ffffff] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[1px_1px_0px_#ffffff] transition-all duration-150"
+                  style={{
+                    fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
+                  }}
+                >
+                  Learn More
+                </Link>
+              </div>
+            </div>
+
+            {/* Right 3D Visual Graphic Column */}
+            <div className="lg:col-span-6 relative flex items-center justify-center w-full min-h-[300px] sm:min-h-[360px] lg:min-h-[420px]">
+              <div className="relative w-full max-w-[440px] sm:max-w-[480px] lg:max-w-[520px] aspect-square flex items-center justify-center">
+                <Image
+                  key={currentTab.id}
+                  src={currentTab.image}
+                  alt={currentTab.imageAlt}
+                  width={680}
+                  height={680}
+                  className="w-full h-auto max-h-[420px] object-contain drop-shadow-[0_20px_45px_rgba(0,0,0,0.65)] hover:scale-105 transition-transform duration-500 ease-out"
+                  priority
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

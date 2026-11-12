@@ -1,6 +1,8 @@
 import React from "react";
 import { CrmHero } from "@/components/crm/CrmHero";
+import { TopGameProviders } from "@/components/providers/TopGameProviders";
 import { CrmStatistics } from "@/components/crm/CrmStatistics";
+import { CrmKeyFeatures } from "@/components/crm/CrmKeyFeatures";
 import { CrmFeatures } from "@/components/crm/CrmFeatures";
 import { CrmAdvantages } from "@/components/crm/CrmAdvantages";
 import { WhyChooseUs } from "@/components/why-choose-us/WhyChooseUs";
@@ -22,31 +24,36 @@ export default function CrmDataAnalysisPage() {
       {/* 1. CRM Hero Section */}
       <CrmHero />
 
+      <TopGameProviders />
+
       {/* 2. Real-Time Analytics & Smart CRM Statistics */}
       <CrmStatistics />
 
-      {/* 3. CRM & Analytics Features Grid */}
+      {/* 3. FOXOnext CRM Key Features (Interactive Tabs Carousel) */}
+      <CrmKeyFeatures />
+
+      {/* 4. CRM & Analytics Features Grid */}
       <CrmFeatures />
 
-      {/* 4. CRM Advantages Section */}
+      {/* 5. CRM Advantages Section */}
       <CrmAdvantages />
 
-      {/* 5. Why Choose Us Section */}
+      {/* 6. Why Choose Us Section */}
       <WhyChooseUs />
 
-      {/* 6. Explore Other Products & Solutions Section */}
+      {/* 7. Explore Other Products & Solutions Section */}
       <ExploreOtherProducts />
 
-      {/* 7. Top News & Blogs Section */}
+      {/* 8. Top News & Blogs Section */}
       <TopNewsAndBlogs />
 
-      {/* 8. Frequently Asked Questions Section */}
+      {/* 9. Frequently Asked Questions Section */}
       <FaqSection />
 
-      {/* 9. Wants to Work With Us CTA Section */}
+      {/* 10. Wants to Work With Us CTA Section */}
       <WorkWithUsCta />
 
-      {/* 10. Footer Section */}
+      {/* 11. Footer Section */}
       <Footer />
     </main>
   );
