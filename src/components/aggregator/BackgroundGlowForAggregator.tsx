@@ -16,15 +16,12 @@ export function BackgroundGlowForAggregator({
       {/* Base deep background */}
       <div className="absolute inset-0 bg-[#07080c]" />
 
-      {/* --- Region 1: Hero Top Warm Diagonal Gradient Backdrop --- */}
-      <div className="absolute top-0 left-0 right-0 h-[960px] lg:h-[1100px] bg-gradient-to-br from-[#200802] via-[#ab3203] to-[#e64a0c] pointer-events-none" />
+      {/* --- Region 1: Hero Top Warm Diagonal Gradient Backdrop (Decreased height - strictly above Top Game Providers) --- */}
+      <div className="absolute top-0 left-0 right-0 h-[680px] sm:h-[740px] lg:h-[820px] xl:h-[945px] bg-gradient-to-br from-[#200802] via-[#ab3203] to-[#e64a0c] pointer-events-none" />
 
-      {/* Hero Sweeping Diagonal Curved Light Highlights */}
-      <div className="absolute -top-[10%] -left-[10%] w-[120%] h-[1100px] bg-[radial-gradient(ellipse_at_70%_50%,rgba(255,145,77,0.35),transparent_60%)] pointer-events-none" />
-      <div className="absolute top-0 right-0 w-full h-[1100px] bg-[radial-gradient(circle_at_85%_35%,rgba(255,255,255,0.12),transparent_45%)] pointer-events-none" />
-
-      {/* Smooth Transition Fade from Hero Gradient into Dark Void */}
-      <div className="absolute top-[820px] lg:top-[960px] left-0 right-0 h-48 bg-gradient-to-b from-transparent via-[#07080c]/70 to-[#07080c] pointer-events-none z-0" />
+      {/* Hero Sweeping Diagonal Curved Light Highlights (Contained above Top Game Providers) */}
+      <div className="absolute -top-[10%] -left-[10%] w-[120%] h-[740px] sm:h-[800px] lg:h-[860px] bg-[radial-gradient(ellipse_at_70%_50%,rgba(255,145,77,0.35),transparent_60%)] pointer-events-none" />
+      <div className="absolute top-0 right-0 w-full h-[740px] sm:h-[800px] lg:h-[860px] bg-[radial-gradient(circle_at_85%_35%,rgba(255,255,255,0.12),transparent_45%)] pointer-events-none" />
 
       {/* --- Top Left Signature Cosmic Circular Rings --- */}
       {/* Main Inner Ring */}
@@ -49,28 +46,19 @@ export function BackgroundGlowForAggregator({
           pointer-events-none"
       />
 
-      {/* --- Region 2: Mid-Section Ambient Glows & Cyber Constellation Mesh (Providers & Features) --- */}
-      {/* Center-left warm orange / amber ambient glow */}
+      {/* --- Region 2: Lower Ambient Atmosphere & Constellation Mesh (Features & Advantages) --- */}
+      {/* Soft ambient orange glow behind Features */}
       <div
-        className="absolute top-[1050px] lg:top-[1200px] left-[-10%] w-[700px] h-[550px] rounded-full blur-[140px] opacity-35 mix-blend-screen pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(circle, rgba(233, 78, 27, 0.45) 0%, rgba(255, 115, 0, 0.18) 50%, transparent 75%)",
-        }}
-      />
-
-      {/* Center-right ambient soft glow */}
-      <div
-        className="absolute top-[1650px] lg:top-[1850px] right-[-10%] w-[650px] h-[550px] rounded-full blur-[140px] opacity-25 mix-blend-screen pointer-events-none"
+        className="absolute top-[1600px] lg:top-[1800px] right-[-10%] w-[650px] h-[550px] rounded-full blur-[140px] opacity-25 mix-blend-screen pointer-events-none"
         style={{
           background:
             "radial-gradient(circle, rgba(233, 78, 27, 0.35) 0%, rgba(255, 87, 34, 0.12) 50%, transparent 70%)",
         }}
       />
 
-      {/* Continuous Particle Constellation Mesh spanning across Providers & Features */}
+      {/* Continuous Particle Constellation Mesh spanning across Features & Advantages */}
       <div
-        className="absolute top-[960px] h-[1300px] left-0 right-0 opacity-20 pointer-events-none"
+        className="absolute top-[1500px] h-[1200px] left-0 right-0 opacity-20 pointer-events-none"
         style={{
           backgroundImage:
             "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(255, 145, 77, 0.35) 0%, transparent 80%), radial-gradient(rgba(255, 255, 255, 0.18) 1px, transparent 1px)",
@@ -82,7 +70,7 @@ export function BackgroundGlowForAggregator({
         }}
       />
 
-      {/* --- Region 3: Lower Section Globe & Advantages Ambient Atmosphere --- */}
+      {/* --- Region 3: Advantages Ambient Atmosphere & Globe --- */}
       {/* Lower left ambient orange glow */}
       <div
         className="absolute bottom-[900px] left-[-8%] w-[600px] h-[500px] rounded-full blur-[140px] opacity-25 mix-blend-screen pointer-events-none"

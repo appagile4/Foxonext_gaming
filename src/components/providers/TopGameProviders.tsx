@@ -88,7 +88,7 @@ const MARQUEE_PROVIDERS = [
 
 export function TopGameProviders() {
   return (
-    <section className="relative w-full pt-6 pb-16 sm:pt-8 sm:pb-20 lg:pt-10 lg:pb-24 bg-transparent select-none z-10 overflow-hidden">
+    <section className="relative w-full pt-6 pb-16 sm:pt-8 sm:pb-20 lg:pt-10 lg:pb-24 bg-[#07080c] select-none z-10 overflow-hidden">
       <div className="w-full space-y-10 sm:space-y-12 lg:space-y-16">
         {/* Section Heading & Subtitle (Centered container) */}
         <div className="w-[92%] sm:w-[85%] lg:w-[75%] max-w-[1440px] mx-auto text-center space-y-4 sm:space-y-5">
