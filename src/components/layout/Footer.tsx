@@ -35,7 +35,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="#crm"
+                  href="/crm-data-analysis"
                   className="hover:text-white transition-colors duration-200"
                 >
                   CRM - Data Analysis

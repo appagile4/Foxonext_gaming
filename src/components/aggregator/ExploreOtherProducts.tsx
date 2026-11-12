@@ -76,7 +76,7 @@ export function ExploreOtherProducts() {
                 </p>
 
                 <Link
-                  href="#crm-analytics"
+                  href="/crm-data-analysis"
                   className="w-10 h-10 sm:w-11 sm:h-11 rounded-lg bg-gradient-to-tr from-[#E94E1B] to-[#FF5722] hover:brightness-110 text-white flex items-center justify-center flex-shrink-0 shadow-[0_4px_14px_rgba(233,78,27,0.4)] transition-all duration-200 group-hover:scale-105"
                   aria-label="View CRM Analytics"
                 >

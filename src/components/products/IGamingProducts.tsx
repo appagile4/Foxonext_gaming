@@ -26,7 +26,7 @@ const PRODUCTS_DATA: ProductCardProps[] = [
     imageAlt: "CRM Data Analytics 3D Glass Dashboard & Charts",
     description:
       "Whether you're interested in rapidly launching a brand through our White Label solutions, seeking complete control with a customizable Turnkey package.",
-    href: "#crm-analytics",
+    href: "/crm-data-analysis",
   },
 ];
 
