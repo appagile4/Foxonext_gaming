@@ -42,7 +42,7 @@ export function ExploreOtherProducts() {
             <div className="lg:col-span-5 group relative rounded-2xl sm:rounded-3xl bg-[#0e1017] border border-white/[0.08] hover:border-[#FF5722]/40 shadow-[0_12px_40px_rgba(0,0,0,0.7)] p-6 sm:p-8 lg:p-9 flex flex-col justify-between overflow-hidden transition-all duration-300">
               {/* Card Title */}
               <h3
-                className="font-red-rose text-2xl sm:text-3xl lg:text-[32px] font-bold text-white tracking-tight"
+                className="font-red-rose text-2xl sm:text-3xl lg:text-[34px] font-bold text-white tracking-tight"
                 style={{
                   fontFamily: "var(--font-red-rose), 'Red Rose', serif",
                 }}
@@ -50,9 +50,9 @@ export function ExploreOtherProducts() {
                 CRM - Data Analytics
               </h3>
 
-              {/* 3D Visual Graphic */}
-              <div className="relative w-full my-6 sm:my-8 flex items-center justify-center">
-                <div className="relative w-full max-w-[320px] aspect-[16/11] drop-shadow-[0_20px_35px_rgba(233,78,27,0.25)] group-hover:scale-105 transition-transform duration-500 ease-out">
+              {/* 3D Visual Graphic (Enlarged) */}
+              <div className="relative w-full my-4 sm:my-6 flex items-center justify-center flex-1">
+                <div className="relative w-full max-w-[420px] sm:max-w-[460px] lg:max-w-[500px] h-[240px] sm:h-[280px] lg:h-[320px] drop-shadow-[0_20px_40px_rgba(233,78,27,0.3)] group-hover:scale-105 transition-transform duration-500 ease-out">
                   <Image
                     src="/images/products/crm-analytics.png"
                     alt="CRM - Data Analytics 3D Dashboard"
@@ -63,7 +63,7 @@ export function ExploreOtherProducts() {
               </div>
 
               {/* Description + Arrow Button */}
-              <div className="flex items-end justify-between gap-4 mt-auto">
+              <div className="flex items-end justify-between gap-4 mt-auto pt-2">
                 <p
                   className="font-poppins text-xs sm:text-sm text-zinc-300/90 font-normal leading-relaxed max-w-sm"
                   style={{
@@ -101,9 +101,9 @@ export function ExploreOtherProducts() {
                 }}
               />
 
-              <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center relative z-10 h-full">
+              <div className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 items-center relative z-10 h-full">
                 {/* Left Column: Heading, Description & Button */}
-                <div className="md:col-span-7 flex flex-col justify-between space-y-5 sm:space-y-6 h-full">
+                <div className="md:col-span-6 flex flex-col justify-between space-y-5 sm:space-y-6 h-full">
                   <div className="space-y-4">
                     <h3
                       className="font-red-rose text-2xl sm:text-3xl lg:text-[34px] xl:text-[38px] font-bold text-white tracking-tight leading-[1.15]"
@@ -143,9 +143,9 @@ export function ExploreOtherProducts() {
                   </div>
                 </div>
 
-                {/* Right Column: 3D Isometric White-Label Brand Hub with 'YOUR BRAND HERE' */}
-                <div className="md:col-span-5 flex items-center justify-center relative">
-                  <div className="relative w-full max-w-[240px] sm:max-w-[280px] aspect-square drop-shadow-[0_20px_40px_rgba(233,78,27,0.3)] group-hover:scale-105 transition-transform duration-500 ease-out">
+                {/* Right Column: 3D Isometric White-Label Brand Hub with 'YOUR BRAND HERE' (Enlarged) */}
+                <div className="md:col-span-6 flex items-center justify-center relative">
+                  <div className="relative w-full max-w-[320px] sm:max-w-[380px] lg:max-w-[420px] xl:max-w-[460px] aspect-square drop-shadow-[0_25px_50px_rgba(233,78,27,0.35)] group-hover:scale-105 transition-transform duration-500 ease-out">
                     <Image
                       src="/images/solutions/white-label.png"
                       alt="White-Label Solution 3D Brand Hub"
@@ -175,9 +175,9 @@ export function ExploreOtherProducts() {
             />
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
-              {/* Left Column: 3D Gaming Controller */}
-              <div className="lg:col-span-5 xl:col-span-6 flex items-center justify-center">
-                <div className="relative w-full max-w-[420px] sm:max-w-[480px] lg:max-w-[540px] aspect-[1024/735] drop-shadow-[0_25px_50px_rgba(233,78,27,0.35)] group-hover:scale-105 transition-transform duration-500 ease-out">
+              {/* Left Column: 3D Gaming Controller (Enlarged) */}
+              <div className="lg:col-span-6 flex items-center justify-center">
+                <div className="relative w-full max-w-[500px] sm:max-w-[580px] lg:max-w-[660px] xl:max-w-[720px] aspect-[1024/735] drop-shadow-[0_30px_60px_rgba(233,78,27,0.38)] group-hover:scale-105 transition-transform duration-500 ease-out">
                   <Image
                     src="/images/solutions/remote-desktop.png"
                     alt="Remote Desktop Gaming Controller"
@@ -188,7 +188,7 @@ export function ExploreOtherProducts() {
               </div>
 
               {/* Right Column: Title, Description, Bullets & Buttons */}
-              <div className="lg:col-span-7 xl:col-span-6 space-y-6 sm:space-y-7">
+              <div className="lg:col-span-6 space-y-6 sm:space-y-7">
                 <h3
                   className="font-red-rose text-2xl sm:text-3xl lg:text-[36px] xl:text-[40px] font-bold text-white tracking-tight leading-[1.15]"
                   style={{
