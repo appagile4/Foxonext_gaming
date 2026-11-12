@@ -101,6 +101,17 @@ export function BackgroundGlowForAggregator({
           priority
         />
       </div>
+
+      {/* Bottom Right Signature Cosmic Ring */}
+      <div
+        className="absolute -bottom-[450px] -right-[450px]
+    w-[1100px] h-[1100px]
+    sm:w-[1400px] sm:h-[1400px]
+    lg:w-[1800px] lg:h-[1800px]
+    rounded-full border border-white/20
+    shadow-[0_0_35px_rgba(255,255,255,0.10),inset_0_0_55px_rgba(255,87,34,0.30),inset_0_0_110px_rgba(255,87,34,0.16)]
+    pointer-events-none"
+      />
     </div>
   );
 }
