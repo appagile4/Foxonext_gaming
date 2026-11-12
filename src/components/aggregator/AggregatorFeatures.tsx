@@ -62,7 +62,7 @@ const FEATURES = [
 
 export function AggregatorFeatures() {
   return (
-    <section className="relative w-full py-16 sm:py-20 lg:py-24 select-none z-10 bg-[#07080c]">
+    <section className="relative w-full py-16 sm:py-20 lg:py-24 select-none z-10 bg-transparent">
       <div className="relative w-[92%] sm:w-[88%] lg:w-[82%] xl:w-[78%] max-w-[1440px] mx-auto space-y-20 sm:space-y-28">
         {/* Part 2: FOXOnext Aggregator Features */}
         <div className="space-y-8 sm:space-y-12">
