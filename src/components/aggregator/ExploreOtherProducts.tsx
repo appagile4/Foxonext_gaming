@@ -50,9 +50,9 @@ export function ExploreOtherProducts() {
                 CRM - Data Analytics
               </h3>
 
-              {/* 3D Visual Graphic (Enlarged) */}
-              <div className="relative w-full my-4 sm:my-6 flex items-center justify-center flex-1">
-                <div className="relative w-full max-w-[420px] sm:max-w-[460px] lg:max-w-[500px] h-[240px] sm:h-[280px] lg:h-[320px] drop-shadow-[0_20px_40px_rgba(233,78,27,0.3)] group-hover:scale-105 transition-transform duration-500 ease-out">
+              {/* 3D Visual Graphic (Extra Large) */}
+              <div className="relative w-full my-3 sm:my-5 flex items-center justify-center flex-1">
+                <div className="relative w-full max-w-[560px] h-[280px] sm:h-[340px] lg:h-[380px] xl:h-[420px] drop-shadow-[0_25px_50px_rgba(233,78,27,0.35)] group-hover:scale-105 transition-transform duration-500 ease-out">
                   <Image
                     src="/images/products/crm-analytics.png"
                     alt="CRM - Data Analytics 3D Dashboard"
@@ -102,8 +102,8 @@ export function ExploreOtherProducts() {
               />
 
               <div className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 items-center relative z-10 h-full">
-                {/* Left Column: Heading, Description & Button */}
-                <div className="md:col-span-6 flex flex-col justify-between space-y-5 sm:space-y-6 h-full">
+                {/* Left Column: Heading, Description & Button (5 cols) */}
+                <div className="md:col-span-5 flex flex-col justify-between space-y-5 sm:space-y-6 h-full py-1">
                   <div className="space-y-4">
                     <h3
                       className="font-red-rose text-2xl sm:text-3xl lg:text-[34px] xl:text-[38px] font-bold text-white tracking-tight leading-[1.15]"
@@ -143,9 +143,9 @@ export function ExploreOtherProducts() {
                   </div>
                 </div>
 
-                {/* Right Column: 3D Isometric White-Label Brand Hub with 'YOUR BRAND HERE' (Enlarged) */}
-                <div className="md:col-span-6 flex items-center justify-center relative">
-                  <div className="relative w-full max-w-[320px] sm:max-w-[380px] lg:max-w-[420px] xl:max-w-[460px] aspect-square drop-shadow-[0_25px_50px_rgba(233,78,27,0.35)] group-hover:scale-105 transition-transform duration-500 ease-out">
+                {/* Right Column: 3D Isometric White-Label Brand Hub with 'YOUR BRAND HERE' (Extra Large - 7 cols) */}
+                <div className="md:col-span-7 flex items-center justify-center relative">
+                  <div className="relative w-full max-w-[420px] sm:max-w-[480px] lg:max-w-[540px] xl:max-w-[600px] aspect-square drop-shadow-[0_25px_55px_rgba(233,78,27,0.38)] group-hover:scale-105 transition-transform duration-500 ease-out -mr-1 sm:-mr-4 lg:-mr-6">
                     <Image
                       src="/images/solutions/white-label.png"
                       alt="White-Label Solution 3D Brand Hub"
@@ -175,9 +175,9 @@ export function ExploreOtherProducts() {
             />
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
-              {/* Left Column: 3D Gaming Controller (Enlarged) */}
-              <div className="lg:col-span-6 flex items-center justify-center">
-                <div className="relative w-full max-w-[500px] sm:max-w-[580px] lg:max-w-[660px] xl:max-w-[720px] aspect-[1024/735] drop-shadow-[0_30px_60px_rgba(233,78,27,0.38)] group-hover:scale-105 transition-transform duration-500 ease-out">
+              {/* Left Column: 3D Gaming Controller (Extra Large - 7 cols) */}
+              <div className="lg:col-span-7 flex items-center justify-center -ml-2 sm:-ml-6 lg:-ml-10">
+                <div className="relative w-full max-w-[620px] sm:max-w-[720px] lg:max-w-[840px] xl:max-w-[920px] aspect-[1024/735] drop-shadow-[0_35px_70px_rgba(233,78,27,0.42)] group-hover:scale-105 transition-transform duration-500 ease-out">
                   <Image
                     src="/images/solutions/remote-desktop.png"
                     alt="Remote Desktop Gaming Controller"
@@ -187,8 +187,8 @@ export function ExploreOtherProducts() {
                 </div>
               </div>
 
-              {/* Right Column: Title, Description, Bullets & Buttons */}
-              <div className="lg:col-span-6 space-y-6 sm:space-y-7">
+              {/* Right Column: Title, Description, Bullets & Buttons (5 cols) */}
+              <div className="lg:col-span-5 space-y-6 sm:space-y-7 pl-0 lg:pl-2">
                 <h3
                   className="font-red-rose text-2xl sm:text-3xl lg:text-[36px] xl:text-[40px] font-bold text-white tracking-tight leading-[1.15]"
                   style={{
