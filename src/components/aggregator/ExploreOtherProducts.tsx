@@ -87,17 +87,17 @@ export function ExploreOtherProducts() {
 
             {/* Card 2: White-Label Solution (col-span-7) */}
             <div className="lg:col-span-7 group relative rounded-2xl sm:rounded-3xl bg-[#0e1017] border border-white/[0.08] hover:border-[#FF5722]/40 shadow-[0_12px_40px_rgba(0,0,0,0.7)] p-6 sm:p-8 lg:p-10 flex flex-col justify-between overflow-hidden transition-all duration-300">
-              {/* Cyber Grid mesh on bottom-right floor */}
+              {/* Cyber Grid mesh on bottom-right floor (Visible White Grid) */}
               <div
-                className="absolute inset-y-0 right-0 w-3/5 pointer-events-none opacity-20"
+                className="absolute inset-y-0 right-0 w-3/5 pointer-events-none opacity-55"
                 style={{
                   backgroundImage:
-                    "linear-gradient(to right, rgba(255,255,255,0.12) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.12) 1px, transparent 1px)",
-                  backgroundSize: "32px 32px",
+                    "linear-gradient(to right, rgba(255, 255, 255, 0.28) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 255, 255, 0.28) 1px, transparent 1px)",
+                  backgroundSize: "36px 36px",
                   maskImage:
-                    "radial-gradient(ellipse at 75% 65%, black 20%, transparent 80%)",
+                    "radial-gradient(ellipse at 75% 65%, black 45%, transparent 85%)",
                   WebkitMaskImage:
-                    "radial-gradient(ellipse at 75% 65%, black 20%, transparent 80%)",
+                    "radial-gradient(ellipse at 75% 65%, black 45%, transparent 85%)",
                 }}
               />
 
@@ -160,17 +160,17 @@ export function ExploreOtherProducts() {
 
           {/* Bottom Row: Card 3 - Remote-Desktop (Full Width) */}
           <div className="group relative rounded-2xl sm:rounded-3xl bg-[#0e1017] border border-white/[0.08] hover:border-[#FF5722]/40 shadow-[0_12px_40px_rgba(0,0,0,0.7)] p-6 sm:p-10 lg:p-12 overflow-hidden transition-all duration-300">
-            {/* Cyber Grid mesh on bottom-left floor */}
+            {/* Cyber Grid mesh on bottom-left floor (Visible White Grid) */}
             <div
-              className="absolute inset-y-0 left-0 w-1/2 pointer-events-none opacity-20"
+              className="absolute inset-y-0 left-0 w-3/5 pointer-events-none opacity-55"
               style={{
                 backgroundImage:
-                  "linear-gradient(to right, rgba(255,255,255,0.12) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.12) 1px, transparent 1px)",
-                backgroundSize: "32px 32px",
+                  "linear-gradient(to right, rgba(255, 255, 255, 0.28) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 255, 255, 0.28) 1px, transparent 1px)",
+                backgroundSize: "36px 36px",
                 maskImage:
-                  "radial-gradient(ellipse at 25% 65%, black 20%, transparent 80%)",
+                  "radial-gradient(ellipse at 30% 65%, black 45%, transparent 85%)",
                 WebkitMaskImage:
-                  "radial-gradient(ellipse at 25% 65%, black 20%, transparent 80%)",
+                  "radial-gradient(ellipse at 30% 65%, black 45%, transparent 85%)",
               }}
             />
 
