@@ -80,7 +80,7 @@ const ADVANTAGES: AdvantageItem[] = [
 
 export function AggregatorAdvantages() {
   return (
-    <section className="relative w-full py-16 sm:py-24 lg:py-28 select-none z-10 bg-transparent">
+    <section className="relative w-full py-16 sm:py-24 lg:py-28 select-none z-10 bg-[#07080c]">
       <div className="relative w-[92%] sm:w-[88%] lg:w-[82%] xl:w-[78%] max-w-[1440px] mx-auto space-y-12 sm:space-y-16">
         {/* Header with Orange Accent Brush Mark */}
         <div className="relative inline-block">

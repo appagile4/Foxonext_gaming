@@ -1,15 +1,14 @@
 import React from "react";
-import { BackgroundGlowForAggregator } from "@/components/aggregator/BackgroundGlowForAggregator";
 import { AggregatorHero } from "@/components/aggregator/AggregatorHero";
-import { TopGameProviders } from "@/components/providers/TopGameProviders";
 import { AggregatorFeatures } from "@/components/aggregator/AggregatorFeatures";
 import { AggregatorAdvantages } from "@/components/aggregator/AggregatorAdvantages";
+import { WorkWithUsCta } from "@/components/cta/WorkWithUsCta";
+import { Footer } from "@/components/layout/Footer";
 import { WhyChooseUs } from "@/components/why-choose-us/WhyChooseUs";
 import { ExploreOtherProducts } from "@/components/aggregator/ExploreOtherProducts";
 import { TopNewsAndBlogs } from "@/components/news/TopNewsAndBlogs";
 import { FaqSection } from "@/components/faq/FaqSection";
-import { WorkWithUsCta } from "@/components/cta/WorkWithUsCta";
-import { Footer } from "@/components/layout/Footer";
+import { TopGameProviders } from "@/components/providers/TopGameProviders";
 
 export const metadata = {
   title: "Casino Game Aggregator | FOXONEXT",
@@ -20,23 +19,17 @@ export const metadata = {
 export default function GameAggregatorPage() {
   return (
     <main className="relative min-h-screen flex flex-col bg-[#07080c] overflow-x-hidden">
-      {/* 4 Combined Sections Sharing BackgroundGlowForAggregator */}
-      <div className="relative overflow-hidden">
-        {/* Continuous Aggregator Background Glow & Atmosphere */}
-        <BackgroundGlowForAggregator />
+      {/* 1. Casino Game Aggregator Hero Section */}
+      <AggregatorHero />
 
-        {/* 1. Casino Game Aggregator Hero Section */}
-        <AggregatorHero />
+      {/* Top Game Providers & Statistics Section */}
+      <TopGameProviders />
 
-        {/* Top Game Providers & Statistics Section */}
-        <TopGameProviders />
+      {/* 2. Top Game Providers & Aggregator Features Section */}
+      <AggregatorFeatures />
 
-        {/* 2. Top Game Providers & Aggregator Features Section */}
-        <AggregatorFeatures />
-
-        {/* 3. Aggregator Advantages Section */}
-        <AggregatorAdvantages />
-      </div>
+      {/* 3. Aggregator Advantages Section */}
+      <AggregatorAdvantages />
 
       {/* Why Choose Us Section */}
       <WhyChooseUs />
