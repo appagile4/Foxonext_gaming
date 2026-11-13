@@ -99,9 +99,9 @@ export function CrmHero() {
 
           {/* Right Column: 3D Isometric CRM Dashboard Mockup */}
           <div className="lg:col-span-5 flex items-center justify-center xl:justify-end relative">
-            <div className="relative w-[380px] sm:w-[500px] md:w-[580px] lg:w-[620px] xl:w-[700px] aspect-[500/380] drop-shadow-[0_25px_50px_rgba(0,0,0,0.65)] lg:-mr-6 xl:-mr-10">
+            <div className="relative w-[430px] sm:w-[560px] md:w-[650px] lg:w-[700px] xl:w-[800px] aspect-[500/380] drop-shadow-[0_25px_50px_rgba(0,0,0,0.65)] lg:-mr-6 xl:-mr-10">
               <Image
-                src="/images/crm/crm-hero-dashboard.png"
+                src="/images/crm/cards-dashboard.png"
                 alt="CRM for Smart Management 3D Dashboard"
                 fill
                 className="object-contain animate-float"

@@ -3,8 +3,7 @@ import { CrmHero } from "@/components/crm/CrmHero";
 import { TopGameProviders } from "@/components/providers/TopGameProviders";
 import { CrmStatistics } from "@/components/crm/CrmStatistics";
 import { CrmKeyFeatures } from "@/components/crm/CrmKeyFeatures";
-import { CrmFeatures } from "@/components/crm/CrmFeatures";
-import { CrmAdvantages } from "@/components/crm/CrmAdvantages";
+import { CrmAdvantagesGrid } from "@/components/crm/CrmAdvantagesGrid";
 import { WhyChooseUs } from "@/components/why-choose-us/WhyChooseUs";
 import { ExploreOtherProducts } from "@/components/aggregator/ExploreOtherProducts";
 import { TopNewsAndBlogs } from "@/components/news/TopNewsAndBlogs";
@@ -29,7 +28,10 @@ export default function CrmDataAnalysisPage() {
       {/* 3. FOXOnext CRM Key Features (Interactive Tabs Carousel) */}
       <CrmKeyFeatures />
 
-      {/* 6. Why Choose Us Section */}
+      {/* 4. Advantages of our CRM Section */}
+      <CrmAdvantagesGrid />
+
+      {/* 5. Why Choose Us Section */}
       <WhyChooseUs />
 
       {/* 7. Explore Other Products & Solutions Section */}
