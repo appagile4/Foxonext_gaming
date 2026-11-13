@@ -37,7 +37,7 @@ export function WorkWithUsCta() {
         {/* Glowing Pill Button with Circular Arrow */}
         <div className="pt-2 sm:pt-4">
           <Link
-            href="#demo"
+            href="/contact"
             className="group relative inline-flex items-center gap-4 sm:gap-6 pl-7 pr-3 py-3 rounded-full bg-gradient-to-r from-[#FF5722] via-[#FF6A00] to-[#FF5722] text-white font-poppins font-semibold text-sm sm:text-base shadow-[0_0_35px_rgba(255,87,34,0.45)] hover:shadow-[0_0_50px_rgba(255,87,34,0.65)] hover:scale-105 transition-all duration-300"
             style={{
               fontFamily: "var(--font-poppins), 'Poppins', sans-serif",

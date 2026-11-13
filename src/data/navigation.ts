@@ -38,5 +38,5 @@ export const NAV_ITEMS: NavItem[] = [
 
 export const CONTACT_CTA = {
   label: "Contact Us",
-  href: "#contact",
+  href: "/contact",
 };

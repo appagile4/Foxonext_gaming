@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "secondary" | "ghost";
@@ -37,6 +38,17 @@ export function Button({
   const combinedClasses = `${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`;
 
   if (href) {
+    if (href.startsWith("/")) {
+      return (
+        <Link
+          href={href}
+          className={combinedClasses}
+          style={{ fontFamily: "var(--font-poppins), 'Poppins', sans-serif", ...props.style }}
+        >
+          {children}
+        </Link>
+      );
+    }
     return (
       <a
         href={href}
