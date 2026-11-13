@@ -46,34 +46,52 @@ export function ExploreOtherProductsForRemoteDesktop() {
 
         {/* Products & Solutions Grid */}
         <div className="space-y-6 sm:space-y-8">
+          <style>{`
+            .card-hover-blur-overlay {
+              clip-path: polygon(100% 100%, 100% 100%, 100% 100%, 100% 100%);
+              opacity: 0;
+              pointer-events: none;
+              transition: clip-path 0.55s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease-out;
+            }
+            .group:hover .card-hover-blur-overlay {
+              clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+              opacity: 1;
+              pointer-events: auto;
+            }
+          `}</style>
+
           {/* Top Row: Equal 2 Cards (Game Aggregator & CRM - Data Analytics) */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 items-stretch">
             {/* Card 1: Game Aggregator */}
-            <div className="group relative rounded-2xl sm:rounded-3xl bg-[#0e1017] border border-white/[0.08] hover:border-[#FF5722]/40 shadow-[0_12px_40px_rgba(0,0,0,0.7)] p-6 sm:p-8 lg:p-9 flex flex-col justify-between overflow-hidden transition-all duration-300">
-              {/* Card Title */}
-              <h3
-                className="font-red-rose text-2xl sm:text-3xl lg:text-[32px] font-bold text-white tracking-tight"
-                style={{
-                  fontFamily: "var(--font-red-rose), 'Red Rose', serif",
-                }}
-              >
-                Game Aggregator
-              </h3>
+            <div className="group relative rounded-2xl sm:rounded-3xl bg-[#0c0d12] border border-white/[0.08] hover:border-[#FF5722]/50 shadow-[0_12px_40px_rgba(0,0,0,0.85)] hover:shadow-[0_0_35px_rgba(255,87,34,0.25)] overflow-hidden transition-all duration-500 flex flex-col justify-between min-h-[460px] sm:min-h-[500px] lg:min-h-[520px]">
+              {/* Card Top Title in Red Rose font (Permanently visible on z-30, not covered by blur) */}
+              <div className="p-6 sm:p-7 lg:p-8 z-30 pointer-events-none">
+                <h3
+                  className="font-red-rose text-2xl sm:text-3xl lg:text-[32px] font-bold text-white tracking-tight"
+                  style={{
+                    fontFamily: "var(--font-red-rose), 'Red Rose', serif",
+                  }}
+                >
+                  Game Aggregator
+                </h3>
+              </div>
 
-              {/* 3D Visual Graphic */}
-              <div className="relative w-full my-4 sm:my-6 flex items-center justify-center flex-1">
-                <div className="relative w-full max-w-[340px] sm:max-w-[400px] lg:max-w-[440px] aspect-square drop-shadow-[0_20px_45px_rgba(233,78,27,0.3)] group-hover:scale-105 transition-transform duration-500 ease-out">
+              {/* Card 3D Illustration Graphic in Center */}
+              <div className="absolute inset-0 flex items-center justify-center p-6 sm:p-8 pt-10 pb-24 pointer-events-none z-0">
+                <div className="relative w-full h-full max-h-[360px] flex items-center justify-center">
                   <Image
                     src="/images/products/game-aggregator.png"
-                    alt="Game Aggregator 3D Cubes"
-                    fill
-                    className="object-contain"
+                    alt="Game Aggregator 3D Floating Modular Cubes"
+                    width={720}
+                    height={720}
+                    className="w-full h-full object-contain filter drop-shadow-[0_20px_45px_rgba(233,78,27,0.3)] group-hover:scale-105 transition-transform duration-700 ease-out"
+                    priority
                   />
                 </div>
               </div>
 
-              {/* Description + Arrow Button */}
-              <div className="flex items-end justify-between gap-4 mt-auto pt-2">
+              {/* Default Unhovered Bottom Container: Description in Poppins font and Orange Arrow Action Button */}
+              <div className="relative z-10 p-5 sm:p-6 lg:p-7 bg-gradient-to-t from-black/95 via-black/75 to-transparent backdrop-blur-[2px] flex items-end justify-between gap-4 transition-all duration-300 group-hover:opacity-0 group-hover:pointer-events-none mt-auto">
                 <p
                   className="font-poppins text-xs sm:text-sm text-zinc-300/90 font-normal leading-relaxed max-w-sm"
                   style={{
@@ -81,8 +99,11 @@ export function ExploreOtherProductsForRemoteDesktop() {
                   }}
                 >
                   Whether you&apos;re interested in rapidly launching a brand
-                  through our White Label solutions, seeking complete control
-                  with a customizable Turnkey package.
+                  through our{" "}
+                  <span className="text-zinc-100 font-medium">White Label</span>{" "}
+                  solutions, seeking complete control with a customizable{" "}
+                  <span className="text-zinc-100 font-medium">Turnkey</span>{" "}
+                  package.
                 </p>
 
                 <Link
@@ -93,36 +114,11 @@ export function ExploreOtherProductsForRemoteDesktop() {
                   <ArrowUpRight className="w-5 h-5" />
                 </Link>
               </div>
-            </div>
 
-            {/* Card 2: CRM - Data Analytics */}
-            <div className="group relative rounded-2xl sm:rounded-3xl bg-[#0e1017] border border-white/[0.08] hover:border-[#FF5722]/40 shadow-[0_12px_40px_rgba(0,0,0,0.7)] p-6 sm:p-8 lg:p-9 flex flex-col justify-between overflow-hidden transition-all duration-300">
-              {/* Card Title */}
-              <h3
-                className="font-red-rose text-2xl sm:text-3xl lg:text-[32px] font-bold text-white tracking-tight"
-                style={{
-                  fontFamily: "var(--font-red-rose), 'Red Rose', serif",
-                }}
-              >
-                CRM - Data Analytics
-              </h3>
-
-              {/* 3D Visual Graphic */}
-              <div className="relative w-full my-4 sm:my-6 flex items-center justify-center flex-1">
-                <div className="relative w-full max-w-[340px] sm:max-w-[400px] lg:max-w-[440px] aspect-square drop-shadow-[0_20px_45px_rgba(233,78,27,0.3)] group-hover:scale-105 transition-transform duration-500 ease-out">
-                  <Image
-                    src="/images/products/crm-analytics.png"
-                    alt="CRM - Data Analytics 3D Dashboard"
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-              </div>
-
-              {/* Description + Arrow Button */}
-              <div className="flex items-end justify-between gap-4 mt-auto pt-2">
+              {/* Animated Square Blur Hover Overlay */}
+              <div className="card-hover-blur-overlay absolute top-[76px] sm:top-[88px] inset-x-0 bottom-0 z-20 backdrop-blur-xl bg-[#090a0f]/85 flex flex-col justify-between p-6 sm:p-7 lg:p-8">
                 <p
-                  className="font-poppins text-xs sm:text-sm text-zinc-300/90 font-normal leading-relaxed max-w-sm"
+                  className="font-poppins text-xs sm:text-[13px] text-zinc-300 font-normal leading-relaxed"
                   style={{
                     fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                   }}
@@ -132,6 +128,162 @@ export function ExploreOtherProductsForRemoteDesktop() {
                   with a customizable Turnkey package.
                 </p>
 
+                {/* 4 Feature Bullet Points in 2x2 Grid with Orange Diamond Icon */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-y-4 sm:gap-x-6 my-auto py-3">
+                  <div className="flex items-center gap-2.5">
+                    <svg
+                      className="w-3.5 h-3.5 text-[#FF5722] flex-shrink-0"
+                      viewBox="0 0 12 12"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.6"
+                    >
+                      <path d="M6 1.5 L10.5 6 L6 10.5 L1.5 6 Z" />
+                    </svg>
+                    <span
+                      className="font-poppins text-[11px] sm:text-xs text-zinc-200"
+                      style={{
+                        fontFamily:
+                          "var(--font-poppins), 'Poppins', sans-serif",
+                      }}
+                    >
+                      Extensive collection of top-tier content
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-2.5">
+                    <svg
+                      className="w-3.5 h-3.5 text-[#FF5722] flex-shrink-0"
+                      viewBox="0 0 12 12"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.6"
+                    >
+                      <path d="M6 1.5 L10.5 6 L6 10.5 L1.5 6 Z" />
+                    </svg>
+                    <span
+                      className="font-poppins text-[11px] sm:text-xs text-zinc-200"
+                      style={{
+                        fontFamily:
+                          "var(--font-poppins), 'Poppins', sans-serif",
+                      }}
+                    >
+                      Compatibility across all devices
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-2.5">
+                    <svg
+                      className="w-3.5 h-3.5 text-[#FF5722] flex-shrink-0"
+                      viewBox="0 0 12 12"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.6"
+                    >
+                      <path d="M6 1.5 L10.5 6 L6 10.5 L1.5 6 Z" />
+                    </svg>
+                    <span
+                      className="font-poppins text-[11px] sm:text-xs text-zinc-200"
+                      style={{
+                        fontFamily:
+                          "var(--font-poppins), 'Poppins', sans-serif",
+                      }}
+                    >
+                      Bonus Management Engine
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-2.5">
+                    <svg
+                      className="w-3.5 h-3.5 text-[#FF5722] flex-shrink-0"
+                      viewBox="0 0 12 12"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.6"
+                    >
+                      <path d="M6 1.5 L10.5 6 L6 10.5 L1.5 6 Z" />
+                    </svg>
+                    <span
+                      className="font-poppins text-[11px] sm:text-xs text-zinc-200"
+                      style={{
+                        fontFamily:
+                          "var(--font-poppins), 'Poppins', sans-serif",
+                      }}
+                    >
+                      Multi-currency Wallet Support
+                    </span>
+                  </div>
+                </div>
+
+                {/* 2 Action Buttons Side-by-Side: Get Quote & Know More */}
+                <div className="flex items-center gap-4 pt-2">
+                  <Link
+                    href="#contact"
+                    className="font-poppins inline-flex items-center justify-center px-6 py-2.5 rounded-[4px] bg-[#FF5722] hover:bg-[#ff6e3d] text-white text-xs sm:text-sm font-medium shadow-[0_4px_16px_rgba(255,87,34,0.35)] hover:shadow-[0_4px_22px_rgba(255,87,34,0.55)] transition-all duration-300"
+                    style={{
+                      fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
+                    }}
+                  >
+                    Get Quote
+                  </Link>
+
+                  <Link
+                    href="/game-aggregator"
+                    className="font-poppins inline-flex items-center justify-center px-6 py-2.5 rounded-[4px] bg-black/95 hover:bg-zinc-900 text-white border border-white/60 hover:border-white text-xs sm:text-sm font-medium transition-all duration-300"
+                    style={{
+                      fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
+                    }}
+                  >
+                    Know More
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            {/* Card 2: CRM - Data Analytics */}
+            <div className="group relative rounded-2xl sm:rounded-3xl bg-[#0c0d12] border border-white/[0.08] hover:border-[#FF5722]/50 shadow-[0_12px_40px_rgba(0,0,0,0.85)] hover:shadow-[0_0_35px_rgba(255,87,34,0.25)] overflow-hidden transition-all duration-500 flex flex-col justify-between min-h-[460px] sm:min-h-[500px] lg:min-h-[520px]">
+              {/* Card Top Title in Red Rose font (Permanently visible on z-30, not covered by blur) */}
+              <div className="p-6 sm:p-7 lg:p-8 z-30 pointer-events-none">
+                <h3
+                  className="font-red-rose text-2xl sm:text-3xl lg:text-[32px] font-bold text-white tracking-tight"
+                  style={{
+                    fontFamily: "var(--font-red-rose), 'Red Rose', serif",
+                  }}
+                >
+                  CRM - Data Analytics
+                </h3>
+              </div>
+
+              {/* Card 3D Illustration Graphic in Center */}
+              <div className="absolute inset-0 flex items-center justify-center p-6 sm:p-8 pt-10 pb-24 pointer-events-none z-0">
+                <div className="relative w-full h-full max-h-[360px] flex items-center justify-center">
+                  <Image
+                    src="/images/products/crm-analytics.png"
+                    alt="CRM Data Analytics 3D Glass Dashboard & Charts"
+                    width={720}
+                    height={720}
+                    className="w-full h-full object-contain filter drop-shadow-[0_20px_45px_rgba(233,78,27,0.3)] group-hover:scale-105 transition-transform duration-700 ease-out"
+                    priority
+                  />
+                </div>
+              </div>
+
+              {/* Default Unhovered Bottom Container: Description in Poppins font and Orange Arrow Action Button */}
+              <div className="relative z-10 p-5 sm:p-6 lg:p-7 bg-gradient-to-t from-black/95 via-black/75 to-transparent backdrop-blur-[2px] flex items-end justify-between gap-4 transition-all duration-300 group-hover:opacity-0 group-hover:pointer-events-none mt-auto">
+                <p
+                  className="font-poppins text-xs sm:text-sm text-zinc-300/90 font-normal leading-relaxed max-w-sm"
+                  style={{
+                    fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
+                  }}
+                >
+                  Whether you&apos;re interested in rapidly launching a brand
+                  through our{" "}
+                  <span className="text-zinc-100 font-medium">White Label</span>{" "}
+                  solutions, seeking complete control with a customizable{" "}
+                  <span className="text-zinc-100 font-medium">Turnkey</span>{" "}
+                  package.
+                </p>
+
                 <Link
                   href="/crm-data-analysis"
                   className="w-10 h-10 sm:w-11 sm:h-11 rounded-lg bg-gradient-to-tr from-[#E94E1B] to-[#FF5722] hover:brightness-110 text-white flex items-center justify-center flex-shrink-0 shadow-[0_4px_14px_rgba(233,78,27,0.4)] transition-all duration-200 group-hover:scale-105"
@@ -139,6 +291,130 @@ export function ExploreOtherProductsForRemoteDesktop() {
                 >
                   <ArrowUpRight className="w-5 h-5" />
                 </Link>
+              </div>
+
+              {/* Animated Square Blur Hover Overlay */}
+              <div className="card-hover-blur-overlay absolute top-[76px] sm:top-[88px] inset-x-0 bottom-0 z-20 backdrop-blur-xl bg-[#090a0f]/85 flex flex-col justify-between p-6 sm:p-7 lg:p-8">
+                <p
+                  className="font-poppins text-xs sm:text-[13px] text-zinc-300 font-normal leading-relaxed"
+                  style={{
+                    fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
+                  }}
+                >
+                  Whether you&apos;re interested in rapidly launching a brand
+                  through our White Label solutions, seeking complete control
+                  with a customizable Turnkey package.
+                </p>
+
+                {/* 4 Feature Bullet Points in 2x2 Grid with Orange Diamond Icon */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-y-4 sm:gap-x-6 my-auto py-3">
+                  <div className="flex items-center gap-2.5">
+                    <svg
+                      className="w-3.5 h-3.5 text-[#FF5722] flex-shrink-0"
+                      viewBox="0 0 12 12"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.6"
+                    >
+                      <path d="M6 1.5 L10.5 6 L6 10.5 L1.5 6 Z" />
+                    </svg>
+                    <span
+                      className="font-poppins text-[11px] sm:text-xs text-zinc-200"
+                      style={{
+                        fontFamily:
+                          "var(--font-poppins), 'Poppins', sans-serif",
+                      }}
+                    >
+                      Extensive collection of top-tier content
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-2.5">
+                    <svg
+                      className="w-3.5 h-3.5 text-[#FF5722] flex-shrink-0"
+                      viewBox="0 0 12 12"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.6"
+                    >
+                      <path d="M6 1.5 L10.5 6 L6 10.5 L1.5 6 Z" />
+                    </svg>
+                    <span
+                      className="font-poppins text-[11px] sm:text-xs text-zinc-200"
+                      style={{
+                        fontFamily:
+                          "var(--font-poppins), 'Poppins', sans-serif",
+                      }}
+                    >
+                      Compatibility across all devices
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-2.5">
+                    <svg
+                      className="w-3.5 h-3.5 text-[#FF5722] flex-shrink-0"
+                      viewBox="0 0 12 12"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.6"
+                    >
+                      <path d="M6 1.5 L10.5 6 L6 10.5 L1.5 6 Z" />
+                    </svg>
+                    <span
+                      className="font-poppins text-[11px] sm:text-xs text-zinc-200"
+                      style={{
+                        fontFamily:
+                          "var(--font-poppins), 'Poppins', sans-serif",
+                      }}
+                    >
+                      Bonus Management Engine
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-2.5">
+                    <svg
+                      className="w-3.5 h-3.5 text-[#FF5722] flex-shrink-0"
+                      viewBox="0 0 12 12"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.6"
+                    >
+                      <path d="M6 1.5 L10.5 6 L6 10.5 L1.5 6 Z" />
+                    </svg>
+                    <span
+                      className="font-poppins text-[11px] sm:text-xs text-zinc-200"
+                      style={{
+                        fontFamily:
+                          "var(--font-poppins), 'Poppins', sans-serif",
+                      }}
+                    >
+                      Multi-currency Wallet Support
+                    </span>
+                  </div>
+                </div>
+
+                {/* 2 Action Buttons Side-by-Side: Get Quote & Know More */}
+                <div className="flex items-center gap-4 pt-2">
+                  <Link
+                    href="#contact"
+                    className="font-poppins inline-flex items-center justify-center px-6 py-2.5 rounded-[4px] bg-[#FF5722] hover:bg-[#ff6e3d] text-white text-xs sm:text-sm font-medium shadow-[0_4px_16px_rgba(255,87,34,0.35)] hover:shadow-[0_4px_22px_rgba(255,87,34,0.55)] transition-all duration-300"
+                    style={{
+                      fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
+                    }}
+                  >
+                    Get Quote
+                  </Link>
+
+                  <Link
+                    href="/crm-data-analysis"
+                    className="font-poppins inline-flex items-center justify-center px-6 py-2.5 rounded-[4px] bg-black/95 hover:bg-zinc-900 text-white border border-white/60 hover:border-white text-xs sm:text-sm font-medium transition-all duration-300"
+                    style={{
+                      fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
+                    }}
+                  >
+                    Know More
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
