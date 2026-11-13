@@ -86,84 +86,93 @@ const BLOG_POSTS: BlogPost[] = [
   },
 ];
 
-export function TopNewsAndBlogs() {
+export interface TopNewsAndBlogsProps {
+  showBanner?: boolean;
+}
+
+export function TopNewsAndBlogs({
+  showBanner = true,
+}: TopNewsAndBlogsProps = {}) {
   return (
     <section className="relative w-full py-16 sm:py-20 lg:py-28 select-none z-10 bg-[#07080c]">
       <div className="relative w-[92%] sm:w-[88%] lg:w-[82%] xl:w-[78%] max-w-[1440px] mx-auto space-y-12 sm:space-y-16">
         {/* Featured Blog Highlight Banner (Reference Image 1) */}
-        <div className="relative rounded-2xl sm:rounded-3xl bg-[#0c0d12] border border-white/[0.08] p-6 sm:p-8 lg:p-12 overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.85)]">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-            {/* Left Column: Heading, Date, Author & Read Time */}
-            <div className="lg:col-span-7 flex flex-col justify-between space-y-8 sm:space-y-10">
-              <h3
-                className="font-red-rose text-2xl sm:text-3xl lg:text-[38px] xl:text-[42px] font-bold text-white tracking-tight leading-[1.2]"
-                style={{
-                  fontFamily: "var(--font-red-rose), 'Red Rose', serif",
-                }}
-              >
-                {FEATURED_POST.title}
-              </h3>
-
-              <div className="space-y-4 pt-2">
-                <div
-                  className="font-poppins text-xs sm:text-sm text-zinc-400 font-normal"
+        {showBanner && (
+          <div className="relative rounded-2xl sm:rounded-3xl bg-[#0c0d12] border border-white/[0.08] p-6 sm:p-8 lg:p-12 overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.85)]">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+              {/* Left Column: Heading, Date, Author & Read Time */}
+              <div className="lg:col-span-7 flex flex-col justify-between space-y-8 sm:space-y-10">
+                <h3
+                  className="font-red-rose text-2xl sm:text-3xl lg:text-[38px] xl:text-[42px] font-bold text-white tracking-tight leading-[1.2]"
                   style={{
-                    fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
+                    fontFamily: "var(--font-red-rose), 'Red Rose', serif",
                   }}
                 >
-                  {FEATURED_POST.date}
-                </div>
+                  {FEATURED_POST.title}
+                </h3>
 
-                <div className="flex items-center justify-between max-w-sm pt-1">
-                  {/* Author avatar & name */}
-                  <div className="flex items-center gap-3">
-                    <div className="relative w-10 h-10 sm:w-11 sm:h-11 rounded-lg overflow-hidden border border-white/20">
-                      <Image
-                        src={FEATURED_POST.author.avatar}
-                        alt={FEATURED_POST.author.name}
-                        width={44}
-                        height={44}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <span
-                      className="font-poppins text-sm sm:text-base font-medium text-white"
-                      style={{
-                        fontFamily:
-                          "var(--font-poppins), 'Poppins', sans-serif",
-                      }}
-                    >
-                      {FEATURED_POST.author.name}
-                    </span>
-                  </div>
-
-                  {/* Read time */}
-                  <span
+                <div className="space-y-4 pt-2">
+                  <div
                     className="font-poppins text-xs sm:text-sm text-zinc-400 font-normal"
                     style={{
                       fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                     }}
                   >
-                    {FEATURED_POST.readTime}
-                  </span>
+                    {FEATURED_POST.date}
+                  </div>
+
+                  <div className="flex items-center justify-between max-w-sm pt-1">
+                    {/* Author avatar & name */}
+                    <div className="flex items-center gap-3">
+                      <div className="relative w-10 h-10 sm:w-11 sm:h-11 rounded-lg overflow-hidden border border-white/20">
+                        <Image
+                          src={FEATURED_POST.author.avatar}
+                          alt={FEATURED_POST.author.name}
+                          width={44}
+                          height={44}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <span
+                        className="font-poppins text-sm sm:text-base font-medium text-white"
+                        style={{
+                          fontFamily:
+                            "var(--font-poppins), 'Poppins', sans-serif",
+                        }}
+                      >
+                        {FEATURED_POST.author.name}
+                      </span>
+                    </div>
+
+                    {/* Read time */}
+                    <span
+                      className="font-poppins text-xs sm:text-sm text-zinc-400 font-normal"
+                      style={{
+                        fontFamily:
+                          "var(--font-poppins), 'Poppins', sans-serif",
+                      }}
+                    >
+                      {FEATURED_POST.readTime}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Column: Controller Image on Vibrant Orange Card */}
+              <div className="lg:col-span-5 flex items-center justify-center">
+                <div className="relative w-full aspect-[16/10] sm:aspect-[16/10] rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl">
+                  <Image
+                    src={FEATURED_POST.image}
+                    alt={FEATURED_POST.imageAlt}
+                    fill
+                    className="object-cover object-center"
+                    priority
+                  />
                 </div>
               </div>
             </div>
-
-            {/* Right Column: Controller Image on Vibrant Orange Card */}
-            <div className="lg:col-span-5 flex items-center justify-center">
-              <div className="relative w-full aspect-[16/10] sm:aspect-[16/10] rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl">
-                <Image
-                  src={FEATURED_POST.image}
-                  alt={FEATURED_POST.imageAlt}
-                  fill
-                  className="object-cover object-center"
-                  priority
-                />
-              </div>
-            </div>
           </div>
-        </div>
+        )}
 
         {/* Section Header: Top News & Blogs + Explore More Link (Reference Image 2) */}
         <div className="flex items-center justify-between pt-4 sm:pt-6">

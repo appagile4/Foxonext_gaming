@@ -49,8 +49,8 @@ export default function RemoteDesktopPage() {
       {/* 7. Explore Other Products Section */}
       <ExploreOtherProductsForRemoteDesktop />
 
-      {/* 8. Top News & Blogs Section */}
-      <TopNewsAndBlogs />
+      {/* 8. Top News & Blogs Section (Without Featured Banner as per design) */}
+      <TopNewsAndBlogs showBanner={false} />
 
       {/* 9. Frequently Asked Questions Section */}
       <FaqSection />
