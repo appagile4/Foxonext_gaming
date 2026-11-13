@@ -6,7 +6,11 @@ import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
 
 /* 8-pointed star bullet icon matching Figma screenshot */
-function EightPointStarIcon({ className = "w-5 h-5 text-[#FF5722]" }: { className?: string }) {
+function EightPointStarIcon({
+  className = "w-5 h-5 text-[#FF5722]",
+}: {
+  className?: string;
+}) {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -72,9 +76,9 @@ export function RemoteDesktopHero() {
                 fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
               }}
             >
-              Popular casino games come together in one Game Aggregator hub. With
-              our game aggregation platform it is easy and simple to add this
-              massive portfolio to any gaming website through just one API
+              Popular casino games come together in one Game Aggregator hub.
+              With our game aggregation platform it is easy and simple to add
+              this massive portfolio to any gaming website through just one API
               integration.
             </p>
 
@@ -90,7 +94,9 @@ export function RemoteDesktopHero() {
               </li>
               <li className="flex items-center gap-3.5 text-xs sm:text-sm md:text-[15px] text-white/90 font-poppins">
                 <EightPointStarIcon className="w-5 h-5 text-[#FF5722] flex-shrink-0 filter drop-shadow-[0_0_8px_rgba(255,87,34,0.6)]" />
-                <span>Business support, billing help, and service monitoring.</span>
+                <span>
+                  Business support, billing help, and service monitoring.
+                </span>
               </li>
             </ul>
 

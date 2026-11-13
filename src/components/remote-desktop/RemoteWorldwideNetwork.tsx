@@ -88,25 +88,34 @@ function DenmarkFlag() {
   );
 }
 
-const COUNTRIES = [
-  { name: "United Kingdom", Flag: UkFlag },
-  { name: "China", Flag: ChinaFlag },
-  { name: "Italy", Flag: ItalyFlag },
-  { name: "Austria", Flag: AustriaFlag },
-  { name: "Finland", Flag: FinlandFlag },
-  { name: "Japan", Flag: JapanFlag },
-  { name: "Belgium", Flag: BelgiumFlag },
-  { name: "Denmark", Flag: DenmarkFlag },
+const COUNTRIES_COLUMNS = [
+  // Column 1
+  [
+    { name: "United Kingdom", Flag: UkFlag },
+    { name: "Austria", Flag: AustriaFlag },
+    { name: "Belgium", Flag: BelgiumFlag },
+  ],
+  // Column 2
+  [
+    { name: "China", Flag: ChinaFlag },
+    { name: "Finland", Flag: FinlandFlag },
+    { name: "Denmark", Flag: DenmarkFlag },
+  ],
+  // Column 3
+  [
+    { name: "Italy", Flag: ItalyFlag },
+    { name: "Japan", Flag: JapanFlag },
+  ],
 ];
 
 export function RemoteWorldwideNetwork() {
   return (
     <section className="relative w-full py-18 sm:py-24 lg:py-28 bg-transparent select-none z-10 overflow-hidden">
-      <div className="relative z-10 w-[92%] sm:w-[88%] lg:w-[82%] xl:w-[78%] max-w-[1440px] mx-auto space-y-12 sm:space-y-16">
-        {/* Section Heading & Subtitle */}
-        <div className="space-y-4 max-w-2xl">
+      <div className="relative z-10 w-[92%] sm:w-[88%] lg:w-[84%] xl:w-[80%] max-w-[1440px] mx-auto space-y-12 sm:space-y-16">
+        {/* Section Heading & Subtitle - Full Width with Single-Line Lock */}
+        <div className="space-y-4 w-full">
           <h2
-            className="font-red-rose text-3xl sm:text-4xl lg:text-[44px] xl:text-[48px] font-bold text-white tracking-tight leading-tight"
+            className="font-red-rose text-2xl sm:text-3xl md:text-4xl lg:text-[42px] xl:text-[48px] font-bold text-white tracking-tight leading-tight sm:whitespace-nowrap"
             style={{
               fontFamily: "var(--font-red-rose), 'Red Rose', serif",
             }}
@@ -115,7 +124,7 @@ export function RemoteWorldwideNetwork() {
           </h2>
 
           <p
-            className="font-poppins text-xs sm:text-sm md:text-[15px] text-zinc-300 font-normal leading-relaxed"
+            className="font-poppins text-xs sm:text-sm md:text-[15px] text-zinc-300 font-normal leading-relaxed max-w-4xl"
             style={{
               fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
             }}
@@ -126,34 +135,38 @@ export function RemoteWorldwideNetwork() {
           </p>
         </div>
 
-        {/* 2-Column Grid: Left Country List & Right Dark World Map */}
+        {/* 2-Column Grid: Left Country 3-Column List & Right Dark World Map */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-          {/* Left Column: 8 Countries in 2 to 3 Columns with Circular Flag Icons */}
-          <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-y-7 sm:gap-y-9 gap-x-8 sm:gap-x-10">
-            {COUNTRIES.map((country) => {
-              const FlagComponent = country.Flag;
-              return (
-                <div
-                  key={country.name}
-                  className="flex items-center gap-3.5 group cursor-pointer transition-transform duration-200 hover:translate-x-1"
-                >
-                  <FlagComponent />
-                  <span
-                    className="font-poppins text-sm sm:text-base font-medium text-white group-hover:text-[#FF5722] transition-colors duration-200"
-                    style={{
-                      fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
-                    }}
-                  >
-                    {country.name}
-                  </span>
-                </div>
-              );
-            })}
+          {/* Left Column: 8 Countries arranged in 3 vertical columns matching screenshot */}
+          <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-7">
+            {COUNTRIES_COLUMNS.map((column, colIdx) => (
+              <div key={colIdx} className="space-y-6 sm:space-y-8">
+                {column.map((country) => {
+                  const FlagComponent = country.Flag;
+                  return (
+                    <div
+                      key={country.name}
+                      className="flex items-center gap-3 group cursor-pointer transition-transform duration-200 hover:translate-x-1"
+                    >
+                      <FlagComponent />
+                      <span
+                        className="font-poppins text-sm sm:text-base font-medium text-white group-hover:text-[#FF5722] transition-colors duration-200 whitespace-nowrap"
+                        style={{
+                          fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
+                        }}
+                      >
+                        {country.name}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+            ))}
           </div>
 
           {/* Right Column: World Map Silhouette */}
           <div className="lg:col-span-7 flex items-center justify-center relative">
-            <div className="relative w-full max-w-[780px] aspect-[2372/768] flex items-center justify-center">
+            <div className="relative w-full max-w-[820px] aspect-[2372/768] flex items-center justify-center">
               <Image
                 src="/images/remote-desktop/world-map.png"
                 alt="Virtual Server Global World Map"
