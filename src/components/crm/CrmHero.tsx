@@ -8,7 +8,7 @@ import { Milestones } from "@/components/hero/Milestones";
 
 export function CrmHero() {
   return (
-    <section className="relative w-full min-h-[92vh] lg:min-h-[900px] xl:min-h-[960px] flex flex-col justify-between overflow-hidden bg-[#07080c] select-none z-10">
+    <section className="relative w-full min-h-[92vh] lg:min-h-[900px] xl:min-h-[960px] flex flex-col justify-between overflow-hidden bg-transparent select-none z-10">
       {/* Scoped Top Navbar */}
       <div className="relative z-30">
         <Navbar logoSrc="/images/logo.png" />
