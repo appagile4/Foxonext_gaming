@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 
 export interface BackgroundGlowForAggregatorProps {
   className?: string;
@@ -19,15 +18,6 @@ export function BackgroundGlowForAggregator({
       {/* --- Region 1: Hero Top Warm Diagonal Gradient Backdrop --- */}
       <div className="absolute top-0 left-0 right-0 h-[680px] sm:h-[740px] lg:h-[820px] xl:h-[960px] bg-gradient-to-br from-[#200802] via-[#ab3203] to-[#e64a0c] pointer-events-none" />
 
-      {/* Top Left Deep Dramatic Shadow / Vignette (Matching exact screenshot reference) */}
-      <div
-        className="absolute top-0 left-0 w-full sm:w-[85%] lg:w-[70%] xl:w-[60%] h-[650px] sm:h-[750px] lg:h-[860px] pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(ellipse 75% 75% at 0% 0%, rgba(18, 4, 1, 0.95) 0%, rgba(32, 8, 2, 0.82) 30%, rgba(68, 17, 3, 0.55) 55%, rgba(120, 32, 5, 0.25) 75%, transparent 100%)",
-        }}
-      />
-
       {/* Hero Sweeping Diagonal Curved Light Highlights */}
       <div className="absolute -top-[10%] -left-[10%] w-[120%] h-[740px] sm:h-[800px] lg:h-[860px] bg-[radial-gradient(ellipse_at_70%_50%,rgba(255,145,77,0.35),transparent_60%)] pointer-events-none" />
 
@@ -37,7 +27,7 @@ export function BackgroundGlowForAggregator({
 
       {/* Main Inner Ring */}
       <div
-        className="absolute top-32 left-32 sm:top-40 sm:left-40 lg:-top-[328px] lg:-left-[278px]
+        className="absolute top-32 left-32 sm:top-40 sm:left-40 lg:-top-328 lg:-left-278
           w-[960px] h-[960px]
           sm:w-[1240px] sm:h-[1240px]
           lg:w-[1960px] lg:h-[1960px]
@@ -49,7 +39,7 @@ export function BackgroundGlowForAggregator({
 
       {/* Outer Ring */}
       <div
-        className="absolute top-16 left-16 sm:top-20 sm:left-20 lg:-top-[314px] lg:-left-[199px]
+        className="absolute top-16 left-16 sm:top-20 sm:left-20 lg:-top-314 lg:-left-199
           w-[960px] h-[960px]
           sm:w-[1240px] sm:h-[1240px]
           lg:w-[1960px] lg:h-[1960px]
@@ -84,26 +74,16 @@ export function BackgroundGlowForAggregator({
         }}
       />
 
-      {/* --- Region 3: Advantages Ambient Atmosphere & Globe --- */}
-
-      {/* Lower Left Ambient Orange Glow */}
-      <div
-        className="absolute bottom-[900px] left-[-8%] w-[600px] h-[500px] rounded-full blur-[140px] opacity-25 mix-blend-screen pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(circle, rgba(233, 78, 27, 0.35) 0%, rgba(255, 87, 34, 0.12) 50%, transparent 70%)",
-        }}
-      />
-
-      {/* Bottom Right Large Signature Cosmic Ring */}
+      {/* Right Signature Cosmic Ring (Contained in Hero & Top Providers region) */}
       <div
         className="absolute top-[80px] sm:top-[120px] lg:top-[160px] -right-[1450px] sm:-right-[2050px] lg:-right-[2700px]
-    w-[2300px] h-[2300px]
-    sm:w-[3000px] sm:h-[3000px]
-    lg:w-[3800px] lg:h-[3800px]
-    rounded-full border border-white/20
-    shadow-[0_0_35px_rgba(255,255,255,0.10),inset_0_0_55px_rgba(255,87,34,0.30),inset_0_0_110px_rgba(255,87,34,0.16)]
-    pointer-events-none"
+          w-[2300px] h-[2300px]
+          sm:w-[3000px] sm:h-[3000px]
+          lg:w-[3800px] lg:h-[3800px]
+          rounded-full border border-white/25
+          bg-[radial-gradient(circle,rgba(255,87,34,0.30)_0%,rgba(230,74,12,0.20)_55%,rgba(171,50,3,0.08)_100%)]
+          shadow-[0_0_35px_rgba(255,255,255,0.10),inset_0_0_55px_rgba(255,87,34,0.45),inset_0_0_110px_rgba(255,87,34,0.25)]
+          pointer-events-none"
       />
     </div>
   );
