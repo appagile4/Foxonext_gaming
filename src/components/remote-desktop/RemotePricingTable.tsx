@@ -105,8 +105,8 @@ export function RemotePricingTable() {
           </h2>
         </div>
 
-        {/* Main Outer Pricing Card Container matching Figma screenshot */}
-        <div className="rounded-2xl sm:rounded-3xl bg-[#0f1015]/90 border border-white/10 p-5 sm:p-8 lg:p-10 shadow-[0_25px_60px_rgba(0,0,0,0.8)] backdrop-blur-md space-y-6 sm:space-y-8">
+        {/* Main Outer Pricing Card Container matching Figma screenshot with Transparent Blur */}
+        <div className="rounded-2xl sm:rounded-3xl bg-white/[0.03] border border-white/[0.08] p-5 sm:p-8 lg:p-10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] backdrop-blur-xl space-y-6 sm:space-y-8">
           {/* Row 1: Country, Currency, IP Version, Duration Tabs */}
           <div className="flex flex-col lg:flex-row items-stretch lg:items-end justify-between gap-6 pb-2">
             {/* Left 3 Select Dropdowns */}
@@ -120,13 +120,13 @@ export function RemotePricingTable() {
                   <select
                     value={selectedCountry}
                     onChange={(e) => setSelectedCountry(e.target.value)}
-                    className="w-full appearance-none rounded-lg bg-[#181920] border border-white/10 px-3.5 py-2.5 text-xs sm:text-sm text-zinc-200 focus:outline-none focus:border-[#FF5722] cursor-pointer"
+                    className="w-full appearance-none rounded-lg bg-white/[0.04] border border-white/10 px-3.5 py-2.5 text-xs sm:text-sm text-zinc-200 focus:outline-none focus:border-[#FF5722] cursor-pointer backdrop-blur-sm"
                   >
-                    <option value="United States">Select your Country</option>
-                    <option value="United Kingdom">United Kingdom</option>
-                    <option value="Germany">Germany</option>
-                    <option value="Japan">Japan</option>
-                    <option value="Singapore">Singapore</option>
+                    <option value="United States" className="bg-[#181920] text-zinc-200">Select your Country</option>
+                    <option value="United Kingdom" className="bg-[#181920] text-zinc-200">United Kingdom</option>
+                    <option value="Germany" className="bg-[#181920] text-zinc-200">Germany</option>
+                    <option value="Japan" className="bg-[#181920] text-zinc-200">Japan</option>
+                    <option value="Singapore" className="bg-[#181920] text-zinc-200">Singapore</option>
                   </select>
                   <ChevronDown className="w-4 h-4 text-zinc-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
                 </div>
@@ -141,11 +141,11 @@ export function RemotePricingTable() {
                   <select
                     value={selectedCurrency}
                     onChange={(e) => setSelectedCurrency(e.target.value)}
-                    className="w-full appearance-none rounded-lg bg-[#181920] border border-white/10 px-3.5 py-2.5 text-xs sm:text-sm text-zinc-200 focus:outline-none focus:border-[#FF5722] cursor-pointer"
+                    className="w-full appearance-none rounded-lg bg-white/[0.04] border border-white/10 px-3.5 py-2.5 text-xs sm:text-sm text-zinc-200 focus:outline-none focus:border-[#FF5722] cursor-pointer backdrop-blur-sm"
                   >
-                    <option value="USD">USD</option>
-                    <option value="EUR">EUR</option>
-                    <option value="GBP">GBP</option>
+                    <option value="USD" className="bg-[#181920] text-zinc-200">USD</option>
+                    <option value="EUR" className="bg-[#181920] text-zinc-200">EUR</option>
+                    <option value="GBP" className="bg-[#181920] text-zinc-200">GBP</option>
                   </select>
                   <ChevronDown className="w-4 h-4 text-zinc-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
                 </div>
@@ -160,11 +160,11 @@ export function RemotePricingTable() {
                   <select
                     value={selectedIpVersion}
                     onChange={(e) => setSelectedIpVersion(e.target.value)}
-                    className="w-full appearance-none rounded-lg bg-[#181920] border border-white/10 px-3.5 py-2.5 text-xs sm:text-sm text-zinc-200 focus:outline-none focus:border-[#FF5722] cursor-pointer"
+                    className="w-full appearance-none rounded-lg bg-white/[0.04] border border-white/10 px-3.5 py-2.5 text-xs sm:text-sm text-zinc-200 focus:outline-none focus:border-[#FF5722] cursor-pointer backdrop-blur-sm"
                   >
-                    <option value="IPV6">IPV6</option>
-                    <option value="IPV4">IPV4</option>
-                    <option value="Dual Stack">Dual Stack</option>
+                    <option value="IPV6" className="bg-[#181920] text-zinc-200">IPV6</option>
+                    <option value="IPV4" className="bg-[#181920] text-zinc-200">IPV4</option>
+                    <option value="Dual Stack" className="bg-[#181920] text-zinc-200">Dual Stack</option>
                   </select>
                   <ChevronDown className="w-4 h-4 text-zinc-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
                 </div>
@@ -180,10 +180,10 @@ export function RemotePricingTable() {
                     key={dur.label}
                     type="button"
                     onClick={() => setSelectedDuration(dur.label)}
-                    className={`px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-poppins transition-all duration-200 whitespace-nowrap cursor-pointer ${
+                    className={`px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-poppins transition-all duration-200 whitespace-nowrap cursor-pointer backdrop-blur-sm ${
                       isActive
-                        ? "border border-[#FF5722] text-white bg-[#FF5722]/15 shadow-[0_0_15px_rgba(255,87,34,0.3)] font-semibold"
-                        : "text-zinc-400 hover:text-white hover:bg-white/[0.04] border border-white/5"
+                        ? "border border-[#FF5722] text-white bg-[#FF5722]/20 shadow-[0_0_15px_rgba(255,87,34,0.3)] font-semibold"
+                        : "text-zinc-400 hover:text-white hover:bg-white/[0.06] border border-white/10 bg-white/[0.02]"
                     }`}
                   >
                     {dur.label}
@@ -194,14 +194,14 @@ export function RemotePricingTable() {
           </div>
 
           {/* Row 2: Sub-filter Controls (CPU, Memory, Disk, Port Speed) */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 pt-2 border-t border-white/[0.06]">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 pt-2 border-t border-white/[0.08]">
             {/* CPU Toggle + Core dropdown */}
             <div className="space-y-1.5">
               <label className="text-[11px] sm:text-xs text-zinc-400 font-poppins block">
                 CPU
               </label>
               <div className="flex items-center gap-2">
-                <div className="flex items-center rounded-lg bg-[#181920] border border-white/10 p-0.5 flex-shrink-0">
+                <div className="flex items-center rounded-lg bg-white/[0.04] border border-white/10 p-0.5 flex-shrink-0 backdrop-blur-sm">
                   <button
                     type="button"
                     onClick={() => setCpuType("CPU")}
@@ -229,12 +229,12 @@ export function RemotePricingTable() {
                   <select
                     value={selectedCores}
                     onChange={(e) => setSelectedCores(e.target.value)}
-                    className="w-full appearance-none rounded-lg bg-[#181920] border border-white/10 px-3 py-2 text-xs sm:text-sm text-zinc-200 focus:outline-none focus:border-[#FF5722] cursor-pointer"
+                    className="w-full appearance-none rounded-lg bg-white/[0.04] border border-white/10 px-3 py-2 text-xs sm:text-sm text-zinc-200 focus:outline-none focus:border-[#FF5722] cursor-pointer backdrop-blur-sm"
                   >
-                    <option value="2 Core">2 Core</option>
-                    <option value="4 Core">4 Core</option>
-                    <option value="8 Core">8 Core</option>
-                    <option value="16 Core">16 Core</option>
+                    <option value="2 Core" className="bg-[#181920] text-zinc-200">2 Core</option>
+                    <option value="4 Core" className="bg-[#181920] text-zinc-200">4 Core</option>
+                    <option value="8 Core" className="bg-[#181920] text-zinc-200">8 Core</option>
+                    <option value="16 Core" className="bg-[#181920] text-zinc-200">16 Core</option>
                   </select>
                   <ChevronDown className="w-3.5 h-3.5 text-zinc-400 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
                 </div>
@@ -247,7 +247,7 @@ export function RemotePricingTable() {
                 Memory
               </label>
               <div className="flex items-center gap-2">
-                <div className="flex items-center rounded-lg bg-[#181920] border border-white/10 p-0.5 flex-shrink-0">
+                <div className="flex items-center rounded-lg bg-white/[0.04] border border-white/10 p-0.5 flex-shrink-0 backdrop-blur-sm">
                   <button
                     type="button"
                     onClick={() => setMemoryType("DDR4")}
@@ -275,13 +275,13 @@ export function RemotePricingTable() {
                   <select
                     value={selectedRam}
                     onChange={(e) => setSelectedRam(e.target.value)}
-                    className="w-full appearance-none rounded-lg bg-[#181920] border border-white/10 px-3 py-2 text-xs sm:text-sm text-zinc-200 focus:outline-none focus:border-[#FF5722] cursor-pointer"
+                    className="w-full appearance-none rounded-lg bg-white/[0.04] border border-white/10 px-3 py-2 text-xs sm:text-sm text-zinc-200 focus:outline-none focus:border-[#FF5722] cursor-pointer backdrop-blur-sm"
                   >
-                    <option value="4 GB">4 GB</option>
-                    <option value="8 GB">8 GB</option>
-                    <option value="16 GB">16 GB</option>
-                    <option value="32 GB">32 GB</option>
-                    <option value="64 GB">64 GB</option>
+                    <option value="4 GB" className="bg-[#181920] text-zinc-200">4 GB</option>
+                    <option value="8 GB" className="bg-[#181920] text-zinc-200">8 GB</option>
+                    <option value="16 GB" className="bg-[#181920] text-zinc-200">16 GB</option>
+                    <option value="32 GB" className="bg-[#181920] text-zinc-200">32 GB</option>
+                    <option value="64 GB" className="bg-[#181920] text-zinc-200">64 GB</option>
                   </select>
                   <ChevronDown className="w-3.5 h-3.5 text-zinc-400 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
                 </div>
@@ -297,12 +297,12 @@ export function RemotePricingTable() {
                 <select
                   value={selectedDisk}
                   onChange={(e) => setSelectedDisk(e.target.value)}
-                  className="w-full appearance-none rounded-lg bg-[#181920] border border-white/10 px-3.5 py-2 text-xs sm:text-sm text-zinc-200 focus:outline-none focus:border-[#FF5722] cursor-pointer"
+                  className="w-full appearance-none rounded-lg bg-white/[0.04] border border-white/10 px-3.5 py-2 text-xs sm:text-sm text-zinc-200 focus:outline-none focus:border-[#FF5722] cursor-pointer backdrop-blur-sm"
                 >
-                  <option value="IPV6">IPV6</option>
-                  <option value="NVME 35 GB">NVME 35 GB</option>
-                  <option value="NVME 70 GB">NVME 70 GB</option>
-                  <option value="NVME 140 GB">NVME 140 GB</option>
+                  <option value="IPV6" className="bg-[#181920] text-zinc-200">IPV6</option>
+                  <option value="NVME 35 GB" className="bg-[#181920] text-zinc-200">NVME 35 GB</option>
+                  <option value="NVME 70 GB" className="bg-[#181920] text-zinc-200">NVME 70 GB</option>
+                  <option value="NVME 140 GB" className="bg-[#181920] text-zinc-200">NVME 140 GB</option>
                 </select>
                 <ChevronDown className="w-4 h-4 text-zinc-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
               </div>
@@ -317,20 +317,20 @@ export function RemotePricingTable() {
                 <select
                   value={selectedPortSpeed}
                   onChange={(e) => setSelectedPortSpeed(e.target.value)}
-                  className="w-full appearance-none rounded-lg bg-[#181920] border border-white/10 px-3.5 py-2 text-xs sm:text-sm text-zinc-200 focus:outline-none focus:border-[#FF5722] cursor-pointer"
+                  className="w-full appearance-none rounded-lg bg-white/[0.04] border border-white/10 px-3.5 py-2 text-xs sm:text-sm text-zinc-200 focus:outline-none focus:border-[#FF5722] cursor-pointer backdrop-blur-sm"
                 >
-                  <option value="IPV6">IPV6</option>
-                  <option value="100 Mbps">100 Mbps</option>
-                  <option value="500 Mbps">500 Mbps</option>
-                  <option value="1 Gbps">1 Gbps</option>
+                  <option value="IPV6" className="bg-[#181920] text-zinc-200">IPV6</option>
+                  <option value="100 Mbps" className="bg-[#181920] text-zinc-200">100 Mbps</option>
+                  <option value="500 Mbps" className="bg-[#181920] text-zinc-200">500 Mbps</option>
+                  <option value="1 Gbps" className="bg-[#181920] text-zinc-200">1 Gbps</option>
                 </select>
                 <ChevronDown className="w-4 h-4 text-zinc-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
               </div>
             </div>
           </div>
 
-          {/* Pricing Table */}
-          <div className="overflow-x-auto rounded-2xl border border-white/10">
+          {/* Pricing Table with Transparent Blur Container */}
+          <div className="overflow-x-auto rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-md">
             <div className="min-w-[880px]">
               {/* White Table Header matching Figma screenshot */}
               <div className="bg-white text-zinc-900 font-poppins font-bold text-xs sm:text-sm px-6 py-4 grid grid-cols-12 items-center">
@@ -344,14 +344,14 @@ export function RemotePricingTable() {
                 <div className="col-span-1 text-right">Action</div>
               </div>
 
-              {/* Table Body Rows */}
-              <div className="divide-y divide-white/[0.08] bg-[#0c0d12]">
+              {/* Table Body Rows - Fully Transparent with blur shining through */}
+              <div className="divide-y divide-white/[0.08] bg-transparent">
                 {BASE_PLANS.map((plan, idx) => {
                   const finalPrice = (plan.basePrice * activeDurationObj.discount).toFixed(2);
                   return (
                     <div
                       key={`${plan.id}-${idx}`}
-                      className="px-6 py-4 sm:py-5 grid grid-cols-12 items-center text-xs sm:text-sm font-poppins text-zinc-300 hover:bg-white/[0.03] transition-colors"
+                      className="px-6 py-4 sm:py-5 grid grid-cols-12 items-center text-xs sm:text-sm font-poppins text-zinc-300 hover:bg-white/[0.05] transition-colors"
                     >
                       <div className="col-span-2 font-medium text-white">
                         {plan.planName}
