@@ -86,10 +86,10 @@ export function BackgroundGlowForAggregator({
 
       {/* Bottom Right Large Signature Cosmic Ring */}
       <div
-        className="absolute top-[550px] sm:top-[650px] lg:top-[720px] -right-[1200px] sm:-right-[1550px] lg:-right-[1950px]
-    w-[1700px] h-[1700px]
-    sm:w-[2100px] sm:h-[2100px]
-    lg:w-[2700px] lg:h-[2700px]
+        className="absolute top-[80px] sm:top-[120px] lg:top-[160px] -right-[1450px] sm:-right-[2050px] lg:-right-[2700px]
+    w-[2300px] h-[2300px]
+    sm:w-[3000px] sm:h-[3000px]
+    lg:w-[3800px] lg:h-[3800px]
     rounded-full border border-white/20
     shadow-[0_0_35px_rgba(255,255,255,0.10),inset_0_0_55px_rgba(255,87,34,0.30),inset_0_0_110px_rgba(255,87,34,0.16)]
     pointer-events-none"
