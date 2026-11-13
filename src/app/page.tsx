@@ -30,7 +30,8 @@ export default function Home() {
           description="Popular casino games come together in one Game Aggregator hub. With our game aggregation platform it is easy and simple to add this massive portfolio to any gaming website through just one API integration."
           ctaText="Book a Free Demo"
           ctaHref="/contact"
-          iphoneImage="/images/iphone-rounded.png"
+          iphoneImage="/images/newiphone.png"
+          dashboardImage="/images/newdesktop.png"
         />
 
         {/* Top Game Providers & Statistics Section */}

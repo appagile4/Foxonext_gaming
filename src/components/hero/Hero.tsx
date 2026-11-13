@@ -25,8 +25,8 @@ export function Hero({
   description = "Popular casino games come together in one Game Aggregator hub. With our game aggregation platform it is easy and simple to add this massive portfolio to any gaming website through just one API integration.",
   ctaText = "Book a Free Demo",
   ctaHref = "/contact",
-  iphoneImage = "/images/iphone-rounded.png",
-  dashboardImage = "/images/dashboard-screen.png",
+  iphoneImage = "/images/newiphone.png",
+  dashboardImage = "/images/newdesktop.png",
   useComposite = true,
 }: HeroProps) {
   return (
@@ -69,12 +69,21 @@ export function Hero({
         </div>
 
         {/* Right Column: Devices Mockup (iPhone + Dashboard) */}
+        {/* Right Column: Two Images */}
         <div className="lg:col-span-6 flex items-center justify-center lg:justify-end z-10 w-full mt-4 lg:mt-0">
-          <DeviceShowcase
-            iphoneImage={iphoneImage}
-            dashboardImage={dashboardImage}
-            useComposite={useComposite}
-          />
+          <div className="flex items-center justify-center gap-4 sm:gap-6 w-full">
+            <img
+              src={iphoneImage}
+              alt="iPhone Preview"
+              className="w-1/2 max-w-[260px] h-auto object-contain"
+            />
+
+            <img
+              src={dashboardImage}
+              alt="Dashboard Preview"
+              className="w-1/2 max-w-[420px] h-auto object-contain"
+            />
+          </div>
         </div>
       </div>
 

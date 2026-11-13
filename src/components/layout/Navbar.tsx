@@ -116,7 +116,20 @@ export function Navbar({ logoSrc = "/images/logo.png" }: NavbarProps) {
 
             {langDropdownOpen && (
               <div className="absolute right-0 mt-2 w-28 rounded-xl bg-[#14151f] border border-white/10 shadow-xl py-1.5 z-50 backdrop-blur-md">
-                {["EN", "BN", "ZH", "JA", "TH", "UR", "RU"].map((lang) => (
+                {[
+                  "English",
+                  "Bengali",
+                  "Chinese",
+                  "Japanese",
+                  "Thai",
+                  "Urdu",
+                  "Russian",
+                  "Spanish",
+                  "Portuguese",
+                  "German",
+                  "French",
+                  "Indonesian",
+                ].map((lang) => (
                   <button
                     key={lang}
                     onClick={() => {
