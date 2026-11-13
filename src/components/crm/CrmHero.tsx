@@ -13,7 +13,6 @@ export function CrmHero() {
       <div className="relative z-30">
         <Navbar logoSrc="/images/logo.png" />
       </div>
-
       {/* Main Hero Content */}
       <div className="relative z-20 w-[92%] sm:w-[88%] lg:w-[82%] xl:w-[78%] max-w-[1440px] mx-auto pt-12 sm:pt-20 lg:pt-28 xl:pt-32 pb-14 sm:pb-18 lg:pb-22 flex-1 flex flex-col justify-between">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center my-auto">
