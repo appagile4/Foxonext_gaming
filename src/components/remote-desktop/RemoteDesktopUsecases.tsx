@@ -87,9 +87,9 @@ export function RemoteDesktopUsecases() {
         </div>
 
         {/* 2-Column Grid: Left Accordion & Right Dynamic 3D Illustration */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           {/* Left Column: Interactive Accordion */}
-          <div className="lg:col-span-7 space-y-2">
+          <div className="lg:col-span-6 space-y-2">
             {USECASES.map((item) => {
               const isOpen = activeId === item.id;
               return (
@@ -141,28 +141,28 @@ export function RemoteDesktopUsecases() {
             })}
           </div>
 
-          {/* Right Column: Dynamic 3D Illustration matching Active Accordion Item */}
-          <div className="lg:col-span-5 flex items-center justify-center relative min-h-[380px] sm:min-h-[460px]">
+          {/* Right Column: Large Dynamic 3D Illustration matching Active Accordion Item */}
+          <div className="lg:col-span-6 flex items-center justify-center lg:justify-end relative min-h-[440px] sm:min-h-[520px] lg:min-h-[580px] xl:min-h-[640px]">
             {/* 1. Remote Work Desktop: Peach Arcade Joystick + PS5 Controller */}
             {activeId === "work-desktop" && (
-              <div className="relative w-full max-w-[420px] sm:max-w-[480px] aspect-square flex items-center justify-center animate-fadeIn">
-                <div className="relative w-[300px] sm:w-[350px] aspect-square rounded-[32px] overflow-hidden flex items-center justify-center shadow-[0_25px_60px_rgba(0,0,0,0.6)] ml-auto mr-4">
+              <div className="relative w-full max-w-[500px] sm:max-w-[580px] lg:max-w-[620px] aspect-square flex items-center justify-center animate-fadeIn">
+                <div className="relative w-[340px] sm:w-[420px] lg:w-[460px] aspect-square rounded-[36px] overflow-hidden flex items-center justify-center shadow-[0_30px_70px_rgba(0,0,0,0.65)] ml-auto mr-2 sm:mr-4">
                   <Image
                     src="/images/remote-desktop/usecase-joystick.png"
                     alt="Remote Desktop Arcade Joystick Hardware"
                     width={400}
                     height={300}
-                    className="w-full h-full object-contain filter drop-shadow-[0_15px_30px_rgba(0,0,0,0.4)]"
+                    className="w-full h-full object-contain filter drop-shadow-[0_20px_40px_rgba(0,0,0,0.45)]"
                     priority
                   />
                 </div>
-                <div className="absolute -bottom-2 -left-2 sm:-bottom-4 sm:-left-6 w-[220px] sm:w-[260px] md:w-[280px] aspect-[390/280] z-20 animate-float">
+                <div className="absolute -bottom-2 -left-2 sm:-bottom-4 sm:-left-4 lg:-left-6 w-[260px] sm:w-[320px] lg:w-[360px] aspect-[390/280] z-20 animate-float">
                   <Image
                     src="/images/remote-desktop/usecase-controller.png"
                     alt="PS5 Gaming Controller Cloud Streaming"
                     width={390}
                     height={280}
-                    className="w-full h-full object-contain filter drop-shadow-[0_20px_40px_rgba(0,0,0,0.85)]"
+                    className="w-full h-full object-contain filter drop-shadow-[0_25px_50px_rgba(0,0,0,0.85)]"
                     priority
                   />
                 </div>
@@ -171,14 +171,14 @@ export function RemoteDesktopUsecases() {
 
             {/* 2. Web Tasks and Browser Automation: 3D Gear */}
             {activeId === "browser-automation" && (
-              <div className="relative w-full max-w-[440px] sm:max-w-[500px] aspect-square flex items-center justify-center animate-fadeIn">
-                <div className="relative w-[340px] sm:w-[400px] md:w-[450px] aspect-square flex items-center justify-center animate-float">
+              <div className="relative w-full max-w-[520px] sm:max-w-[600px] lg:max-w-[660px] aspect-square flex items-center justify-center animate-fadeIn">
+                <div className="relative w-[380px] sm:w-[480px] lg:w-[560px] xl:w-[620px] aspect-square flex items-center justify-center animate-float">
                   <Image
                     src="/images/remote-desktop/usecase-gear.png"
                     alt="Web Tasks and Browser Automation 3D Gear"
                     width={740}
                     height={740}
-                    className="w-full h-full object-contain filter drop-shadow-[0_25px_60px_rgba(255,87,34,0.35)]"
+                    className="w-full h-full object-contain filter drop-shadow-[0_30px_70px_rgba(255,87,34,0.4)]"
                     priority
                   />
                 </div>
@@ -187,14 +187,14 @@ export function RemoteDesktopUsecases() {
 
             {/* 3. Financial Tools and Trading Platforms: 3D Phone + Candlestick + Coins + Card */}
             {activeId === "financial-tools" && (
-              <div className="relative w-full max-w-[460px] sm:max-w-[520px] aspect-square flex items-center justify-center animate-fadeIn">
-                <div className="relative w-[360px] sm:w-[420px] md:w-[470px] aspect-square flex items-center justify-center animate-float">
+              <div className="relative w-full max-w-[540px] sm:max-w-[620px] lg:max-w-[680px] aspect-square flex items-center justify-center animate-fadeIn">
+                <div className="relative w-[400px] sm:w-[500px] lg:w-[580px] xl:w-[640px] aspect-square flex items-center justify-center animate-float">
                   <Image
                     src="/images/remote-desktop/usecase-trading.png"
                     alt="Financial Tools and Trading Platforms 3D Composite"
                     width={1024}
                     height={1024}
-                    className="w-full h-full object-contain filter drop-shadow-[0_25px_60px_rgba(255,165,0,0.3)]"
+                    className="w-full h-full object-contain filter drop-shadow-[0_30px_70px_rgba(255,165,0,0.35)]"
                     priority
                   />
                 </div>
@@ -203,14 +203,14 @@ export function RemoteDesktopUsecases() {
 
             {/* 4. Light Application Hosting: 3D Desktop Monitor with Server Blades */}
             {activeId === "light-hosting" && (
-              <div className="relative w-full max-w-[440px] sm:max-w-[500px] aspect-square flex items-center justify-center animate-fadeIn">
-                <div className="relative w-[340px] sm:w-[400px] md:w-[450px] aspect-square flex items-center justify-center animate-float">
+              <div className="relative w-full max-w-[520px] sm:max-w-[600px] lg:max-w-[660px] aspect-square flex items-center justify-center animate-fadeIn">
+                <div className="relative w-[380px] sm:w-[480px] lg:w-[560px] xl:w-[620px] aspect-square flex items-center justify-center animate-float">
                   <Image
                     src="/images/remote-desktop/usecase-monitor.png"
                     alt="Light Application Hosting 3D Monitor with Server Blades"
                     width={450}
                     height={450}
-                    className="w-full h-full object-contain filter drop-shadow-[0_25px_60px_rgba(0,180,255,0.3)]"
+                    className="w-full h-full object-contain filter drop-shadow-[0_30px_70px_rgba(0,180,255,0.35)]"
                     priority
                   />
                 </div>
