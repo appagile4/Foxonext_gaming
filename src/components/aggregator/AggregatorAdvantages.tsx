@@ -126,7 +126,7 @@ export function AggregatorAdvantages() {
             return (
               <div
                 key={adv.id}
-                className="relative rounded-2xl sm:rounded-3xl bg-[#0c0d12]/90 border border-white/[0.08] p-6 sm:p-10 lg:p-12 overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.7)]"
+                className="relative rounded-2xl sm:rounded-3xl bg-white/[0.03] backdrop-blur-xl border border-white/[0.08] p-6 sm:p-10 lg:p-12 overflow-hidden shadow-[0_8px_32px_rgba(0,0,0,0.25)]"
               >
                 <div
                   className={`grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center ${
