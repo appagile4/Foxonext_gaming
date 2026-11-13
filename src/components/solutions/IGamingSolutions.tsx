@@ -126,15 +126,15 @@ export function IGamingSolutions() {
 
                 {/* Action Buttons */}
                 <div className="flex items-center gap-4 sm:gap-5 pt-3">
-                  <a
-                    href="#quote"
+                  <Link
+                    href="/contact"
                     className="font-poppins inline-flex items-center justify-center px-7 py-3 sm:px-8 sm:py-3.5 rounded-[6px] bg-[#FF5722] hover:bg-[#ff6e3d] text-white text-sm sm:text-base font-medium shadow-[0_4px_18px_rgba(255,87,34,0.4)] hover:shadow-[0_4px_24px_rgba(255,87,34,0.6)] transition-all duration-300"
                     style={{
                       fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                     }}
                   >
                     Get Quote
-                  </a>
+                  </Link>
 
                   <Link
                     href="/white-label-solution"
@@ -250,15 +250,15 @@ export function IGamingSolutions() {
 
                 {/* Action Buttons */}
                 <div className="flex items-center gap-4 sm:gap-5 pt-3">
-                  <a
-                    href="#quote"
+                  <Link
+                    href="/contact"
                     className="font-poppins inline-flex items-center justify-center px-7 py-3 sm:px-8 sm:py-3.5 rounded-[6px] bg-[#FF5722] hover:bg-[#ff6e3d] text-white text-sm sm:text-base font-medium shadow-[0_4px_18px_rgba(255,87,34,0.4)] hover:shadow-[0_4px_24px_rgba(255,87,34,0.6)] transition-all duration-300"
                     style={{
                       fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                     }}
                   >
                     Get Quote
-                  </a>
+                  </Link>
 
                   <Link
                     href="/remote-desktop"

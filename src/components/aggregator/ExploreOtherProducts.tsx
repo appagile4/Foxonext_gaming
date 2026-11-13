@@ -236,7 +236,7 @@ export function ExploreOtherProducts() {
                 {/* Action Buttons: [Get Quote] & [Know More] */}
                 <div className="flex items-center gap-4 pt-3">
                   <Link
-                    href="#quote"
+                    href="/contact"
                     className="inline-flex items-center justify-center px-6 sm:px-7 py-2.5 sm:py-3 rounded bg-gradient-to-r from-[#FF5722] to-[#E94E1B] hover:brightness-110 text-white font-poppins text-xs sm:text-sm font-semibold tracking-wide shadow-[0_4px_16px_rgba(233,78,27,0.35)] transition-all duration-200"
                     style={{
                       fontFamily: "var(--font-poppins), 'Poppins', sans-serif",

@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 interface ProductCardProps {
   title: string;
@@ -257,25 +258,25 @@ export function IGamingProducts() {
 
                 {/* 2 Action Buttons Side-by-Side: Get Quote & Know More */}
                 <div className="flex items-center gap-4 pt-2">
-                  <a
-                    href="#quote"
+                  <Link
+                    href="/contact"
                     className="font-poppins inline-flex items-center justify-center px-6 py-2.5 rounded-[4px] bg-[#FF5722] hover:bg-[#ff6e3d] text-white text-xs sm:text-sm font-medium shadow-[0_4px_16px_rgba(255,87,34,0.35)] hover:shadow-[0_4px_22px_rgba(255,87,34,0.55)] transition-all duration-300"
                     style={{
                       fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                     }}
                   >
                     Get Quote
-                  </a>
+                  </Link>
 
-                  <a
-                    href={product.href}
+                  <Link
+                    href={product.href || "#"}
                     className="font-poppins inline-flex items-center justify-center px-6 py-2.5 rounded-[4px] bg-black/95 hover:bg-zinc-900 text-white border border-white/60 hover:border-white text-xs sm:text-sm font-medium transition-all duration-300"
                     style={{
                       fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                     }}
                   >
                     Know More
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

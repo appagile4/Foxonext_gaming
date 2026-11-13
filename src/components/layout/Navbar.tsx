@@ -13,7 +13,9 @@ interface NavbarProps {
 
 export function Navbar({ logoSrc = "/images/logo.png" }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [expandedMobileItem, setExpandedMobileItem] = useState<string | null>(null);
+  const [expandedMobileItem, setExpandedMobileItem] = useState<string | null>(
+    null,
+  );
   const [language, setLanguage] = useState("EN");
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
 
@@ -114,7 +116,7 @@ export function Navbar({ logoSrc = "/images/logo.png" }: NavbarProps) {
 
             {langDropdownOpen && (
               <div className="absolute right-0 mt-2 w-28 rounded-xl bg-[#14151f] border border-white/10 shadow-xl py-1.5 z-50 backdrop-blur-md">
-                {["EN", "ES", "PT", "DE"].map((lang) => (
+                {["EN", "BN", "ZH", "JA", "TH", "UR", "RU"].map((lang) => (
                   <button
                     key={lang}
                     onClick={() => {

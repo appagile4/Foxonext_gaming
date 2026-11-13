@@ -218,7 +218,7 @@ export function ExploreOtherProductsForWhiteLabelSolutions() {
                 {/* 2 Action Buttons Side-by-Side: Get Quote & Know More */}
                 <div className="flex items-center gap-4 pt-2">
                   <Link
-                    href="#contact"
+                    href="/contact"
                     className="font-poppins inline-flex items-center justify-center px-6 py-2.5 rounded-[4px] bg-[#FF5722] hover:bg-[#ff6e3d] text-white text-xs sm:text-sm font-medium shadow-[0_4px_16px_rgba(255,87,34,0.35)] hover:shadow-[0_4px_22px_rgba(255,87,34,0.55)] transition-all duration-300"
                     style={{
                       fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
@@ -396,7 +396,7 @@ export function ExploreOtherProductsForWhiteLabelSolutions() {
                 {/* 2 Action Buttons Side-by-Side: Get Quote & Know More */}
                 <div className="flex items-center gap-4 pt-2">
                   <Link
-                    href="#contact"
+                    href="/contact"
                     className="font-poppins inline-flex items-center justify-center px-6 py-2.5 rounded-[4px] bg-[#FF5722] hover:bg-[#ff6e3d] text-white text-xs sm:text-sm font-medium shadow-[0_4px_16px_rgba(255,87,34,0.35)] hover:shadow-[0_4px_22px_rgba(255,87,34,0.55)] transition-all duration-300"
                     style={{
                       fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
@@ -500,7 +500,7 @@ export function ExploreOtherProductsForWhiteLabelSolutions() {
                 {/* Action Buttons: [Get Quote] & [Know More] */}
                 <div className="flex items-center gap-4 pt-3">
                   <Link
-                    href="#contact"
+                    href="/contact"
                     className="inline-flex items-center justify-center px-6 sm:px-7 py-2.5 sm:py-3 rounded bg-gradient-to-r from-[#FF5722] to-[#E94E1B] hover:brightness-110 text-white font-poppins text-xs sm:text-sm font-semibold tracking-wide shadow-[0_4px_16px_rgba(255,87,34,0.35)] transition-all duration-200"
                     style={{
                       fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
