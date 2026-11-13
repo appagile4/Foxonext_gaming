@@ -211,26 +211,6 @@ export function CrmKeyFeatures() {
         {/* Deep base background */}
         <div className="absolute inset-0 bg-[#0a0b0f]" />
 
-        {/* Right Curved Warm Rust-Brown Backdrop */}
-        <svg
-          className="absolute top-0 right-0 w-[55%] lg:w-[50%] h-full min-w-[420px] pointer-events-none"
-          viewBox="0 0 550 700"
-          preserveAspectRatio="none"
-          fill="none"
-        >
-          <path
-            d="M 45,0 C 25,160 -10,310 18,480 C 35,580 75,660 65,700 L 550,700 L 550,0 Z"
-            fill="url(#crmRustBrownGrad)"
-          />
-          <defs>
-            <linearGradient id="crmRustBrownGrad" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="#5d1e08" />
-              <stop offset="50%" stopColor="#4c1706" />
-              <stop offset="100%" stopColor="#300d02" />
-            </linearGradient>
-          </defs>
-        </svg>
-
         {/* Soft Ambient Radial Light Accent */}
         <div
           className="absolute top-1/4 right-[5%] w-[450px] h-[450px] rounded-full blur-[140px] opacity-25 mix-blend-screen pointer-events-none"
