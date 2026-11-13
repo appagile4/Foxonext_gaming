@@ -28,7 +28,7 @@ const TABS: KeyFeatureTab[] = [
       "Compatibility across all devices",
       "Multi-currency Wallet Support",
     ],
-    image: "/images/white-label/feature-back-office.png",
+    image: "/images/white-label/office.png",
     imageAlt: "Back-Office Management 3D Folder with Documents",
   },
   {
@@ -43,7 +43,7 @@ const TABS: KeyFeatureTab[] = [
       "Compatibility across all devices",
       "Multi-currency Wallet Support",
     ],
-    image: "/images/white-label/feature-marketing.png",
+    image: "/images/white-label/marketing.png",
     imageAlt: "Marketing & Bonus Tools 3D Megaphone",
   },
   {
@@ -58,7 +58,7 @@ const TABS: KeyFeatureTab[] = [
       "Compatibility across all devices",
       "Multi-currency Wallet Support",
     ],
-    image: "/images/white-label/feature-gamification.png",
+    image: "/images/white-label/gamification.png",
     imageAlt: "Gamification/Games Management 3D Joker and Ace Cards",
   },
   {
@@ -73,8 +73,9 @@ const TABS: KeyFeatureTab[] = [
       "Compatibility across all devices",
       "Multi-currency Wallet Support",
     ],
-    image: "/images/white-label/feature-payment.png",
-    imageAlt: "Payment System & Bonus Configuration 3D Credit Card with Security Shield",
+    image: "/images/white-label/payment.png",
+    imageAlt:
+      "Payment System & Bonus Configuration 3D Credit Card with Security Shield",
   },
   {
     id: "campaign-building",
@@ -88,7 +89,7 @@ const TABS: KeyFeatureTab[] = [
       "Compatibility across all devices",
       "Multi-currency Wallet Support",
     ],
-    image: "/images/white-label/feature-campaign.png",
+    image: "/images/white-label/campaign.png",
     imageAlt: "Campaign Building 3D Dollar Coin with Connected Nodes",
   },
 ];
@@ -168,8 +169,7 @@ export function WhiteLabelKeyFeatures() {
                       : "text-zinc-300 hover:text-white hover:bg-white/[0.04]"
                   }`}
                   style={{
-                    fontFamily:
-                      "var(--font-poppins), 'Poppins', sans-serif",
+                    fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                   }}
                 >
                   {tab.tabLabel}

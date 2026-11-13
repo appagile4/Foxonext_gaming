@@ -90,7 +90,7 @@ export function WhiteLabelHero() {
           <div className="lg:col-span-6 flex items-center justify-center relative">
             <div className="relative w-full max-w-[540px] sm:max-w-[620px] lg:max-w-[700px] flex items-center justify-center">
               <Image
-                src="/images/white-label/white-label-hero.png"
+                src="/images/white-label/hero.png"
                 alt="White Label Solution Box, Dashboard Laptop and Mobile App"
                 width={798}
                 height={630}
