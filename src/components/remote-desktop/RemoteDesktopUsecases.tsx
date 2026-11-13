@@ -8,6 +8,7 @@ interface UsecaseItem {
   id: string;
   title: string;
   description: string;
+  imageAlt: string;
 }
 
 const USECASES: UsecaseItem[] = [
@@ -16,24 +17,28 @@ const USECASES: UsecaseItem[] = [
     title: "1. Remote Work Desktop",
     description:
       "Windows VPS on RDP provides you with a consistent remote workspace, which will never go offline. You can access any device and store all your files and applications in a safe place.",
+    imageAlt: "Remote Desktop Gaming Hardware & Cloud Workspace",
   },
   {
     id: "browser-automation",
     title: "2. Web Tasks and Browser Automation",
     description:
-      "Run heavy web automation, multi-account management, anti-detect browser profiles, and continuous scraping workloads seamlessly with dedicated low-latency IP addresses.",
+      "You can access any device and store all your files and applications in a safe place. Windows VPS on RDP provides you with a consistent remote workspace, which will never go offline.",
+    imageAlt: "Web Tasks and Browser Automation 3D Gear",
   },
   {
     id: "financial-tools",
     title: "3. Financial Tools and Trading Platforms",
     description:
-      "Deploy MetaTrader 4/5, automated algorithmic trading bots, and high-frequency execution scripts with 99.99% uptime and zero jitter across top global exchanges.",
+      "Windows VPS on RDP provides you with a consistent remote workspace, which will never go offline. You can access any device and store all your files and applications in a safe place.",
+    imageAlt: "Financial Tools and Trading Platforms 3D Composite",
   },
   {
     id: "light-hosting",
     title: "4. Light Application Hosting",
     description:
-      "Host development sandbox environments, staging APIs, lightweight databases, and background services without the overhead of heavy dedicated cloud instances.",
+      "You can access any device and store all your files and applications in a safe place. Windows VPS on RDP provides you with a consistent remote workspace, which will never go offline.",
+    imageAlt: "Light Application Hosting 3D Monitor and Server Blades",
   },
 ];
 
@@ -41,12 +46,12 @@ export function RemoteDesktopUsecases() {
   const [activeId, setActiveId] = useState<string>("work-desktop");
 
   const toggleAccordion = (id: string) => {
-    setActiveId((prev) => (prev === id ? "" : id));
+    setActiveId(id);
   };
 
   return (
     <section className="relative w-full py-18 sm:py-24 lg:py-28 bg-transparent select-none z-10 overflow-hidden">
-      <div className="relative z-10 w-[92%] sm:w-[88%] lg:w-[82%] xl:w-[78%] max-w-[1440px] mx-auto space-y-12 sm:space-y-16">
+      <div className="relative z-10 w-[92%] sm:w-[88%] lg:w-[84%] xl:w-[80%] max-w-[1440px] mx-auto space-y-12 sm:space-y-16">
         {/* Header with Orange Brush Mark Accent */}
         <div className="relative inline-flex items-center">
           <div className="absolute -left-3 sm:-left-4 -top-3 w-32 sm:w-40 h-14 -z-0 opacity-95 pointer-events-none">
@@ -81,7 +86,7 @@ export function RemoteDesktopUsecases() {
           </div>
         </div>
 
-        {/* 2-Column Grid: Left Accordion & Right 3D Gaming Hardware Composite */}
+        {/* 2-Column Grid: Left Accordion & Right Dynamic 3D Illustration */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Left Column: Interactive Accordion */}
           <div className="lg:col-span-7 space-y-2">
@@ -114,10 +119,12 @@ export function RemoteDesktopUsecases() {
                     </span>
                   </button>
 
-                  {/* Expanded Content with Smooth Collapse Animation */}
+                  {/* Expanded Content with Smooth Animation */}
                   <div
                     className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                      isOpen ? "max-h-48 pb-6 opacity-100" : "max-h-0 pb-0 opacity-0"
+                      isOpen
+                        ? "max-h-48 pb-6 opacity-100"
+                        : "max-h-0 pb-0 opacity-0 pointer-events-none"
                     }`}
                   >
                     <p
@@ -134,31 +141,81 @@ export function RemoteDesktopUsecases() {
             })}
           </div>
 
-          {/* Right Column: 3D Hardware Composite (Peach Arcade Joystick + PS5 Controller) */}
+          {/* Right Column: Dynamic 3D Illustration matching Active Accordion Item */}
           <div className="lg:col-span-5 flex items-center justify-center relative min-h-[380px] sm:min-h-[460px]">
-            <div className="relative w-full max-w-[420px] sm:max-w-[480px] aspect-square flex items-center justify-center">
-              {/* Peach Arcade Joystick Card in Background */}
-              <div className="relative w-[300px] sm:w-[350px] aspect-square rounded-[32px] overflow-hidden flex items-center justify-center shadow-[0_25px_60px_rgba(0,0,0,0.6)] ml-auto mr-4">
-                <Image
-                  src="/images/remote-desktop/usecase-joystick.png"
-                  alt="Remote Desktop Arcade Joystick Hardware"
-                  width={400}
-                  height={300}
-                  className="w-full h-full object-contain filter drop-shadow-[0_15px_30px_rgba(0,0,0,0.4)]"
-                />
+            {/* 1. Remote Work Desktop: Peach Arcade Joystick + PS5 Controller */}
+            {activeId === "work-desktop" && (
+              <div className="relative w-full max-w-[420px] sm:max-w-[480px] aspect-square flex items-center justify-center animate-fadeIn">
+                <div className="relative w-[300px] sm:w-[350px] aspect-square rounded-[32px] overflow-hidden flex items-center justify-center shadow-[0_25px_60px_rgba(0,0,0,0.6)] ml-auto mr-4">
+                  <Image
+                    src="/images/remote-desktop/usecase-joystick.png"
+                    alt="Remote Desktop Arcade Joystick Hardware"
+                    width={400}
+                    height={300}
+                    className="w-full h-full object-contain filter drop-shadow-[0_15px_30px_rgba(0,0,0,0.4)]"
+                    priority
+                  />
+                </div>
+                <div className="absolute -bottom-2 -left-2 sm:-bottom-4 sm:-left-6 w-[220px] sm:w-[260px] md:w-[280px] aspect-[390/280] z-20 animate-float">
+                  <Image
+                    src="/images/remote-desktop/usecase-controller.png"
+                    alt="PS5 Gaming Controller Cloud Streaming"
+                    width={390}
+                    height={280}
+                    className="w-full h-full object-contain filter drop-shadow-[0_20px_40px_rgba(0,0,0,0.85)]"
+                    priority
+                  />
+                </div>
               </div>
+            )}
 
-              {/* PS5 Wireless Controller in Foreground (overlapping left/bottom) */}
-              <div className="absolute -bottom-2 -left-2 sm:-bottom-4 sm:-left-6 w-[220px] sm:w-[260px] md:w-[280px] aspect-[390/280] z-20 animate-float">
-                <Image
-                  src="/images/remote-desktop/usecase-controller.png"
-                  alt="PS5 Gaming Controller Cloud Streaming"
-                  width={390}
-                  height={280}
-                  className="w-full h-full object-contain filter drop-shadow-[0_20px_40px_rgba(0,0,0,0.85)]"
-                />
+            {/* 2. Web Tasks and Browser Automation: 3D Gear */}
+            {activeId === "browser-automation" && (
+              <div className="relative w-full max-w-[440px] sm:max-w-[500px] aspect-square flex items-center justify-center animate-fadeIn">
+                <div className="relative w-[340px] sm:w-[400px] md:w-[450px] aspect-square flex items-center justify-center animate-float">
+                  <Image
+                    src="/images/remote-desktop/usecase-gear.png"
+                    alt="Web Tasks and Browser Automation 3D Gear"
+                    width={740}
+                    height={740}
+                    className="w-full h-full object-contain filter drop-shadow-[0_25px_60px_rgba(255,87,34,0.35)]"
+                    priority
+                  />
+                </div>
               </div>
-            </div>
+            )}
+
+            {/* 3. Financial Tools and Trading Platforms: 3D Phone + Candlestick + Coins + Card */}
+            {activeId === "financial-tools" && (
+              <div className="relative w-full max-w-[460px] sm:max-w-[520px] aspect-square flex items-center justify-center animate-fadeIn">
+                <div className="relative w-[360px] sm:w-[420px] md:w-[470px] aspect-square flex items-center justify-center animate-float">
+                  <Image
+                    src="/images/remote-desktop/usecase-trading.png"
+                    alt="Financial Tools and Trading Platforms 3D Composite"
+                    width={1024}
+                    height={1024}
+                    className="w-full h-full object-contain filter drop-shadow-[0_25px_60px_rgba(255,165,0,0.3)]"
+                    priority
+                  />
+                </div>
+              </div>
+            )}
+
+            {/* 4. Light Application Hosting: 3D Desktop Monitor with Server Blades */}
+            {activeId === "light-hosting" && (
+              <div className="relative w-full max-w-[440px] sm:max-w-[500px] aspect-square flex items-center justify-center animate-fadeIn">
+                <div className="relative w-[340px] sm:w-[400px] md:w-[450px] aspect-square flex items-center justify-center animate-float">
+                  <Image
+                    src="/images/remote-desktop/usecase-monitor.png"
+                    alt="Light Application Hosting 3D Monitor with Server Blades"
+                    width={450}
+                    height={450}
+                    className="w-full h-full object-contain filter drop-shadow-[0_25px_60px_rgba(0,180,255,0.3)]"
+                    priority
+                  />
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>

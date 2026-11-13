@@ -42,12 +42,13 @@ export function RemoteDesktopHero() {
           {/* Left Column: Heading, Description, Bullets & CTA */}
           <div className="lg:col-span-7 space-y-6 sm:space-y-7">
             <h1
-              className="font-red-rose text-xl sm:text-2xl md:text-3xl lg:text-[40px] xl:text-[48px] 2xl:text-[54px] text-white tracking-tight leading-tight sm:whitespace-nowrap"
+              className="font-red-rose  text-xl sm:text-2xl md:text-3xl lg:text-[40px] xl:text-[48px] 2xl:text-[54px] text-white tracking-tight leading-tight sm:whitespace-nowrap"
               style={{
                 fontFamily: "var(--font-red-rose), 'Red Rose', serif",
               }}
             >
-              We Provide <span className="font-bold">Remote Server Rental</span>
+              We Provide{" "}
+              <span className="font-bold ">Remote Server Rental</span>
             </h1>
 
             <p
