@@ -65,7 +65,7 @@ export function Navbar({ logoSrc = "/images/logo.png" }: NavbarProps) {
 
                 {/* Animated Dropdown Menu for Subtabs */}
                 {hasSub && (
-                  <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 z-50 pointer-events-none opacity-0 -translate-y-2 group-hover:pointer-events-auto group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out">
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 pt-5 sm:pt-6 z-50 pointer-events-none opacity-0 -translate-y-2 group-hover:pointer-events-auto group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out">
                     <div className="min-w-[220px] rounded-xl bg-[#0f1017]/95 border border-white/10 backdrop-blur-xl shadow-[0_16px_40px_rgba(0,0,0,0.85),0_0_25px_rgba(255,87,34,0.15)] p-2 space-y-1">
                       {item.subItems!.map((sub) => (
                         <Link

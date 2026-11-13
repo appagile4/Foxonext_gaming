@@ -144,12 +144,11 @@ export function RemoteDesktopUsecases() {
           </div>
 
           {/* Right Column: Large Dynamic 3D Illustration matching Active Accordion Item */}
-          <div className="lg:col-span-6 flex items-center justify-center lg:justify-end relative min-h-[440px] sm:min-h-[520px] lg:min-h-[580px] xl:min-h-[640px] self-center -translate-y-8 sm:-translate-y-10 lg:-translate-y-12">
-            {" "}
+          <div className="lg:col-span-6 flex items-center justify-center lg:justify-end relative min-h-[440px] sm:min-h-[520px] lg:min-h-[580px] xl:min-h-[640px] self-center -translate-y-16 sm:-translate-y-20 lg:-translate-y-28 xl:-translate-y-32">
             {/* 1. Remote Work Desktop: Peach Arcade Joystick + PS5 Controller */}
             {activeId === "work-desktop" && (
               <div className="relative w-full max-w-[600px] sm:max-w-[700px] lg:max-w-[760px] aspect-square flex items-center justify-center animate-fadeIn">
-                <div className="relative w-[420px] sm:w-[520px] lg:w-[580px] aspect-square rounded-[36px] overflow-hidden flex items-center justify-center shadow-[0_30px_70px_rgba(0,0,0,0.65)] ml-auto mr-2 sm:mr-4">
+                <div className="relative w-[420px] sm:w-[520px] lg:w-[580px] aspect-square  overflow-hidden flex items-center justify-center  ml-auto mr-2 sm:mr-4">
                   <Image
                     src="/images/remote-desktop/usecase-joystick.png"
                     alt="Remote Desktop Arcade Joystick Hardware"
