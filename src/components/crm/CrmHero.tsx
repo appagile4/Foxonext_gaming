@@ -8,7 +8,7 @@ import { Milestones } from "@/components/hero/Milestones";
 
 export function CrmHero() {
   return (
-    <section className="relative w-full min-h-[92vh] lg:min-h-[900px] xl:min-h-[960px] flex flex-col justify-between overflow-hidden bg-transparent select-none z-10">
+    <section className="relative w-full min-h-[92vh] lg:min-h-[900px] xl:min-h-[960px] flex flex-col justify-between overflow-hidden bg-[#07080c] select-none z-10">
       {/* Scoped Top Navbar */}
       <div className="relative z-30">
         <Navbar logoSrc="/images/logo.png" />
@@ -41,9 +41,9 @@ export function CrmHero() {
                 API integration.
               </p>
               <p>
-                The SOFTSWISS Game Aggregator team assists at each step of
-                integration and works together with the game content providers,
-                to offer technical support after the games go live.
+                The FOXONEXT CRM team assists at each step of integration and
+                works together with your operations team to offer technical support
+                after the system goes live.
               </p>
             </div>
 
