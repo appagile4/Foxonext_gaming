@@ -88,24 +88,15 @@ function DenmarkFlag() {
   );
 }
 
-const COUNTRIES_COLUMNS = [
-  // Column 1
-  [
-    { name: "United Kingdom", Flag: UkFlag },
-    { name: "Austria", Flag: AustriaFlag },
-    { name: "Belgium", Flag: BelgiumFlag },
-  ],
-  // Column 2
-  [
-    { name: "China", Flag: ChinaFlag },
-    { name: "Finland", Flag: FinlandFlag },
-    { name: "Denmark", Flag: DenmarkFlag },
-  ],
-  // Column 3
-  [
-    { name: "Italy", Flag: ItalyFlag },
-    { name: "Japan", Flag: JapanFlag },
-  ],
+const COUNTRIES = [
+  { name: "United Kingdom", Flag: UkFlag },
+  { name: "China", Flag: ChinaFlag },
+  { name: "Austria", Flag: AustriaFlag },
+  { name: "Finland", Flag: FinlandFlag },
+  { name: "Belgium", Flag: BelgiumFlag },
+  { name: "Denmark", Flag: DenmarkFlag },
+  { name: "Italy", Flag: ItalyFlag },
+  { name: "Japan", Flag: JapanFlag },
 ];
 
 export function RemoteWorldwideNetwork() {
@@ -135,33 +126,29 @@ export function RemoteWorldwideNetwork() {
           </p>
         </div>
 
-        {/* 2-Column Grid: Left Country 3-Column List & Right Dark World Map */}
+        {/* 2-Column Grid: Left Country 2-Column List & Right Dark World Map */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-          {/* Left Column: 8 Countries arranged in 3 vertical columns matching screenshot */}
-          <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-7">
-            {COUNTRIES_COLUMNS.map((column, colIdx) => (
-              <div key={colIdx} className="space-y-6 sm:space-y-8">
-                {column.map((country) => {
-                  const FlagComponent = country.Flag;
-                  return (
-                    <div
-                      key={country.name}
-                      className="flex items-center gap-3 group cursor-pointer transition-transform duration-200 hover:translate-x-1"
-                    >
-                      <FlagComponent />
-                      <span
-                        className="font-poppins text-sm sm:text-base font-medium text-white group-hover:text-[#FF5722] transition-colors duration-200 whitespace-nowrap"
-                        style={{
-                          fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
-                        }}
-                      >
-                        {country.name}
-                      </span>
-                    </div>
-                  );
-                })}
-              </div>
-            ))}
+          {/* Left Column: 8 Countries arranged in 2 columns */}
+          <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-y-6 sm:gap-y-7 gap-x-8 sm:gap-x-10">
+            {COUNTRIES.map((country) => {
+              const FlagComponent = country.Flag;
+              return (
+                <div
+                  key={country.name}
+                  className="flex items-center gap-3.5 group cursor-pointer transition-transform duration-200 hover:translate-x-1"
+                >
+                  <FlagComponent />
+                  <span
+                    className="font-poppins text-sm sm:text-base font-medium text-white group-hover:text-[#FF5722] transition-colors duration-200 whitespace-nowrap"
+                    style={{
+                      fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
+                    }}
+                  >
+                    {country.name}
+                  </span>
+                </div>
+              );
+            })}
           </div>
 
           {/* Right Column: World Map Silhouette */}
