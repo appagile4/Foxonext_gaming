@@ -44,7 +44,7 @@ export function Navbar({ logoSrc = "/images/logo.png" }: NavbarProps) {
         {/* Center: Navigation Pill (Desktop) with Animated Dropdowns */}
         <nav
           aria-label="Main Navigation"
-          className="hidden md:flex items-center gap-8 lg:gap-12 xl:gap-14 px-8 lg:px-12 py-3 sm:py-3.5 rounded-[10px] bg-white/[0.03] backdrop-blur-sm border border-white/[0.08] shadow-[0_4px_20px_rgba(0,0,0,0.2)]"
+          className="hidden md:flex items-center gap-11 md:gap-14 lg:gap-16 xl:gap-20 px-9 lg:px-12 py-3 sm:py-3.5 rounded-[10px] bg-white/[0.03] backdrop-blur-sm border border-white/[0.08] shadow-[0_4px_20px_rgba(0,0,0,0.2)]"
         >
           {NAV_ITEMS.map((item) => {
             const hasSub = item.subItems && item.subItems.length > 0;
