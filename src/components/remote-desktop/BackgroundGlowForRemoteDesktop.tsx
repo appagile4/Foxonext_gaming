@@ -28,12 +28,41 @@ export function BackgroundGlowForRemoteDesktop({
       {/* Hero Sweeping Diagonal Curved Light Highlights */}
       <div className="absolute -top-[5%] -left-[10%] w-[120%] h-[740px] sm:h-[800px] lg:h-[860px] bg-[radial-gradient(ellipse_at_70%_50%,rgba(255,145,77,0.22),transparent_60%)] pointer-events-none" />
 
-      {/* Signature Cosmic Rings (Top Left) */}
+      {/* --- Top Left Signature Cosmic Circular Rings --- */}
+
+      {/* Main Inner Ring */}
       <div
-        className="absolute -top-64 -left-64 sm:-top-80 sm:-left-80 lg:-top-96 lg:-left-96
-          w-[750px] h-[750px] sm:w-[1000px] sm:h-[1000px] lg:w-[1300px] lg:h-[1300px]
-          rounded-full border border-white/10
-          shadow-[0_0_35px_rgba(255,255,255,0.06),inset_0_0_50px_rgba(255,87,34,0.15)]
+        className="absolute top-32 left-32 sm:top-40 sm:left-40 lg:-top-328 lg:-left-278
+          w-[960px] h-[960px]
+          sm:w-[1240px] sm:h-[1240px]
+          lg:w-[1960px] lg:h-[1960px]
+          rounded-full border border-white/25
+          bg-[radial-gradient(circle,rgba(255,87,34,0.28)_0%,rgba(230,74,12,0.20)_55%,rgba(171,50,3,0.08)_100%)]
+          shadow-[0_0_35px_rgba(255,255,255,0.12),inset_0_0_45px_rgba(255,87,34,0.45),inset_0_0_90px_rgba(255,87,34,0.30)]
+          pointer-events-none"
+      />
+
+      {/* Outer Ring */}
+      <div
+        className="absolute top-16 left-16 sm:top-20 sm:left-20 lg:-top-314 lg:-left-199
+          w-[960px] h-[960px]
+          sm:w-[1240px] sm:h-[1240px]
+          lg:w-[1960px] lg:h-[1960px]
+          rounded-full border border-white/20
+          bg-[radial-gradient(circle,rgba(255,120,55,0.22)_0%,rgba(230,74,12,0.16)_60%,rgba(171,50,3,0.06)_100%)]
+          shadow-[0_0_30px_rgba(255,255,255,0.08),inset_0_0_70px_rgba(255,87,34,0.38),inset_0_0_140px_rgba(255,87,34,0.25)]
+          pointer-events-none"
+      />
+
+      {/* Right Signature Cosmic Ring (Contained in Hero & Top region) */}
+      <div
+        className="absolute top-[80px] sm:top-[120px] lg:top-[160px] -right-[1450px] sm:-right-[2050px] lg:-right-[2700px]
+          w-[2300px] h-[2300px]
+          sm:w-[3000px] sm:h-[3000px]
+          lg:w-[3800px] lg:h-[3800px]
+          rounded-full border border-white/25
+          bg-[radial-gradient(circle,rgba(255,87,34,0.30)_0%,rgba(230,74,12,0.20)_55%,rgba(171,50,3,0.08)_100%)]
+          shadow-[0_0_35px_rgba(255,255,255,0.10),inset_0_0_55px_rgba(255,87,34,0.45),inset_0_0_110px_rgba(255,87,34,0.25)]
           pointer-events-none"
       />
 
