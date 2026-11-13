@@ -93,10 +93,10 @@ export function RemotePricingTable() {
   return (
     <section className="relative w-full py-18 sm:py-24 lg:py-28 bg-transparent select-none z-10 overflow-hidden">
       <div className="relative z-10 w-[92%] sm:w-[88%] lg:w-[84%] xl:w-[80%] max-w-[1440px] mx-auto space-y-10 sm:space-y-12">
-        {/* Centered Heading */}
-        <div className="text-center space-y-3 max-w-2xl mx-auto">
+        {/* Centered Heading - Full Width with Single-Line Lock */}
+        <div className="text-center space-y-3 w-full max-w-4xl mx-auto">
           <h2
-            className="font-red-rose text-3xl sm:text-4xl lg:text-[46px] xl:text-[50px] font-bold text-white tracking-tight leading-tight"
+            className="font-red-rose text-2xl sm:text-3xl md:text-4xl lg:text-[44px] xl:text-[48px] 2xl:text-[52px] font-bold text-white tracking-tight leading-tight sm:whitespace-nowrap"
             style={{
               fontFamily: "var(--font-red-rose), 'Red Rose', serif",
             }}

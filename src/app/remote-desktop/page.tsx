@@ -30,16 +30,16 @@ export default function RemoteDesktopPage() {
         {/* 1. Remote Server Rental Hero Section with Process Cards */}
         <RemoteDesktopHero />
 
-        {/* 2. Remote Desktop Usecases Section (Accordion + 3D Hardware Composite) */}
+        {/* 2. Flexible Pricing for Every Scale Section (Filterable Table) */}
         <RemotePricingTable />
 
-        {/* 3. Virtual Worldwide Server Network Section (Global Map & Countries) */}
+        {/* 3. Remote Desktop Usecases Section (Accordion + 3D Hardware Composite) */}
         <RemoteDesktopUsecases />
 
         {/* 4. Remote Workplace - Benefits Section (4 Feature Cards) */}
         <RemoteWorkplaceBenefits />
 
-        {/* 5. Flexible Pricing for Every Scale Section (Filterable Table) */}
+        {/* 5. Virtual Worldwide Server Network Section (Global Map & Countries) */}
         <RemoteWorldwideNetwork />
       </div>
 

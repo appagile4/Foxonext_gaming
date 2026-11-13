@@ -61,7 +61,7 @@ export function RemoteDesktopUsecases() {
 
           <div className="relative z-10 flex items-center gap-3.5">
             <h2
-              className="font-red-rose text-3xl sm:text-4xl lg:text-[46px] xl:text-[50px] font-bold text-white tracking-tight leading-tight"
+              className="font-red-rose text-2xl sm:text-3xl md:text-4xl lg:text-[44px] xl:text-[48px] font-bold text-white tracking-tight leading-tight sm:whitespace-nowrap"
               style={{
                 fontFamily: "var(--font-red-rose), 'Red Rose', serif",
               }}
