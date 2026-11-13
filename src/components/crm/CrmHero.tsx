@@ -16,26 +16,6 @@ export function CrmHero() {
       <div className="absolute -top-[10%] -left-[10%] w-[120%] h-[740px] sm:h-[800px] lg:h-[860px] bg-[radial-gradient(ellipse_at_70%_50%,rgba(255,145,77,0.35),transparent_60%)] pointer-events-none" />
       <div className="absolute top-0 right-0 w-full h-[740px] sm:h-[800px] lg:h-[860px] bg-[radial-gradient(circle_at_85%_35%,rgba(255,255,255,0.12),transparent_45%)] pointer-events-none" />
 
-      {/* Top Left Signature Cosmic Circular Rings */}
-      <div
-        className="absolute top-32 left-32 sm:top-40 sm:left-40 lg:-top-[328px] lg:-left-[278px]
-          w-[960px] h-[960px]
-          sm:w-[1240px] sm:h-[1240px]
-          lg:w-[1960px] lg:h-[1960px]
-          rounded-full border border-white/20 sm:border-white/25
-          shadow-[0_0_35px_rgba(255,255,255,0.12),inset_0_0_45px_rgba(255,87,34,0.35),inset_0_0_90px_rgba(255,87,34,0.22)]
-          pointer-events-none"
-      />
-      <div
-        className="absolute top-16 left-16 sm:top-20 sm:left-20 lg:-top-[314px] lg:-left-[199px]
-          w-[960px] h-[960px]
-          sm:w-[1240px] sm:h-[1240px]
-          lg:w-[1960px] lg:h-[1960px]
-          rounded-full border border-white/15 sm:border-white/20
-          shadow-[0_0_30px_rgba(255,255,255,0.08),inset_0_0_70px_rgba(255,87,34,0.28),inset_0_0_140px_rgba(255,87,34,0.18)]
-          pointer-events-none"
-      />
-
       {/* Scoped Top Navbar */}
       <div className="relative z-30">
         <Navbar logoSrc="/images/logo.png" />
@@ -47,7 +27,7 @@ export function CrmHero() {
           {/* Left Column: Heading, Description & CTA */}
           <div className="lg:col-span-7 space-y-6 sm:space-y-8 ">
             <h1
-              className="font-red-rose text-3xl sm:text-5xl lg:text-[54px] xl:text-[62px] font-bold text-white tracking-tight leading-[1.25] max-w-xxl"
+              className="font-red-rose text-xl sm:text-3xl md:text-4xl lg:text-[44px] xl:text-[54px] 2xl:text-[60px] font-bold text-white tracking-tight leading-tight whitespace-nowrap"
               style={{
                 fontFamily: "var(--font-red-rose), 'Red Rose', serif",
               }}
@@ -56,7 +36,7 @@ export function CrmHero() {
             </h1>
 
             <div
-              className="font-poppins text-xs sm:text-sm md:text-[15px] text-white/90 font-normal leading-relaxed space-y-4 max-w-xxl"
+              className="font-poppins text-xs sm:text-sm md:text-[15px] text-white/90 font-normal leading-relaxed space-y-4 max-w-2xl"
               style={{
                 fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
               }}

@@ -16,7 +16,13 @@ interface AdvantageGridItem {
   description: string;
   borderColor: "orange" | "white";
   iconColor: "white" | "orange";
-  iconType: "template" | "database" | "calendar" | "piechart" | "userNodes" | "mail";
+  iconType:
+    | "template"
+    | "database"
+    | "calendar"
+    | "piechart"
+    | "userNodes"
+    | "mail";
 }
 
 const ADVANTAGES_DATA: AdvantageGridItem[] = [
@@ -77,7 +83,11 @@ const ADVANTAGES_DATA: AdvantageGridItem[] = [
 ];
 
 /* Custom Star in Hand Icon matching design exactly */
-function StarInHandIcon({ className = "w-8 h-8 sm:w-9 sm:h-9 text-white/90" }: { className?: string }) {
+function StarInHandIcon({
+  className = "w-8 h-8 sm:w-9 sm:h-9 text-white/90",
+}: {
+  className?: string;
+}) {
   return (
     <svg
       viewBox="0 0 36 36"
@@ -110,7 +120,10 @@ function StarInHandIcon({ className = "w-8 h-8 sm:w-9 sm:h-9 text-white/90" }: {
         d="M6.5 25.5 L9 20.5 C9.5 19.5 11 19 12 19.5 L15.5 20.5 C17 21 19.5 20.5 21 20 L25.5 18 C26.5 17.5 28 18 28.5 19 C29 20 28.5 21 27.5 21.5 L22.5 24.5 L18.5 27.5 C15.5 29.5 11.5 29.5 8.5 27.5 Z"
         strokeWidth="1.5"
       />
-      <path d="M6.5 25.5 C5 24.5 4 22.5 4 20.5 C4 18.5 5.5 17.5 7 18 L9.5 19" strokeWidth="1.5" />
+      <path
+        d="M6.5 25.5 C5 24.5 4 22.5 4 20.5 C4 18.5 5.5 17.5 7 18 L9.5 19"
+        strokeWidth="1.5"
+      />
     </svg>
   );
 }
@@ -151,15 +164,6 @@ export function CrmAdvantagesGrid() {
 
         {/* Diagonal Rust-Brown Wedge matching screenshot */}
         <div className="absolute inset-0 [clip-path:polygon(53%_0%,100%_0%,100%_100%,69%_100%)] bg-gradient-to-br from-[#521c08] via-[#5c1f08] to-[#3a1304] pointer-events-none" />
-
-        {/* Soft Ambient Radial Light */}
-        <div
-          className="absolute top-1/2 right-[12%] -translate-y-1/2 w-[550px] h-[380px] rounded-full blur-[130px] opacity-25 mix-blend-screen pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(circle, rgba(233, 78, 27, 0.45) 0%, rgba(255, 87, 34, 0.15) 50%, transparent 70%)",
-          }}
-        />
       </div>
 
       <div className="relative z-10 w-[92%] sm:w-[88%] lg:w-[84%] xl:w-[80%] max-w-[1440px] mx-auto space-y-14 sm:space-y-16 lg:space-y-20">
