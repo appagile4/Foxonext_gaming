@@ -4,7 +4,7 @@ import { WhiteLabelHero } from "@/components/white-label/WhiteLabelHero";
 import { WhiteLabelFeatures } from "@/components/white-label/WhiteLabelFeatures";
 import { WhiteLabelKeyFeatures } from "@/components/white-label/WhiteLabelKeyFeatures";
 import { WhyChooseUs } from "@/components/why-choose-us/WhyChooseUs";
-import { ExploreOtherProductsForWhiteLabel } from "@/components/white-label/ExploreOtherProductsForWhiteLabel";
+import { ExploreOtherProductsForWhiteLabelSolutions } from "@/components/white-label/ExploreOtherProductsForWhiteLabelSolutions";
 import { TopNewsAndBlogs } from "@/components/news/TopNewsAndBlogs";
 import { FaqSection } from "@/components/faq/FaqSection";
 import { WorkWithUsCta } from "@/components/cta/WorkWithUsCta";
@@ -38,7 +38,7 @@ export default function WhiteLabelSolutionPage() {
       <WhyChooseUs />
 
       {/* 5. Explore Other Products & Solutions Section */}
-      <ExploreOtherProductsForWhiteLabel />
+      <ExploreOtherProductsForWhiteLabelSolutions />
 
       {/* 6. Top News & Blogs Section (Without Featured Banner) */}
       <TopNewsAndBlogs showBanner={false} />

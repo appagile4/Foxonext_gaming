@@ -63,8 +63,7 @@ export function WhiteLabelHero() {
                   <span
                     className="font-poppins text-xs sm:text-sm lg:text-[15px] text-zinc-200 font-medium"
                     style={{
-                      fontFamily:
-                        "var(--font-poppins), 'Poppins', sans-serif",
+                      fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                     }}
                   >
                     {point}
@@ -95,7 +94,7 @@ export function WhiteLabelHero() {
                 alt="White Label Solution Box, Dashboard Laptop and Mobile App"
                 width={798}
                 height={630}
-                className="w-full h-auto object-contain filter drop-shadow-[0_20px_45px_rgba(233,78,27,0.35)] hover:scale-105 transition-transform duration-500 ease-out"
+                className="w-full h-auto object-contain "
                 priority
               />
             </div>
