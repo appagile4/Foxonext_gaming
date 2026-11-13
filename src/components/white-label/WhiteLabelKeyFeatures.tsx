@@ -62,9 +62,9 @@ const TABS: KeyFeatureTab[] = [
     imageAlt: "Gamification/Games Management 3D Joker and Ace Cards",
   },
   {
-    id: "payment-systems",
-    tabLabel: "Payment Systems",
-    cardTitle: "Payment Systems",
+    id: "payment-system",
+    tabLabel: "Payment System",
+    cardTitle: "Bonus Configuration",
     description:
       "Whether you're interested in rapidly launching a brand through our White Label solutions, seeking complete control with a customizable Turnkey package.",
     bullets: [
@@ -74,7 +74,22 @@ const TABS: KeyFeatureTab[] = [
       "Multi-currency Wallet Support",
     ],
     image: "/images/white-label/feature-payment.png",
-    imageAlt: "Payment Systems 3D Multi-Currency Rewards Box",
+    imageAlt: "Payment System & Bonus Configuration 3D Credit Card with Security Shield",
+  },
+  {
+    id: "campaign-building",
+    tabLabel: "Campaign Building",
+    cardTitle: "Campaign Building",
+    description:
+      "Whether you're interested in rapidly launching a brand through our White Label solutions, seeking complete control with a customizable Turnkey package.",
+    bullets: [
+      "Extensive collection of top-tier content",
+      "Bonus Management Engine",
+      "Compatibility across all devices",
+      "Multi-currency Wallet Support",
+    ],
+    image: "/images/white-label/feature-campaign.png",
+    imageAlt: "Campaign Building 3D Dollar Coin with Connected Nodes",
   },
 ];
 
