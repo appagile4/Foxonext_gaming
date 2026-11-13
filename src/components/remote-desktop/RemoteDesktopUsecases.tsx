@@ -74,12 +74,18 @@ export function RemoteDesktopUsecases() {
               Remote Desktop Usecases
             </h2>
 
-            {/* 2x2 Geometric Indicator Icons (▫ ★ / ▫ ▫) */}
-            <div className="hidden sm:grid grid-cols-2 gap-1 text-[#FF5722] opacity-80 pl-1">
+            {/* 2x2 Geometric Indicator Icons (▫ ☆ / ▫ ▫) matching Figma */}
+            <div className="hidden sm:grid grid-cols-2 gap-1 text-[#FF5722] opacity-80 pl-1 items-center">
               <span className="w-2.5 h-2.5 border border-current rounded-[1px]" />
-              <span className="text-[11px] leading-none flex items-center justify-center">
-                ★
-              </span>
+              <svg
+                className="w-2.5 h-2.5 text-[#FF5722]"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+              </svg>
               <span className="w-2.5 h-2.5 border border-current rounded-[1px]" />
               <span className="w-2.5 h-2.5 border border-current rounded-[1px]" />
             </div>
@@ -148,13 +154,13 @@ export function RemoteDesktopUsecases() {
             {/* 1. Remote Work Desktop: Peach Arcade Joystick + PS5 Controller */}
             {activeId === "work-desktop" && (
               <div className="relative w-full max-w-[600px] sm:max-w-[700px] lg:max-w-[760px] aspect-square flex items-center justify-center animate-fadeIn">
-                <div className="relative w-[420px] sm:w-[520px] lg:w-[580px] aspect-square  overflow-hidden flex items-center justify-center  ml-auto mr-2 sm:mr-4">
+                <div className="relative w-[420px] sm:w-[520px] lg:w-[580px] aspect-square overflow-hidden flex items-center justify-center ml-auto mr-2 sm:mr-4">
                   <Image
                     src="/images/remote-desktop/usecase-joystick.png"
                     alt="Remote Desktop Arcade Joystick Hardware"
                     width={500}
                     height={400}
-                    className="w-full h-full object-contain filter drop-shadow-[0_20px_40px_rgba(0,0,0,0.45)]"
+                    className="w-full h-full object-contain"
                     priority
                   />
                 </div>
@@ -165,7 +171,7 @@ export function RemoteDesktopUsecases() {
                     alt="PS5 Gaming Controller Cloud Streaming"
                     width={390}
                     height={280}
-                    className="w-full h-full object-contain filter drop-shadow-[0_25px_50px_rgba(0,0,0,0.85)]"
+                    className="w-full h-full object-contain"
                     priority
                   />
                 </div>
@@ -180,7 +186,7 @@ export function RemoteDesktopUsecases() {
                     alt="Web Tasks and Browser Automation 3D Gear"
                     width={740}
                     height={740}
-                    className="w-full h-full object-contain filter drop-shadow-[0_30px_70px_rgba(255,87,34,0.4)]"
+                    className="w-full h-full object-contain"
                     priority
                   />
                 </div>
@@ -195,7 +201,7 @@ export function RemoteDesktopUsecases() {
                     alt="Financial Tools and Trading Platforms 3D Composite"
                     width={1024}
                     height={1024}
-                    className="w-full h-full object-contain filter drop-shadow-[0_30px_70px_rgba(255,165,0,0.35)]"
+                    className="w-full h-full object-contain"
                     priority
                   />
                 </div>
@@ -210,7 +216,7 @@ export function RemoteDesktopUsecases() {
                     alt="Light Application Hosting 3D Monitor with Server Blades"
                     width={450}
                     height={450}
-                    className="w-full h-full object-contain filter drop-shadow-[0_30px_70px_rgba(0,180,255,0.35)]"
+                    className="w-full h-full object-contain"
                     priority
                   />
                 </div>

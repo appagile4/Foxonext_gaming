@@ -106,7 +106,7 @@ export function RemotePricingTable() {
         </div>
 
         {/* Main Outer Pricing Card Container matching Figma screenshot with Transparent Blur */}
-        <div className="rounded-2xl sm:rounded-3xl bg-white/[0.03] border border-white/[0.08] p-5 sm:p-8 lg:p-10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] backdrop-blur-xl space-y-6 sm:space-y-8">
+        <div className="rounded-2xl sm:rounded-3xl bg-white/[0.03] border border-white/[0.08] p-5 sm:p-8 lg:p-10 shadow-[0_8px_32px_rgba(0,0,0,0.25)] backdrop-blur-xl space-y-6 sm:space-y-8">
           {/* Row 1: Country, Currency, IP Version, Duration Tabs */}
           <div className="flex flex-col lg:flex-row items-stretch lg:items-end justify-between gap-6 pb-2">
             {/* Left 3 Select Dropdowns */}
