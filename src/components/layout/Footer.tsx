@@ -68,7 +68,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="#remote-desktop"
+                  href="/remote-desktop"
                   className="hover:text-white transition-colors duration-200"
                 >
                   Remote Desktop
