@@ -105,7 +105,8 @@ export function RemoteDesktopUsecases() {
                     <span
                       className="font-poppins text-base sm:text-lg lg:text-xl font-bold text-white group-hover:text-[#FF5722] transition-colors duration-200"
                       style={{
-                        fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
+                        fontFamily:
+                          "var(--font-poppins), 'Poppins', sans-serif",
                       }}
                     >
                       {item.title}
@@ -130,7 +131,8 @@ export function RemoteDesktopUsecases() {
                     <p
                       className="font-poppins text-xs sm:text-sm md:text-[15px] text-zinc-300 font-normal leading-relaxed pr-6"
                       style={{
-                        fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
+                        fontFamily:
+                          "var(--font-poppins), 'Poppins', sans-serif",
                       }}
                     >
                       {item.description}
@@ -145,18 +147,19 @@ export function RemoteDesktopUsecases() {
           <div className="lg:col-span-6 flex items-center justify-center lg:justify-end relative min-h-[440px] sm:min-h-[520px] lg:min-h-[580px] xl:min-h-[640px]">
             {/* 1. Remote Work Desktop: Peach Arcade Joystick + PS5 Controller */}
             {activeId === "work-desktop" && (
-              <div className="relative w-full max-w-[500px] sm:max-w-[580px] lg:max-w-[620px] aspect-square flex items-center justify-center animate-fadeIn">
-                <div className="relative w-[340px] sm:w-[420px] lg:w-[460px] aspect-square rounded-[36px] overflow-hidden flex items-center justify-center shadow-[0_30px_70px_rgba(0,0,0,0.65)] ml-auto mr-2 sm:mr-4">
+              <div className="relative w-full max-w-[600px] sm:max-w-[700px] lg:max-w-[760px] aspect-square flex items-center justify-center animate-fadeIn">
+                <div className="relative w-[420px] sm:w-[520px] lg:w-[580px] aspect-square rounded-[36px] overflow-hidden flex items-center justify-center shadow-[0_30px_70px_rgba(0,0,0,0.65)] ml-auto mr-2 sm:mr-4">
                   <Image
                     src="/images/remote-desktop/usecase-joystick.png"
                     alt="Remote Desktop Arcade Joystick Hardware"
-                    width={400}
-                    height={300}
+                    width={500}
+                    height={400}
                     className="w-full h-full object-contain filter drop-shadow-[0_20px_40px_rgba(0,0,0,0.45)]"
                     priority
                   />
                 </div>
-                <div className="absolute -bottom-2 -left-2 sm:-bottom-4 sm:-left-4 lg:-left-6 w-[260px] sm:w-[320px] lg:w-[360px] aspect-[390/280] z-20 animate-float">
+
+                <div className="absolute -bottom-2 -left-2 sm:-bottom-4 sm:-left-4 lg:-left-6 w-[320px] sm:w-[400px] lg:w-[460px] aspect-[390/280] z-20 animate-float">
                   <Image
                     src="/images/remote-desktop/usecase-controller.png"
                     alt="PS5 Gaming Controller Cloud Streaming"
