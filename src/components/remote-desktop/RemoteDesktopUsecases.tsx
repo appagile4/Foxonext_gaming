@@ -51,7 +51,7 @@ export function RemoteDesktopUsecases() {
 
   return (
     <section className="relative w-full py-18 sm:py-24 lg:py-28 bg-transparent select-none z-10 overflow-hidden">
-      <div className="relative z-10 w-[92%] sm:w-[88%] lg:w-[84%] xl:w-[80%] max-w-[1440px] mx-auto space-y-12 sm:space-y-16">
+      <div className="relative z-10 w-[92%] sm:w-[88%] lg:w-[84%] xl:w-[80%] max-w-[1440px] mx-auto space-y-6 sm:space-y-8">
         {/* Header with Orange Brush Mark Accent */}
         <div className="relative inline-flex items-center">
           <div className="absolute -left-3 sm:-left-4 -top-3 w-32 sm:w-40 h-14 -z-0 opacity-95 pointer-events-none">
@@ -87,9 +87,9 @@ export function RemoteDesktopUsecases() {
         </div>
 
         {/* 2-Column Grid: Left Accordion & Right Dynamic 3D Illustration */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-start">
           {/* Left Column: Interactive Accordion */}
-          <div className="lg:col-span-6 space-y-2">
+          <div className="lg:col-span-6 space-y-1 sm:space-y-1.5">
             {USECASES.map((item) => {
               const isOpen = activeId === item.id;
               return (
@@ -144,7 +144,8 @@ export function RemoteDesktopUsecases() {
           </div>
 
           {/* Right Column: Large Dynamic 3D Illustration matching Active Accordion Item */}
-          <div className="lg:col-span-6 flex items-center justify-center lg:justify-end relative min-h-[440px] sm:min-h-[520px] lg:min-h-[580px] xl:min-h-[640px]">
+          <div className="lg:col-span-6 flex items-center justify-center lg:justify-end relative min-h-[440px] sm:min-h-[520px] lg:min-h-[580px] xl:min-h-[640px] self-center -translate-y-8 sm:-translate-y-10 lg:-translate-y-12">
+            {" "}
             {/* 1. Remote Work Desktop: Peach Arcade Joystick + PS5 Controller */}
             {activeId === "work-desktop" && (
               <div className="relative w-full max-w-[600px] sm:max-w-[700px] lg:max-w-[760px] aspect-square flex items-center justify-center animate-fadeIn">
@@ -171,7 +172,6 @@ export function RemoteDesktopUsecases() {
                 </div>
               </div>
             )}
-
             {/* 2. Web Tasks and Browser Automation: 3D Gear */}
             {activeId === "browser-automation" && (
               <div className="relative w-full max-w-[520px] sm:max-w-[600px] lg:max-w-[660px] aspect-square flex items-center justify-center animate-fadeIn">
@@ -187,7 +187,6 @@ export function RemoteDesktopUsecases() {
                 </div>
               </div>
             )}
-
             {/* 3. Financial Tools and Trading Platforms: 3D Phone + Candlestick + Coins + Card */}
             {activeId === "financial-tools" && (
               <div className="relative w-full max-w-[540px] sm:max-w-[620px] lg:max-w-[680px] aspect-square flex items-center justify-center animate-fadeIn">
@@ -203,7 +202,6 @@ export function RemoteDesktopUsecases() {
                 </div>
               </div>
             )}
-
             {/* 4. Light Application Hosting: 3D Desktop Monitor with Server Blades */}
             {activeId === "light-hosting" && (
               <div className="relative w-full max-w-[520px] sm:max-w-[600px] lg:max-w-[660px] aspect-square flex items-center justify-center animate-fadeIn">
