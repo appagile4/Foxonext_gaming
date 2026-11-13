@@ -12,19 +12,6 @@ export function BackgroundGlowForContact({
       aria-hidden="true"
       className={`pointer-events-none absolute inset-0 overflow-hidden select-none z-0 ${className}`}
     >
-      {/* Base deep background */}
-      {/* <div className="absolute inset-0 bg-[#07080c]" /> */}
-
-      {/* --- Region 1: Hero Top Warm Diagonal Gradient Backdrop --- */}
-      <div className="absolute top-0 left-0 right-0 h-[680px] sm:h-[740px] lg:h-[820px] xl:h-[960px] bg-gradient-to-br from-[#200802] via-[#ab3203] to-[#e64a0c] pointer-events-none" />
-
-      {/* Hero Sweeping Diagonal Curved Light Highlights */}
-      <div className="absolute -top-[10%] -left-[10%] w-[120%] h-[740px] sm:h-[800px] lg:h-[860px] bg-[radial-gradient(ellipse_at_70%_50%,rgba(255,145,77,0.35),transparent_60%)] pointer-events-none" />
-
-      <div className="absolute top-0 right-0 w-full h-[740px] sm:h-[800px] lg:h-[860px] bg-[radial-gradient(circle_at_85%_35%,rgba(255,255,255,0.12),transparent_45%)] pointer-events-none" />
-
-      {/* --- Top Left Signature Cosmic Circular Rings --- */}
-
       {/* Main Inner Ring */}
       <div
         className="absolute top-32 left-32 sm:top-40 sm:left-40 lg:-top-328 lg:-left-278

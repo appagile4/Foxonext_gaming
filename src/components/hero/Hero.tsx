@@ -24,7 +24,7 @@ export function Hero({
   headlineLine2 = "Built for Scale",
   description = "Popular casino games come together in one Game Aggregator hub. With our game aggregation platform it is easy and simple to add this massive portfolio to any gaming website through just one API integration.",
   ctaText = "Book a Free Demo",
-  ctaHref = "#demo",
+  ctaHref = "/contact",
   iphoneImage = "/images/iphone-rounded.png",
   dashboardImage = "/images/dashboard-screen.png",
   useComposite = true,

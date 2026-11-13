@@ -86,7 +86,7 @@ export function RemoteDesktopHero() {
               <div className="inline-block relative">
                 <div className="border-b-2 border-r-2 border-[#FF5722] pr-6 sm:pr-8 pb-2 sm:pb-2.5">
                   <Link
-                    href="#contact"
+                    href="/contact"
                     className="inline-flex items-center font-bold text-white text-base sm:text-lg tracking-wide hover:text-[#FF5722] transition-colors duration-200"
                     style={{
                       fontFamily: "var(--font-poppins), 'Poppins', sans-serif",

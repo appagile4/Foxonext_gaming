@@ -75,7 +75,7 @@ export function WhiteLabelHero() {
             {/* CTA Button: Request a Demo with solid white offset shadow */}
             <div className="pt-3">
               <Link
-                href="#contact"
+                href="/contact"
                 className="inline-flex items-center justify-center px-8 sm:px-9 py-3.5 sm:py-4 rounded-[2px] bg-[#FF5722] hover:bg-[#ff6e3d] text-white font-poppins font-semibold text-sm sm:text-base tracking-wide shadow-[3px_3px_0px_#ffffff] hover:shadow-[4px_4px_0px_#ffffff] hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
                 style={{
                   fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
