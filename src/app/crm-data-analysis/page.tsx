@@ -1,7 +1,7 @@
 import React from "react";
+import { BackgroundGlowForCrm } from "@/components/crm/BackgroundGlowForCrm";
 import { CrmHero } from "@/components/crm/CrmHero";
 import { TopGameProviders } from "@/components/providers/TopGameProviders";
-import { CrmStatistics } from "@/components/crm/CrmStatistics";
 import { CrmKeyFeatures } from "@/components/crm/CrmKeyFeatures";
 import { CrmAdvantagesGrid } from "@/components/crm/CrmAdvantagesGrid";
 import { WhyChooseUs } from "@/components/why-choose-us/WhyChooseUs";
@@ -20,33 +20,40 @@ export const metadata = {
 export default function CrmDataAnalysisPage() {
   return (
     <main className="relative min-h-screen flex flex-col bg-[#07080c] overflow-x-hidden">
-      {/* 1. CRM Hero Section */}
-      <CrmHero />
+      {/* 4 Combined Sections Sharing BackgroundGlowForCrm */}
+      <div className="relative overflow-hidden">
+        {/* Continuous CRM Background Glow & Atmosphere */}
+        <BackgroundGlowForCrm />
 
-      <TopGameProviders />
+        {/* 1. CRM Hero Section */}
+        <CrmHero />
 
-      {/* 3. FOXOnext CRM Key Features (Interactive Tabs Carousel) */}
-      <CrmKeyFeatures />
+        {/* Top Game Providers & Statistics Section */}
+        <TopGameProviders />
 
-      {/* 4. Advantages of our CRM Section */}
-      <CrmAdvantagesGrid />
+        {/* 2. FOXOnext CRM Key Features (Interactive Tabs Carousel) */}
+        <CrmKeyFeatures />
 
-      {/* 5. Why Choose Us Section */}
+        {/* 3. Advantages of our CRM Section */}
+        <CrmAdvantagesGrid />
+      </div>
+
+      {/* Why Choose Us Section */}
       <WhyChooseUs />
 
-      {/* 7. Explore Other Products & Solutions Section */}
+      {/* Explore Other Products & Solutions Section */}
       <ExploreOtherProducts />
 
-      {/* 8. Top News & Blogs Section */}
+      {/* Top News & Blogs Section */}
       <TopNewsAndBlogs />
 
-      {/* 9. Frequently Asked Questions Section */}
+      {/* Frequently Asked Questions Section */}
       <FaqSection />
 
-      {/* 10. Wants to Work With Us CTA Section */}
+      {/* 4. Wants to Work With Us CTA Section */}
       <WorkWithUsCta />
 
-      {/* 11. Footer Section */}
+      {/* 5. Footer Section */}
       <Footer />
     </main>
   );

@@ -202,25 +202,7 @@ export function CrmKeyFeatures() {
   const currentTab = KEY_FEATURE_TABS[activeTab];
 
   return (
-    <section className="relative w-full py-16 sm:py-20 lg:py-24 bg-[#0a0b0f] select-none z-10 overflow-hidden">
-      {/* Background Curved Warm Rust-Brown Backdrop Matching Design Exactly */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 overflow-hidden select-none z-0"
-      >
-        {/* Deep base background */}
-        <div className="absolute inset-0 bg-[#0a0b0f]" />
-
-        {/* Soft Ambient Radial Light Accent */}
-        <div
-          className="absolute top-1/4 right-[5%] w-[450px] h-[450px] rounded-full blur-[140px] opacity-25 mix-blend-screen pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(circle, rgba(233, 78, 27, 0.45) 0%, rgba(255, 87, 34, 0.15) 50%, transparent 70%)",
-          }}
-        />
-      </div>
-
+    <section className="relative w-full py-16 sm:py-20 lg:py-24 bg-transparent select-none z-10 overflow-hidden">
       <div className="relative z-10 w-[92%] sm:w-[88%] lg:w-[84%] xl:w-[80%] max-w-[1440px] mx-auto space-y-8 sm:space-y-10">
         {/* 1. Header with Orange Accent Brush Mark & Geometric Icons */}
         <div className="relative inline-flex items-center">
