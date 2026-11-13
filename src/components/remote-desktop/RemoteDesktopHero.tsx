@@ -56,13 +56,13 @@ export function RemoteDesktopHero() {
       </div>
 
       {/* Main Hero Container */}
-      <div className="relative z-20 w-[92%] sm:w-[88%] lg:w-[82%] xl:w-[78%] max-w-[1440px] mx-auto pt-10 sm:pt-16 lg:pt-20 flex-1 flex flex-col justify-between">
+      <div className="relative z-20 w-[92%] sm:w-[88%] lg:w-[84%] xl:w-[80%] max-w-[1440px] mx-auto pt-10 sm:pt-16 lg:pt-20 flex-1 flex flex-col justify-between">
         {/* Split Grid: Left Content & Right Isometric Server Architecture */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* Left Column: Heading, Description, Bullets & CTA */}
-          <div className="lg:col-span-6 space-y-6 sm:space-y-7">
+          <div className="lg:col-span-7 space-y-6 sm:space-y-7">
             <h1
-              className="font-red-rose text-3xl sm:text-4xl md:text-5xl lg:text-[50px] xl:text-[56px] text-white tracking-tight leading-[1.18]"
+              className="font-red-rose text-xl sm:text-2xl md:text-3xl lg:text-[40px] xl:text-[48px] 2xl:text-[54px] text-white tracking-tight leading-tight sm:whitespace-nowrap"
               style={{
                 fontFamily: "var(--font-red-rose), 'Red Rose', serif",
               }}
@@ -119,8 +119,8 @@ export function RemoteDesktopHero() {
           </div>
 
           {/* Right Column: 3D Isometric Server & Cloud Infrastructure */}
-          <div className="lg:col-span-6 flex items-center justify-center relative">
-            <div className="relative w-full max-w-[550px] sm:max-w-[650px] lg:max-w-[700px] aspect-square flex items-center justify-center">
+          <div className="lg:col-span-5 flex items-center justify-center xl:justify-end relative">
+            <div className="relative w-full max-w-[480px] sm:max-w-[560px] lg:max-w-[620px] aspect-square flex items-center justify-center">
               <Image
                 src="/images/remote-desktop/hero-servers-cloud.png"
                 alt="Remote Server Rental Infrastructure"
