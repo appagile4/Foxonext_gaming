@@ -495,7 +495,7 @@ export function ExploreOtherProductsForRemoteDesktop() {
                   </Link>
 
                   <Link
-                    href="#white-label"
+                    href="/white-label-solution"
                     className="inline-flex items-center justify-center px-6 sm:px-7 py-2.5 sm:py-3 rounded bg-black/60 hover:bg-zinc-900 text-white border border-white/20 hover:border-white/50 font-poppins text-xs sm:text-sm font-medium tracking-wide transition-all duration-200"
                     style={{
                       fontFamily: "var(--font-poppins), 'Poppins', sans-serif",

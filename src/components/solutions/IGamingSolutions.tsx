@@ -136,15 +136,15 @@ export function IGamingSolutions() {
                     Get Quote
                   </a>
 
-                  <a
-                    href="#white-label"
+                  <Link
+                    href="/white-label-solution"
                     className="font-poppins inline-flex items-center justify-center px-7 py-3 sm:px-8 sm:py-3.5 rounded-[6px] bg-black/95 hover:bg-zinc-900 text-white border border-white/60 hover:border-white text-sm sm:text-base font-medium transition-all duration-300"
                     style={{
                       fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                     }}
                   >
                     Know More
-                  </a>
+                  </Link>
                 </div>
               </div>
 

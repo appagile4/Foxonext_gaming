@@ -13,7 +13,7 @@ export const NAV_ITEMS: NavItem[] = [
     label: "Solutions",
     href: "#solutions",
     subItems: [
-      { label: "White-Label Solutions", href: "#white-label" },
+      { label: "White-Label Solutions", href: "/white-label-solution" },
       { label: "Remote Desktop", href: "/remote-desktop" },
     ],
   },

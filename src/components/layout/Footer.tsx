@@ -60,7 +60,7 @@ export function Footer() {
             >
               <li>
                 <Link
-                  href="#white-label"
+                  href="/white-label-solution"
                   className="hover:text-white transition-colors duration-200"
                 >
                   White-Label Solutions
