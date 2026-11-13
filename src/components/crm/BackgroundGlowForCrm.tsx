@@ -72,23 +72,12 @@ export function BackgroundGlowForCrm({
         }}
       />
 
-      {/* --- Region 3: Advantages Ambient Atmosphere & Cosmic Ring --- */}
-
-      {/* Lower Left Ambient Orange Glow */}
+      {/* Right Signature Cosmic Ring (Contained in Hero & Top Providers region) */}
       <div
-        className="absolute bottom-[900px] left-[-8%] w-[600px] h-[500px] rounded-full blur-[140px] opacity-25 mix-blend-screen pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(circle, rgba(233, 78, 27, 0.35) 0%, rgba(255, 87, 34, 0.12) 50%, transparent 70%)",
-        }}
-      />
-
-      {/* Right Large Signature Cosmic Ring */}
-      <div
-        className="absolute top-[550px] sm:top-[650px] lg:top-[720px] -right-[1200px] sm:-right-[1550px] lg:-right-[1950px]
-          w-[1700px] h-[1700px]
-          sm:w-[2100px] sm:h-[2100px]
-          lg:w-[2700px] lg:h-[2700px]
+        className="absolute top-[80px] sm:top-[120px] lg:top-[160px] -right-[800px] sm:-right-[1100px] lg:-right-[1350px]
+          w-[1300px] h-[1300px]
+          sm:w-[1650px] sm:h-[1650px]
+          lg:w-[2000px] lg:h-[2000px]
           rounded-full border border-white/20
           shadow-[0_0_35px_rgba(255,255,255,0.10),inset_0_0_55px_rgba(255,87,34,0.30),inset_0_0_110px_rgba(255,87,34,0.16)]
           pointer-events-none"

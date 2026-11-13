@@ -154,15 +154,6 @@ function UserNodesIcon({ className = "w-6 h-6" }: { className?: string }) {
 export function CrmAdvantagesGrid() {
   return (
     <section className="relative w-full py-20 sm:py-24 lg:py-28 bg-transparent select-none z-10 overflow-hidden">
-      {/* Background Diagonal Split: Warm Rust-Brown Wedge on Right matching screenshot */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 overflow-hidden select-none z-0"
-      >
-        {/* Diagonal Rust-Brown Wedge matching screenshot */}
-        <div className="absolute inset-0 [clip-path:polygon(53%_0%,100%_0%,100%_100%,69%_100%)] bg-gradient-to-br from-[#521c08] via-[#5c1f08] to-[#3a1304] pointer-events-none" />
-      </div>
-
       <div className="relative z-10 w-[92%] sm:w-[88%] lg:w-[84%] xl:w-[80%] max-w-[1440px] mx-auto space-y-14 sm:space-y-16 lg:space-y-20">
         {/* 1. Header with Orange Accent Brush Mark & Star in Hand Icon */}
         <div className="flex items-center justify-center">
