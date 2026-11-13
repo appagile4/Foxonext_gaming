@@ -3,8 +3,11 @@
 import React from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { useTranslation } from "@/translations/useTranslation";
 
 export function WorkWithUsCta() {
+  const { dict } = useTranslation();
+
   return (
     <section className="relative w-full py-20 sm:py-24 lg:py-32 overflow-hidden select-none z-10 bg-[#07080c]">
       {/* Subtle ambient warm backlight behind CTA */}
@@ -18,20 +21,20 @@ export function WorkWithUsCta() {
             fontFamily: "var(--font-red-rose), 'Red Rose', serif",
           }}
         >
-          Wants to Work
+          <span suppressHydrationWarning>{dict.workWithUs.title1}</span>
           <br />
-          With Us?
+          <span suppressHydrationWarning>{dict.workWithUs.title2}</span>
         </h2>
 
         {/* Subtitle */}
         <p
+          suppressHydrationWarning
           className="font-poppins text-xs sm:text-sm md:text-base text-zinc-400 font-normal tracking-wide max-w-2xl px-4"
           style={{
             fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
           }}
         >
-          Your White LABEL IGAMING Platform provider and B2B Online Casino
-          Software
+          {dict.workWithUs.subtitle}
         </p>
 
         {/* Glowing Pill Button with Circular Arrow */}
@@ -46,8 +49,8 @@ export function WorkWithUsCta() {
             {/* Small subtle accent crescent or highlight */}
             <span className="absolute left-3.5 top-3 w-2.5 h-2.5 rounded-full border border-white/40 border-t-white/80 pointer-events-none opacity-60" />
 
-            <span className="tracking-wide text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">
-              Book a Free Demo
+            <span suppressHydrationWarning className="tracking-wide text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">
+              {dict.workWithUs.ctaText}
             </span>
 
             {/* Circular White Badge with Arrow */}

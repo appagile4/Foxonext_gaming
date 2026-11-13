@@ -4,8 +4,58 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Phone, AtSign, MapPin } from "lucide-react";
+import { useTranslation } from "@/translations/useTranslation";
+import { getApiUrl } from "@/lib/api";
 
 export function Footer() {
+  const { dict } = useTranslation();
+  const [socialLinks, setSocialLinks] = React.useState({
+    instagram: "https://instagram.com",
+    threads: "https://threads.net",
+    linkedin: "https://linkedin.com",
+    facebook: "https://facebook.com",
+    x: "https://x.com",
+  });
+
+  const [contactInfo, setContactInfo] = React.useState({
+    phone: "+971 58 191 0073",
+    email: "sales@cloudzy.com",
+    companyName: "Cloudzy AI Information Technology LLC.",
+    addressLine1: "Bin Dasmal Building 1, Office 80",
+    addressLine2: "Al Goze Industrial First, Dubai · United Arab Emirates",
+  });
+
+  React.useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [socRes, conRes] = await Promise.allSettled([
+          fetch(getApiUrl("/social-links")).then((r) => r.json()),
+          fetch(getApiUrl("/contact-info")).then((r) => r.json()),
+        ]);
+
+        if (socRes.status === "fulfilled" && socRes.value?.success && socRes.value.socialLinks) {
+          setSocialLinks((prev) => ({
+            ...prev,
+            ...socRes.value.socialLinks,
+          }));
+        }
+
+        if (conRes.status === "fulfilled" && conRes.value?.success && conRes.value.contactInfo) {
+          setContactInfo((prev) => ({
+            ...prev,
+            ...conRes.value.contactInfo,
+          }));
+        }
+      } catch {
+        // fallback
+      }
+    };
+
+    fetchData();
+    window.addEventListener("focus", fetchData);
+    return () => window.removeEventListener("focus", fetchData);
+  }, []);
+
   return (
     <footer className="relative w-full bg-[#07080c] text-white pt-16 sm:pt-20 lg:pt-24 overflow-hidden border-t border-white/[0.06] z-10 select-none">
       <div className="relative w-[92%] sm:w-[88%] lg:w-[82%] xl:w-[78%] max-w-[1440px] mx-auto">
@@ -17,7 +67,7 @@ export function Footer() {
               className="font-red-rose text-lg sm:text-xl font-bold text-white tracking-tight"
               style={{ fontFamily: "var(--font-red-rose), 'Red Rose', serif" }}
             >
-              Products
+              {dict.footer.products}
             </h3>
             <ul
               className="space-y-2.5 font-poppins text-xs sm:text-sm text-zinc-400"
@@ -30,7 +80,7 @@ export function Footer() {
                   href="/game-aggregator"
                   className="hover:text-white transition-colors duration-200"
                 >
-                  Game Aggregator
+                  {dict.nav.gameAggregator}
                 </Link>
               </li>
               <li>
@@ -38,7 +88,7 @@ export function Footer() {
                   href="/crm-data-analysis"
                   className="hover:text-white transition-colors duration-200"
                 >
-                  CRM - Data Analysis
+                  {dict.nav.crmDataAnalysis}
                 </Link>
               </li>
             </ul>
@@ -50,7 +100,7 @@ export function Footer() {
               className="font-red-rose text-lg sm:text-xl font-bold text-white tracking-tight"
               style={{ fontFamily: "var(--font-red-rose), 'Red Rose', serif" }}
             >
-              Solutions
+              {dict.footer.solutions}
             </h3>
             <ul
               className="space-y-2.5 font-poppins text-xs sm:text-sm text-zinc-400"
@@ -63,7 +113,7 @@ export function Footer() {
                   href="/white-label-solution"
                   className="hover:text-white transition-colors duration-200"
                 >
-                  White-Label Solutions
+                  {dict.nav.whiteLabelSolution}
                 </Link>
               </li>
               <li>
@@ -71,7 +121,7 @@ export function Footer() {
                   href="/remote-desktop"
                   className="hover:text-white transition-colors duration-200"
                 >
-                  Remote Desktop
+                  {dict.nav.remoteDesktop}
                 </Link>
               </li>
             </ul>
@@ -83,7 +133,7 @@ export function Footer() {
               className="font-red-rose text-lg sm:text-xl font-bold text-white tracking-tight"
               style={{ fontFamily: "var(--font-red-rose), 'Red Rose', serif" }}
             >
-              Company
+              {dict.footer.company}
             </h3>
             <ul
               className="space-y-2.5 font-poppins text-xs sm:text-sm text-zinc-400"
@@ -93,10 +143,18 @@ export function Footer() {
             >
               <li>
                 <Link
+                  href="/providers"
+                  className="hover:text-white transition-colors duration-200"
+                >
+                  {dict.nav.providers}
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="#terms"
                   className="hover:text-white transition-colors duration-200"
                 >
-                  Terms &amp; Conditions
+                  {dict.footer.terms}
                 </Link>
               </li>
               <li>
@@ -104,7 +162,7 @@ export function Footer() {
                   href="#cookies"
                   className="hover:text-white transition-colors duration-200"
                 >
-                  Cookie Policy
+                  {dict.footer.cookiePolicy}
                 </Link>
               </li>
               <li>
@@ -112,7 +170,7 @@ export function Footer() {
                   href="#privacy"
                   className="hover:text-white transition-colors duration-200"
                 >
-                  Privacy Policy
+                  {dict.footer.privacyPolicy}
                 </Link>
               </li>
             </ul>
@@ -124,7 +182,7 @@ export function Footer() {
               className="font-red-rose text-lg sm:text-xl font-bold text-white tracking-tight"
               style={{ fontFamily: "var(--font-red-rose), 'Red Rose', serif" }}
             >
-              News
+              {dict.nav.news}
             </h3>
             <ul
               className="space-y-2.5 font-poppins text-xs sm:text-sm text-zinc-400"
@@ -137,15 +195,15 @@ export function Footer() {
                   href="#events"
                   className="hover:text-white transition-colors duration-200"
                 >
-                  Events
+                  {dict.nav.events}
                 </Link>
               </li>
               <li>
                 <Link
-                  href="#resources"
+                  href="#blogs"
                   className="hover:text-white transition-colors duration-200"
                 >
-                  Knowledge Resources
+                  {dict.nav.blogs}
                 </Link>
               </li>
             </ul>
@@ -157,7 +215,7 @@ export function Footer() {
               className="font-red-rose text-lg sm:text-xl font-bold text-white tracking-tight"
               style={{ fontFamily: "var(--font-red-rose), 'Red Rose', serif" }}
             >
-              Contact Us
+              {dict.nav.contactUs}
             </h3>
             <div
               className="space-y-3 font-poppins text-xs sm:text-sm text-zinc-400"
@@ -169,10 +227,10 @@ export function Footer() {
               <div className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-[#FF5722] flex-shrink-0" />
                 <a
-                  href="tel:+971581910073"
+                  href={`tel:${contactInfo.phone.replace(/\s+/g, "")}`}
                   className="hover:text-white transition-colors duration-200"
                 >
-                  +971 58 191 0073
+                  {contactInfo.phone}
                 </a>
               </div>
 
@@ -180,10 +238,10 @@ export function Footer() {
               <div className="flex items-center gap-2.5">
                 <AtSign className="w-4 h-4 text-[#FF5722] flex-shrink-0" />
                 <a
-                  href="mailto:sales@cloudzy.com"
+                  href={`mailto:${contactInfo.email}`}
                   className="hover:text-white transition-colors duration-200"
                 >
-                  sales@cloudzy.com
+                  {contactInfo.email}
                 </a>
               </div>
 
@@ -191,9 +249,9 @@ export function Footer() {
               <div className="flex items-start gap-2.5 pt-1">
                 <MapPin className="w-4 h-4 text-[#FF5722] flex-shrink-0 mt-0.5" />
                 <div className="text-xs leading-relaxed text-zinc-400">
-                  <p className="text-zinc-300">Cloudzy AI Information Technology LLC.</p>
-                  <p>Bin Dasmal Building 1, Office 80</p>
-                  <p>Al Goze Industrial First, Dubai · United Arab Emirates</p>
+                  <p className="text-zinc-300">{contactInfo.companyName}</p>
+                  <p>{contactInfo.addressLine1}</p>
+                  <p>{contactInfo.addressLine2}</p>
                 </div>
               </div>
             </div>
@@ -206,13 +264,13 @@ export function Footer() {
             className="font-red-rose text-base sm:text-lg font-bold text-white tracking-tight"
             style={{ fontFamily: "var(--font-red-rose), 'Red Rose', serif" }}
           >
-            Our Social Links
+            {dict.contact.socialLinksTitle}
           </h4>
 
           <div className="flex items-center gap-3 sm:gap-3.5 flex-wrap">
             {/* Instagram */}
             <a
-              href="https://instagram.com"
+              href={socialLinks.instagram || "https://instagram.com"}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram"
@@ -235,7 +293,7 @@ export function Footer() {
 
             {/* Threads */}
             <a
-              href="https://threads.net"
+              href={socialLinks.threads || "https://threads.net"}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Threads"
@@ -252,7 +310,7 @@ export function Footer() {
 
             {/* LinkedIn */}
             <a
-              href="https://linkedin.com"
+              href={socialLinks.linkedin || "https://linkedin.com"}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
@@ -269,7 +327,7 @@ export function Footer() {
 
             {/* Facebook */}
             <a
-              href="https://facebook.com"
+              href={socialLinks.facebook || "https://facebook.com"}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Facebook"
@@ -286,7 +344,7 @@ export function Footer() {
 
             {/* X (formerly Twitter) */}
             <a
-              href="https://x.com"
+              href={socialLinks.x || "https://x.com"}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="X (Twitter)"
@@ -311,6 +369,7 @@ export function Footer() {
             src="/images/footer-logo.png"
             alt="FOXONEXT"
             fill
+            sizes="100vw"
             className="object-contain object-bottom select-none pointer-events-none drop-shadow-[0_0_35px_rgba(255,87,34,0.15)]"
             priority
           />

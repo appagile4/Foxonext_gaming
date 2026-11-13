@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
+import { useTranslation } from "@/translations/useTranslation";
 
 interface PlanRow {
   id: string;
@@ -76,6 +77,7 @@ const DURATIONS = [
 ];
 
 export function RemotePricingTable() {
+  const { dict } = useTranslation();
   const [selectedCountry, setSelectedCountry] = useState("United States");
   const [selectedCurrency, setSelectedCurrency] = useState("USD");
   const [selectedIpVersion, setSelectedIpVersion] = useState("IPV6");
@@ -90,6 +92,8 @@ export function RemotePricingTable() {
   const activeDurationObj =
     DURATIONS.find((d) => d.label === selectedDuration) || DURATIONS[0];
 
+  const headers = dict.remoteDesktopPage?.tableHeaders;
+
   return (
     <section className="relative w-full py-18 sm:py-24 lg:py-28 bg-transparent select-none z-10 overflow-hidden">
       <div className="relative z-10 w-[92%] sm:w-[88%] lg:w-[84%] xl:w-[80%] max-w-[1440px] mx-auto space-y-10 sm:space-y-12">
@@ -101,7 +105,12 @@ export function RemotePricingTable() {
               fontFamily: "var(--font-red-rose), 'Red Rose', serif",
             }}
           >
-            <span className="text-[#FF5722]">Flexible</span> Pricing for Every Scale
+            <span className="text-[#FF5722]" suppressHydrationWarning>
+              {dict.remoteDesktopPage?.pricingTitle1 || "Flexible"}
+            </span>{" "}
+            <span suppressHydrationWarning>
+              {dict.remoteDesktopPage?.pricingTitle2 || "Pricing for Every Scale"}
+            </span>
           </h2>
         </div>
 
@@ -334,14 +343,14 @@ export function RemotePricingTable() {
             <div className="min-w-[880px]">
               {/* White Table Header matching Figma screenshot */}
               <div className="bg-white text-zinc-900 font-poppins font-bold text-xs sm:text-sm px-6 py-4 grid grid-cols-12 items-center">
-                <div className="col-span-2">Plan Name</div>
-                <div className="col-span-2">CPU</div>
-                <div className="col-span-1">Core Counts</div>
-                <div className="col-span-2">Memory</div>
-                <div className="col-span-1">Disk space</div>
-                <div className="col-span-1">Port Speed</div>
-                <div className="col-span-2 text-center">Price</div>
-                <div className="col-span-1 text-right">Action</div>
+                <div className="col-span-2" suppressHydrationWarning>{headers?.planName || "Plan Name"}</div>
+                <div className="col-span-2" suppressHydrationWarning>{headers?.cpu || "CPU"}</div>
+                <div className="col-span-1" suppressHydrationWarning>{headers?.coreCounts || "Core Counts"}</div>
+                <div className="col-span-2" suppressHydrationWarning>{headers?.memory || "Memory"}</div>
+                <div className="col-span-1" suppressHydrationWarning>{headers?.diskSpace || "Disk space"}</div>
+                <div className="col-span-1" suppressHydrationWarning>{headers?.portSpeed || "Port Speed"}</div>
+                <div className="col-span-2 text-center" suppressHydrationWarning>{headers?.price || "Price"}</div>
+                <div className="col-span-1 text-right" suppressHydrationWarning>{headers?.action || "Action"}</div>
               </div>
 
               {/* Table Body Rows - Fully Transparent with blur shining through */}
@@ -366,10 +375,10 @@ export function RemotePricingTable() {
                       </div>
                       <div className="col-span-1 text-right">
                         <Link
-                          href="#contact"
+                          href="/contact"
                           className="inline-block px-5 py-2 rounded-lg border border-[#FF5722] text-[#FF5722] hover:bg-[#FF5722] hover:text-white font-medium text-xs sm:text-sm transition-all duration-200 hover:shadow-[0_0_15px_rgba(255,87,34,0.4)]"
                         >
-                          Buy
+                          <span suppressHydrationWarning>{dict.remoteDesktopPage?.buyButton || "Buy"}</span>
                         </Link>
                       </div>
                     </div>

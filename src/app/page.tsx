@@ -24,11 +24,6 @@ export default function Home() {
 
         {/* Main Hero Component */}
         <Hero
-          badgeText="Online Casinos Software Provider"
-          headlineLine1="Modular iGaming Products"
-          headlineLine2="Built for Scale"
-          description="Popular casino games come together in one Game Aggregator hub. With our game aggregation platform it is easy and simple to add this massive portfolio to any gaming website through just one API integration."
-          ctaText="Book a Free Demo"
           ctaHref="/contact"
           iphoneImage="/images/newiphone.png"
           dashboardImage="/images/newdesktop.png"

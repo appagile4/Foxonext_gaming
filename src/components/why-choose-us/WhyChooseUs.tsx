@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { Rocket } from "lucide-react";
+import { useTranslation } from "@/translations/useTranslation";
 
 /**
  * AnimatedCounter component:
@@ -69,6 +70,7 @@ function AnimatedCounter({
 }
 
 export function WhyChooseUs() {
+  const { dict } = useTranslation();
   return (
     <section className="relative w-full py-16 sm:py-24 lg:py-32 overflow-hidden select-none z-10">
       {/* Faceted Geometric Background (user-provided ae6cb7712121e7db827caec067b955d83c4c9b7d.jpg) */}
@@ -79,6 +81,7 @@ export function WhyChooseUs() {
           src="/images/why-choose-us-bg.jpg"
           alt="Why Choose Us Faceted Geometric Background"
           fill
+          sizes="100vw"
           priority
           className="object-cover object-center brightness-[0.27] contrast-[1.35]"
         />
@@ -110,7 +113,7 @@ export function WhyChooseUs() {
                   fontFamily: "var(--font-red-rose), 'Red Rose', serif",
                 }}
               >
-                <span>Why Choose Us ?</span>
+                <span suppressHydrationWarning>{dict.whyChooseUs.title}</span>
                 <Rocket
                   className="w-6 h-6 sm:w-7 sm:h-7 text-zinc-300 inline-block -rotate-12 flex-shrink-0"
                   strokeWidth={1.8}
@@ -120,15 +123,13 @@ export function WhyChooseUs() {
 
             {/* Paragraph Description with Larger Text Size */}
             <p
+              suppressHydrationWarning
               className="font-poppins text-sm sm:text-base lg:text-[17px] xl:text-[18px] text-zinc-300 font-normal leading-[1.72] max-w-lg xl:max-w-xl"
               style={{
                 fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
               }}
             >
-              Whether you&apos;re interested in rapidly launching a brand
-              through our White Label solutions, seeking complete control with a
-              customizable Turnkey package, acquiring leading software through
-              Software.
+              {dict.whyChooseUs.description}
             </p>
 
             {/* Know More with Bottom-Right L-Frame Border (No hover state) */}
@@ -144,7 +145,7 @@ export function WhyChooseUs() {
                 <span className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-white/45" />
                 <span className="absolute bottom-0 right-0 top-1 w-[1.5px] bg-white/45" />
 
-                <span>Know More</span>
+                <span suppressHydrationWarning>{dict.whyChooseUs.knowMore}</span>
               </a>
             </div>
           </div>
@@ -185,9 +186,7 @@ export function WhyChooseUs() {
                     fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                   }}
                 >
-                  <span className="text-white">Quick</span>
-                  <br />
-                  <span className="text-[#FF5722]">Launch</span>
+                  <span suppressHydrationWarning className="text-[#FF5722]">{dict.whyChooseUs.quickLaunch}</span>
                 </div>
               </div>
 
@@ -230,9 +229,7 @@ export function WhyChooseUs() {
                     fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                   }}
                 >
-                  <span className="text-[#FF5722]">Scalable</span>
-                  <br />
-                  <span className="text-white">By Design</span>
+                  <span suppressHydrationWarning className="text-white">{dict.whyChooseUs.scalableByDesign}</span>
                 </div>
               </div>
 
@@ -268,11 +265,8 @@ export function WhyChooseUs() {
                   <div className="font-poppins text-3xl sm:text-4xl lg:text-[44px] font-bold text-white tracking-tight leading-none pb-1">
                     100%
                   </div>
-                  <div className="font-poppins text-xl sm:text-2xl lg:text-[26px] font-bold text-[#FF5722] leading-tight">
-                    Bespoke
-                  </div>
-                  <div className="font-poppins text-xl sm:text-2xl lg:text-[26px] font-bold text-white leading-tight">
-                    Development
+                  <div suppressHydrationWarning className="font-poppins text-xl sm:text-2xl lg:text-[26px] font-bold text-[#FF5722] leading-tight">
+                    {dict.whyChooseUs.bespokeDevelopment}
                   </div>
                 </div>
               </div>
@@ -314,9 +308,7 @@ export function WhyChooseUs() {
                     fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                   }}
                 >
-                  <span className="text-[#FF5722]">Flexible</span>
-                  <br />
-                  <span className="text-white">Launch</span>
+                  <span suppressHydrationWarning className="text-[#FF5722]">{dict.whyChooseUs.flexibleLaunch}</span>
                 </div>
               </div>
 
@@ -349,9 +341,7 @@ export function WhyChooseUs() {
                     fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                   }}
                 >
-                  <span className="text-white">All-In-One</span>
-                  <br />
-                  <span className="text-[#FF5722]">Platform</span>
+                  <span suppressHydrationWarning className="text-white">{dict.whyChooseUs.allInOnePlatform}</span>
                 </div>
               </div>
             </div>
@@ -369,12 +359,13 @@ export function WhyChooseUs() {
               <AnimatedCounter target={3000} suffix="+" duration={2200} />
             </div>
             <div
+              suppressHydrationWarning
               className="font-poppins text-sm sm:text-base lg:text-[17px] font-medium text-zinc-200 tracking-wide"
               style={{
                 fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
               }}
             >
-              Games
+              {dict.whyChooseUs.gamesStat}
             </div>
           </div>
 
@@ -387,12 +378,13 @@ export function WhyChooseUs() {
               <AnimatedCounter target={140} suffix="+" duration={1800} />
             </div>
             <div
+              suppressHydrationWarning
               className="font-poppins text-sm sm:text-base lg:text-[17px] font-medium text-zinc-200 tracking-wide"
               style={{
                 fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
               }}
             >
-              Game Providers
+              {dict.whyChooseUs.providersStat}
             </div>
           </div>
 
@@ -405,12 +397,13 @@ export function WhyChooseUs() {
               <AnimatedCounter target={32} suffix="+" duration={1500} />
             </div>
             <div
+              suppressHydrationWarning
               className="font-poppins text-sm sm:text-base lg:text-[17px] font-medium text-zinc-200 tracking-wide"
               style={{
                 fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
               }}
             >
-              Years of Exp.
+              {dict.whyChooseUs.experienceStat}
             </div>
           </div>
 
@@ -423,12 +416,13 @@ export function WhyChooseUs() {
               <AnimatedCounter target={32} suffix="+" duration={1500} />
             </div>
             <div
+              suppressHydrationWarning
               className="font-poppins text-sm sm:text-base lg:text-[17px] font-medium text-zinc-200 tracking-wide"
               style={{
                 fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
               }}
             >
-              Years of Exp.
+              {dict.whyChooseUs.experienceStat}
             </div>
           </div>
         </div>

@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import { useTranslation } from "@/translations/useTranslation";
 
 /* Circular SVG Country Flag Badges */
 function UkFlag() {
@@ -100,6 +101,8 @@ const COUNTRIES = [
 ];
 
 export function RemoteWorldwideNetwork() {
+  const { dict } = useTranslation();
+
   return (
     <section className="relative w-full py-18 sm:py-24 lg:py-28 bg-transparent select-none z-10 overflow-hidden">
       <div className="relative z-10 w-[92%] sm:w-[88%] lg:w-[84%] xl:w-[80%] max-w-[1440px] mx-auto space-y-12 sm:space-y-16">
@@ -111,7 +114,15 @@ export function RemoteWorldwideNetwork() {
               fontFamily: "var(--font-red-rose), 'Red Rose', serif",
             }}
           >
-            Virtual <span className="text-[#FF5722]">Worldwide</span> Server Network
+            <span suppressHydrationWarning>
+              {dict.remoteDesktopPage?.worldwideTitle1 || "Virtual"}{" "}
+            </span>
+            <span className="text-[#FF5722]" suppressHydrationWarning>
+              {dict.remoteDesktopPage?.worldwideTitle2 || "Worldwide"}
+            </span>{" "}
+            <span suppressHydrationWarning>
+              {dict.remoteDesktopPage?.worldwideTitle3 || "Server Network"}
+            </span>
           </h2>
 
           <p
@@ -119,10 +130,10 @@ export function RemoteWorldwideNetwork() {
             style={{
               fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
             }}
+            suppressHydrationWarning
           >
-            DodgeVPN provides you with access to a huge selection of high-speed
-            Virtual Servers across the globe to provide you with a secure and
-            private connection to the Internet.
+            {dict.remoteDesktopPage?.worldwideDesc ||
+              "FOXOnext provides you with access to high-speed Virtual Servers across the globe to deliver low latency and maximum reliability."}
           </p>
         </div>
 
@@ -158,6 +169,7 @@ export function RemoteWorldwideNetwork() {
                 src="/images/remote-desktop/world-map.png"
                 alt="Virtual Server Global World Map"
                 fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 60vw, 820px"
                 className="object-contain filter opacity-85 hover:opacity-100 transition-opacity duration-300"
                 priority
               />

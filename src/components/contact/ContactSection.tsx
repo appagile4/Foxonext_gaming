@@ -3,6 +3,8 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { Phone, MapPin, ChevronDown, Check } from "lucide-react";
+import { useTranslation } from "@/translations/useTranslation";
+import { getApiUrl } from "@/lib/api";
 
 const ENQUIRY_OPTIONS = [
   "Game Aggregator Integration",
@@ -14,6 +16,29 @@ const ENQUIRY_OPTIONS = [
 ];
 
 export function ContactSection() {
+  const { dict } = useTranslation();
+  const [contactInfo, setContactInfo] = useState({
+    phone: "+971 58 191 0073",
+    email: "sales@cloudzy.com",
+    companyName: "Cloudzy AI Information Technology LLC.",
+    addressLine1: "Bin Dasmal Building 1, Office 80",
+    addressLine2: "Al Goze Industrial First, Dubai · United Arab Emirates",
+  });
+
+  React.useEffect(() => {
+    fetch(getApiUrl("/contact-info"))
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success && data.contactInfo) {
+          setContactInfo((prev) => ({
+            ...prev,
+            ...data.contactInfo,
+          }));
+        }
+      })
+      .catch(() => {});
+  }, []);
+
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -27,23 +52,54 @@ export function ContactSection() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSubmitError(null);
+
+    if (!formData.fullName.trim()) {
+      setSubmitError("Please enter your full name.");
+      return;
+    }
+    if (!formData.email.trim()) {
+      setSubmitError("Please enter your email address.");
+      return;
+    }
     if (!formData.consent) {
-      alert("Please confirm your consent before submitting.");
+      setSubmitError("Please confirm your consent before submitting.");
       return;
     }
     if (!formData.isHuman) {
-      alert("Please check the 'I am human' box.");
+      setSubmitError("Please verify you are human.");
       return;
     }
 
     setIsSubmitting(true);
-    setTimeout(() => {
+    try {
+      const res = await fetch(getApiUrl("/inquiries"), {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fullName: formData.fullName,
+          email: formData.email,
+          phone: formData.phone,
+          enquiryType: formData.enquiryType || "General Business Enquiry",
+          message: formData.message,
+        }),
+      });
+
+      const data = await res.json();
+      if (res.ok && data.success) {
+        setSubmitted(true);
+      } else {
+        setSubmitError(data.message || "Failed to submit enquiry. Please try again.");
+      }
+    } catch {
+      setSubmitError("Network error. Please try again later.");
+    } finally {
       setIsSubmitting(false);
-      setSubmitted(true);
-    }, 800);
+    }
   };
 
   return (
@@ -55,26 +111,23 @@ export function ContactSection() {
             {/* 1. Main Heading & Subtitle */}
             <div className="space-y-5 sm:space-y-6">
               <h1
+                suppressHydrationWarning
                 className="font-red-rose text-3xl sm:text-4xl lg:text-[46px] xl:text-[50px] font-normal text-white tracking-tight leading-[1.18]"
                 style={{
                   fontFamily: "var(--font-red-rose), 'Red Rose', serif",
                 }}
               >
-                Let&apos;s talk about your future
-                <br />
-                success!
+                {dict.contact.title}
               </h1>
 
               <p
+                suppressHydrationWarning
                 className="font-poppins text-xs sm:text-sm lg:text-[15px] text-zinc-400 font-normal leading-[1.7] max-w-lg"
                 style={{
                   fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                 }}
               >
-                Popular casino games come together in one Game Aggregator hub.
-                With our game aggregation platform it is easy and simple to add
-                this massive portfolio to any gaming website through just one
-                API integration.
+                {dict.contact.subtitle}
               </p>
             </div>
 
@@ -87,24 +140,25 @@ export function ContactSection() {
                   <div className="flex items-center gap-2 text-[#FF5722]">
                     <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[1.8]" />
                     <span
+                      suppressHydrationWarning
                       className="font-poppins text-xs sm:text-[13px] font-medium text-[#FF5722]"
                       style={{
                         fontFamily:
                           "var(--font-poppins), 'Poppins', sans-serif",
                       }}
                     >
-                      Phone
+                      {dict.contact.phone}
                     </span>
                   </div>
                   <a
-                    href="tel:+971581910073"
+                    href={`tel:${contactInfo.phone.replace(/\s+/g, "")}`}
                     className="font-poppins text-xs sm:text-sm md:text-[15px] text-white font-medium hover:text-[#FF5722] transition-colors block tracking-wide"
                     style={{
                       fontFamily:
                         "var(--font-poppins), 'Poppins', sans-serif",
                     }}
                   >
-                    +971 58 191 0073
+                    {contactInfo.phone}
                   </a>
                 </div>
 
@@ -112,24 +166,25 @@ export function ContactSection() {
                 <div className="rounded-xl sm:rounded-2xl bg-[#0e1017]/90 border border-white/[0.07] p-4 sm:p-5 space-y-1.5 transition-all duration-300 hover:border-[#FF5722]/40 shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
                   <div className="flex items-center gap-2 text-[#FF5722]">
                     <span
+                      suppressHydrationWarning
                       className="font-poppins text-xs sm:text-[13px] font-medium text-[#FF5722]"
                       style={{
                         fontFamily:
                           "var(--font-poppins), 'Poppins', sans-serif",
                       }}
                     >
-                      @ Email
+                      @ {dict.contact.email}
                     </span>
                   </div>
                   <a
-                    href="mailto:sales@cloudzy.com"
+                    href={`mailto:${contactInfo.email}`}
                     className="font-poppins text-xs sm:text-sm md:text-[15px] text-white font-medium hover:text-[#FF5722] transition-colors block tracking-wide"
                     style={{
                       fontFamily:
                         "var(--font-poppins), 'Poppins', sans-serif",
                     }}
                   >
-                    sales@cloudzy.com
+                    {contactInfo.email}
                   </a>
                 </div>
               </div>
@@ -157,6 +212,7 @@ export function ContactSection() {
                   src="/images/contact/map-preview.png"
                   alt="Office Map Location - Dubai UAE"
                   fill
+                  sizes="(max-width: 640px) 100vw, 150px"
                   className="object-cover"
                 />
               </div>
@@ -180,11 +236,11 @@ export function ContactSection() {
                     fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                   }}
                 >
-                  Cloudzy AI Information Technology L.L.C.
+                  {contactInfo.companyName}
                   <br />
-                  Bin Dasmal Building 1, Office 80
+                  {contactInfo.addressLine1}
                   <br />
-                  Al Goze Industrial First, Dubai · United Arab Emirates
+                  {contactInfo.addressLine2}
                 </p>
               </div>
             </div>
@@ -204,7 +260,7 @@ export function ContactSection() {
                       fontFamily: "var(--font-red-rose), 'Red Rose', serif",
                     }}
                   >
-                    Thank You!
+                    {dict.contact.successTitle}
                   </h3>
                   <p
                     className="font-poppins text-sm text-zinc-400 max-w-sm mx-auto leading-relaxed"
@@ -212,8 +268,7 @@ export function ContactSection() {
                       fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                     }}
                   >
-                    Your enquiry has been received. Our team will contact you
-                    shortly to discuss your project requirements.
+                    {dict.contact.successMessage}
                   </p>
                   <button
                     type="button"
@@ -245,7 +300,7 @@ export function ContactSection() {
                           "var(--font-poppins), 'Poppins', sans-serif",
                       }}
                     >
-                      Your Full Name
+                      {dict.contact.fullName}
                     </label>
                     <input
                       type="text"
@@ -254,7 +309,7 @@ export function ContactSection() {
                       onChange={(e) =>
                         setFormData({ ...formData, fullName: e.target.value })
                       }
-                      placeholder="Select your Country"
+                      placeholder={dict.contact.fullNamePlaceholder}
                       className="w-full px-4 py-3 sm:py-3.5 rounded-lg bg-[#14151c] border border-white/[0.06] focus:border-[#FF5722] text-white placeholder-zinc-500 text-xs sm:text-sm outline-none transition-all"
                       style={{
                         fontFamily:
@@ -274,7 +329,7 @@ export function ContactSection() {
                             "var(--font-poppins), 'Poppins', sans-serif",
                         }}
                       >
-                        Email
+                        {dict.contact.email}
                       </label>
                       <input
                         type="email"
@@ -283,7 +338,7 @@ export function ContactSection() {
                         onChange={(e) =>
                           setFormData({ ...formData, email: e.target.value })
                         }
-                        placeholder="Select your Country"
+                        placeholder={dict.contact.emailPlaceholder}
                         className="w-full px-4 py-3 sm:py-3.5 rounded-lg bg-[#14151c] border border-white/[0.06] focus:border-[#FF5722] text-white placeholder-zinc-500 text-xs sm:text-sm outline-none transition-all"
                         style={{
                           fontFamily:
@@ -301,7 +356,7 @@ export function ContactSection() {
                             "var(--font-poppins), 'Poppins', sans-serif",
                         }}
                       >
-                        Phone Number
+                        {dict.contact.phone}
                       </label>
                       <input
                         type="tel"
@@ -309,7 +364,7 @@ export function ContactSection() {
                         onChange={(e) =>
                           setFormData({ ...formData, phone: e.target.value })
                         }
-                        placeholder="USD"
+                        placeholder="+1 (555) 000-0000"
                         className="w-full px-4 py-3 sm:py-3.5 rounded-lg bg-[#14151c] border border-white/[0.06] focus:border-[#FF5722] text-white placeholder-zinc-500 text-xs sm:text-sm outline-none transition-all"
                         style={{
                           fontFamily:
@@ -328,7 +383,7 @@ export function ContactSection() {
                           "var(--font-poppins), 'Poppins', sans-serif",
                       }}
                     >
-                      Wat type of enquiries do you have?
+                      {dict.contact.inquiryType}
                     </label>
                     <div className="relative">
                       <button
@@ -347,7 +402,7 @@ export function ContactSection() {
                               : "text-zinc-500"
                           }
                         >
-                          {formData.enquiryType || "Please Choose"}
+                          {formData.enquiryType || dict.contact.inquiryPlaceholder}
                         </span>
                         <ChevronDown
                           className={`w-4 h-4 text-zinc-400 transition-transform duration-200 ${
@@ -358,7 +413,13 @@ export function ContactSection() {
 
                       {dropdownOpen && (
                         <div className="absolute top-full left-0 right-0 mt-1.5 rounded-lg bg-[#181a24] border border-white/10 shadow-2xl py-1.5 z-50 backdrop-blur-md">
-                          {ENQUIRY_OPTIONS.map((opt) => (
+                          {[
+                            dict.contact.inquiryAggregator,
+                            dict.contact.inquiryCrm,
+                            dict.contact.inquiryWhiteLabel,
+                            dict.contact.inquiryCustom,
+                            dict.contact.inquiryGeneral,
+                          ].map((opt) => (
                             <button
                               key={opt}
                               type="button"
@@ -375,7 +436,7 @@ export function ContactSection() {
                                   "var(--font-poppins), 'Poppins', sans-serif",
                               }}
                             >
-                              {opt}
+                              <span suppressHydrationWarning>{opt}</span>
                             </button>
                           ))}
                         </div>
@@ -392,7 +453,7 @@ export function ContactSection() {
                           "var(--font-poppins), 'Poppins', sans-serif",
                       }}
                     >
-                      Message
+                      {dict.contact.message}
                     </label>
                     <textarea
                       rows={5}
@@ -400,7 +461,7 @@ export function ContactSection() {
                       onChange={(e) =>
                         setFormData({ ...formData, message: e.target.value })
                       }
-                      placeholder="Type you message here..."
+                      placeholder={dict.contact.messagePlaceholder}
                       className="w-full px-4 py-3 sm:py-3.5 rounded-lg bg-[#14151c] border border-white/[0.06] focus:border-[#FF5722] text-white placeholder-zinc-500 text-xs sm:text-sm outline-none resize-none transition-all"
                       style={{
                         fontFamily:
@@ -426,12 +487,7 @@ export function ContactSection() {
                           "var(--font-poppins), 'Poppins', sans-serif",
                       }}
                     >
-                      Please confirm you{" "}
-                      <span className="text-[#FF5722] underline underline-offset-2">
-                        consent
-                      </span>{" "}
-                      to your personal information being processed and shared
-                      with third parties
+                      {dict.contact.consent}
                     </span>
                   </label>
 
@@ -458,10 +514,17 @@ export function ContactSection() {
                             "var(--font-poppins), 'Poppins', sans-serif",
                         }}
                       >
-                        I am human
+                        {dict.contact.humanCheck}
                       </label>
                     </div>
                   </div>
+
+                  {/* Error Notification */}
+                  {submitError && (
+                    <div className="p-3 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400 font-poppins text-xs">
+                      {submitError}
+                    </div>
+                  )}
 
                   {/* Field 8: Submit Form Button */}
                   <div className="pt-3">
@@ -477,10 +540,10 @@ export function ContactSection() {
                       {isSubmitting ? (
                         <>
                           <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                          <span>Submitting...</span>
+                          <span>{dict.contact.submitting}</span>
                         </>
                       ) : (
-                        "Submit Form"
+                        dict.contact.submit
                       )}
                     </button>
                   </div>

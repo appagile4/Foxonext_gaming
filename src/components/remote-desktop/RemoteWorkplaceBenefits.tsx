@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { useTranslation } from "@/translations/useTranslation";
 
 interface BenefitItem {
   number: string;
@@ -8,34 +9,40 @@ interface BenefitItem {
   description: string;
 }
 
-const BENEFITS: BenefitItem[] = [
-  {
-    number: "01",
-    title: "A ready-made solution in just 3 seconds.",
-    description:
-      "Pre-installed Windows and a browser at your request, instant start.",
-  },
-  {
-    number: "01",
-    title: "Using popular browsers and extensions.",
-    description:
-      "Pre-installed Windows and a browser at your request, instant start.",
-  },
-  {
-    number: "01",
-    title: "Data security.",
-    description:
-      "Pre-installed Windows and a browser at your request, instant start.",
-  },
-  {
-    number: "01",
-    title: "Possibility of regular backups.",
-    description:
-      "Pre-installed Windows and a browser at your request, instant start.",
-  },
-];
+const STATIC_NUMBERS = ["01", "02", "03", "04"];
 
 export function RemoteWorkplaceBenefits() {
+  const { dict } = useTranslation();
+
+  const benefits = (dict.remoteDesktopPage?.benefits || []).map((b, idx) => ({
+    number: STATIC_NUMBERS[idx] || `0${idx + 1}`,
+    title: b.title,
+    description: b.description,
+  }));
+
+  const items = benefits.length > 0 ? benefits : [
+    {
+      number: "01",
+      title: "A ready-made solution in just 3 seconds.",
+      description: "Pre-installed Windows and a browser at your request, instant start.",
+    },
+    {
+      number: "02",
+      title: "Using popular browsers and extensions.",
+      description: "Pre-installed Windows and a browser at your request, instant start.",
+    },
+    {
+      number: "03",
+      title: "Data security.",
+      description: "Pre-installed Windows and a browser at your request, instant start.",
+    },
+    {
+      number: "04",
+      title: "Possibility of regular backups.",
+      description: "Pre-installed Windows and a browser at your request, instant start.",
+    },
+  ];
+
   return (
     <section className="relative w-full py-18 sm:py-24 lg:py-28 bg-transparent select-none z-10 overflow-hidden">
       {/* Background Curved Orange Cosmic Ray in Top-Right matching screenshot */}
@@ -55,8 +62,9 @@ export function RemoteWorkplaceBenefits() {
             style={{
               fontFamily: "var(--font-red-rose), 'Red Rose', serif",
             }}
+            suppressHydrationWarning
           >
-            Remote Workplace - Benefits
+            {dict.remoteDesktopPage?.benefitsTitle || "Remote Workplace - Benefits"}
           </h2>
 
           <p
@@ -64,10 +72,10 @@ export function RemoteWorkplaceBenefits() {
             style={{
               fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
             }}
+            suppressHydrationWarning
           >
-            DodgeVPN provides you with access to a huge selection of high-speed
-            Virtual Servers across the globe to provide you with a secure and
-            private connection to the Internet.
+            {dict.remoteDesktopPage?.benefitsSubtitle ||
+              "FOXOnext provides you with access to high-speed Virtual Workstations across the globe to empower your business operations."}
           </p>
         </div>
 
@@ -85,7 +93,7 @@ export function RemoteWorkplaceBenefits() {
 
           {/* Main Cards Grid Box */}
           <div className="relative z-10 rounded-xl sm:rounded-2xl bg-[#0b0c10]/70 border border-white/[0.10] backdrop-blur-sm overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.65)] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 divide-y sm:divide-y-0 md:divide-x divide-white/[0.10]">
-            {BENEFITS.map((item, idx) => (
+            {items.map((item, idx) => (
               <div
                 key={`${item.title}-${idx}`}
                 className="p-6 sm:p-7 lg:p-8 flex flex-col justify-between transition-all duration-300 hover:bg-white/[0.02] group"
@@ -101,6 +109,7 @@ export function RemoteWorkplaceBenefits() {
                     style={{
                       fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                     }}
+                    suppressHydrationWarning
                   >
                     {item.title}
                   </h3>
@@ -108,10 +117,11 @@ export function RemoteWorkplaceBenefits() {
 
                 {/* Bottom Row: Description */}
                 <p
-                  className="font-poppins text-[11px] sm:text-xs text-zinc-400 font-normal leading-relaxed"
+                  className="font-poppins text-xs sm:text-[13px] text-zinc-400 font-normal leading-relaxed"
                   style={{
                     fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                   }}
+                  suppressHydrationWarning
                 >
                   {item.description}
                 </p>

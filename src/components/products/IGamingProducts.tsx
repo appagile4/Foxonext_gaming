@@ -3,35 +3,30 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-
-interface ProductCardProps {
-  title: string;
-  imageSrc: string;
-  imageAlt: string;
-  description: string;
-  href?: string;
-}
-
-const PRODUCTS_DATA: ProductCardProps[] = [
-  {
-    title: "Game Aggregator",
-    imageSrc: "/images/products/game-aggregator.png?v=real-3d-v2",
-    imageAlt: "Game Aggregator 3D Floating Modular Cubes",
-    description:
-      "Whether you're interested in rapidly launching a brand through our White Label solutions, seeking complete control with a customizable Turnkey package.",
-    href: "/game-aggregator",
-  },
-  {
-    title: "CRM - Data Analytics",
-    imageSrc: "/images/products/crm-analytics.png?v=real-3d-v2",
-    imageAlt: "CRM Data Analytics 3D Glass Dashboard & Charts",
-    description:
-      "Whether you're interested in rapidly launching a brand through our White Label solutions, seeking complete control with a customizable Turnkey package.",
-    href: "/crm-data-analysis",
-  },
-];
+import { useTranslation } from "@/translations/useTranslation";
 
 export function IGamingProducts() {
+  const { dict } = useTranslation();
+
+  const productsData = [
+    {
+      id: "aggregator",
+      title: dict.productsSection.gameAggregatorTitle,
+      imageSrc: "/images/products/game-aggregator.png?v=real-3d-v2",
+      imageAlt: "Game Aggregator 3D Floating Modular Cubes",
+      description: dict.productsSection.gameAggregatorDesc,
+      href: "/game-aggregator",
+    },
+    {
+      id: "crm",
+      title: dict.productsSection.crmTitle,
+      imageSrc: "/images/products/crm-analytics.png?v=real-3d-v2",
+      imageAlt: "CRM Data Analytics 3D Glass Dashboard & Charts",
+      description: dict.productsSection.crmDesc,
+      href: "/crm-data-analysis",
+    },
+  ];
+
   return (
     <section className="relative w-[92%] sm:w-[85%] lg:w-[75%] mx-auto pt-8 pb-20 sm:pt-12 sm:pb-24 lg:pt-16 lg:pb-32 select-none z-10">
       <div className="w-full space-y-10 sm:space-y-12 lg:space-y-14">
@@ -43,23 +38,22 @@ export function IGamingProducts() {
               className="font-red-rose text-3xl sm:text-5xl lg:text-[84px] font-[400] text-white tracking-tight leading-[1.08]"
               style={{ fontFamily: "var(--font-red-rose), 'Red Rose', serif" }}
             >
-              Our iGaming
+              <span suppressHydrationWarning>{dict.productsSection.title1}</span>
               <br />
-              Products
+              <span suppressHydrationWarning>{dict.productsSection.title2}</span>
             </h2>
           </div>
 
           {/* Right: Paragraph + Know More Bordered Button in Poppins font */}
           <div className="flex flex-col items-start space-y-5 sm:space-y-6 max-w-lg lg:max-w-xl">
             <p
+              suppressHydrationWarning
               className="font-poppins text-sm sm:text-base lg:text-[18px] text-zinc-300/90 font-normal leading-[1.65]"
               style={{
                 fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
               }}
             >
-              Whether you&apos;re interested in rapidly launching a brand
-              through our White Label solutions, seeking complete control with a
-              customizable Turnkey package.
+              {dict.productsSection.description}
             </p>
 
             <a
@@ -69,7 +63,7 @@ export function IGamingProducts() {
                 fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
               }}
             >
-              Know More
+              <span suppressHydrationWarning>{dict.productsSection.knowMore}</span>
             </a>
           </div>
         </div>
@@ -90,14 +84,15 @@ export function IGamingProducts() {
             }
           `}</style>
 
-          {PRODUCTS_DATA.map((product) => (
+          {productsData.map((product) => (
             <div
-              key={product.title}
+              key={product.id}
               className="group relative rounded-2xl sm:rounded-3xl bg-[#0c0d12] border border-white/[0.08] hover:border-[#FF5722]/50 shadow-[0_12px_40px_rgba(0,0,0,0.85)] hover:shadow-[0_0_35px_rgba(255,87,34,0.25)] overflow-hidden transition-all duration-500 flex flex-col justify-between min-h-[460px] sm:min-h-[500px] lg:min-h-[520px]"
             >
               {/* Card Top Title in Red Rose font (Permanently visible on z-30, not covered by blur) */}
               <div className="p-6 sm:p-7 lg:p-8 z-30 pointer-events-none">
                 <h3
+                  suppressHydrationWarning
                   className="font-red-rose text-2xl sm:text-3xl font-bold text-white tracking-tight"
                   style={{
                     fontFamily: "var(--font-red-rose), 'Red Rose', serif",
@@ -125,17 +120,13 @@ export function IGamingProducts() {
               {/* Default Unhovered Bottom Container: Description in Poppins font and Orange Arrow Action Button */}
               <div className="relative z-10 p-5 sm:p-6 lg:p-7 bg-gradient-to-t from-black/95 via-black/75 to-transparent backdrop-blur-[2px] flex items-end justify-between gap-4 transition-all duration-300 group-hover:opacity-0 group-hover:pointer-events-none">
                 <p
+                  suppressHydrationWarning
                   className="font-poppins text-[11px] sm:text-xs text-zinc-300 font-normal leading-relaxed max-w-[82%] sm:max-w-[85%]"
                   style={{
                     fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                   }}
                 >
-                  Whether you&apos;re interested in rapidly launching a brand
-                  through our{" "}
-                  <span className="text-zinc-100 font-medium">White Label</span>{" "}
-                  solutions, seeking complete control with a customizable{" "}
-                  <span className="text-zinc-100 font-medium">Turnkey</span>{" "}
-                  package.
+                  {product.description}
                 </p>
 
                 <span className="flex-shrink-0 w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-[#FF5722] text-white flex items-center justify-center shadow-[0_0_18px_rgba(255,87,34,0.45)] transition-all duration-300">
@@ -155,21 +146,19 @@ export function IGamingProducts() {
                 </span>
               </div>
 
-              {/* Animated Square Blur Hover Overlay: Smoothly expands from bottom-right corner up, covering the card below title */}
+              {/* Animated Square Blur Hover Overlay */}
               <div className="card-hover-blur-overlay absolute top-[76px] sm:top-[88px] inset-x-0 bottom-0 z-20 backdrop-blur-xl bg-[#090a0f]/85 flex flex-col justify-between p-6 sm:p-7 lg:p-8">
-                {/* Description in Poppins font */}
                 <p
+                  suppressHydrationWarning
                   className="font-poppins text-xs sm:text-[13px] text-zinc-300 font-normal leading-relaxed"
                   style={{
                     fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                   }}
                 >
-                  Whether you&apos;re interested in rapidly launching a brand
-                  through our White Label solutions, seeking complete control
-                  with a customizable Turnkey package.
+                  {product.description}
                 </p>
 
-                {/* 4 Feature Bullet Points in 2x2 Grid with Orange Diamond Icon */}
+                {/* 4 Feature Bullet Points in 2x2 Grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-y-4 sm:gap-x-6 my-auto py-3">
                   <div className="flex items-center gap-2.5">
                     <svg
@@ -182,13 +171,14 @@ export function IGamingProducts() {
                       <path d="M6 1.5 L10.5 6 L6 10.5 L1.5 6 Z" />
                     </svg>
                     <span
+                      suppressHydrationWarning
                       className="font-poppins text-[11px] sm:text-xs text-zinc-200"
                       style={{
                         fontFamily:
                           "var(--font-poppins), 'Poppins', sans-serif",
                       }}
                     >
-                      Extensive collection of top-tier content
+                      {dict.solutionsSection.bullet2}
                     </span>
                   </div>
 
@@ -203,13 +193,14 @@ export function IGamingProducts() {
                       <path d="M6 1.5 L10.5 6 L6 10.5 L1.5 6 Z" />
                     </svg>
                     <span
+                      suppressHydrationWarning
                       className="font-poppins text-[11px] sm:text-xs text-zinc-200"
                       style={{
                         fontFamily:
                           "var(--font-poppins), 'Poppins', sans-serif",
                       }}
                     >
-                      Compatibility across all devices
+                      {dict.solutionsSection.bullet4}
                     </span>
                   </div>
 
@@ -224,13 +215,14 @@ export function IGamingProducts() {
                       <path d="M6 1.5 L10.5 6 L6 10.5 L1.5 6 Z" />
                     </svg>
                     <span
+                      suppressHydrationWarning
                       className="font-poppins text-[11px] sm:text-xs text-zinc-200"
                       style={{
                         fontFamily:
                           "var(--font-poppins), 'Poppins', sans-serif",
                       }}
                     >
-                      Bonus Management Engine
+                      {dict.solutionsSection.bullet1}
                     </span>
                   </div>
 
@@ -245,13 +237,14 @@ export function IGamingProducts() {
                       <path d="M6 1.5 L10.5 6 L6 10.5 L1.5 6 Z" />
                     </svg>
                     <span
+                      suppressHydrationWarning
                       className="font-poppins text-[11px] sm:text-xs text-zinc-200"
                       style={{
                         fontFamily:
                           "var(--font-poppins), 'Poppins', sans-serif",
                       }}
                     >
-                      Multi-currency Wallet Support
+                      {dict.solutionsSection.bullet3}
                     </span>
                   </div>
                 </div>
@@ -265,7 +258,7 @@ export function IGamingProducts() {
                       fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                     }}
                   >
-                    Get Quote
+                    <span suppressHydrationWarning>{dict.solutionsSection.getQuote}</span>
                   </Link>
 
                   <Link
@@ -275,7 +268,7 @@ export function IGamingProducts() {
                       fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                     }}
                   >
-                    Know More
+                    <span suppressHydrationWarning>{dict.productsSection.knowMore}</span>
                   </Link>
                 </div>
               </div>

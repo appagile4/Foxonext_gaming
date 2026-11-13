@@ -4,8 +4,10 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Sparkles } from "lucide-react";
+import { useTranslation } from "@/translations/useTranslation";
 
 export function ExploreOtherProducts() {
+  const { dict } = useTranslation();
   return (
     <section className="relative w-full py-16 sm:py-24 lg:py-28 select-none z-10 bg-[#07080c]">
       <div className="relative w-[92%] sm:w-[88%] lg:w-[82%] xl:w-[78%] max-w-[1440px] mx-auto space-y-10 sm:space-y-12 lg:space-y-14">
@@ -23,12 +25,13 @@ export function ExploreOtherProducts() {
 
           <div className="relative z-10 flex items-center gap-3 sm:gap-4">
             <h2
+              suppressHydrationWarning
               className="font-red-rose text-3xl sm:text-4xl lg:text-[48px] xl:text-[52px] font-bold text-white tracking-tight leading-tight"
               style={{
                 fontFamily: "var(--font-red-rose), 'Red Rose', serif",
               }}
             >
-              Explore Other Products & Solutions
+              {dict.exploreOtherProducts?.title || "Explore Other Products & Solutions"}
             </h2>
             <Sparkles className="w-6 h-6 sm:w-7 sm:h-7 text-[#FF5722] opacity-90 hidden sm:block flex-shrink-0" />
           </div>
@@ -42,12 +45,13 @@ export function ExploreOtherProducts() {
             <div className="lg:col-span-5 group relative rounded-2xl sm:rounded-3xl bg-[#0e1017] border border-white/[0.08] hover:border-[#FF5722]/40 shadow-[0_12px_40px_rgba(0,0,0,0.7)] p-6 sm:p-8 lg:p-9 flex flex-col justify-between overflow-hidden transition-all duration-300">
               {/* Card Title */}
               <h3
+                suppressHydrationWarning
                 className="font-red-rose text-2xl sm:text-3xl lg:text-[34px] font-bold text-white tracking-tight"
                 style={{
                   fontFamily: "var(--font-red-rose), 'Red Rose', serif",
                 }}
               >
-                CRM - Data Analytics
+                {dict.exploreOtherProducts?.crmTitle || "CRM - Data Analytics"}
               </h3>
 
               {/* 3D Visual Graphic (Extra Large) */}
@@ -57,6 +61,7 @@ export function ExploreOtherProducts() {
                     src="/images/products/crm-analytics.png"
                     alt="CRM - Data Analytics 3D Dashboard"
                     fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-contain"
                   />
                 </div>
@@ -65,14 +70,13 @@ export function ExploreOtherProducts() {
               {/* Description + Arrow Button */}
               <div className="flex items-end justify-between gap-4 mt-auto pt-2">
                 <p
+                  suppressHydrationWarning
                   className="font-poppins text-xs sm:text-sm text-zinc-300/90 font-normal leading-relaxed max-w-sm"
                   style={{
                     fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                   }}
                 >
-                  Whether you&apos;re interested in rapidly launching a brand
-                  through our White Label solutions, seeking complete control
-                  with a customizable Turnkey package.
+                  {dict.exploreOtherProducts?.crmDesc || "Whether you're interested in rapidly launching a brand through our White Label solutions, seeking complete control with a customizable Turnkey package."}
                 </p>
 
                 <Link
@@ -106,26 +110,24 @@ export function ExploreOtherProducts() {
                 <div className="md:col-span-5 flex flex-col justify-between space-y-5 sm:space-y-6 h-full py-1">
                   <div className="space-y-4">
                     <h3
+                      suppressHydrationWarning
                       className="font-red-rose text-2xl sm:text-3xl lg:text-[34px] xl:text-[38px] font-bold text-white tracking-tight leading-[1.15]"
                       style={{
                         fontFamily: "var(--font-red-rose), 'Red Rose', serif",
                       }}
                     >
-                      White-Label
-                      <br />
-                      Solution
+                      {dict.exploreOtherProducts?.whiteLabelTitle || "White-Label Solution"}
                     </h3>
 
                     <p
+                      suppressHydrationWarning
                       className="font-poppins text-xs sm:text-sm text-zinc-300/90 font-normal leading-relaxed max-w-md"
                       style={{
                         fontFamily:
                           "var(--font-poppins), 'Poppins', sans-serif",
                       }}
                     >
-                      Whether you&apos;re interested in rapidly launching a
-                      brand through our White Label solutions, seeking complete
-                      control with a customizable Turnkey package.
+                      {dict.exploreOtherProducts?.whiteLabelDesc || "Whether you're interested in rapidly launching a brand through our White Label solutions, seeking complete control with a customizable Turnkey package."}
                     </p>
                   </div>
 
@@ -138,7 +140,7 @@ export function ExploreOtherProducts() {
                           "var(--font-poppins), 'Poppins', sans-serif",
                       }}
                     >
-                      Know More
+                      <span suppressHydrationWarning>{dict.solutionsSection?.knowMore || "Know More"}</span>
                     </Link>
                   </div>
                 </div>
@@ -150,6 +152,7 @@ export function ExploreOtherProducts() {
                       src="/images/solutions/white-label.png"
                       alt="White-Label Solution 3D Brand Hub"
                       fill
+                      sizes="(max-width: 1024px) 100vw, 50vw"
                       className="object-contain"
                     />
                   </div>
@@ -182,6 +185,7 @@ export function ExploreOtherProducts() {
                     src="/images/solutions/remote-desktop.png"
                     alt="Remote Desktop Gaming Controller"
                     fill
+                    sizes="(max-width: 1024px) 100vw, 60vw"
                     className="object-contain"
                   />
                 </div>
@@ -190,35 +194,35 @@ export function ExploreOtherProducts() {
               {/* Right Column: Title, Description, Bullets & Buttons (5 cols) */}
               <div className="lg:col-span-5 space-y-6 sm:space-y-7 pl-0 lg:pl-2">
                 <h3
+                  suppressHydrationWarning
                   className="font-red-rose text-2xl sm:text-3xl lg:text-[36px] xl:text-[40px] font-bold text-white tracking-tight leading-[1.15]"
                   style={{
                     fontFamily: "var(--font-red-rose), 'Red Rose', serif",
                   }}
                 >
-                  Remote-Desktop
+                  {dict.exploreOtherProducts?.remoteDesktopTitle || "Remote Server Rental"}
                 </h3>
 
                 <p
+                  suppressHydrationWarning
                   className="font-poppins text-xs sm:text-sm md:text-[15px] text-zinc-300/90 font-normal leading-relaxed max-w-xl"
                   style={{
                     fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                   }}
                 >
-                  Whether you&apos;re interested in rapidly launching a brand
-                  through our White Label solutions, seeking complete control
-                  with a customizable Turnkey package.
+                  {dict.exploreOtherProducts?.remoteDesktopDesc || "Whether you're interested in rapidly launching a brand through our White Label solutions, seeking complete control with a customizable Turnkey package."}
                 </p>
 
                 {/* 4 Feature Bullets with orange diamond ◇ */}
                 <div className="space-y-2.5 sm:space-y-3 pt-1">
                   {[
-                    "Bonus Management Engine",
-                    "Extensive collection of top-tier content",
-                    "Multi-currency Wallet Support",
-                    "Compatibility across all devices",
-                  ].map((bullet) => (
+                    dict.solutionsSection?.bullet1 || "Bonus Management Engine",
+                    dict.solutionsSection?.bullet2 || "Extensive collection of top-tier content",
+                    dict.solutionsSection?.bullet3 || "Multi-currency Wallet Support",
+                    dict.solutionsSection?.bullet4 || "Compatibility across all devices",
+                  ].map((bullet, idx) => (
                     <div
-                      key={bullet}
+                      key={idx}
                       className="flex items-center gap-3 font-poppins text-xs sm:text-sm text-zinc-200"
                       style={{
                         fontFamily:
@@ -228,7 +232,7 @@ export function ExploreOtherProducts() {
                       <span className="text-[#FF5722] text-sm sm:text-base flex-shrink-0">
                         ◇
                       </span>
-                      <span>{bullet}</span>
+                      <span suppressHydrationWarning>{bullet}</span>
                     </div>
                   ))}
                 </div>
@@ -242,7 +246,7 @@ export function ExploreOtherProducts() {
                       fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                     }}
                   >
-                    Get Quote
+                    <span suppressHydrationWarning>{dict.solutionsSection?.getQuote || "Get Quote"}</span>
                   </Link>
 
                   <Link
@@ -252,7 +256,7 @@ export function ExploreOtherProducts() {
                       fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                     }}
                   >
-                    Know More
+                    <span suppressHydrationWarning>{dict.solutionsSection?.knowMore || "Know More"}</span>
                   </Link>
                 </div>
               </div>

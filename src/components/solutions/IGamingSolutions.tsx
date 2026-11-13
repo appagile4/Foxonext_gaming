@@ -3,15 +3,18 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-
-const BULLET_POINTS = [
-  "Bonus Management Engine",
-  "Extensive collection of top-tier content",
-  "Multi-currency Wallet Support",
-  "Compatibility across all devices",
-];
+import { useTranslation } from "@/translations/useTranslation";
 
 export function IGamingSolutions() {
+  const { dict } = useTranslation();
+
+  const bulletPoints = [
+    dict.solutionsSection.bullet1,
+    dict.solutionsSection.bullet2,
+    dict.solutionsSection.bullet3,
+    dict.solutionsSection.bullet4,
+  ];
+
   return (
     <section className="relative w-[92%] sm:w-[85%] lg:w-[75%] mx-auto pt-8 pb-20 sm:pt-14 sm:pb-28 lg:pt-16 lg:pb-36 select-none z-10">
       <div className="w-full space-y-10 sm:space-y-12 lg:space-y-14">
@@ -23,23 +26,22 @@ export function IGamingSolutions() {
               className="font-red-rose text-3xl sm:text-5xl lg:text-[84px] font-[400] text-white tracking-tight leading-[1.08]"
               style={{ fontFamily: "var(--font-red-rose), 'Red Rose', serif" }}
             >
-              Our iGaming
+              <span suppressHydrationWarning>{dict.solutionsSection.title1}</span>
               <br />
-              Solutions
+              <span suppressHydrationWarning>{dict.solutionsSection.title2}</span>
             </h2>
           </div>
 
           {/* Right: Paragraph + Know More Bordered Button in Poppins font */}
           <div className="flex flex-col items-start space-y-5 sm:space-y-6 max-w-lg lg:max-w-xl">
             <p
+              suppressHydrationWarning
               className="font-poppins text-sm sm:text-base lg:text-[18px] text-zinc-300/90 font-normal leading-[1.65]"
               style={{
                 fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
               }}
             >
-              Whether you&apos;re interested in rapidly launching a brand
-              through our White Label solutions, seeking complete control with a
-              customizable Turnkey package.
+              {dict.solutionsSection.description}
             </p>
 
             <a
@@ -49,7 +51,7 @@ export function IGamingSolutions() {
                 fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
               }}
             >
-              Know More
+              <span suppressHydrationWarning>{dict.solutionsSection.knowMore}</span>
             </a>
           </div>
         </div>
@@ -76,28 +78,28 @@ export function IGamingSolutions() {
               {/* Left Column: Heading, Description, Bullets & Buttons */}
               <div className="lg:col-span-6 flex flex-col items-start space-y-6 sm:space-y-7 xl:space-y-8">
                 <h3
+                  suppressHydrationWarning
                   className="font-red-rose text-3xl sm:text-4xl lg:text-[46px] xl:text-[52px] font-bold text-white tracking-tight leading-[1.12]"
                   style={{
                     fontFamily: "var(--font-red-rose), 'Red Rose', serif",
                   }}
                 >
-                  White-Label Solution
+                  {dict.solutionsSection.whiteLabelTitle}
                 </h3>
 
                 <p
+                  suppressHydrationWarning
                   className="font-poppins text-sm sm:text-base lg:text-[17px] xl:text-[18px] text-zinc-300 font-normal leading-[1.68] max-w-xl"
                   style={{
                     fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                   }}
                 >
-                  Whether you&apos;re interested in rapidly launching a brand
-                  through our White Label solutions, seeking complete control
-                  with a customizable Turnkey package.
+                  {dict.solutionsSection.whiteLabelDesc}
                 </p>
 
                 {/* 4 Feature Bullets */}
                 <div className="space-y-3.5 sm:space-y-4 pt-1">
-                  {BULLET_POINTS.map((bullet) => (
+                  {bulletPoints.map((bullet) => (
                     <div
                       key={bullet}
                       className="flex items-center gap-3 sm:gap-3.5"
@@ -112,6 +114,7 @@ export function IGamingSolutions() {
                         <path d="M6 1.5 L10.5 6 L6 10.5 L1.5 6 Z" />
                       </svg>
                       <span
+                        suppressHydrationWarning
                         className="font-poppins text-sm sm:text-[15px] lg:text-base text-zinc-200 font-medium"
                         style={{
                           fontFamily:
@@ -133,7 +136,7 @@ export function IGamingSolutions() {
                       fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                     }}
                   >
-                    Get Quote
+                    <span suppressHydrationWarning>{dict.solutionsSection.getQuote}</span>
                   </Link>
 
                   <Link
@@ -143,7 +146,7 @@ export function IGamingSolutions() {
                       fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                     }}
                   >
-                    Know More
+                    <span suppressHydrationWarning>{dict.solutionsSection.knowMore}</span>
                   </Link>
                 </div>
               </div>
@@ -200,28 +203,28 @@ export function IGamingSolutions() {
               {/* Right Column: Heading, Description, Bullets & Buttons */}
               <div className="lg:col-span-6 flex flex-col items-start space-y-6 sm:space-y-7 xl:space-y-8 order-1 lg:order-2">
                 <h3
+                  suppressHydrationWarning
                   className="font-red-rose text-3xl sm:text-4xl lg:text-[46px] xl:text-[52px] font-bold text-white tracking-tight leading-[1.12]"
                   style={{
                     fontFamily: "var(--font-red-rose), 'Red Rose', serif",
                   }}
                 >
-                  Remote-Desktop
+                  {dict.solutionsSection.remoteDesktopTitle}
                 </h3>
 
                 <p
+                  suppressHydrationWarning
                   className="font-poppins text-sm sm:text-base lg:text-[17px] xl:text-[18px] text-zinc-300 font-normal leading-[1.68] max-w-xl"
                   style={{
                     fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                   }}
                 >
-                  Whether you&apos;re interested in rapidly launching a brand
-                  through our White Label solutions, seeking complete control
-                  with a customizable Turnkey package.
+                  {dict.solutionsSection.remoteDesktopDesc}
                 </p>
 
                 {/* 4 Feature Bullets */}
                 <div className="space-y-3.5 sm:space-y-4 pt-1">
-                  {BULLET_POINTS.map((bullet) => (
+                  {bulletPoints.map((bullet) => (
                     <div
                       key={bullet}
                       className="flex items-center gap-3 sm:gap-3.5"
@@ -236,6 +239,7 @@ export function IGamingSolutions() {
                         <path d="M6 1.5 L10.5 6 L6 10.5 L1.5 6 Z" />
                       </svg>
                       <span
+                        suppressHydrationWarning
                         className="font-poppins text-sm sm:text-[15px] lg:text-base text-zinc-200 font-medium"
                         style={{
                           fontFamily:
@@ -257,7 +261,7 @@ export function IGamingSolutions() {
                       fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                     }}
                   >
-                    Get Quote
+                    <span suppressHydrationWarning>{dict.solutionsSection.getQuote}</span>
                   </Link>
 
                   <Link
@@ -267,7 +271,7 @@ export function IGamingSolutions() {
                       fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                     }}
                   >
-                    Know More
+                    <span suppressHydrationWarning>{dict.solutionsSection.knowMore}</span>
                   </Link>
                 </div>
               </div>

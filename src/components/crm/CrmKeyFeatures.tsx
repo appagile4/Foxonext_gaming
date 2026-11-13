@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useTranslation } from "@/translations/useTranslation";
 
 export interface KeyFeatureTab {
   id: string;
@@ -169,9 +170,20 @@ export const KEY_FEATURE_TABS: KeyFeatureTab[] = [
 ];
 
 export function CrmKeyFeatures() {
+  const { dict } = useTranslation();
   const [activeTab, setActiveTab] = useState(0);
   const tabListRef = useRef<HTMLDivElement>(null);
   const tabButtonRefs = useRef<(HTMLButtonElement | null)[]>([]);
+
+  const tabs = (dict.crmPage?.tabs && dict.crmPage.tabs.length > 0)
+    ? dict.crmPage.tabs.map((t, idx) => ({
+        ...KEY_FEATURE_TABS[idx % KEY_FEATURE_TABS.length],
+        tabLabel: t.tabLabel,
+        cardTitle: t.cardTitle,
+        description: t.description,
+        bullets: t.bullets,
+      }))
+    : KEY_FEATURE_TABS;
 
   // Automatically scroll the active tab smoothly into view when activeTab changes
   useEffect(() => {
@@ -192,14 +204,14 @@ export function CrmKeyFeatures() {
   };
 
   const handleNext = () => {
-    if (activeTab < KEY_FEATURE_TABS.length - 1) {
+    if (activeTab < tabs.length - 1) {
       setActiveTab((prev) => prev + 1);
     }
   };
 
   const isFirstTab = activeTab === 0;
-  const isLastTab = activeTab === KEY_FEATURE_TABS.length - 1;
-  const currentTab = KEY_FEATURE_TABS[activeTab];
+  const isLastTab = activeTab === tabs.length - 1;
+  const currentTab = tabs[activeTab] || tabs[0];
 
   return (
     <section className="relative w-full py-16 sm:py-20 lg:py-24 bg-transparent select-none z-10 overflow-hidden">
@@ -219,12 +231,13 @@ export function CrmKeyFeatures() {
 
           <div className="relative z-10 flex items-center gap-3.5">
             <h2
+              suppressHydrationWarning
               className="font-red-rose text-3xl sm:text-4xl lg:text-[46px] xl:text-[50px] font-bold text-white tracking-tight leading-tight"
               style={{
                 fontFamily: "var(--font-red-rose), 'Red Rose', serif",
               }}
             >
-              FOXOnext CRM Key Features
+              {dict.crmPage?.keyFeaturesTitle || "FOXOnext CRM Key Features"}
             </h2>
 
             {/* 2x2 Geometric Indicator Icons (▫ ★ / ▫ ▫) */}
@@ -265,7 +278,7 @@ export function CrmKeyFeatures() {
               msOverflowStyle: "none",
             }}
           >
-            {KEY_FEATURE_TABS.map((tab, idx) => {
+            {tabs.map((tab, idx) => {
               const isActive = idx === activeTab;
               return (
                 <button
@@ -284,7 +297,7 @@ export function CrmKeyFeatures() {
                     fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                   }}
                 >
-                  {tab.tabLabel}
+                  <span suppressHydrationWarning>{tab.tabLabel}</span>
                 </button>
               );
             })}
@@ -315,6 +328,7 @@ export function CrmKeyFeatures() {
               <div className="inline-block relative">
                 <div className="bg-[#0b0c10] border-b-[4px] border-r-[4px] border-[#FF5722] px-6 py-3.5 sm:px-8 sm:py-4.5 rounded-[2px] shadow-lg">
                   <h3
+                    suppressHydrationWarning
                     className="font-red-rose text-2xl sm:text-3xl lg:text-[38px] xl:text-[42px] font-bold text-white tracking-wide leading-tight whitespace-nowrap"
                     style={{
                       fontFamily: "var(--font-red-rose), 'Red Rose', serif",
@@ -327,6 +341,7 @@ export function CrmKeyFeatures() {
 
               {/* Description Paragraph */}
               <p
+                suppressHydrationWarning
                 className="font-poppins text-sm sm:text-base lg:text-[17px] xl:text-[18px] text-zinc-300 font-normal leading-relaxed max-w-xl"
                 style={{
                   fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
@@ -346,7 +361,7 @@ export function CrmKeyFeatures() {
                     }}
                   >
                     <span className="w-3 h-3 sm:w-3.5 sm:h-3.5 border-[1.5px] border-[#FF5722] rotate-45 flex-shrink-0" />
-                    <span>{bullet}</span>
+                    <span suppressHydrationWarning>{bullet}</span>
                   </li>
                 ))}
               </ul>
@@ -360,7 +375,7 @@ export function CrmKeyFeatures() {
                     fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                   }}
                 >
-                  Learn More
+                  <span suppressHydrationWarning>{dict.common?.learnMore || "Learn More"}</span>
                 </Link>
               </div>
             </div>

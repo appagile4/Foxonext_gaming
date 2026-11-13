@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import { useTranslation } from "@/translations/useTranslation";
 
 interface FeatureCard {
   id: string;
@@ -10,43 +11,13 @@ interface FeatureCard {
   iconType: "omnichannel" | "branding" | "analytics" | "localized" | "licensed" | "updates";
 }
 
-const FEATURES: FeatureCard[] = [
-  {
-    id: "omnichannel",
-    title: "Omnichannel Support",
-    desc: "Popular casino games come together in one Game Aggregator hub. With our game aggregation platform it is easy and simple to add this massive portfolio to any gaming website through just one API integration.",
-    iconType: "omnichannel",
-  },
-  {
-    id: "branding",
-    title: "Custom Designs & Branding",
-    desc: "Popular casino games come together in one Game Aggregator hub. With our game aggregation platform it is easy and simple to add this massive portfolio to any gaming website through just one API integration.",
-    iconType: "branding",
-  },
-  {
-    id: "analytics",
-    title: "Data Analytics & Reporting",
-    desc: "Popular casino games come together in one Game Aggregator hub. With our game aggregation platform it is easy and simple to add this massive portfolio to any gaming website through just one API integration.",
-    iconType: "analytics",
-  },
-  {
-    id: "localized",
-    title: "Geo-Localized Gameplay",
-    desc: "Popular casino games come together in one Game Aggregator hub. With our game aggregation platform it is easy and simple to add this massive portfolio to any gaming website through just one API integration.",
-    iconType: "localized",
-  },
-  {
-    id: "licensed",
-    title: "Geo-Licensed Aids",
-    desc: "Popular casino games come together in one Game Aggregator hub. With our game aggregation platform it is easy and simple to add this massive portfolio to any gaming website through just one API integration.",
-    iconType: "licensed",
-  },
-  {
-    id: "updates",
-    title: "Continuous Updates",
-    desc: "Popular casino games come together in one Game Aggregator hub. With our game aggregation platform it is easy and simple to add this massive portfolio to any gaming website through just one API integration.",
-    iconType: "updates",
-  },
+const STATIC_ICON_TYPES: FeatureCard["iconType"][] = [
+  "omnichannel",
+  "branding",
+  "analytics",
+  "localized",
+  "licensed",
+  "updates",
 ];
 
 function RenderIcon({ type }: { type: FeatureCard["iconType"] }) {
@@ -117,6 +88,15 @@ function RenderIcon({ type }: { type: FeatureCard["iconType"] }) {
 }
 
 export function WhiteLabelFeatures() {
+  const { dict } = useTranslation();
+
+  const features = (dict.whiteLabelPage?.features || []).map((f, idx) => ({
+    id: f.id || `feature-${idx}`,
+    title: f.title,
+    desc: f.desc,
+    iconType: STATIC_ICON_TYPES[idx % STATIC_ICON_TYPES.length],
+  }));
+
   return (
     <section className="relative w-full py-16 sm:py-20 lg:py-28 select-none z-10 bg-transparent">
       <div className="relative w-[92%] sm:w-[88%] lg:w-[82%] xl:w-[78%] max-w-[1440px] mx-auto space-y-10 sm:space-y-14">
@@ -139,8 +119,9 @@ export function WhiteLabelFeatures() {
                 style={{
                   fontFamily: "var(--font-red-rose), 'Red Rose', serif",
                 }}
+                suppressHydrationWarning
               >
-                FOXOnext Whitelabel Solution Features
+                {dict.whiteLabelPage?.featuresTitle || "FOXOnext Whitelabel Solution Features"}
               </h2>
             </div>
           </div>
@@ -154,7 +135,7 @@ export function WhiteLabelFeatures() {
 
         {/* 6 Feature Cards Grid (3 Columns x 2 Rows) with Transparent Blur Glassmorphism */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
-          {FEATURES.map((feature) => (
+          {features.map((feature) => (
             <div
               key={feature.id}
               className="relative rounded-2xl sm:rounded-3xl bg-white/[0.03] backdrop-blur-xl border border-white/[0.08] hover:border-[#FF5722]/50 p-6 sm:p-8 flex flex-col justify-between shadow-[0_8px_32px_rgba(0,0,0,0.25)] transition-all duration-300 hover:-translate-y-1 group"
@@ -168,6 +149,7 @@ export function WhiteLabelFeatures() {
                     style={{
                       fontFamily: "var(--font-red-rose), 'Red Rose', serif",
                     }}
+                    suppressHydrationWarning
                   >
                     {feature.title}
                   </h3>
@@ -179,6 +161,7 @@ export function WhiteLabelFeatures() {
                   style={{
                     fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                   }}
+                  suppressHydrationWarning
                 >
                   {feature.desc}
                 </p>

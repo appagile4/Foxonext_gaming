@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
+import { useTranslation } from "@/translations/useTranslation";
 
 interface BlogPost {
   id: string;
@@ -93,6 +94,28 @@ export interface TopNewsAndBlogsProps {
 export function TopNewsAndBlogs({
   showBanner = true,
 }: TopNewsAndBlogsProps = {}) {
+  const { dict } = useTranslation();
+
+  const featured = dict.newsSection?.featuredPost || {
+    title: FEATURED_POST.title,
+    date: FEATURED_POST.date,
+    readTime: FEATURED_POST.readTime,
+    authorName: FEATURED_POST.author.name,
+  };
+
+  const posts = (dict.newsSection?.posts && dict.newsSection.posts.length > 0)
+    ? dict.newsSection.posts.map((p, idx) => ({
+        ...BLOG_POSTS[idx % BLOG_POSTS.length],
+        title: p.title,
+        date: p.date,
+        readTime: p.readTime,
+        author: {
+          ...BLOG_POSTS[idx % BLOG_POSTS.length].author,
+          name: p.authorName,
+        },
+      }))
+    : BLOG_POSTS;
+
   return (
     <section className="relative w-full py-16 sm:py-20 lg:py-28 select-none z-10 bg-[#07080c]">
       <div className="relative w-[92%] sm:w-[88%] lg:w-[82%] xl:w-[78%] max-w-[1440px] mx-auto space-y-12 sm:space-y-16">
@@ -103,22 +126,24 @@ export function TopNewsAndBlogs({
               {/* Left Column: Heading, Date, Author & Read Time */}
               <div className="lg:col-span-7 flex flex-col justify-between space-y-8 sm:space-y-10">
                 <h3
+                  suppressHydrationWarning
                   className="font-red-rose text-2xl sm:text-3xl lg:text-[38px] xl:text-[42px] font-bold text-white tracking-tight leading-[1.2]"
                   style={{
                     fontFamily: "var(--font-red-rose), 'Red Rose', serif",
                   }}
                 >
-                  {FEATURED_POST.title}
+                  {featured.title}
                 </h3>
 
                 <div className="space-y-4 pt-2">
                   <div
+                    suppressHydrationWarning
                     className="font-poppins text-xs sm:text-sm text-zinc-400 font-normal"
                     style={{
                       fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                     }}
                   >
-                    {FEATURED_POST.date}
+                    {featured.date}
                   </div>
 
                   <div className="flex items-center justify-between max-w-sm pt-1">
@@ -127,32 +152,34 @@ export function TopNewsAndBlogs({
                       <div className="relative w-10 h-10 sm:w-11 sm:h-11 rounded-lg overflow-hidden border border-white/20">
                         <Image
                           src={FEATURED_POST.author.avatar}
-                          alt={FEATURED_POST.author.name}
+                          alt={featured.authorName}
                           width={44}
                           height={44}
                           className="w-full h-full object-cover"
                         />
                       </div>
                       <span
+                        suppressHydrationWarning
                         className="font-poppins text-sm sm:text-base font-medium text-white"
                         style={{
                           fontFamily:
                             "var(--font-poppins), 'Poppins', sans-serif",
                         }}
                       >
-                        {FEATURED_POST.author.name}
+                        {featured.authorName}
                       </span>
                     </div>
 
                     {/* Read time */}
                     <span
+                      suppressHydrationWarning
                       className="font-poppins text-xs sm:text-sm text-zinc-400 font-normal"
                       style={{
                         fontFamily:
                           "var(--font-poppins), 'Poppins', sans-serif",
                       }}
                     >
-                      {FEATURED_POST.readTime}
+                      {featured.readTime}
                     </span>
                   </div>
                 </div>
@@ -165,6 +192,7 @@ export function TopNewsAndBlogs({
                     src={FEATURED_POST.image}
                     alt={FEATURED_POST.imageAlt}
                     fill
+                    sizes="(max-width: 1024px) 100vw, 42vw"
                     className="object-cover object-center"
                     priority
                   />
@@ -192,7 +220,7 @@ export function TopNewsAndBlogs({
               className="font-red-rose text-2xl sm:text-3xl lg:text-[42px] xl:text-[46px] font-bold text-white tracking-tight leading-tight"
               style={{ fontFamily: "var(--font-red-rose), 'Red Rose', serif" }}
             >
-              Top News &amp; Blogs
+              <span suppressHydrationWarning>{dict.newsSection.title}</span>
             </h2>
           </div>
 
@@ -202,7 +230,7 @@ export function TopNewsAndBlogs({
             className="group relative inline-flex items-center px-4 py-2 font-poppins text-sm sm:text-base font-semibold text-white transition-colors duration-200 hover:text-[#FF5722]"
             style={{ fontFamily: "var(--font-poppins), 'Poppins', sans-serif" }}
           >
-            <span>Explore More</span>
+            <span suppressHydrationWarning>{dict.newsSection.exploreMore}</span>
             <span className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-white/45 group-hover:bg-[#FF5722] transition-colors duration-300" />
           </a>
         </div>
@@ -210,7 +238,7 @@ export function TopNewsAndBlogs({
         {/* 4 Blog Cards Grid with Floating Next Button */}
         <div className="relative">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-7">
-            {BLOG_POSTS.map((post) => (
+            {posts.map((post) => (
               <div
                 key={post.id}
                 className="group flex flex-col justify-between space-y-4"
@@ -221,12 +249,14 @@ export function TopNewsAndBlogs({
                     src={post.image}
                     alt={post.imageAlt}
                     fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                     className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
 
                 {/* Post Title */}
                 <h4
+                  suppressHydrationWarning
                   className="font-red-rose text-sm sm:text-base font-bold text-white tracking-tight leading-snug line-clamp-3 group-hover:text-[#FF5722] transition-colors duration-200"
                   style={{
                     fontFamily: "var(--font-red-rose), 'Red Rose', serif",
@@ -237,6 +267,7 @@ export function TopNewsAndBlogs({
 
                 {/* Date */}
                 <div
+                  suppressHydrationWarning
                   className="font-poppins text-xs text-zinc-400 font-normal"
                   style={{
                     fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
@@ -258,6 +289,7 @@ export function TopNewsAndBlogs({
                       />
                     </div>
                     <span
+                      suppressHydrationWarning
                       className="font-poppins text-xs sm:text-[13px] font-medium text-zinc-300"
                       style={{
                         fontFamily:
@@ -269,6 +301,7 @@ export function TopNewsAndBlogs({
                   </div>
 
                   <span
+                    suppressHydrationWarning
                     className="font-poppins text-[11px] sm:text-xs text-zinc-400 font-normal"
                     style={{
                       fontFamily: "var(--font-poppins), 'Poppins', sans-serif",

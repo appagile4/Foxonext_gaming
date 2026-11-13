@@ -4,108 +4,133 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useTranslation } from "@/translations/useTranslation";
 
-interface KeyFeatureTab {
+interface KeyFeatureTabConfig {
   id: string;
-  tabLabel: string;
-  cardTitle: string;
-  description: string;
-  bullets: string[];
   image: string;
   imageAlt: string;
+  defaultLabel: string;
+  defaultTitle: string;
+  defaultDesc: string;
+  defaultBullets: string[];
 }
 
-const TABS: KeyFeatureTab[] = [
+const STATIC_TABS_CONFIG: KeyFeatureTabConfig[] = [
   {
     id: "back-office",
-    tabLabel: "Back-Office Management",
-    cardTitle: "Back-Office Management",
-    description:
+    image: "/images/white-label/office.png",
+    imageAlt: "Back-Office Management 3D Folder with Documents",
+    defaultLabel: "Back-Office Management",
+    defaultTitle: "Back-Office Management",
+    defaultDesc:
       "Whether you're interested in rapidly launching a brand through our White Label solutions, seeking complete control with a customizable Turnkey package.",
-    bullets: [
+    defaultBullets: [
       "Extensive collection of top-tier content",
       "Bonus Management Engine",
       "Compatibility across all devices",
       "Multi-currency Wallet Support",
     ],
-    image: "/images/white-label/office.png",
-    imageAlt: "Back-Office Management 3D Folder with Documents",
   },
   {
     id: "marketing-tools",
-    tabLabel: "Marketing & Bonus Tools",
-    cardTitle: "Marketing & Bonus Tools",
-    description:
+    image: "/images/white-label/marketing.png",
+    imageAlt: "Marketing & Bonus Tools 3D Megaphone",
+    defaultLabel: "Marketing & Bonus Tools",
+    defaultTitle: "Marketing & Bonus Tools",
+    defaultDesc:
       "Whether you're interested in rapidly launching a brand through our White Label solutions, seeking complete control with a customizable Turnkey package.",
-    bullets: [
+    defaultBullets: [
       "Extensive collection of top-tier content",
       "Bonus Management Engine",
       "Compatibility across all devices",
       "Multi-currency Wallet Support",
     ],
-    image: "/images/white-label/marketing.png",
-    imageAlt: "Marketing & Bonus Tools 3D Megaphone",
   },
   {
     id: "gamification",
-    tabLabel: "Gamification/Games Management",
-    cardTitle: "Gamification/Games Management",
-    description:
+    image: "/images/white-label/gamification.png",
+    imageAlt: "Gamification/Games Management 3D Joker and Ace Cards",
+    defaultLabel: "Gamification/Games Management",
+    defaultTitle: "Gamification/Games Management",
+    defaultDesc:
       "Whether you're interested in rapidly launching a brand through our White Label solutions, seeking complete control with a customizable Turnkey package.",
-    bullets: [
+    defaultBullets: [
       "Extensive collection of top-tier content",
       "Bonus Management Engine",
       "Compatibility across all devices",
       "Multi-currency Wallet Support",
     ],
-    image: "/images/white-label/gamification.png",
-    imageAlt: "Gamification/Games Management 3D Joker and Ace Cards",
   },
   {
     id: "payment-system",
-    tabLabel: "Payment System",
-    cardTitle: "Bonus Configuration",
-    description:
-      "Whether you're interested in rapidly launching a brand through our White Label solutions, seeking complete control with a customizable Turnkey package.",
-    bullets: [
-      "Extensive collection of top-tier content",
-      "Bonus Management Engine",
-      "Compatibility across all devices",
-      "Multi-currency Wallet Support",
-    ],
     image: "/images/white-label/payment.png",
     imageAlt:
       "Payment System & Bonus Configuration 3D Credit Card with Security Shield",
-  },
-  {
-    id: "campaign-building",
-    tabLabel: "Campaign Building",
-    cardTitle: "Campaign Building",
-    description:
+    defaultLabel: "Payment System",
+    defaultTitle: "Bonus Configuration",
+    defaultDesc:
       "Whether you're interested in rapidly launching a brand through our White Label solutions, seeking complete control with a customizable Turnkey package.",
-    bullets: [
+    defaultBullets: [
       "Extensive collection of top-tier content",
       "Bonus Management Engine",
       "Compatibility across all devices",
       "Multi-currency Wallet Support",
     ],
+  },
+  {
+    id: "campaign-building",
     image: "/images/white-label/campaign.png",
     imageAlt: "Campaign Building 3D Dollar Coin with Connected Nodes",
+    defaultLabel: "Campaign Building",
+    defaultTitle: "Campaign Building",
+    defaultDesc:
+      "Whether you're interested in rapidly launching a brand through our White Label solutions, seeking complete control with a customizable Turnkey package.",
+    defaultBullets: [
+      "Extensive collection of top-tier content",
+      "Bonus Management Engine",
+      "Compatibility across all devices",
+      "Multi-currency Wallet Support",
+    ],
   },
 ];
 
 export function WhiteLabelKeyFeatures() {
+  const { dict } = useTranslation();
   const [activeTabIdx, setActiveTabIdx] = useState(0);
 
+  const translatedTabs = (dict.whiteLabelPage?.keyFeatures || []).map((t, idx) => {
+    const config = STATIC_TABS_CONFIG[idx] || STATIC_TABS_CONFIG[0];
+    return {
+      id: config.id,
+      tabLabel: t.tabLabel || config.defaultLabel,
+      cardTitle: t.cardTitle || config.defaultTitle,
+      description: t.description || config.defaultDesc,
+      bullets: t.bullets && t.bullets.length > 0 ? t.bullets : config.defaultBullets,
+      image: config.image,
+      imageAlt: config.imageAlt,
+    };
+  });
+
+  const tabs = translatedTabs.length > 0 ? translatedTabs : STATIC_TABS_CONFIG.map(c => ({
+    id: c.id,
+    tabLabel: c.defaultLabel,
+    cardTitle: c.defaultTitle,
+    description: c.defaultDesc,
+    bullets: c.defaultBullets,
+    image: c.image,
+    imageAlt: c.imageAlt,
+  }));
+
   const prevTab = () => {
-    setActiveTabIdx((prev) => (prev === 0 ? TABS.length - 1 : prev - 1));
+    setActiveTabIdx((prev) => (prev === 0 ? tabs.length - 1 : prev - 1));
   };
 
   const nextTab = () => {
-    setActiveTabIdx((prev) => (prev === TABS.length - 1 ? 0 : prev + 1));
+    setActiveTabIdx((prev) => (prev === tabs.length - 1 ? 0 : prev + 1));
   };
 
-  const currentTab = TABS[activeTabIdx];
+  const currentTab = tabs[activeTabIdx] || tabs[0];
 
   return (
     <section className="relative w-full py-16 sm:py-20 lg:py-28 select-none z-10 bg-transparent">
@@ -129,8 +154,9 @@ export function WhiteLabelKeyFeatures() {
                 style={{
                   fontFamily: "var(--font-red-rose), 'Red Rose', serif",
                 }}
+                suppressHydrationWarning
               >
-                FOXOnext Whitelabel Solution Key Features
+                {dict.whiteLabelPage?.keyFeaturesTitle || "FOXOnext Whitelabel Solution Key Features"}
               </h2>
             </div>
           </div>
@@ -156,7 +182,7 @@ export function WhiteLabelKeyFeatures() {
 
           {/* Tabs Container */}
           <div className="flex-1 flex items-center gap-2 p-1.5 rounded-xl sm:rounded-2xl bg-white/[0.04] backdrop-blur-md border border-white/10 overflow-x-auto scrollbar-none">
-            {TABS.map((tab, idx) => {
+            {tabs.map((tab, idx) => {
               const isActive = idx === activeTabIdx;
               return (
                 <button
@@ -171,6 +197,7 @@ export function WhiteLabelKeyFeatures() {
                   style={{
                     fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                   }}
+                  suppressHydrationWarning
                 >
                   {tab.tabLabel}
                 </button>
@@ -201,6 +228,7 @@ export function WhiteLabelKeyFeatures() {
                   style={{
                     fontFamily: "var(--font-red-rose), 'Red Rose', serif",
                   }}
+                  suppressHydrationWarning
                 >
                   {currentTab.cardTitle}
                 </h3>
@@ -212,6 +240,7 @@ export function WhiteLabelKeyFeatures() {
                 style={{
                   fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                 }}
+                suppressHydrationWarning
               >
                 {currentTab.description}
               </p>
@@ -228,7 +257,7 @@ export function WhiteLabelKeyFeatures() {
                     <span className="text-[#FF5722] text-base sm:text-lg flex-shrink-0">
                       ◇
                     </span>
-                    <span>{bullet}</span>
+                    <span suppressHydrationWarning>{bullet}</span>
                   </div>
                 ))}
               </div>
@@ -236,13 +265,14 @@ export function WhiteLabelKeyFeatures() {
               {/* Action Button: Learn More */}
               <div className="pt-2">
                 <Link
-                  href="#contact"
+                  href="/contact"
                   className="inline-block px-7 sm:px-8 py-3 sm:py-3.5 rounded bg-gradient-to-r from-[#FF5722] to-[#E64A19] text-white font-poppins font-semibold text-sm sm:text-base tracking-wide shadow-[0_4px_16px_rgba(255,87,34,0.4)] hover:shadow-[0_6px_22px_rgba(255,87,34,0.6)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
                   style={{
                     fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                   }}
+                  suppressHydrationWarning
                 >
-                  Learn More
+                  {dict.common?.learnMore || "Learn More"}
                 </Link>
               </div>
             </div>

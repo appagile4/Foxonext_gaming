@@ -4,74 +4,29 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Sparkles } from "lucide-react";
+import { useTranslation } from "@/translations/useTranslation";
 
-interface AdvantageItem {
-  id: string;
-  title: string;
-  description: string;
-  bullets: string[];
-  image: string;
-  imageAlt: string;
-  imageOnLeft?: boolean;
-}
-
-const ADVANTAGES: AdvantageItem[] = [
+const STATIC_ADVANTAGE_CONFIG = [
   {
     id: "api-integration",
-    title: "API Integration",
-    description:
-      "Whether you're interested in rapidly launching a brand through our White Label solutions, seeking complete control with a customizable Turnkey package.",
-    bullets: [
-      "Extensive collection of top-tier content",
-      "Bonus Management Engine",
-      "Compatibility across all devices",
-      "Multi-currency Wallet Support",
-    ],
     image: "/images/aggregator/advantage-api.png",
     imageAlt: "FOXONEXT Holographic API Integration Sphere",
     imageOnLeft: false,
   },
   {
     id: "content-management",
-    title: "Content Management",
-    description:
-      "Whether you're interested in rapidly launching a brand through our White Label solutions, seeking complete control with a customizable Turnkey package.",
-    bullets: [
-      "Extensive collection of top-tier content",
-      "Bonus Management Engine",
-      "Compatibility across all devices",
-      "Multi-currency Wallet Support",
-    ],
     image: "/images/aggregator/advantage-content.png",
     imageAlt: "Isometric Digital Content Management Tree Hub",
     imageOnLeft: true,
   },
   {
     id: "tournament-tool",
-    title: "Tournament Tool",
-    description:
-      "Whether you're interested in rapidly launching a brand through our White Label solutions, seeking complete control with a customizable Turnkey package.",
-    bullets: [
-      "Extensive collection of top-tier content",
-      "Bonus Management Engine",
-      "Compatibility across all devices",
-      "Multi-currency Wallet Support",
-    ],
     image: "/images/aggregator/advantage-tournament.png",
     imageAlt: "3D Championship Trophy with Wings and Swords",
     imageOnLeft: false,
   },
   {
     id: "game-portfolio",
-    title: "Game Portfolio",
-    description:
-      "Whether you're interested in rapidly launching a brand through our White Label solutions, seeking complete control with a customizable Turnkey package.",
-    bullets: [
-      "Extensive collection of top-tier content",
-      "Bonus Management Engine",
-      "Compatibility across all devices",
-      "Multi-currency Wallet Support",
-    ],
     image: "/images/aggregator/advantage-portfolio.png",
     imageAlt: "3D Game Controller with Connected Ecosystem Assets",
     imageOnLeft: true,
@@ -79,6 +34,18 @@ const ADVANTAGES: AdvantageItem[] = [
 ];
 
 export function AggregatorAdvantages() {
+  const { dict } = useTranslation();
+
+  const advantages = (dict.aggregatorPage?.advantages || []).map((adv, idx) => {
+    const config = STATIC_ADVANTAGE_CONFIG[idx] || STATIC_ADVANTAGE_CONFIG[0];
+    return {
+      ...config,
+      title: adv.title,
+      description: adv.description,
+      bullets: adv.bullets,
+    };
+  });
+
   return (
     <section className="relative w-full py-16 sm:py-24 lg:py-28 select-none z-10 bg-transparent">
       <div className="relative w-[92%] sm:w-[88%] lg:w-[82%] xl:w-[78%] max-w-[1440px] mx-auto space-y-12 sm:space-y-16">
@@ -100,8 +67,9 @@ export function AggregatorAdvantages() {
               style={{
                 fontFamily: "var(--font-red-rose), 'Red Rose', serif",
               }}
+              suppressHydrationWarning
             >
-              FOXOnext Aggregator Advantages
+              {dict.aggregatorPage?.advantagesTitle || "FOXOnext Aggregator Advantages"}
             </h2>
             <Sparkles className="w-6 h-6 text-[#FF5722] opacity-90 hidden sm:block" />
           </div>
@@ -122,7 +90,7 @@ export function AggregatorAdvantages() {
           </div>
 
           {/* 4 Cards */}
-          {ADVANTAGES.map((adv) => {
+          {advantages.map((adv) => {
             return (
               <div
                 key={adv.id}
@@ -148,6 +116,7 @@ export function AggregatorAdvantages() {
                         style={{
                           fontFamily: "var(--font-red-rose), 'Red Rose', serif",
                         }}
+                        suppressHydrationWarning
                       >
                         {adv.title}
                       </h3>
@@ -160,6 +129,7 @@ export function AggregatorAdvantages() {
                         fontFamily:
                           "var(--font-poppins), 'Poppins', sans-serif",
                       }}
+                      suppressHydrationWarning
                     >
                       {adv.description}
                     </p>
@@ -177,7 +147,7 @@ export function AggregatorAdvantages() {
                           <span className="text-[#FF5722] text-base sm:text-lg">
                             ◇
                           </span>
-                          <span>{bullet}</span>
+                          <span suppressHydrationWarning>{bullet}</span>
                         </div>
                       ))}
                     </div>
@@ -185,14 +155,15 @@ export function AggregatorAdvantages() {
                     {/* CTA Button */}
                     <div className="pt-2">
                       <Link
-                        href="#contact"
+                        href="/contact"
                         className="inline-block px-7 sm:px-8 py-3 sm:py-3.5 rounded bg-gradient-to-r from-[#FF5722] to-[#E64A19] text-white font-poppins font-semibold text-sm sm:text-base tracking-wide shadow-[0_4px_16px_rgba(255,87,34,0.4)] hover:shadow-[0_6px_22px_rgba(255,87,34,0.6)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
                         style={{
                           fontFamily:
                             "var(--font-poppins), 'Poppins', sans-serif",
                         }}
+                        suppressHydrationWarning
                       >
-                        Learn More
+                        {dict.common?.learnMore || "Learn More"}
                       </Link>
                     </div>
                   </div>

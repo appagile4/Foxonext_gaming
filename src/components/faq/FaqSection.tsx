@@ -3,73 +3,18 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { ChevronDown, ChevronUp } from "lucide-react";
-
-interface FaqItem {
-  id: number;
-  number: string;
-  question: string;
-  answer: string;
-}
-
-const FAQ_ITEMS: FaqItem[] = [
-  {
-    id: 1,
-    number: "1",
-    question: "DO you have any Question like I have with this life ?",
-    answer:
-      "Yes, I also have the same questions like you did at your younger age, and still don't have proper a answers and even some questions are still unanswered, so I'm also like you searching for the answers and also don't know where to find",
-  },
-  {
-    id: 2,
-    number: "2",
-    question: "What motivates you to keep pushing forward every day?",
-    answer:
-      "Our commitment to empowering gaming operators with state-of-the-art iGaming infrastructure, zero downtime, and seamless scalable technology keeps us motivated every single day.",
-  },
-  {
-    id: 3,
-    number: "3",
-    question: "How do you find balance between work and personal life?",
-    answer:
-      "By architecting automated, highly reliable systems and collaborating with an agile, high-performing team that ensures 24/7 operational resilience without constant firefighting.",
-  },
-  {
-    id: 4,
-    number: "4",
-    question: "What is a lesson you learned the hard way but are grateful for?",
-    answer:
-      "Prioritizing high platform security, multi-jurisdiction compliance, and scalable server architecture from day one is vastly superior to troubleshooting legacy debt later.",
-  },
-  {
-    id: 5,
-    number: "5",
-    question: "If you could change one thing about the world, what would it be?",
-    answer:
-      "Democratizing access to high-technology digital gaming solutions and fostering transparent, player-first entertainment ecosystems across global markets.",
-  },
-  {
-    id: 6,
-    number: "6",
-    question: "What is a lesson you learned the hard way but are grateful for?",
-    answer:
-      "Always listening to operator feedback. Direct user insights have repeatedly driven our finest software innovations and modular feature rollouts.",
-  },
-  {
-    id: 7,
-    number: "7",
-    question: "If you could change one thing about the world, what would it be?",
-    answer:
-      "Eliminating the technical complexities that prevent ambitious casino brands from launching fast, compliant, and universally scalable digital platforms.",
-  },
-];
+import { useTranslation } from "@/translations/useTranslation";
 
 export function FaqSection() {
+  const { dict } = useTranslation();
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const [questionText, setQuestionText] = useState("");
 
   const toggleItem = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
+
+  const faqs = dict.faqSection.faqs || [];
 
   return (
     <section className="relative w-full py-16 sm:py-20 lg:py-28 select-none z-10 bg-[#07080c]">
@@ -97,42 +42,41 @@ export function FaqSection() {
                     fontFamily: "var(--font-red-rose), 'Red Rose', serif",
                   }}
                 >
-                  Frequently Asked
+                  <span suppressHydrationWarning>{dict.faqSection.title1}</span>
                   <br />
-                  Questions
+                  <span suppressHydrationWarning>{dict.faqSection.title2}</span>
                 </h2>
               </div>
 
               {/* Description Paragraph */}
               <p
+                suppressHydrationWarning
                 className="font-poppins text-xs sm:text-sm text-zinc-400 font-normal leading-relaxed max-w-md pt-2"
                 style={{
                   fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                 }}
               >
-                Yes, I also have the same questions like you did at your even
-                some questions are still unanswered, so I&apos;m also like you
-                searching for the to find I&apos;m also like you searching for the
-                to find
+                {dict.faqSection.description}
               </p>
             </div>
 
             {/* Still have questions? Form Box */}
             <div className="space-y-4 pt-2">
               <h3
+                suppressHydrationWarning
                 className="font-poppins text-lg sm:text-xl font-bold text-white tracking-tight"
                 style={{
                   fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                 }}
               >
-                Still have questions?
+                {dict.faqSection.stillHaveQuestions}
               </h3>
 
               <div className="space-y-3">
                 <textarea
                   value={questionText}
                   onChange={(e) => setQuestionText(e.target.value)}
-                  placeholder="Type your question here"
+                  placeholder={dict.faqSection.placeholder}
                   rows={4}
                   className="w-full rounded-xl bg-[#0e0f14] border border-white/10 px-4 py-3 font-poppins text-sm text-white placeholder:text-zinc-600 focus:outline-none focus:border-[#FF5722] focus:ring-1 focus:ring-[#FF5722] transition-colors resize-none"
                   style={{
@@ -148,7 +92,7 @@ export function FaqSection() {
                       fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                     }}
                   >
-                    Send now
+                    <span suppressHydrationWarning>{dict.faqSection.sendNow}</span>
                   </button>
                 </div>
               </div>
@@ -160,9 +104,11 @@ export function FaqSection() {
                   fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                 }}
               >
-                <div className="text-zinc-400 font-medium">Or,</div>
+                <div suppressHydrationWarning className="text-zinc-400 font-medium">
+                  {dict.faqSection.orText}
+                </div>
                 <div>
-                  Send mail us to{" "}
+                  <span suppressHydrationWarning>{dict.faqSection.sendMailTo}</span>{" "}
                   <a
                     href="mailto:foxonext@mail.com"
                     className="text-white hover:text-[#FF5722] transition-colors underline decoration-white/30 underline-offset-2"
@@ -170,17 +116,19 @@ export function FaqSection() {
                     foxonext@mail.com
                   </a>
                 </div>
-                <p className="text-zinc-500 text-xs leading-relaxed max-w-sm pt-0.5">
-                  Our team will answer you within 24 hours. Till then be patient
-                  and Have a Great Day!
+                <p
+                  suppressHydrationWarning
+                  className="text-zinc-500 text-xs leading-relaxed max-w-sm pt-0.5"
+                >
+                  {dict.faqSection.supportNote}
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Right Column: 7 Accordion Questions */}
+          {/* Right Column: Accordion Questions */}
           <div className="lg:col-span-7 space-y-3.5 sm:space-y-4">
-            {FAQ_ITEMS.map((item, index) => {
+            {faqs.map((item, index) => {
               const isOpen = openIndex === index;
               return (
                 <div
@@ -207,7 +155,7 @@ export function FaqSection() {
                       <span className="text-[#FF5722] font-semibold mr-2 sm:mr-3">
                         {item.number}.
                       </span>
-                      {item.question}
+                      <span suppressHydrationWarning>{item.question}</span>
                     </span>
 
                     {/* Orange Chevron Badge */}
@@ -225,6 +173,7 @@ export function FaqSection() {
                     <div className="px-4 sm:px-6 pb-5 sm:pb-6 pt-0">
                       <div className="border-t border-dashed border-zinc-700/70 mb-4" />
                       <p
+                        suppressHydrationWarning
                         className="font-poppins text-xs sm:text-sm text-zinc-300 font-normal leading-relaxed"
                         style={{
                           fontFamily:

@@ -5,8 +5,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
 import { Milestones } from "@/components/hero/Milestones";
+import { useTranslation } from "@/translations/useTranslation";
 
 export function AggregatorHero() {
+  const { dict } = useTranslation();
+
   return (
     <section className="relative w-full min-h-[92vh] lg:min-h-[900px] xl:min-h-[960px] flex flex-col justify-between overflow-hidden bg-transparent select-none z-10">
       {/* Scoped Top Navbar */}
@@ -20,12 +23,13 @@ export function AggregatorHero() {
           {/* Left Column: Heading, Description & CTA */}
           <div className="lg:col-span-7 space-y-6 sm:space-y-8">
             <h1
+              suppressHydrationWarning
               className="font-red-rose text-3xl sm:text-5xl lg:text-[54px] xl:text-[62px] font-bold text-white tracking-tight leading-[1.15]"
               style={{
                 fontFamily: "var(--font-red-rose), 'Red Rose', serif",
               }}
             >
-              Casino Game Aggregator
+              {dict.subpages.aggregator.title}
             </h1>
 
             <div
@@ -34,16 +38,11 @@ export function AggregatorHero() {
                 fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
               }}
             >
-              <p>
-                Popular casino games come together in one Game Aggregator hub.
-                With our game aggregation platform it is easy and simple to add
-                this massive portfolio to any gaming website through just one
-                API integration.
+              <p suppressHydrationWarning>
+                {dict.subpages.aggregator.desc1}
               </p>
-              <p>
-                The FOXONEXT Game Aggregator team assists at each step of
-                integration and works together with the game content providers,
-                to offer technical support after the games go live.
+              <p suppressHydrationWarning>
+                {dict.subpages.aggregator.desc2}
               </p>
             </div>
 
@@ -56,15 +55,18 @@ export function AggregatorHero() {
                   fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                 }}
               >
-                {/* Sliding Orange Background (Left-to-Right on Hover, Right-to-Left on Leave) */}
+                {/* Sliding Orange Background */}
                 <span
                   aria-hidden="true"
                   className="absolute inset-0 bg-gradient-to-r from-[#d84315] to-[#ff5722] -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out pointer-events-none"
                 />
 
-                {/* Button Text (Orange initially, transitions smoothly to White on Hover) */}
-                <span className="relative z-10 font-semibold text-sm sm:text-base tracking-wide text-[#d84315] group-hover:text-white transition-colors duration-300">
-                  Get Casino Games
+                {/* Button Text */}
+                <span
+                  suppressHydrationWarning
+                  className="relative z-10 font-semibold text-sm sm:text-base tracking-wide text-[#d84315] group-hover:text-white transition-colors duration-300"
+                >
+                  {dict.subpages.aggregator.ctaText}
                 </span>
               </Link>
             </div>
@@ -77,6 +79,7 @@ export function AggregatorHero() {
                 src="/images/aggregator/hero-dice-rotated.png"
                 alt="Casino Game Aggregator 3D Dice"
                 fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-contain animate-float rotate-320"
                 priority
               />
@@ -84,7 +87,7 @@ export function AggregatorHero() {
           </div>
         </div>
 
-        {/* Bottom Milestones Line: Animated white timeline matching <Milestones /> */}
+        {/* Bottom Milestones Line */}
         <div className="relative w-full mt-12 sm:mt-16 lg:mt-20 pt-2 sm:pt-4">
           <Milestones theme="white" className="max-w-2xl lg:max-w-3xl" />
         </div>

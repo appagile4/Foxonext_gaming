@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Red_Rose, Poppins } from "next/font/google";
 import "./globals.css";
+import { ReduxProvider } from "@/store/ReduxProvider";
 
 const redRose = Red_Rose({
   variable: "--font-red-rose",
@@ -44,7 +45,7 @@ export default function RootLayout({
         suppressHydrationWarning
         className="min-h-screen flex flex-col bg-[#07080c] text-zinc-100 antialiased font-[family-name:var(--font-poppins)] selection:bg-[#E94E1B] selection:text-white"
       >
-        {children}
+        <ReduxProvider>{children}</ReduxProvider>
       </body>
     </html>
   );

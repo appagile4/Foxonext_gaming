@@ -5,29 +5,32 @@ import Image from "next/image";
 import Link from "next/link";
 import { Settings as GearIcon } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
-
-const STEP_CARDS = [
-  {
-    step: "01",
-    title: "Choose Your Plan",
-    description:
-      "Pick a virtual desktop plan that fits your business needs and budget. Transparent pricing, no hidden fees.",
-  },
-  {
-    step: "02",
-    title: "Quick Setup",
-    description:
-      "Pick a virtual desktop plan that fits your business needs and budget. Transparent pricing, no hidden fees.",
-  },
-  {
-    step: "03",
-    title: "Connect & Work",
-    description:
-      "Pick a virtual desktop plan that fits your business needs and budget. Transparent pricing, no hidden fees.",
-  },
-];
+import { useTranslation } from "@/translations/useTranslation";
 
 export function RemoteDesktopHero() {
+  const { dict } = useTranslation();
+
+  const stepCards = [
+    {
+      step: "01",
+      title: "Choose Your Plan",
+      description:
+        "Pick a virtual desktop plan that fits your business needs and budget. Transparent pricing, no hidden fees.",
+    },
+    {
+      step: "02",
+      title: "Quick Setup",
+      description:
+        "Pick a virtual desktop plan that fits your business needs and budget. Transparent pricing, no hidden fees.",
+    },
+    {
+      step: "03",
+      title: "Connect & Work",
+      description:
+        "Pick a virtual desktop plan that fits your business needs and budget. Transparent pricing, no hidden fees.",
+    },
+  ];
+
   return (
     <section className="relative w-full min-h-[92vh] flex flex-col justify-between overflow-hidden bg-transparent select-none z-10 pb-12 sm:pb-16 lg:pb-20">
       {/* Scoped Top Navbar */}
@@ -42,42 +45,41 @@ export function RemoteDesktopHero() {
           {/* Left Column: Heading, Description, Bullets & CTA */}
           <div className="lg:col-span-7 space-y-6 sm:space-y-7">
             <h1
-              className="font-red-rose  text-xl sm:text-2xl md:text-3xl lg:text-[40px] xl:text-[48px] 2xl:text-[54px] text-white tracking-tight leading-tight sm:whitespace-nowrap"
+              suppressHydrationWarning
+              className="font-red-rose text-xl sm:text-2xl md:text-3xl lg:text-[40px] xl:text-[48px] 2xl:text-[54px] text-white tracking-tight leading-tight sm:whitespace-nowrap"
               style={{
                 fontFamily: "var(--font-red-rose), 'Red Rose', serif",
               }}
             >
-              We Provide{" "}
-              <span className="font-bold ">Remote Server Rental</span>
+              {dict.subpages.remoteDesktop.title1}{" "}
+              <span className="font-bold text-[#FF5722]">
+                {dict.subpages.remoteDesktop.title2}
+              </span>
             </h1>
 
             <p
+              suppressHydrationWarning
               className="font-poppins text-xs sm:text-sm md:text-[15px] text-white/85 font-normal leading-relaxed max-w-xl"
               style={{
                 fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
               }}
             >
-              Popular casino games come together in one Game Aggregator hub.
-              With our game aggregation platform it is easy and simple to add
-              this massive portfolio to any gaming website through just one API
-              integration.
+              {dict.subpages.remoteDesktop.desc}
             </p>
 
             {/* 3 Bullet Points with Orange Gear Icons */}
             <ul className="space-y-3.5 sm:space-y-4 pt-1">
               <li className="flex items-center gap-3.5 text-xs sm:text-sm md:text-[15px] text-white/90 font-poppins">
                 <GearIcon className="w-5 h-5 text-[#FF5722] flex-shrink-0 filter drop-shadow-[0_0_8px_rgba(255,87,34,0.6)]" />
-                <span>Fast setup and dependable performance.</span>
+                <span suppressHydrationWarning>{dict.subpages.remoteDesktop.point1}</span>
               </li>
               <li className="flex items-center gap-3.5 text-xs sm:text-sm md:text-[15px] text-white/90 font-poppins">
                 <GearIcon className="w-5 h-5 text-[#FF5722] flex-shrink-0 filter drop-shadow-[0_0_8px_rgba(255,87,34,0.6)]" />
-                <span>Private Windows desktop environment.</span>
+                <span suppressHydrationWarning>{dict.subpages.remoteDesktop.point2}</span>
               </li>
               <li className="flex items-center gap-3.5 text-xs sm:text-sm md:text-[15px] text-white/90 font-poppins">
                 <GearIcon className="w-5 h-5 text-[#FF5722] flex-shrink-0 filter drop-shadow-[0_0_8px_rgba(255,87,34,0.6)]" />
-                <span>
-                  Business support, billing help, and service monitoring.
-                </span>
+                <span suppressHydrationWarning>{dict.subpages.remoteDesktop.point3}</span>
               </li>
             </ul>
 
@@ -92,49 +94,55 @@ export function RemoteDesktopHero() {
                       fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                     }}
                   >
-                    Talk With Us
+                    <span suppressHydrationWarning>{dict.subpages.remoteDesktop.ctaText}</span>
                   </Link>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Right Column: 3D Isometric Server & Cloud Infrastructure */}
-          <div className="lg:col-span-5 flex items-center justify-center xl:justify-end relative">
-            <div className="relative w-full max-w-[480px] sm:max-w-[560px] lg:max-w-[620px] aspect-square flex items-center justify-center">
+          {/* Right Column: Isometric 3D Server Center */}
+          <div className="lg:col-span-5 flex items-center justify-center relative">
+            <div className="relative w-full max-w-[460px] sm:max-w-[540px] lg:max-w-[620px] aspect-[1/1] flex items-center justify-center">
               <Image
                 src="/images/remote-desktop/hero-servers-cloud.png"
-                alt="Remote Server Rental Infrastructure"
-                fill
-                className="object-contain filter drop-shadow-[0_20px_60px_rgba(255,87,34,0.22)] animate-float"
+                alt="High Performance Remote Desktop Server Infrastructure"
+                width={800}
+                height={800}
                 priority
+                className="w-full h-full object-contain filter drop-shadow-[0_25px_50px_rgba(0,0,0,0.7)]"
               />
             </div>
           </div>
         </div>
 
-        {/* 3 Step Process Cards Row (Choose Your Plan, Quick Setup, Connect & Work) */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 mt-14 sm:mt-18 lg:mt-22">
-          {STEP_CARDS.map((card) => (
+        {/* Bottom Process Step Cards (3 Horizontal Cards) */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 pt-10 sm:pt-14">
+          {stepCards.map((card) => (
             <div
               key={card.step}
-              className="relative rounded-2xl bg-[#0f1015]/85 backdrop-blur-md border border-white/10 p-6 sm:p-7 shadow-[0_12px_30px_rgba(0,0,0,0.65)] space-y-3 transition-all duration-300 hover:border-[#FF5722]/50 hover:-translate-y-1 group"
+              className="relative rounded-2xl bg-[#0d0f17]/80 border border-white/[0.08] p-6 sm:p-7 flex flex-col justify-between space-y-3 backdrop-blur-xs shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
             >
               <div className="flex items-center justify-between">
-                <h3
-                  className="font-poppins text-base sm:text-lg font-bold text-white group-hover:text-[#FF5722] transition-colors duration-200"
+                <span
+                  className="font-red-rose text-2xl sm:text-3xl font-bold text-[#FF5722]"
                   style={{
-                    fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
+                    fontFamily: "var(--font-red-rose), 'Red Rose', serif",
                   }}
                 >
-                  {card.title}
-                </h3>
-                <span className="inline-flex items-center justify-center px-2.5 py-1 rounded-md bg-[#1e2029] text-[#FF5722] font-semibold text-xs border border-white/[0.06]">
                   {card.step}
                 </span>
               </div>
+              <h3
+                className="font-red-rose text-base sm:text-lg font-bold text-white"
+                style={{
+                  fontFamily: "var(--font-red-rose), 'Red Rose', serif",
+                }}
+              >
+                {card.title}
+              </h3>
               <p
-                className="font-poppins text-xs sm:text-[13px] text-zinc-400 font-normal leading-relaxed"
+                className="font-poppins text-xs sm:text-[13px] text-zinc-400 leading-relaxed font-normal"
                 style={{
                   fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                 }}

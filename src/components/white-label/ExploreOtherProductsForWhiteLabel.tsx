@@ -4,8 +4,10 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import { useTranslation } from "@/translations/useTranslation";
 
 export function ExploreOtherProductsForWhiteLabel() {
+  const { dict } = useTranslation();
   return (
     <section className="relative w-full py-16 sm:py-24 lg:py-28 select-none z-10 bg-[#07080c]">
       <div className="relative w-[92%] sm:w-[88%] lg:w-[82%] xl:w-[78%] max-w-[1440px] mx-auto space-y-10 sm:space-y-12 lg:space-y-14">
@@ -23,12 +25,13 @@ export function ExploreOtherProductsForWhiteLabel() {
             </div>
 
             <h2
+              suppressHydrationWarning
               className="relative z-10 font-red-rose text-3xl sm:text-4xl lg:text-[44px] xl:text-[48px] font-bold text-white tracking-tight leading-tight"
               style={{
                 fontFamily: "var(--font-red-rose), 'Red Rose', serif",
               }}
             >
-              Explore Other Products
+              {dict.exploreOtherProducts?.title || "Explore Other Products"}
             </h2>
           </div>
 
@@ -370,6 +373,7 @@ export function ExploreOtherProductsForWhiteLabel() {
                     src="/images/solutions/remote-desktop.png"
                     alt="Remote Desktop Server Rental"
                     fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-contain"
                   />
                 </div>

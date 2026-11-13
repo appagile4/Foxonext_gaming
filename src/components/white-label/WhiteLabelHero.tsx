@@ -4,12 +4,15 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
+import { useTranslation } from "@/translations/useTranslation";
 
 export function WhiteLabelHero() {
+  const { dict } = useTranslation();
+
   const points = [
-    "Fast setup and dependable performance.",
-    "Private Windows desktop environment.",
-    "Business support, billing help, and service monitoring.",
+    dict.subpages.whiteLabel.point1,
+    dict.subpages.whiteLabel.point2,
+    dict.subpages.whiteLabel.point3,
   ];
 
   return (
@@ -23,28 +26,27 @@ export function WhiteLabelHero() {
           <div className="lg:col-span-6 space-y-7 sm:space-y-9">
             {/* Title in Red Rose font */}
             <h1
+              suppressHydrationWarning
               className="font-red-rose text-3xl sm:text-5xl lg:text-[56px] xl:text-[62px] font-bold text-white tracking-tight leading-[1.12]"
               style={{
                 fontFamily: "var(--font-red-rose), 'Red Rose', serif",
               }}
             >
-              White Label Solution
+              {dict.subpages.whiteLabel.title}
             </h1>
 
             {/* Description */}
             <p
+              suppressHydrationWarning
               className="font-poppins text-sm sm:text-base lg:text-[17px] text-zinc-300/90 font-normal leading-relaxed max-w-xl"
               style={{
                 fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
               }}
             >
-              Popular casino games come together in one Game Aggregator hub.
-              With our game aggregation platform it is easy and simple to add
-              this massive portfolio to any gaming website through just one API
-              integration.
+              {dict.subpages.whiteLabel.desc}
             </p>
 
-            {/* 3 Key Feature Points with 8-Point Sunburst / Badge Icon */}
+            {/* 3 Key Feature Points */}
             <div className="space-y-3.5 sm:space-y-4 pt-1">
               {points.map((point) => (
                 <div key={point} className="flex items-center gap-3.5">
@@ -61,6 +63,7 @@ export function WhiteLabelHero() {
                     </svg>
                   </span>
                   <span
+                    suppressHydrationWarning
                     className="font-poppins text-xs sm:text-sm lg:text-[15px] text-zinc-200 font-medium"
                     style={{
                       fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
@@ -72,7 +75,7 @@ export function WhiteLabelHero() {
               ))}
             </div>
 
-            {/* CTA Button: Request a Demo with solid white offset shadow */}
+            {/* CTA Button */}
             <div className="pt-3">
               <Link
                 href="/contact"
@@ -81,7 +84,9 @@ export function WhiteLabelHero() {
                   fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                 }}
               >
-                Request a Demo
+                <span suppressHydrationWarning>
+                  {dict.subpages.whiteLabel.ctaText}
+                </span>
               </Link>
             </div>
           </div>

@@ -9,6 +9,7 @@ import {
   PieChart,
   Mail,
 } from "lucide-react";
+import { useTranslation } from "@/translations/useTranslation";
 
 interface AdvantageGridItem {
   id: string;
@@ -152,6 +153,15 @@ function UserNodesIcon({ className = "w-6 h-6" }: { className?: string }) {
 }
 
 export function CrmAdvantagesGrid() {
+  const { dict } = useTranslation();
+  const items = (dict.crmPage?.advantages && dict.crmPage.advantages.length > 0)
+    ? dict.crmPage.advantages.map((adv, idx) => ({
+        ...ADVANTAGES_DATA[idx % ADVANTAGES_DATA.length],
+        title: adv.title,
+        description: adv.description,
+      }))
+    : ADVANTAGES_DATA;
+
   return (
     <section className="relative w-full py-20 sm:py-24 lg:py-28 bg-transparent select-none z-10 overflow-hidden">
       <div className="relative z-10 w-[92%] sm:w-[88%] lg:w-[84%] xl:w-[80%] max-w-[1440px] mx-auto space-y-14 sm:space-y-16 lg:space-y-20">
@@ -171,12 +181,13 @@ export function CrmAdvantagesGrid() {
 
             <div className="relative z-10 flex items-center gap-3 sm:gap-4">
               <h2
+                suppressHydrationWarning
                 className="font-red-rose text-3xl sm:text-4xl lg:text-[44px] xl:text-[48px] font-bold text-white tracking-tight leading-tight text-center"
                 style={{
                   fontFamily: "var(--font-red-rose), 'Red Rose', serif",
                 }}
               >
-                Advantages of our CRM
+                {dict.crmPage?.advantagesTitle || "Advantages of our CRM"}
               </h2>
 
               {/* Hand Holding Star Icon */}
@@ -189,7 +200,7 @@ export function CrmAdvantagesGrid() {
 
         {/* 2. 6 Advantages Grid (3 Columns x 2 Rows) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-10 sm:gap-y-12 lg:gap-y-16 gap-x-8 sm:gap-x-10 lg:gap-x-12 items-start">
-          {ADVANTAGES_DATA.map((item) => {
+          {items.map((item) => {
             const isOrangeBorder = item.borderColor === "orange";
             const isOrangeIcon = item.iconColor === "orange";
 
@@ -253,6 +264,7 @@ export function CrmAdvantagesGrid() {
                 {/* Text Content */}
                 <div className="space-y-1.5 flex-1">
                   <h3
+                    suppressHydrationWarning
                     className="font-red-rose text-base sm:text-lg lg:text-[18px] xl:text-[19px] font-bold text-white tracking-wide leading-snug group-hover:text-[#FF5722] transition-colors duration-200"
                     style={{
                       fontFamily: "var(--font-red-rose), 'Red Rose', serif",
@@ -261,6 +273,7 @@ export function CrmAdvantagesGrid() {
                     {item.title}
                   </h3>
                   <p
+                    suppressHydrationWarning
                     className="font-poppins text-xs sm:text-[13px] text-zinc-300 font-normal leading-relaxed"
                     style={{
                       fontFamily: "var(--font-poppins), 'Poppins', sans-serif",

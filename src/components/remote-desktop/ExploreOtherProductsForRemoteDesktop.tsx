@@ -4,8 +4,10 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import { useTranslation } from "@/translations/useTranslation";
 
 export function ExploreOtherProductsForRemoteDesktop() {
+  const { dict } = useTranslation();
   return (
     <section className="relative w-full py-16 sm:py-24 lg:py-28 select-none z-10 bg-[#07080c]">
       <div className="relative w-[92%] sm:w-[88%] lg:w-[82%] xl:w-[78%] max-w-[1440px] mx-auto space-y-10 sm:space-y-12 lg:space-y-14">
@@ -23,12 +25,13 @@ export function ExploreOtherProductsForRemoteDesktop() {
             </div>
 
             <h2
+              suppressHydrationWarning
               className="relative z-10 font-red-rose text-3xl sm:text-4xl lg:text-[44px] xl:text-[48px] font-bold text-white tracking-tight leading-tight"
               style={{
                 fontFamily: "var(--font-red-rose), 'Red Rose', serif",
               }}
             >
-              Explore Other Products
+              {dict.exploreOtherProducts?.title || "Explore Other Products"}
             </h2>
           </div>
 
@@ -67,12 +70,13 @@ export function ExploreOtherProductsForRemoteDesktop() {
               {/* Card Top Title in Red Rose font (Permanently visible on z-30, not covered by blur) */}
               <div className="p-6 sm:p-7 lg:p-8 z-30 pointer-events-none">
                 <h3
+                  suppressHydrationWarning
                   className="font-red-rose text-2xl sm:text-3xl lg:text-[32px] font-bold text-white tracking-tight"
                   style={{
                     fontFamily: "var(--font-red-rose), 'Red Rose', serif",
                   }}
                 >
-                  Game Aggregator
+                  {dict.exploreOtherProducts?.aggregatorTitle || "Game Aggregator"}
                 </h3>
               </div>
 
@@ -219,22 +223,24 @@ export function ExploreOtherProductsForRemoteDesktop() {
                 <div className="flex items-center gap-4 pt-2">
                   <Link
                     href="/contact"
+                    suppressHydrationWarning
                     className="font-poppins inline-flex items-center justify-center px-6 py-2.5 rounded-[4px] bg-[#FF5722] hover:bg-[#ff6e3d] text-white text-xs sm:text-sm font-medium shadow-[0_4px_16px_rgba(255,87,34,0.35)] hover:shadow-[0_4px_22px_rgba(255,87,34,0.55)] transition-all duration-300"
                     style={{
                       fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                     }}
                   >
-                    Get Quote
+                    {dict.common?.talkWithUs || "Get Quote"}
                   </Link>
 
                   <Link
                     href="/game-aggregator"
+                    suppressHydrationWarning
                     className="font-poppins inline-flex items-center justify-center px-6 py-2.5 rounded-[4px] bg-black/95 hover:bg-zinc-900 text-white border border-white/60 hover:border-white text-xs sm:text-sm font-medium transition-all duration-300"
                     style={{
                       fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                     }}
                   >
-                    Know More
+                    {dict.common?.learnMore || "Know More"}
                   </Link>
                 </div>
               </div>
@@ -245,12 +251,13 @@ export function ExploreOtherProductsForRemoteDesktop() {
               {/* Card Top Title in Red Rose font (Permanently visible on z-30, not covered by blur) */}
               <div className="p-6 sm:p-7 lg:p-8 z-30 pointer-events-none">
                 <h3
+                  suppressHydrationWarning
                   className="font-red-rose text-2xl sm:text-3xl lg:text-[32px] font-bold text-white tracking-tight"
                   style={{
                     fontFamily: "var(--font-red-rose), 'Red Rose', serif",
                   }}
                 >
-                  CRM - Data Analytics
+                  {dict.exploreOtherProducts?.crmTitle || "CRM - Data Analytics"}
                 </h3>
               </div>
 
@@ -397,22 +404,24 @@ export function ExploreOtherProductsForRemoteDesktop() {
                 <div className="flex items-center gap-4 pt-2">
                   <Link
                     href="/contact"
+                    suppressHydrationWarning
                     className="font-poppins inline-flex items-center justify-center px-6 py-2.5 rounded-[4px] bg-[#FF5722] hover:bg-[#ff6e3d] text-white text-xs sm:text-sm font-medium shadow-[0_4px_16px_rgba(255,87,34,0.35)] hover:shadow-[0_4px_22px_rgba(255,87,34,0.55)] transition-all duration-300"
                     style={{
                       fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                     }}
                   >
-                    Get Quote
+                    {dict.common?.talkWithUs || "Get Quote"}
                   </Link>
 
                   <Link
                     href="/crm-data-analysis"
+                    suppressHydrationWarning
                     className="font-poppins inline-flex items-center justify-center px-6 py-2.5 rounded-[4px] bg-black/95 hover:bg-zinc-900 text-white border border-white/60 hover:border-white text-xs sm:text-sm font-medium transition-all duration-300"
                     style={{
                       fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                     }}
                   >
-                    Know More
+                    {dict.common?.learnMore || "Know More"}
                   </Link>
                 </div>
               </div>
@@ -439,12 +448,13 @@ export function ExploreOtherProductsForRemoteDesktop() {
               {/* Left Column: Heading, Description, Bullets & Buttons (6 cols) */}
               <div className="lg:col-span-6 space-y-6 sm:space-y-7">
                 <h3
+                  suppressHydrationWarning
                   className="font-red-rose text-2xl sm:text-3xl lg:text-[36px] xl:text-[40px] font-bold text-white tracking-tight leading-[1.15]"
                   style={{
                     fontFamily: "var(--font-red-rose), 'Red Rose', serif",
                   }}
                 >
-                  White-Label Solution
+                  {dict.exploreOtherProducts?.whiteLabelTitle || "White-Label Solution"}
                 </h3>
 
                 <p
@@ -491,7 +501,7 @@ export function ExploreOtherProductsForRemoteDesktop() {
                       fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                     }}
                   >
-                    Get Quote
+                    {dict.common?.talkWithUs || "Get Quote"}
                   </Link>
 
                   <Link
@@ -501,7 +511,7 @@ export function ExploreOtherProductsForRemoteDesktop() {
                       fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                     }}
                   >
-                    Know More
+                    {dict.common?.learnMore || "Know More"}
                   </Link>
                 </div>
               </div>
@@ -513,6 +523,7 @@ export function ExploreOtherProductsForRemoteDesktop() {
                     src="/images/solutions/white-label.png"
                     alt="White-Label Solution 3D Brand Hub"
                     fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-contain"
                   />
                 </div>

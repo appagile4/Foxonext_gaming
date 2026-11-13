@@ -1,5 +1,12 @@
 import type { NextConfig } from "next";
 
+const rawEnv = (process.env.NEXT_PUBLIC_API_URL || "").trim().replace(/\/+$/, "");
+const targetApi = rawEnv
+  ? rawEnv.endsWith("/api")
+    ? rawEnv
+    : `${rawEnv}/api`
+  : "https://api.foxonext.com/api";
+
 const nextConfig: NextConfig = {
   /* config options here */
   cacheComponents: true,
@@ -11,6 +18,14 @@ const nextConfig: NextConfig = {
         as: "*.css",
       },
     },
+  },
+  async rewrites() {
+    return [
+      {
+        source: "/api/:path*",
+        destination: `${targetApi}/:path*`,
+      },
+    ];
   },
 };
 

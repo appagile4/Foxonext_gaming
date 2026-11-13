@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { ChevronUp, ChevronDown } from "lucide-react";
+import { useTranslation } from "@/translations/useTranslation";
 
 interface UsecaseItem {
   id: string;
@@ -11,7 +12,7 @@ interface UsecaseItem {
   imageAlt: string;
 }
 
-const USECASES: UsecaseItem[] = [
+const STATIC_USECASES: UsecaseItem[] = [
   {
     id: "work-desktop",
     title: "1. Remote Work Desktop",
@@ -43,7 +44,20 @@ const USECASES: UsecaseItem[] = [
 ];
 
 export function RemoteDesktopUsecases() {
+  const { dict } = useTranslation();
   const [activeId, setActiveId] = useState<string>("work-desktop");
+
+  const usecases = (dict.remoteDesktopPage?.usecases || []).map((u, idx) => {
+    const config = STATIC_USECASES[idx] || STATIC_USECASES[0];
+    return {
+      id: config.id,
+      title: u.title || config.title,
+      description: u.description || config.description,
+      imageAlt: config.imageAlt,
+    };
+  });
+
+  const items = usecases.length > 0 ? usecases : STATIC_USECASES;
 
   const toggleAccordion = (id: string) => {
     setActiveId(id);
@@ -70,8 +84,9 @@ export function RemoteDesktopUsecases() {
               style={{
                 fontFamily: "var(--font-red-rose), 'Red Rose', serif",
               }}
+              suppressHydrationWarning
             >
-              Remote Desktop Usecases
+              {dict.remoteDesktopPage?.usecasesTitle || "Remote Desktop Usecases"}
             </h2>
 
             {/* 2x2 Geometric Indicator Icons (▫ ☆ / ▫ ▫) matching Figma */}
@@ -96,7 +111,7 @@ export function RemoteDesktopUsecases() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-start">
           {/* Left Column: Interactive Accordion */}
           <div className="lg:col-span-6 space-y-1 sm:space-y-1.5">
-            {USECASES.map((item) => {
+            {items.map((item) => {
               const isOpen = activeId === item.id;
               return (
                 <div
@@ -114,6 +129,7 @@ export function RemoteDesktopUsecases() {
                         fontFamily:
                           "var(--font-poppins), 'Poppins', sans-serif",
                       }}
+                      suppressHydrationWarning
                     >
                       {item.title}
                     </span>
@@ -140,6 +156,7 @@ export function RemoteDesktopUsecases() {
                         fontFamily:
                           "var(--font-poppins), 'Poppins', sans-serif",
                       }}
+                      suppressHydrationWarning
                     >
                       {item.description}
                     </p>
@@ -150,7 +167,7 @@ export function RemoteDesktopUsecases() {
           </div>
 
           {/* Right Column: Large Dynamic 3D Illustration matching Active Accordion Item */}
-          <div className="lg:col-span-6 flex items-center justify-center lg:justify-end relative min-h-[440px] sm:min-h-[520px] lg:min-h-[580px] xl:min-h-[640px] self-center -translate-y-16 sm:-translate-y-20 lg:-translate-y-28 xl:-translate-y-32">
+          <div className="lg:col-span-6 flex items-center justify-center lg:justify-end relative min-h-[440px] sm:min-h-[520px] lg:min-h-[580px] xl:min-h-[640px] self-center -translate-y-8 sm:-translate-y-12 lg:-translate-y-16">
             {/* 1. Remote Work Desktop: Peach Arcade Joystick + PS5 Controller */}
             {activeId === "work-desktop" && (
               <div className="relative w-full max-w-[600px] sm:max-w-[700px] lg:max-w-[760px] aspect-square flex items-center justify-center animate-fadeIn">

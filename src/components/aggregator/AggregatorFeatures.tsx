@@ -10,57 +10,46 @@ import {
   Wrench,
   ShieldCheck,
 } from "lucide-react";
-import { TopGameProviders } from "../providers/TopGameProviders";
+import { useTranslation } from "@/translations/useTranslation";
 
-const PROVIDERS = [
-  { name: "Pocket Games Soft", src: "/images/providers/pg-soft.png" },
-  { name: "JDB", src: "/images/providers/jdb.png" },
-  { name: "Pragmatic Play", src: "/images/providers/pragmatic.png" },
-  { name: "DB Gaming", src: "/images/providers/db-gaming.png" },
-  { name: "SPRIBE", src: "/images/providers/spribe.png" },
-  { name: "IN/OUT", src: "/images/providers/in-out.png" },
-];
-
-const FEATURES = [
-  {
-    id: "api",
-    title: "One API Integration",
-    icon: Boxes,
-    desc: "Popular casino games come together in one Game Aggregator hub. With our game aggregation platform it is easy and simple to add this massive portfolio to any gaming website through just one API integration.",
-  },
-  {
-    id: "providers",
-    title: "80+ Games Providers",
-    icon: Gamepad2,
-    desc: "Popular casino games come together in one Game Aggregator hub. With our game aggregation platform it is easy and simple to add this massive portfolio to any gaming website through just one API integration.",
-  },
-  {
-    id: "tournament",
-    title: "Tournament Tool",
-    icon: Trophy,
-    desc: "Popular casino games come together in one Game Aggregator hub. With our game aggregation platform it is easy and simple to add this massive portfolio to any gaming website through just one API integration.",
-  },
-  {
-    id: "support",
-    title: "24/7 Customer Service",
-    icon: Headphones,
-    desc: "Popular casino games come together in one Game Aggregator hub. With our game aggregation platform it is easy and simple to add this massive portfolio to any gaming website through just one API integration.",
-  },
-  {
-    id: "technical",
-    title: "Ongoing technical support",
-    icon: Wrench,
-    desc: "Popular casino games come together in one Game Aggregator hub. With our game aggregation platform it is easy and simple to add this massive portfolio to any gaming website through just one API integration.",
-  },
-  {
-    id: "compliance",
-    title: "ISO 27001 Compliant",
-    icon: ShieldCheck,
-    desc: "Popular casino games come together in one Game Aggregator hub. With our game aggregation platform it is easy and simple to add this massive portfolio to any gaming website through just one API integration.",
-  },
-];
+const FEATURE_ICONS = [Boxes, Gamepad2, Trophy, Headphones, Wrench, ShieldCheck];
 
 export function AggregatorFeatures() {
+  const { dict } = useTranslation();
+
+  const features = dict.aggregatorPage?.features || [
+    {
+      id: "api",
+      title: "One API Integration",
+      desc: "Popular casino games come together in one Game Aggregator hub. With our game aggregation platform it is easy and simple to add this massive portfolio to any gaming website through just one API integration.",
+    },
+    {
+      id: "providers",
+      title: "80+ Games Providers",
+      desc: "Popular casino games come together in one Game Aggregator hub. With our game aggregation platform it is easy and simple to add this massive portfolio to any gaming website through just one API integration.",
+    },
+    {
+      id: "tournament",
+      title: "Tournament Tool",
+      desc: "Popular casino games come together in one Game Aggregator hub. With our game aggregation platform it is easy and simple to add this massive portfolio to any gaming website through just one API integration.",
+    },
+    {
+      id: "support",
+      title: "24/7 Customer Service",
+      desc: "Popular casino games come together in one Game Aggregator hub. With our game aggregation platform it is easy and simple to add this massive portfolio to any gaming website through just one API integration.",
+    },
+    {
+      id: "technical",
+      title: "Ongoing technical support",
+      desc: "Popular casino games come together in one Game Aggregator hub. With our game aggregation platform it is easy and simple to add this massive portfolio to any gaming website through just one API integration.",
+    },
+    {
+      id: "compliance",
+      title: "ISO 27001 Compliant",
+      desc: "Popular casino games come together in one Game Aggregator hub. With our game aggregation platform it is easy and simple to add this massive portfolio to any gaming website through just one API integration.",
+    },
+  ];
+
   return (
     <section className="relative w-full py-16 sm:py-20 lg:py-24 select-none z-10 bg-transparent">
       <div className="relative w-[92%] sm:w-[88%] lg:w-[82%] xl:w-[78%] max-w-[1440px] mx-auto space-y-20 sm:space-y-28">
@@ -84,8 +73,9 @@ export function AggregatorFeatures() {
                 style={{
                   fontFamily: "var(--font-red-rose), 'Red Rose', serif",
                 }}
+                suppressHydrationWarning
               >
-                FOXOnext Aggregator Features
+                {dict.aggregatorPage?.featuresTitle || "FOXOnext Aggregator Features"}
               </h2>
               {/* Geometric icon accent */}
               <div className="text-[#FF5722] text-sm opacity-80 hidden sm:block">
@@ -96,11 +86,11 @@ export function AggregatorFeatures() {
 
           {/* 6 Feature Cards Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-            {FEATURES.map((item) => {
-              const IconComponent = item.icon;
+            {features.map((item, idx) => {
+              const IconComponent = FEATURE_ICONS[idx % FEATURE_ICONS.length] || Boxes;
               return (
                 <div
-                  key={item.id}
+                  key={item.id || idx}
                   className="relative rounded-2xl bg-[#0c0d12]/70 border border-white/[0.08] hover:border-[#FF5722]/50 hover:bg-[#0c0d12] p-6 sm:p-7 flex flex-col justify-between transition-all duration-300 shadow-[0_8px_30px_rgba(0,0,0,0.5)] group"
                 >
                   <div className="space-y-4">
@@ -116,6 +106,7 @@ export function AggregatorFeatures() {
                           fontFamily:
                             "var(--font-poppins), 'Poppins', sans-serif",
                         }}
+                        suppressHydrationWarning
                       >
                         {item.title}
                       </h3>
@@ -128,6 +119,7 @@ export function AggregatorFeatures() {
                         fontFamily:
                           "var(--font-poppins), 'Poppins', sans-serif",
                       }}
+                      suppressHydrationWarning
                     >
                       {item.desc}
                     </p>

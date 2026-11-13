@@ -5,26 +5,31 @@ import Image from "next/image";
 import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
 import { Milestones } from "@/components/hero/Milestones";
+import { useTranslation } from "@/translations/useTranslation";
 
 export function CrmHero() {
+  const { dict } = useTranslation();
+
   return (
     <section className="relative w-full min-h-[92vh] lg:min-h-[900px] xl:min-h-[960px] flex flex-col justify-between overflow-hidden bg-transparent select-none z-10">
       {/* Scoped Top Navbar */}
       <div className="relative z-30">
         <Navbar logoSrc="/images/logo.png" />
       </div>
+
       {/* Main Hero Content */}
       <div className="relative z-20 w-[92%] sm:w-[88%] lg:w-[82%] xl:w-[78%] max-w-[1440px] mx-auto pt-12 sm:pt-20 lg:pt-28 xl:pt-32 pb-14 sm:pb-18 lg:pb-22 flex-1 flex flex-col justify-between">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center my-auto">
           {/* Left Column: Heading, Description & CTA */}
           <div className="lg:col-span-7 space-y-6 sm:space-y-8 ">
             <h1
-              className="font-red-rose text-xl sm:text-3xl md:text-4xl lg:text-[44px] xl:text-[54px] 2xl:text-[60px] font-bold text-white tracking-tight leading-tight whitespace-nowrap"
+              suppressHydrationWarning
+              className="font-red-rose text-xl sm:text-3xl md:text-4xl lg:text-[44px] xl:text-[54px] 2xl:text-[60px] font-bold text-white tracking-tight leading-tight sm:whitespace-nowrap"
               style={{
                 fontFamily: "var(--font-red-rose), 'Red Rose', serif",
               }}
             >
-              CRM for Smart Management
+              {dict.subpages.crm.title}
             </h1>
 
             <div
@@ -33,16 +38,11 @@ export function CrmHero() {
                 fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
               }}
             >
-              <p>
-                Popular casino games come together in one Game Aggregator hub.
-                With our game aggregation platform it is easy and simple to add
-                this massive portfolio to any gaming website through just one
-                API integration.
+              <p suppressHydrationWarning>
+                {dict.subpages.crm.desc1}
               </p>
-              <p>
-                The FOXONEXT CRM team assists at each step of integration and
-                works together with your operations team to offer technical
-                support after the system goes live.
+              <p suppressHydrationWarning>
+                {dict.subpages.crm.desc2}
               </p>
             </div>
 
@@ -55,15 +55,18 @@ export function CrmHero() {
                   fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                 }}
               >
-                {/* Sliding Orange Background (Left-to-Right on Hover, Right-to-Left on Leave) */}
+                {/* Sliding Orange Background */}
                 <span
                   aria-hidden="true"
                   className="absolute inset-0 bg-gradient-to-r from-[#d84315] to-[#ff5722] -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out pointer-events-none"
                 />
 
-                {/* Button Text (Orange initially, transitions smoothly to White on Hover) */}
-                <span className="relative z-10 font-semibold text-sm sm:text-base tracking-wide text-[#d84315] group-hover:text-white transition-colors duration-300">
-                  Get Casino Games
+                {/* Button Text */}
+                <span
+                  suppressHydrationWarning
+                  className="relative z-10 font-semibold text-sm sm:text-base tracking-wide text-[#d84315] group-hover:text-white transition-colors duration-300"
+                >
+                  {dict.subpages.crm.ctaText}
                 </span>
               </Link>
             </div>
@@ -76,6 +79,7 @@ export function CrmHero() {
                 src="/images/crm/cards-dashboard.png"
                 alt="CRM for Smart Management 3D Dashboard"
                 fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-contain animate-float"
                 priority
               />
@@ -83,7 +87,7 @@ export function CrmHero() {
           </div>
         </div>
 
-        {/* Bottom Milestones Line: Animated white timeline matching <Milestones /> */}
+        {/* Bottom Milestones Line */}
         <div className="relative w-full mt-12 sm:mt-16 lg:mt-20 pt-2 sm:pt-4">
           <Milestones theme="white" className="max-w-2xl lg:max-w-3xl" />
         </div>
