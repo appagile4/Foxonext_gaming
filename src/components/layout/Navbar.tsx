@@ -66,12 +66,12 @@ export function Navbar({ logoSrc = "/images/logo.png" }: NavbarProps) {
                 {/* Animated Dropdown Menu for Subtabs */}
                 {hasSub && (
                   <div className="absolute top-full left-1/2 -translate-x-1/2 pt-5 sm:pt-6 z-50 pointer-events-none opacity-0 -translate-y-2 group-hover:pointer-events-auto group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out">
-                    <div className="min-w-[220px] rounded-xl bg-[#0f1017]/95 border border-white/10 backdrop-blur-xl shadow-[0_16px_40px_rgba(0,0,0,0.85),0_0_25px_rgba(255,87,34,0.15)] p-2 space-y-1">
+                    <div className="min-w-[220px] rounded-[10px] bg-white/[0.03] backdrop-blur-md border border-white/[0.08] shadow-[0_4px_24px_rgba(0,0,0,0.25)] p-2 space-y-1">
                       {item.subItems!.map((sub) => (
                         <Link
                           key={sub.label}
                           href={sub.href}
-                          className="group/sub flex items-center justify-between px-3.5 py-2.5 rounded-lg text-xs sm:text-[13px] font-medium text-zinc-300 hover:text-white hover:bg-white/[0.08] transition-all duration-200 whitespace-nowrap"
+                          className="group/sub flex items-center justify-between px-3.5 py-2.5 rounded-lg text-xs sm:text-[13px] font-medium text-zinc-300 hover:text-white hover:bg-white/[0.06] transition-all duration-200 whitespace-nowrap"
                         >
                           <span className="group-hover/sub:translate-x-1 transition-transform duration-200">
                             {sub.label}
