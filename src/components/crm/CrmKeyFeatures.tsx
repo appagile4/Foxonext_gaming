@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -15,7 +15,7 @@ export interface KeyFeatureTab {
   imageAlt: string;
 }
 
-const KEY_FEATURE_TABS: KeyFeatureTab[] = [
+export const KEY_FEATURE_TABS: KeyFeatureTab[] = [
   {
     id: "data-migration",
     tabLabel: "Data Migration & Setup",
@@ -91,19 +91,114 @@ const KEY_FEATURE_TABS: KeyFeatureTab[] = [
     image: "/images/crm/key-features/campaign-building.png",
     imageAlt: "Campaign Building - Omnichannel Marketing Megaphone",
   },
+  {
+    id: "ticketing-support",
+    tabLabel: "Ticketing Support",
+    cardTitle: "Ticketing Support",
+    description:
+      "Whether you're interested in rapidly launching a brand through our White Label solutions, seeking complete control with a customizable Turnkey package.",
+    bullets: [
+      "Extensive collection of top-tier content",
+      "Bonus Management Engine",
+      "Compatibility across all devices",
+      "Multi-currency Wallet Support",
+    ],
+    image: "/images/crm/key-features/ticketing-support.png",
+    imageAlt: "Ticketing Support - Omnichannel Helpdesk & Player Messaging",
+  },
+  {
+    id: "dashboard-setup",
+    tabLabel: "Dashboard Setup",
+    cardTitle: "Dashboard Setup",
+    description:
+      "Whether you're interested in rapidly launching a brand through our White Label solutions, seeking complete control with a customizable Turnkey package.",
+    bullets: [
+      "Extensive collection of top-tier content",
+      "Bonus Management Engine",
+      "Compatibility across all devices",
+      "Multi-currency Wallet Support",
+    ],
+    image: "/images/crm/key-features/dashboard-setup.png",
+    imageAlt: "Dashboard Setup - Responsive Multi-Device UI",
+  },
+  {
+    id: "user-role-management",
+    tabLabel: "User Role Management",
+    cardTitle: "User Role Management",
+    description:
+      "Whether you're interested in rapidly launching a brand through our White Label solutions, seeking complete control with a customizable Turnkey package.",
+    bullets: [
+      "Extensive collection of top-tier content",
+      "Bonus Management Engine",
+      "Compatibility across all devices",
+      "Multi-currency Wallet Support",
+    ],
+    image: "/images/crm/key-features/user-role-management.png",
+    imageAlt: "User Role Management - Permission Trees & Team Hierarchy",
+  },
+  {
+    id: "24-7-crm-support",
+    tabLabel: "24/7 CRM Support",
+    cardTitle: "24/7 CRM Support",
+    description:
+      "Whether you're interested in rapidly launching a brand through our White Label solutions, seeking complete control with a customizable Turnkey package.",
+    bullets: [
+      "Extensive collection of top-tier content",
+      "Bonus Management Engine",
+      "Compatibility across all devices",
+      "Multi-currency Wallet Support",
+    ],
+    image: "/images/crm/key-features/24-7-crm-support.png",
+    imageAlt: "24/7 CRM Support - Dedicated Technical Assistance",
+  },
+  {
+    id: "attendance-management",
+    tabLabel: "Attendance Management",
+    cardTitle: "Attendance Management",
+    description:
+      "Whether you're interested in rapidly launching a brand through our White Label solutions, seeking complete control with a customizable Turnkey package.",
+    bullets: [
+      "Extensive collection of top-tier content",
+      "Bonus Management Engine",
+      "Compatibility across all devices",
+      "Multi-currency Wallet Support",
+    ],
+    image: "/images/crm/key-features/attendance-management.png",
+    imageAlt: "Attendance Management - Shift Scheduling & Calendar",
+  },
 ];
 
 export function CrmKeyFeatures() {
   const [activeTab, setActiveTab] = useState(0);
+  const tabListRef = useRef<HTMLDivElement>(null);
+  const tabButtonRefs = useRef<(HTMLButtonElement | null)[]>([]);
+
+  // Automatically scroll the active tab smoothly into view when activeTab changes
+  useEffect(() => {
+    const activeEl = tabButtonRefs.current[activeTab];
+    if (activeEl && tabListRef.current) {
+      activeEl.scrollIntoView({
+        behavior: "smooth",
+        inline: "center",
+        block: "nearest",
+      });
+    }
+  }, [activeTab]);
 
   const handlePrev = () => {
-    setActiveTab((prev) => (prev > 0 ? prev - 1 : KEY_FEATURE_TABS.length - 1));
+    if (activeTab > 0) {
+      setActiveTab((prev) => prev - 1);
+    }
   };
 
   const handleNext = () => {
-    setActiveTab((prev) => (prev < KEY_FEATURE_TABS.length - 1 ? prev + 1 : 0));
+    if (activeTab < KEY_FEATURE_TABS.length - 1) {
+      setActiveTab((prev) => prev + 1);
+    }
   };
 
+  const isFirstTab = activeTab === 0;
+  const isLastTab = activeTab === KEY_FEATURE_TABS.length - 1;
   const currentTab = KEY_FEATURE_TABS[activeTab];
 
   return (
@@ -188,26 +283,37 @@ export function CrmKeyFeatures() {
           <button
             type="button"
             onClick={handlePrev}
+            disabled={isFirstTab}
             aria-label="Previous Feature"
-            className={`w-11 h-11 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center transition-all duration-200 flex-shrink-0 cursor-pointer ${
-              activeTab === 0
-                ? "bg-[#23252d] text-white/70 border border-white/10 hover:bg-[#2c2f3a] hover:text-white"
-                : "bg-white text-zinc-900 shadow-[0_4px_14px_rgba(0,0,0,0.35)] hover:bg-zinc-100 hover:scale-105 active:scale-95"
+            className={`w-11 h-11 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center transition-all duration-200 flex-shrink-0 ${
+              isFirstTab
+                ? "bg-[#23252d] text-white/40 border border-white/10 cursor-not-allowed opacity-80"
+                : "bg-white text-zinc-900 shadow-[0_4px_14px_rgba(0,0,0,0.35)] hover:bg-zinc-100 hover:scale-105 active:scale-95 cursor-pointer"
             }`}
           >
             <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.5]" />
           </button>
 
-          {/* Frosted Glass Tabs Container */}
-          <div className="flex-1 flex items-center gap-1.5 sm:gap-2 p-1.5 rounded-xl sm:rounded-2xl bg-[#1a1b23]/80 backdrop-blur-md border border-white/10 overflow-x-auto scrollbar-none">
+          {/* Frosted Glass Tabs Container (Smoothly scrollable, 10 Tabs) */}
+          <div
+            ref={tabListRef}
+            className="flex-1 flex items-center gap-1.5 sm:gap-2 p-1.5 rounded-xl sm:rounded-2xl bg-[#1a1b23]/80 backdrop-blur-md border border-white/10 overflow-x-auto scrollbar-none scroll-smooth"
+            style={{
+              scrollbarWidth: "none",
+              msOverflowStyle: "none",
+            }}
+          >
             {KEY_FEATURE_TABS.map((tab, idx) => {
               const isActive = idx === activeTab;
               return (
                 <button
                   key={tab.id}
+                  ref={(el) => {
+                    tabButtonRefs.current[idx] = el;
+                  }}
                   type="button"
                   onClick={() => setActiveTab(idx)}
-                  className={`flex-1 min-w-max px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-lg sm:rounded-xl text-xs sm:text-sm font-poppins text-center transition-all duration-200 whitespace-nowrap cursor-pointer ${
+                  className={`min-w-max px-4 sm:px-5 py-2 sm:py-2.5 rounded-lg sm:rounded-xl text-xs sm:text-sm font-poppins text-center transition-all duration-200 whitespace-nowrap cursor-pointer flex-shrink-0 ${
                     isActive
                       ? "bg-gradient-to-r from-[#FF5722] to-[#E64A19] text-white font-semibold shadow-[0_4px_16px_rgba(255,87,34,0.45)]"
                       : "text-zinc-300 hover:text-white hover:bg-white/[0.06] font-normal sm:font-medium"
@@ -226,8 +332,13 @@ export function CrmKeyFeatures() {
           <button
             type="button"
             onClick={handleNext}
+            disabled={isLastTab}
             aria-label="Next Feature"
-            className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center transition-all duration-200 flex-shrink-0 bg-white text-zinc-900 shadow-[0_4px_14px_rgba(0,0,0,0.35)] hover:bg-zinc-100 hover:scale-105 active:scale-95 cursor-pointer"
+            className={`w-11 h-11 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center transition-all duration-200 flex-shrink-0 ${
+              isLastTab
+                ? "bg-[#23252d] text-white/40 border border-white/10 cursor-not-allowed opacity-80"
+                : "bg-white text-zinc-900 shadow-[0_4px_14px_rgba(0,0,0,0.35)] hover:bg-zinc-100 hover:scale-105 active:scale-95 cursor-pointer"
+            }`}
           >
             <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.5]" />
           </button>
@@ -242,7 +353,7 @@ export function CrmKeyFeatures() {
               <div className="inline-block relative">
                 <div className="bg-[#0b0c10] border-b-[3px] border-r-[3px] border-[#FF5722] px-5 py-3 sm:px-6 sm:py-3.5 rounded-sm shadow-md">
                   <h3
-                    className="font-red-rose text-2xl sm:text-3xl lg:text-[34px] font-bold text-white tracking-wide leading-tight"
+                    className="font-red-rose text-2xl sm:text-3xl lg:text-[34px] font-bold text-white tracking-wide leading-tight whitespace-nowrap"
                     style={{
                       fontFamily: "var(--font-red-rose), 'Red Rose', serif",
                     }}
@@ -299,8 +410,8 @@ export function CrmKeyFeatures() {
                   key={currentTab.id}
                   src={currentTab.image}
                   alt={currentTab.imageAlt}
-                  width={680}
-                  height={680}
+                  width={780}
+                  height={780}
                   className="w-full h-auto max-h-[420px] object-contain drop-shadow-[0_20px_45px_rgba(0,0,0,0.65)] hover:scale-105 transition-transform duration-500 ease-out"
                   priority
                 />
