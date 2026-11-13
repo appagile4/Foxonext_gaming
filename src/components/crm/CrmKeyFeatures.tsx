@@ -345,10 +345,10 @@ export function CrmKeyFeatures() {
         </div>
 
         {/* 3. Main Feature Card with Seamless Backdrop */}
-        <div className="relative rounded-2xl sm:rounded-3xl border border-white/[0.12] bg-[#0c0d12]/35 backdrop-blur-[2px] p-6 sm:p-10 lg:p-12 shadow-[0_20px_60px_rgba(0,0,0,0.7)] overflow-hidden">
-          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        <div className="relative rounded-2xl sm:rounded-3xl border border-white/[0.12] bg-[#0c0d12]/35 backdrop-blur-[2px] p-6 sm:p-8 lg:p-10 xl:p-12 shadow-[0_20px_60px_rgba(0,0,0,0.7)] overflow-hidden min-h-[520px] sm:min-h-[560px] lg:min-h-[600px]">
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 items-center">
             {/* Left Content Column */}
-            <div className="lg:col-span-6 space-y-6 sm:space-y-7">
+            <div className="lg:col-span-5 xl:col-span-5 space-y-6 sm:space-y-7">
               {/* Title with bottom & right orange border frame */}
               <div className="inline-block relative">
                 <div className="bg-[#0b0c10] border-b-[3px] border-r-[3px] border-[#FF5722] px-5 py-3 sm:px-6 sm:py-3.5 rounded-sm shadow-md">
@@ -403,16 +403,16 @@ export function CrmKeyFeatures() {
               </div>
             </div>
 
-            {/* Right 3D Visual Graphic Column */}
-            <div className="lg:col-span-6 relative flex items-center justify-center w-full min-h-[300px] sm:min-h-[360px] lg:min-h-[420px]">
-              <div className="relative w-full max-w-[440px] sm:max-w-[480px] lg:max-w-[520px] aspect-square flex items-center justify-center">
+            {/* Right 3D Visual Graphic Column (Enlarged) */}
+            <div className="lg:col-span-7 xl:col-span-7 relative flex items-center justify-center w-full min-h-[340px] sm:min-h-[420px] lg:min-h-[500px] xl:min-h-[560px]">
+              <div className="relative w-full max-w-[540px] sm:max-w-[620px] lg:max-w-[680px] xl:max-w-[760px] flex items-center justify-center">
                 <Image
                   key={currentTab.id}
                   src={currentTab.image}
                   alt={currentTab.imageAlt}
-                  width={780}
-                  height={780}
-                  className="w-full h-auto max-h-[420px] object-contain drop-shadow-[0_20px_45px_rgba(0,0,0,0.65)] hover:scale-105 transition-transform duration-500 ease-out"
+                  width={900}
+                  height={900}
+                  className="w-full h-auto max-h-[460px] sm:max-h-[520px] lg:max-h-[560px] xl:max-h-[620px] object-contain drop-shadow-[0_25px_50px_rgba(0,0,0,0.7)] hover:scale-105 transition-transform duration-500 ease-out"
                   priority
                 />
               </div>

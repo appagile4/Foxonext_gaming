@@ -26,17 +26,8 @@ export default function CrmDataAnalysisPage() {
 
       <TopGameProviders />
 
-      {/* 2. Real-Time Analytics & Smart CRM Statistics */}
-      <CrmStatistics />
-
       {/* 3. FOXOnext CRM Key Features (Interactive Tabs Carousel) */}
       <CrmKeyFeatures />
-
-      {/* 4. CRM & Analytics Features Grid */}
-      <CrmFeatures />
-
-      {/* 5. CRM Advantages Section */}
-      <CrmAdvantages />
 
       {/* 6. Why Choose Us Section */}
       <WhyChooseUs />
