@@ -348,12 +348,12 @@ export function CrmKeyFeatures() {
         <div className="relative rounded-2xl sm:rounded-3xl border border-white/[0.12] bg-[#0c0d12]/35 backdrop-blur-[2px] p-6 sm:p-8 lg:p-10 xl:p-12 shadow-[0_20px_60px_rgba(0,0,0,0.7)] overflow-hidden min-h-[520px] sm:min-h-[560px] lg:min-h-[600px]">
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 items-center">
             {/* Left Content Column */}
-            <div className="lg:col-span-5 xl:col-span-5 space-y-6 sm:space-y-7">
+            <div className="lg:col-span-5 xl:col-span-5 space-y-7 sm:space-y-8 lg:space-y-9">
               {/* Title with bottom & right orange border frame */}
               <div className="inline-block relative">
-                <div className="bg-[#0b0c10] border-b-[3px] border-r-[3px] border-[#FF5722] px-5 py-3 sm:px-6 sm:py-3.5 rounded-sm shadow-md">
+                <div className="bg-[#0b0c10] border-b-[4px] border-r-[4px] border-[#FF5722] px-6 py-3.5 sm:px-8 sm:py-4.5 rounded-[2px] shadow-lg">
                   <h3
-                    className="font-red-rose text-2xl sm:text-3xl lg:text-[34px] font-bold text-white tracking-wide leading-tight whitespace-nowrap"
+                    className="font-red-rose text-2xl sm:text-3xl lg:text-[38px] xl:text-[42px] font-bold text-white tracking-wide leading-tight whitespace-nowrap"
                     style={{
                       fontFamily: "var(--font-red-rose), 'Red Rose', serif",
                     }}
@@ -365,7 +365,7 @@ export function CrmKeyFeatures() {
 
               {/* Description Paragraph */}
               <p
-                className="font-poppins text-xs sm:text-sm lg:text-[15px] text-zinc-300 font-normal leading-relaxed max-w-lg"
+                className="font-poppins text-sm sm:text-base lg:text-[17px] xl:text-[18px] text-zinc-300 font-normal leading-relaxed max-w-xl"
                 style={{
                   fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                 }}
@@ -374,16 +374,16 @@ export function CrmKeyFeatures() {
               </p>
 
               {/* 4 Bullet Points with Diamond Markers */}
-              <ul className="space-y-3 sm:space-y-3.5">
+              <ul className="space-y-3.5 sm:space-y-4">
                 {currentTab.bullets.map((bullet, idx) => (
                   <li
                     key={idx}
-                    className="flex items-center gap-3 font-poppins text-xs sm:text-sm text-zinc-200"
+                    className="flex items-center gap-3.5 sm:gap-4 font-poppins text-sm sm:text-base lg:text-[16px] xl:text-[17px] text-zinc-200"
                     style={{
                       fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                     }}
                   >
-                    <span className="w-2.5 h-2.5 border border-[#FF5722] rotate-45 flex-shrink-0" />
+                    <span className="w-3 h-3 sm:w-3.5 sm:h-3.5 border-[1.5px] border-[#FF5722] rotate-45 flex-shrink-0" />
                     <span>{bullet}</span>
                   </li>
                 ))}
@@ -393,7 +393,7 @@ export function CrmKeyFeatures() {
               <div className="pt-2 sm:pt-4">
                 <Link
                   href="#contact"
-                  className="relative inline-flex items-center justify-center px-6 sm:px-7 py-2.5 sm:py-3 rounded-[2px] bg-[#D84315] hover:bg-[#E64A19] text-white font-poppins font-medium text-xs sm:text-sm tracking-wide shadow-[3px_3px_0px_#ffffff] sm:shadow-[4px_4px_0px_#ffffff] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[2px_2px_0px_#ffffff] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[1px_1px_0px_#ffffff] transition-all duration-150"
+                  className="relative inline-flex items-center justify-center px-7 sm:px-9 py-3 sm:py-3.5 rounded-[2px] bg-[#D84315] hover:bg-[#E64A19] text-white font-poppins font-medium text-sm sm:text-base tracking-wide shadow-[4px_4px_0px_#ffffff] sm:shadow-[5px_5px_0px_#ffffff] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[3px_3px_0px_#ffffff] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[2px_2px_0px_#ffffff] transition-all duration-150"
                   style={{
                     fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
                   }}

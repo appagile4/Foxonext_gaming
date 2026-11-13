@@ -45,9 +45,9 @@ export function CrmHero() {
       <div className="relative z-20 w-[92%] sm:w-[88%] lg:w-[82%] xl:w-[78%] max-w-[1440px] mx-auto pt-12 sm:pt-20 lg:pt-28 xl:pt-32 pb-14 sm:pb-18 lg:pb-22 flex-1 flex flex-col justify-between">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center my-auto">
           {/* Left Column: Heading, Description & CTA */}
-          <div className="lg:col-span-7 space-y-6 sm:space-y-8">
+          <div className="lg:col-span-7 space-y-6 sm:space-y-8 ">
             <h1
-              className="font-red-rose text-3xl sm:text-5xl lg:text-[54px] xl:text-[62px] font-bold text-white tracking-tight leading-[1.15]"
+              className="font-red-rose text-3xl sm:text-5xl lg:text-[54px] xl:text-[62px] font-bold text-white tracking-tight leading-[1.25] max-w-xxl"
               style={{
                 fontFamily: "var(--font-red-rose), 'Red Rose', serif",
               }}
@@ -56,7 +56,7 @@ export function CrmHero() {
             </h1>
 
             <div
-              className="font-poppins text-xs sm:text-sm md:text-[15px] text-white/90 font-normal leading-relaxed space-y-4 max-w-xl"
+              className="font-poppins text-xs sm:text-sm md:text-[15px] text-white/90 font-normal leading-relaxed space-y-4 max-w-xxl"
               style={{
                 fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
               }}
