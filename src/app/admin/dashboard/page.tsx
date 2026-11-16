@@ -1035,7 +1035,7 @@ export default function AdminDashboardPage() {
             >
               <div className="flex items-center gap-3">
                 <Layers className="w-4 h-4 flex-shrink-0" />
-                <span>Providers Directory</span>
+                <span>Partners Directory</span>
               </div>
               <span
                 className={`text-[11px] px-2 py-0.5 rounded-full font-semibold ${
@@ -1192,7 +1192,7 @@ export default function AdminDashboardPage() {
                 {activeTab === "providers"
                   ? "Top Gaming Providers (Marquee)"
                   : activeTab === "directory"
-                  ? "Providers Directory (Public Page)"
+                  ? "Partners Directory (Public Page)"
                   : activeTab === "inquiries"
                   ? "Customer Inquiries & Leads"
                   : activeTab === "contact"
@@ -1205,7 +1205,7 @@ export default function AdminDashboardPage() {
                 {activeTab === "providers"
                   ? "Manage providers rotating in the website homepage carousel"
                   : activeTab === "directory"
-                  ? "Manage providers displayed on the /providers page (Logo, Description, Priority, Countries)"
+                  ? "Manage partners displayed on the /providers page (Logo, Description, Priority, Continents)"
                   : activeTab === "inquiries"
                   ? "Review and manage incoming enquiries submitted through the website contact form"
                   : activeTab === "contact"
@@ -1411,13 +1411,13 @@ export default function AdminDashboardPage() {
           </main>
         )}
 
-        {/* ===================== TAB 2: PROVIDERS DIRECTORY (FOR /providers PAGE) ===================== */}
+        {/* ===================== TAB 2: PARTNERS DIRECTORY (FOR /providers PAGE) ===================== */}
         {activeTab === "directory" && (
           <main className="p-6 sm:p-8 space-y-6 flex-1">
             {/* Metrics Bar */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
               <div className="rounded-xl bg-[#0d0f17] border border-white/10 p-5 space-y-1">
-                <span className="text-xs text-zinc-400">Total Directory Providers</span>
+                <span className="text-xs text-zinc-400">Total Directory Partners</span>
                 <p className="font-red-rose text-2xl font-bold text-white">
                   {companyProviders.length}
                 </p>
@@ -1457,7 +1457,7 @@ export default function AdminDashboardPage() {
                   type="text"
                   value={companySearchQuery}
                   onChange={(e) => setCompanySearchQuery(e.target.value)}
-                  placeholder="Search by provider name, description, or continent..."
+                  placeholder="Search by partner name, description, or continent..."
                   className="w-full pl-10 pr-4 py-2 bg-white/[0.04] border border-white/10 rounded-xl text-xs text-white placeholder:text-zinc-500 focus:outline-none focus:border-[#FF5722]"
                 />
               </div>
@@ -1484,16 +1484,16 @@ export default function AdminDashboardPage() {
                   className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-[#E94E1B] to-[#FF6229] hover:from-[#f05724] hover:to-[#ff6d36] text-white text-xs font-medium shadow-[0_2px_12px_rgba(233,78,27,0.35)] transition-all cursor-pointer whitespace-nowrap"
                 >
                   <Plus className="w-3.5 h-3.5" />
-                  <span>Add Provider</span>
+                  <span>Add Partner</span>
                 </button>
               </div>
             </div>
 
-            {/* Providers Directory Cards Grid */}
+            {/* Partners Directory Cards Grid */}
             {companyProvidersLoading ? (
               <div className="py-20 flex flex-col items-center justify-center gap-3">
                 <Loader2 className="w-8 h-8 text-[#FF5722] animate-spin" />
-                <p className="text-xs text-zinc-400">Loading directory providers...</p>
+                <p className="text-xs text-zinc-400">Loading directory partners...</p>
               </div>
             ) : filteredCompanyProviders.length === 0 ? (
               <div className="rounded-2xl bg-[#0d0f17] border border-white/10 p-12 text-center space-y-3">
@@ -1501,10 +1501,10 @@ export default function AdminDashboardPage() {
                   <Layers className="w-6 h-6" />
                 </div>
                 <h4 className="font-red-rose text-base font-bold text-white">
-                  No Directory Providers Found
+                  No Directory Partners Found
                 </h4>
                 <p className="text-xs text-zinc-400 max-w-sm mx-auto">
-                  No providers match your search or filter. Click &ldquo;Add Provider&rdquo; to add a new studio to the public Providers page.
+                  No partners match your search or filter. Click &ldquo;Add Partner&rdquo; to add a new studio to the public Partners page.
                 </p>
               </div>
             ) : (
@@ -2827,7 +2827,7 @@ export default function AdminDashboardPage() {
               <div className="flex items-center gap-2">
                 <Layers className="w-5 h-5 text-[#FF5722]" />
                 <h3 className="font-red-rose text-lg font-bold text-white">
-                  {editingCompanyProvider ? "Edit Directory Provider" : "Add Directory Provider"}
+                  {editingCompanyProvider ? "Edit Directory Partner" : "Add Directory Partner"}
                 </h3>
               </div>
               <button
@@ -2845,10 +2845,10 @@ export default function AdminDashboardPage() {
             )}
 
             <form onSubmit={handleSaveCompanyProvider} className="space-y-4 text-xs font-poppins">
-              {/* Row 1: Provider Name & Priority */}
+              {/* Row 1: Partner Name & Priority */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <div className="sm:col-span-2 space-y-1">
-                  <label className="text-zinc-300 font-medium">Provider Name *</label>
+                  <label className="text-zinc-300 font-medium">Partner Name *</label>
                   <input
                     type="text"
                     required
@@ -3151,7 +3151,7 @@ export default function AdminDashboardPage() {
                   className="px-5 py-2 rounded-lg bg-gradient-to-r from-[#E94E1B] to-[#FF6229] hover:from-[#f05724] hover:to-[#ff6d36] text-white font-medium transition-all cursor-pointer flex items-center gap-1.5 disabled:opacity-50"
                 >
                   {companyFormSubmitting && <Loader2 className="w-3.5 h-3.5 animate-spin" />}
-                  <span>{editingCompanyProvider ? "Update Provider" : "Save Provider"}</span>
+                  <span>{editingCompanyProvider ? "Update Partner" : "Save Partner"}</span>
                 </button>
               </div>
             </form>
