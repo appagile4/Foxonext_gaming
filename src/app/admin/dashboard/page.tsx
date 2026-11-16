@@ -36,6 +36,8 @@ import {
   Edit2,
   Check,
   ArrowUpDown,
+  UploadCloud,
+  ImageIcon,
 } from "lucide-react";
 import { getApiUrl } from "@/lib/api";
 
@@ -152,6 +154,77 @@ export default function AdminDashboardPage() {
     rtpRange: "96.5% - 97.8%",
     description: "",
   });
+
+  // Cloudinary Logo Upload States
+  const [marqueeLogoUploading, setMarqueeLogoUploading] = useState(false);
+  const [marqueeUploadError, setMarqueeUploadError] = useState<string | null>(null);
+  const [companyLogoUploading, setCompanyLogoUploading] = useState(false);
+  const [companyUploadError, setCompanyUploadError] = useState<string | null>(null);
+
+  const handleCloudinaryUpload = async (
+    file: File,
+    target: "marquee" | "company"
+  ) => {
+    if (!file) return;
+
+    if (!file.type.startsWith("image/")) {
+      const err = "Please select a valid image file (PNG, JPG, JPEG, WEBP, SVG).";
+      if (target === "marquee") setMarqueeUploadError(err);
+      else setCompanyUploadError(err);
+      return;
+    }
+
+    if (file.size > 10 * 1024 * 1024) {
+      const err = "File size exceeds 10MB limit.";
+      if (target === "marquee") setMarqueeUploadError(err);
+      else setCompanyUploadError(err);
+      return;
+    }
+
+    if (target === "marquee") {
+      setMarqueeLogoUploading(true);
+      setMarqueeUploadError(null);
+    } else {
+      setCompanyLogoUploading(true);
+      setCompanyUploadError(null);
+    }
+
+    const token = localStorage.getItem("foxo_admin_token");
+    const formData = new FormData();
+    formData.append("image", file);
+
+    try {
+      const res = await fetch(getApiUrl("/upload"), {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: formData,
+      });
+
+      const data = await res.json();
+      if (res.ok && data.success && data.url) {
+        if (target === "marquee") {
+          setNewProvider((prev) => ({ ...prev, logo: data.url }));
+          setMarqueeUploadError(null);
+        } else {
+          setCompanyFormData((prev) => ({ ...prev, logo: data.url }));
+          setCompanyUploadError(null);
+        }
+      } else {
+        const err = data.message || "Failed to upload image to Cloudinary.";
+        if (target === "marquee") setMarqueeUploadError(err);
+        else setCompanyUploadError(err);
+      }
+    } catch {
+      const err = "Network error connecting to upload service.";
+      if (target === "marquee") setMarqueeUploadError(err);
+      else setCompanyUploadError(err);
+    } finally {
+      if (target === "marquee") setMarqueeLogoUploading(false);
+      else setCompanyLogoUploading(false);
+    }
+  };
 
   // Inquiries State
   const [inquiries, setInquiries] = useState<InquiryItem[]>([]);
@@ -2784,28 +2857,87 @@ export default function AdminDashboardPage() {
                 </div>
               </div>
 
-              {/* Row 2: Logo image path & preset picker with live preview */}
-              <div className="space-y-1.5">
-                <label className="text-zinc-300 font-medium">Provider Logo</label>
-                <div className="flex gap-2 items-center">
-                  <div className="w-12 h-10 rounded-lg bg-[#08090e] border border-white/10 flex items-center justify-center p-1 overflow-hidden flex-shrink-0">
-                    <Image
-                      src={companyFormData.logo || "/images/providers/pg-soft.png"}
-                      alt="Logo preview"
-                      width={40}
-                      height={40}
-                      unoptimized
-                      className="max-h-full max-w-full object-contain"
-                    />
+              {/* Row 2: Cloudinary Logo Upload with live preview & presets */}
+              <div className="space-y-2">
+                <div className="flex items-center justify-between">
+                  <label className="text-zinc-300 font-medium flex items-center gap-1.5">
+                    <ImageIcon className="w-3.5 h-3.5 text-[#FF5722]" />
+                    <span>Provider Logo (Cloudinary Upload)</span>
+                  </label>
+                  {companyFormData.logo && companyFormData.logo.includes("cloudinary.com") ? (
+                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 font-medium">
+                      ✓ Uploaded to Cloudinary
+                    </span>
+                  ) : null}
+                </div>
+
+                <div className="p-3 rounded-xl bg-white/[0.02] border border-dashed border-white/15 hover:border-[#FF5722]/50 transition-colors space-y-2">
+                  <div className="flex items-center gap-3">
+                    <div className="w-16 h-14 rounded-lg bg-[#08090e] border border-white/10 flex items-center justify-center p-1.5 overflow-hidden shrink-0 relative">
+                      <Image
+                        src={companyFormData.logo || "/images/providers/pg-soft.png"}
+                        alt="Logo preview"
+                        width={50}
+                        height={50}
+                        unoptimized
+                        className="max-h-full max-w-full object-contain"
+                      />
+                    </div>
+
+                    <div className="flex-1 min-w-0 space-y-1">
+                      <label
+                        htmlFor="company-file-upload"
+                        className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium cursor-pointer transition-all ${
+                          companyLogoUploading
+                            ? "bg-white/10 text-zinc-400 cursor-not-allowed"
+                            : "bg-[#FF5722]/15 text-[#FF5722] border border-[#FF5722]/30 hover:bg-[#FF5722]/25"
+                        }`}
+                      >
+                        {companyLogoUploading ? (
+                          <>
+                            <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                            <span>Uploading to Cloudinary...</span>
+                          </>
+                        ) : (
+                          <>
+                            <UploadCloud className="w-3.5 h-3.5" />
+                            <span>Upload Image to Cloudinary</span>
+                          </>
+                        )}
+                      </label>
+                      <input
+                        id="company-file-upload"
+                        type="file"
+                        accept="image/*"
+                        disabled={companyLogoUploading}
+                        onChange={(e) => {
+                          const file = e.target.files?.[0];
+                          if (file) handleCloudinaryUpload(file, "company");
+                        }}
+                        className="hidden"
+                      />
+                      <p className="text-[10px] text-zinc-500">
+                        PNG, JPG, WEBP, or SVG. Stored permanently on Cloudinary.
+                      </p>
+                    </div>
                   </div>
+
+                  {companyUploadError && (
+                    <p className="text-[11px] text-red-400 font-medium">
+                      {companyUploadError}
+                    </p>
+                  )}
+                </div>
+
+                <div className="flex gap-2 items-center">
                   <input
                     type="text"
                     value={companyFormData.logo}
                     onChange={(e) =>
                       setCompanyFormData({ ...companyFormData, logo: e.target.value })
                     }
-                    placeholder="/images/providers/pg-soft.png or URL"
-                    className="flex-1 px-3 py-2 bg-white/[0.04] border border-white/10 rounded-lg text-white focus:outline-none focus:border-[#FF5722]"
+                    placeholder="https://res.cloudinary.com/... or preset"
+                    className="flex-1 px-3 py-2 bg-white/[0.04] border border-white/10 rounded-lg text-white text-xs focus:outline-none focus:border-[#FF5722]"
                   />
                   <select
                     onChange={(e) => {
@@ -3042,17 +3174,107 @@ export default function AdminDashboardPage() {
                 />
               </div>
 
-              <div className="space-y-1">
-                <label className="text-zinc-300 font-medium">Logo Image Path or URL</label>
-                <input
-                  type="text"
-                  value={newProvider.logo}
-                  onChange={(e) =>
-                    setNewProvider({ ...newProvider, logo: e.target.value })
-                  }
-                  placeholder="/images/providers/pg-soft.png"
-                  className="w-full px-3 py-2 bg-white/[0.04] border border-white/10 rounded-lg text-white focus:outline-none focus:border-[#FF5722]"
-                />
+              {/* Cloudinary Logo Upload with live preview & presets */}
+              <div className="space-y-2">
+                <div className="flex items-center justify-between">
+                  <label className="text-zinc-300 font-medium flex items-center gap-1.5">
+                    <ImageIcon className="w-3.5 h-3.5 text-[#FF5722]" />
+                    <span>Provider Logo (Cloudinary Upload)</span>
+                  </label>
+                  {newProvider.logo && newProvider.logo.includes("cloudinary.com") ? (
+                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 font-medium">
+                      ✓ Uploaded to Cloudinary
+                    </span>
+                  ) : null}
+                </div>
+
+                <div className="p-3 rounded-xl bg-white/[0.02] border border-dashed border-white/15 hover:border-[#FF5722]/50 transition-colors space-y-2">
+                  <div className="flex items-center gap-3">
+                    <div className="w-16 h-14 rounded-lg bg-[#08090e] border border-white/10 flex items-center justify-center p-1.5 overflow-hidden shrink-0 relative">
+                      <Image
+                        src={newProvider.logo || "/images/providers/pg-soft.png"}
+                        alt="Logo preview"
+                        width={50}
+                        height={50}
+                        unoptimized
+                        className="max-h-full max-w-full object-contain"
+                      />
+                    </div>
+
+                    <div className="flex-1 min-w-0 space-y-1">
+                      <label
+                        htmlFor="marquee-file-upload"
+                        className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium cursor-pointer transition-all ${
+                          marqueeLogoUploading
+                            ? "bg-white/10 text-zinc-400 cursor-not-allowed"
+                            : "bg-[#FF5722]/15 text-[#FF5722] border border-[#FF5722]/30 hover:bg-[#FF5722]/25"
+                        }`}
+                      >
+                        {marqueeLogoUploading ? (
+                          <>
+                            <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                            <span>Uploading to Cloudinary...</span>
+                          </>
+                        ) : (
+                          <>
+                            <UploadCloud className="w-3.5 h-3.5" />
+                            <span>Upload Image to Cloudinary</span>
+                          </>
+                        )}
+                      </label>
+                      <input
+                        id="marquee-file-upload"
+                        type="file"
+                        accept="image/*"
+                        disabled={marqueeLogoUploading}
+                        onChange={(e) => {
+                          const file = e.target.files?.[0];
+                          if (file) handleCloudinaryUpload(file, "marquee");
+                        }}
+                        className="hidden"
+                      />
+                      <p className="text-[10px] text-zinc-500">
+                        PNG, JPG, WEBP, or SVG. Stored permanently on Cloudinary.
+                      </p>
+                    </div>
+                  </div>
+
+                  {marqueeUploadError && (
+                    <p className="text-[11px] text-red-400 font-medium">
+                      {marqueeUploadError}
+                    </p>
+                  )}
+                </div>
+
+                <div className="flex gap-2 items-center">
+                  <input
+                    type="text"
+                    value={newProvider.logo}
+                    onChange={(e) =>
+                      setNewProvider({ ...newProvider, logo: e.target.value })
+                    }
+                    placeholder="https://res.cloudinary.com/... or preset"
+                    className="flex-1 px-3 py-2 bg-white/[0.04] border border-white/10 rounded-lg text-white text-xs focus:outline-none focus:border-[#FF5722]"
+                  />
+                  <select
+                    onChange={(e) => {
+                      if (e.target.value) {
+                        setNewProvider({ ...newProvider, logo: e.target.value });
+                      }
+                    }}
+                    className="px-2.5 py-2 bg-[#12141d] border border-white/10 rounded-lg text-zinc-300 focus:outline-none text-[11px]"
+                  >
+                    <option value="">Presets...</option>
+                    <option value="/images/providers/pg-soft.png">PG Soft</option>
+                    <option value="/images/providers/pragmatic.png">Pragmatic</option>
+                    <option value="/images/providers/jdb.png">JDB</option>
+                    <option value="/images/providers/spribe.png">SPRIBE</option>
+                    <option value="/images/providers/db-gaming.png">DB Gaming</option>
+                    <option value="/images/providers/in-out.png">IN OUT</option>
+                    <option value="/images/providers/pescaria.png">Pescaria</option>
+                    <option value="/images/providers/cq9.png">CQ9</option>
+                  </select>
+                </div>
               </div>
 
               <div className="grid grid-cols-2 gap-3">
