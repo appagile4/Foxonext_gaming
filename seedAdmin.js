@@ -19,6 +19,13 @@ const seedAdmin = async () => {
 
     const adminsToSeed = [
       {
+        name: 'FOXONEXT Super Admin',
+        email: 'foxonext@gmail.com',
+        password: 'foxobyagileinvent@977',
+        role: 'superadmin',
+        isActive: true,
+      },
+      {
         name: 'Foxo Administrator',
         email: 'admin@foxo.com',
         password: 'Admin@123',
