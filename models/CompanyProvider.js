@@ -21,9 +21,13 @@ const companyProviderSchema = new mongoose.Schema(
       type: Number,
       default: 1,
     },
+    continents: {
+      type: [String],
+      default: ['Asia', 'Europe', 'North America', 'South America', 'Africa', 'Australia / Oceania'],
+    },
     countries: {
       type: [String],
-      default: ['Global', 'United Arab Emirates', 'United Kingdom', 'Malta', 'Curacao'],
+      default: ['Asia', 'Europe', 'North America', 'South America', 'Africa', 'Australia / Oceania'],
     },
     category: {
       type: String,

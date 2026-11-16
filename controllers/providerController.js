@@ -10,6 +10,8 @@ const DEFAULT_PROVIDERS = [
     status: 'active',
     apiStatus: 'connected',
     rtpRange: '96.5% - 98.0%',
+    continents: ['Asia', 'Europe', 'North America', 'South America'],
+    countries: ['Asia', 'Europe', 'North America', 'South America'],
     description: 'Pocket Games Soft - Premier mobile slots and table games provider.',
   },
   {
@@ -21,6 +23,8 @@ const DEFAULT_PROVIDERS = [
     status: 'active',
     apiStatus: 'connected',
     rtpRange: '96.2% - 97.5%',
+    continents: ['Europe', 'North America', 'South America', 'Asia', 'Africa', 'Australia / Oceania'],
+    countries: ['Europe', 'North America', 'South America', 'Asia', 'Africa', 'Australia / Oceania'],
     description: 'Award-winning slots, live casino, and crash games portfolio.',
   },
   {
@@ -32,6 +36,8 @@ const DEFAULT_PROVIDERS = [
     status: 'active',
     apiStatus: 'connected',
     rtpRange: '96.0% - 97.2%',
+    continents: ['Asia', 'Australia / Oceania'],
+    countries: ['Asia', 'Australia / Oceania'],
     description: 'Asian-focused high retention slots and arcade shooting games.',
   },
   {
@@ -43,6 +49,8 @@ const DEFAULT_PROVIDERS = [
     status: 'active',
     apiStatus: 'connected',
     rtpRange: '97.0%',
+    continents: ['Europe', 'South America', 'Asia', 'Africa', 'North America'],
+    countries: ['Europe', 'South America', 'Asia', 'Africa', 'North America'],
     description: 'Creator of the world-renowned Aviator crash game and turbo games.',
   },
   {
@@ -54,6 +62,8 @@ const DEFAULT_PROVIDERS = [
     status: 'active',
     apiStatus: 'connected',
     rtpRange: '97.8%',
+    continents: ['Asia', 'Europe'],
+    countries: ['Asia', 'Europe'],
     description: 'High-definition live dealer baccarat, roulette, and blackjack.',
   },
   {
@@ -65,6 +75,8 @@ const DEFAULT_PROVIDERS = [
     status: 'active',
     apiStatus: 'connected',
     rtpRange: '96.8%',
+    continents: ['Europe', 'North America', 'South America', 'Asia'],
+    countries: ['Europe', 'North America', 'South America', 'Asia'],
     description: 'Fast-paced card and dice gaming solutions for modern operators.',
   },
   {
@@ -76,6 +88,8 @@ const DEFAULT_PROVIDERS = [
     status: 'active',
     apiStatus: 'connected',
     rtpRange: '96.5%',
+    continents: ['Asia', 'Australia / Oceania'],
+    countries: ['Asia', 'Australia / Oceania'],
     description: 'Dynamic multiplayer arcade fish hunting games.',
   },
   {
@@ -87,6 +101,8 @@ const DEFAULT_PROVIDERS = [
     status: 'active',
     apiStatus: 'connected',
     rtpRange: '96.1% - 97.0%',
+    continents: ['Asia', 'North America', 'Europe'],
+    countries: ['Asia', 'North America', 'Europe'],
     description: 'Rich graphic themes and versatile math engines.',
   },
 ];
@@ -123,13 +139,21 @@ const getAllProviders = async (req, res) => {
 // @access Private (Admin)
 const createProvider = async (req, res) => {
   try {
-    const { name, logo, category, gamesCount, status, rtpRange, description } = req.body;
+    const { name, logo, category, gamesCount, status, rtpRange, description, continents, countries } = req.body;
 
     if (!name) {
       return res.status(400).json({
         success: false,
         message: 'Provider name is required',
       });
+    }
+
+    const rawContinents = continents !== undefined ? continents : countries;
+    let parsedContinents = ['Asia', 'Europe', 'North America', 'South America'];
+    if (Array.isArray(rawContinents) && rawContinents.length > 0) {
+      parsedContinents = rawContinents.map((c) => c.trim()).filter(Boolean);
+    } else if (typeof rawContinents === 'string' && rawContinents.trim()) {
+      parsedContinents = rawContinents.split(',').map((c) => c.trim()).filter(Boolean);
     }
 
     const slug = name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
@@ -142,6 +166,8 @@ const createProvider = async (req, res) => {
       status: status || 'active',
       apiStatus: 'connected',
       rtpRange: rtpRange || '96.5%',
+      continents: parsedContinents,
+      countries: parsedContinents,
       description: description ? description.trim() : '',
     });
 

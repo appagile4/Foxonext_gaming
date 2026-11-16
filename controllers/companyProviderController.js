@@ -6,7 +6,8 @@ const DEFAULT_COMPANY_PROVIDERS = [
     logo: '/images/providers/pg-soft.png',
     description: 'Pocket Games Soft - Premier mobile slots and modern RNG table games studio with high player retention.',
     priority: 1,
-    countries: ['Global', 'United Arab Emirates', 'Malta', 'United Kingdom', 'Curacao', 'Philippines', 'Singapore'],
+    continents: ['Asia', 'Europe', 'North America', 'South America'],
+    countries: ['Asia', 'Europe', 'North America', 'South America'],
     category: 'Slots',
     gamesCount: 140,
     status: 'active',
@@ -16,7 +17,8 @@ const DEFAULT_COMPANY_PROVIDERS = [
     logo: '/images/providers/pragmatic.png',
     description: 'Award-winning multi-product content provider delivering slots, live dealer tables, and crash mechanics.',
     priority: 2,
-    countries: ['Global', 'United Arab Emirates', 'United Kingdom', 'Malta', 'Curacao', 'Brazil', 'United States', 'Canada'],
+    continents: ['Europe', 'North America', 'South America', 'Asia', 'Africa', 'Australia / Oceania'],
+    countries: ['Europe', 'North America', 'South America', 'Asia', 'Africa', 'Australia / Oceania'],
     category: 'Multi-Product',
     gamesCount: 350,
     status: 'active',
@@ -26,7 +28,8 @@ const DEFAULT_COMPANY_PROVIDERS = [
     logo: '/images/providers/jdb.png',
     description: 'Top Asian-market gaming developer famous for innovative video slots, arcade fishing, and card games.',
     priority: 3,
-    countries: ['Global', 'Philippines', 'United Arab Emirates', 'Curacao', 'Malta', 'Singapore', 'India'],
+    continents: ['Asia', 'Australia / Oceania'],
+    countries: ['Asia', 'Australia / Oceania'],
     category: 'Slots',
     gamesCount: 95,
     status: 'active',
@@ -36,7 +39,8 @@ const DEFAULT_COMPANY_PROVIDERS = [
     logo: '/images/providers/spribe.png',
     description: 'Pioneers of next-generation iGaming and creator of the globally acclaimed Aviator crash game.',
     priority: 4,
-    countries: ['Global', 'United Arab Emirates', 'United Kingdom', 'Brazil', 'Malta', 'Curacao', 'India'],
+    continents: ['Europe', 'South America', 'Asia', 'Africa', 'North America'],
+    countries: ['Europe', 'South America', 'Asia', 'Africa', 'North America'],
     category: 'Crash Games',
     gamesCount: 15,
     status: 'active',
@@ -46,7 +50,8 @@ const DEFAULT_COMPANY_PROVIDERS = [
     logo: '/images/providers/db-gaming.png',
     description: 'Ultra-low latency live casino dealer streaming with interactive Baccarat, Roulette, and Blackjack.',
     priority: 5,
-    countries: ['Global', 'Philippines', 'United Arab Emirates', 'Malta', 'Curacao', 'Singapore'],
+    continents: ['Asia', 'Europe'],
+    countries: ['Asia', 'Europe'],
     category: 'Live Casino',
     gamesCount: 45,
     status: 'active',
@@ -56,7 +61,8 @@ const DEFAULT_COMPANY_PROVIDERS = [
     logo: '/images/providers/in-out.png',
     description: 'Engaging real-time table, card, and dice solutions built for seamless mobile gameplay.',
     priority: 6,
-    countries: ['Global', 'United Arab Emirates', 'Malta', 'Curacao', 'Brazil', 'Canada'],
+    continents: ['Europe', 'North America', 'South America', 'Asia'],
+    countries: ['Europe', 'North America', 'South America', 'Asia'],
     category: 'Table Games',
     gamesCount: 30,
     status: 'active',
@@ -66,7 +72,8 @@ const DEFAULT_COMPANY_PROVIDERS = [
     logo: '/images/providers/pescaria.png',
     description: 'Dynamic arcade fish hunting and multiplayer skill shooter games designed for high user engagement.',
     priority: 7,
-    countries: ['Global', 'Philippines', 'United Arab Emirates', 'Curacao', 'Singapore'],
+    continents: ['Asia', 'Australia / Oceania'],
+    countries: ['Asia', 'Australia / Oceania'],
     category: 'Fishing Games',
     gamesCount: 22,
     status: 'active',
@@ -76,7 +83,8 @@ const DEFAULT_COMPANY_PROVIDERS = [
     logo: '/images/providers/cq9.png',
     description: 'High-definition video slots and arcade gaming studio with dynamic math models and diverse cultural themes.',
     priority: 8,
-    countries: ['Global', 'Philippines', 'Malta', 'United Arab Emirates', 'Curacao', 'United States'],
+    continents: ['Asia', 'North America', 'Europe'],
+    countries: ['Asia', 'North America', 'Europe'],
     category: 'Slots',
     gamesCount: 120,
     status: 'active',
@@ -115,7 +123,7 @@ const getAllCompanyProviders = async (req, res) => {
 // @access  Private (Admin)
 const createCompanyProvider = async (req, res) => {
   try {
-    const { name, logo, description, priority, countries, category, gamesCount, status } = req.body;
+    const { name, logo, description, priority, continents, countries, category, gamesCount, status } = req.body;
 
     if (!name || !name.trim()) {
       return res.status(400).json({
@@ -124,12 +132,13 @@ const createCompanyProvider = async (req, res) => {
       });
     }
 
-    // Process countries if passed as comma-separated string or array
-    let parsedCountries = ['Global', 'United Arab Emirates', 'United Kingdom', 'Malta'];
-    if (Array.isArray(countries) && countries.length > 0) {
-      parsedCountries = countries.map((c) => c.trim()).filter(Boolean);
-    } else if (typeof countries === 'string' && countries.trim()) {
-      parsedCountries = countries.split(',').map((c) => c.trim()).filter(Boolean);
+    // Process continents/countries if passed as comma-separated string or array
+    const rawContinents = continents !== undefined ? continents : countries;
+    let parsedContinents = ['Asia', 'Europe', 'North America', 'South America'];
+    if (Array.isArray(rawContinents) && rawContinents.length > 0) {
+      parsedContinents = rawContinents.map((c) => c.trim()).filter(Boolean);
+    } else if (typeof rawContinents === 'string' && rawContinents.trim()) {
+      parsedContinents = rawContinents.split(',').map((c) => c.trim()).filter(Boolean);
     }
 
     const provider = await CompanyProvider.create({
@@ -137,7 +146,8 @@ const createCompanyProvider = async (req, res) => {
       logo: logo || '/images/providers/pg-soft.png',
       description: description ? description.trim() : '',
       priority: Number(priority) || 1,
-      countries: parsedCountries,
+      continents: parsedContinents,
+      countries: parsedContinents,
       category: category || 'Slots',
       gamesCount: Number(gamesCount) || 50,
       status: status || 'active',
@@ -164,7 +174,7 @@ const createCompanyProvider = async (req, res) => {
 const updateCompanyProvider = async (req, res) => {
   try {
     const { id } = req.params;
-    const { name, logo, description, priority, countries, category, gamesCount, status } = req.body;
+    const { name, logo, description, priority, continents, countries, category, gamesCount, status } = req.body;
 
     const provider = await CompanyProvider.findById(id);
     if (!provider) {
@@ -182,12 +192,16 @@ const updateCompanyProvider = async (req, res) => {
     if (gamesCount !== undefined) provider.gamesCount = Number(gamesCount);
     if (status !== undefined) provider.status = status;
 
-    if (countries !== undefined) {
-      if (Array.isArray(countries)) {
-        provider.countries = countries.map((c) => c.trim()).filter(Boolean);
-      } else if (typeof countries === 'string') {
-        provider.countries = countries.split(',').map((c) => c.trim()).filter(Boolean);
+    if (continents !== undefined || countries !== undefined) {
+      const raw = continents !== undefined ? continents : countries;
+      let parsed = [];
+      if (Array.isArray(raw)) {
+        parsed = raw.map((c) => c.trim()).filter(Boolean);
+      } else if (typeof raw === 'string') {
+        parsed = raw.split(',').map((c) => c.trim()).filter(Boolean);
       }
+      provider.continents = parsed;
+      provider.countries = parsed;
     }
 
     await provider.save();

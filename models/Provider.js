@@ -39,9 +39,13 @@ const providerSchema = new mongoose.Schema(
       type: String,
       default: '96.5% - 98.2%',
     },
+    continents: {
+      type: [String],
+      default: ['Asia', 'Europe', 'North America', 'South America', 'Africa', 'Australia / Oceania'],
+    },
     countries: {
       type: [String],
-      default: ['Global', 'United Arab Emirates', 'United Kingdom', 'Malta', 'Curacao', 'Philippines', 'Brazil'],
+      default: ['Asia', 'Europe', 'North America', 'South America', 'Africa', 'Australia / Oceania'],
     },
     description: {
       type: String,
