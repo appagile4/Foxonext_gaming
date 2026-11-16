@@ -21,7 +21,7 @@ export const NAV_ITEMS: NavItem[] = [
     label: "Company",
     href: "/providers",
     subItems: [
-      { label: "Providers", href: "/providers" },
+      { label: "Partners", href: "/providers" },
       { label: "Terms & Conditions", href: "#terms" },
       { label: "Cookie Policy", href: "#cookies" },
       { label: "Privacy Policy", href: "#privacy" },

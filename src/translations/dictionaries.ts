@@ -19,7 +19,7 @@ export const translations: Record<string, TranslationSchema> = {
       sweepstakesCasino: "Sweepstakes Casino",
       telegramCasino: "Telegram Casino",
       aboutUs: "About Us",
-      providers: "Providers",
+      providers: "Partners",
       blogs: "Blogs & News",
       mediaKit: "Media Kit",
       events: "Events & Expos",

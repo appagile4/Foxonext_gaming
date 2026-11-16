@@ -72,6 +72,7 @@ export function Navbar({ logoSrc = "/images/logo.png" }: NavbarProps) {
         return dict.nav.telegramCasino;
       case "about us":
         return dict.nav.aboutUs;
+      case "partners":
       case "providers":
         return dict.nav.providers;
       case "blogs & news":

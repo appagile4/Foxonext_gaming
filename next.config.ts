@@ -22,6 +22,10 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return [
       {
+        source: "/partners",
+        destination: "/providers",
+      },
+      {
         source: "/api/:path*",
         destination: `${targetApi}/:path*`,
       },
