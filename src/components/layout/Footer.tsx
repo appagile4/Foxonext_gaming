@@ -10,11 +10,17 @@ import { getApiUrl } from "@/lib/api";
 export function Footer() {
   const { dict } = useTranslation();
   const [socialLinks, setSocialLinks] = React.useState({
+    showSection: true,
     instagram: "https://instagram.com",
+    showInstagram: true,
     threads: "https://threads.net",
+    showThreads: true,
     linkedin: "https://linkedin.com",
+    showLinkedin: true,
     facebook: "https://facebook.com",
+    showFacebook: true,
     x: "https://x.com",
+    showX: true,
   });
 
   const [contactInfo, setContactInfo] = React.useState({
@@ -259,107 +265,124 @@ export function Footer() {
         </div>
 
         {/* Our Social Links Section */}
-        <div className="mt-10 sm:mt-12 space-y-4">
-          <h4
-            className="font-red-rose text-base sm:text-lg font-bold text-white tracking-tight"
-            style={{ fontFamily: "var(--font-red-rose), 'Red Rose', serif" }}
-          >
-            {dict.contact.socialLinksTitle}
-          </h4>
-
-          <div className="flex items-center gap-3 sm:gap-3.5 flex-wrap">
-            {/* Instagram */}
-            <a
-              href={socialLinks.instagram || "https://instagram.com"}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Instagram"
-              className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-[#121319] border border-white/10 flex items-center justify-center text-zinc-300 hover:text-white hover:border-[#FF5722] hover:bg-[#181a23] hover:shadow-[0_0_15px_rgba(255,87,34,0.35)] transition-all duration-300"
+        {socialLinks.showSection !== false &&
+          ((socialLinks.showInstagram !== false && !!socialLinks.instagram) ||
+            (socialLinks.showThreads !== false && !!socialLinks.threads) ||
+            (socialLinks.showLinkedin !== false && !!socialLinks.linkedin) ||
+            (socialLinks.showFacebook !== false && !!socialLinks.facebook) ||
+            (socialLinks.showX !== false && !!socialLinks.x)) && (
+          <div className="mt-10 sm:mt-12 space-y-4">
+            <h4
+              className="font-red-rose text-base sm:text-lg font-bold text-white tracking-tight"
+              style={{ fontFamily: "var(--font-red-rose), 'Red Rose', serif" }}
             >
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="w-5 h-5"
-              >
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-              </svg>
-            </a>
+              {dict.contact.socialLinksTitle}
+            </h4>
 
-            {/* Threads */}
-            <a
-              href={socialLinks.threads || "https://threads.net"}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Threads"
-              className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-[#121319] border border-white/10 flex items-center justify-center text-zinc-300 hover:text-white hover:border-[#FF5722] hover:bg-[#181a23] hover:shadow-[0_0_15px_rgba(255,87,34,0.35)] transition-all duration-300"
-            >
-              <svg
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="w-5 h-5"
-              >
-                <path d="M12.186 24C5.467 24 0 18.533 0 11.814 0 5.095 5.467 0 12.186 0c6.643 0 11.97 5.23 12.062 11.814h-2.502c-.09-5.205-4.305-9.312-9.56-9.312-5.32 0-9.684 4.364-9.684 9.684s4.364 9.684 9.684 9.684c3.483 0 6.536-1.85 8.196-4.634l2.164 1.25C20.375 21.848 16.538 24 12.186 24zm4.848-11.814c0-2.827-2.175-5.127-4.848-5.127s-4.848 2.3-4.848 5.127c0 2.828 2.175 5.128 4.848 5.128 1.49 0 2.83-.715 3.714-1.836l1.838 1.424c-1.373 1.748-3.468 2.914-5.552 2.914-4.053 0-7.35-3.297-7.35-7.63 0-4.333 3.297-7.63 7.35-7.63s7.35 3.297 7.35 7.63c0 .34-.022.673-.065 1.002l-2.487-.317c.033-.226.052-.455.052-.685z" />
-              </svg>
-            </a>
+            <div className="flex items-center gap-3 sm:gap-3.5 flex-wrap">
+              {/* Instagram */}
+              {socialLinks.showInstagram !== false && !!socialLinks.instagram && (
+                <a
+                  href={socialLinks.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                  className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-[#121319] border border-white/10 flex items-center justify-center text-zinc-300 hover:text-white hover:border-[#FF5722] hover:bg-[#181a23] hover:shadow-[0_0_15px_rgba(255,87,34,0.35)] transition-all duration-300"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="w-5 h-5"
+                  >
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                  </svg>
+                </a>
+              )}
 
-            {/* LinkedIn */}
-            <a
-              href={socialLinks.linkedin || "https://linkedin.com"}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-              className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-[#121319] border border-white/10 flex items-center justify-center text-zinc-300 hover:text-white hover:border-[#FF5722] hover:bg-[#181a23] hover:shadow-[0_0_15px_rgba(255,87,34,0.35)] transition-all duration-300"
-            >
-              <svg
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="w-5 h-5"
-              >
-                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-              </svg>
-            </a>
+              {/* Threads */}
+              {socialLinks.showThreads !== false && !!socialLinks.threads && (
+                <a
+                  href={socialLinks.threads}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Threads"
+                  className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-[#121319] border border-white/10 flex items-center justify-center text-zinc-300 hover:text-white hover:border-[#FF5722] hover:bg-[#181a23] hover:shadow-[0_0_15px_rgba(255,87,34,0.35)] transition-all duration-300"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    className="w-5 h-5"
+                  >
+                    <path d="M12.186 24C5.467 24 0 18.533 0 11.814 0 5.095 5.467 0 12.186 0c6.643 0 11.97 5.23 12.062 11.814h-2.502c-.09-5.205-4.305-9.312-9.56-9.312-5.32 0-9.684 4.364-9.684 9.684s4.364 9.684 9.684 9.684c3.483 0 6.536-1.85 8.196-4.634l2.164 1.25C20.375 21.848 16.538 24 12.186 24zm4.848-11.814c0-2.827-2.175-5.127-4.848-5.127s-4.848 2.3-4.848 5.127c0 2.828 2.175 5.128 4.848 5.128 1.49 0 2.83-.715 3.714-1.836l1.838 1.424c-1.373 1.748-3.468 2.914-5.552 2.914-4.053 0-7.35-3.297-7.35-7.63 0-4.333 3.297-7.63 7.35-7.63s7.35 3.297 7.35 7.63c0 .34-.022.673-.065 1.002l-2.487-.317c.033-.226.052-.455.052-.685z" />
+                  </svg>
+                </a>
+              )}
 
-            {/* Facebook */}
-            <a
-              href={socialLinks.facebook || "https://facebook.com"}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Facebook"
-              className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-[#121319] border border-white/10 flex items-center justify-center text-zinc-300 hover:text-white hover:border-[#FF5722] hover:bg-[#181a23] hover:shadow-[0_0_15px_rgba(255,87,34,0.35)] transition-all duration-300"
-            >
-              <svg
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="w-5 h-5"
-              >
-                <path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.374 14.5 5 15.6 5H18V0h-3.8C10.5 0 9 1.5 9 4.8V8z" />
-              </svg>
-            </a>
+              {/* LinkedIn */}
+              {socialLinks.showLinkedin !== false && !!socialLinks.linkedin && (
+                <a
+                  href={socialLinks.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                  className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-[#121319] border border-white/10 flex items-center justify-center text-zinc-300 hover:text-white hover:border-[#FF5722] hover:bg-[#181a23] hover:shadow-[0_0_15px_rgba(255,87,34,0.35)] transition-all duration-300"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    className="w-5 h-5"
+                  >
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                  </svg>
+                </a>
+              )}
 
-            {/* X (formerly Twitter) */}
-            <a
-              href={socialLinks.x || "https://x.com"}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="X (Twitter)"
-              className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-[#121319] border border-white/10 flex items-center justify-center text-zinc-300 hover:text-white hover:border-[#FF5722] hover:bg-[#181a23] hover:shadow-[0_0_15px_rgba(255,87,34,0.35)] transition-all duration-300"
-            >
-              <svg
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="w-4.5 h-4.5"
-              >
-                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-              </svg>
-            </a>
+              {/* Facebook */}
+              {socialLinks.showFacebook !== false && !!socialLinks.facebook && (
+                <a
+                  href={socialLinks.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook"
+                  className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-[#121319] border border-white/10 flex items-center justify-center text-zinc-300 hover:text-white hover:border-[#FF5722] hover:bg-[#181a23] hover:shadow-[0_0_15px_rgba(255,87,34,0.35)] transition-all duration-300"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    className="w-5 h-5"
+                  >
+                    <path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.374 14.5 5 15.6 5H18V0h-3.8C10.5 0 9 1.5 9 4.8V8z" />
+                  </svg>
+                </a>
+              )}
+
+              {/* X (formerly Twitter) */}
+              {socialLinks.showX !== false && !!socialLinks.x && (
+                <a
+                  href={socialLinks.x}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="X (Twitter)"
+                  className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-[#121319] border border-white/10 flex items-center justify-center text-zinc-300 hover:text-white hover:border-[#FF5722] hover:bg-[#181a23] hover:shadow-[0_0_15px_rgba(255,87,34,0.35)] transition-all duration-300"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    className="w-4.5 h-4.5"
+                  >
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                  </svg>
+                </a>
+              )}
+            </div>
           </div>
-        </div>
+        )}
       </div>
 
       {/* Giant Foxonext Logo Wordmark at the Bottom */}
