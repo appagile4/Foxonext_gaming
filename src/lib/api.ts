@@ -11,7 +11,7 @@ export const API_BASE_URL: string = rawEnv
   ? rawEnv.endsWith("/api")
     ? rawEnv
     : `${rawEnv}/api`
-  : "https://api.foxonext.com/api";
+  : "http://localhost:5000/api";
 
 /**
  * Returns a complete URL for any API endpoint.

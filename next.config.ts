@@ -5,7 +5,7 @@ const targetApi = rawEnv
   ? rawEnv.endsWith("/api")
     ? rawEnv
     : `${rawEnv}/api`
-  : "https://api.foxonext.com/api";
+  : "http://localhost:5000/api";
 
 const nextConfig: NextConfig = {
   /* config options here */

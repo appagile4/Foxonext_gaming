@@ -847,7 +847,7 @@ export default function AdminDashboardPage() {
     <div className="min-h-screen bg-[#07080c] text-white flex flex-col md:flex-row antialiased font-poppins select-none">
       {/* ===================== SIDEBAR / SIDEMENU BAR ===================== */}
       <aside
-        className={`fixed md:sticky top-0 left-0 z-40 h-screen w-64 lg:w-72 bg-[#090b10] border-r border-white/[0.08] flex flex-col justify-between transition-transform duration-300 ${
+        className={`fixed md:sticky top-0 left-0 z-40 h-screen w-64 lg:w-72 bg-[#090b10]/60 backdrop-blur-2xl border-r border-white/[0.08] flex flex-col justify-between transition-transform duration-300 ${
           mobileMenuOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
         }`}
       >
