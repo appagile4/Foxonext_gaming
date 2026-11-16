@@ -60,6 +60,7 @@ interface CompanyProviderItem {
   logo: string;
   description: string;
   priority: number;
+  continents?: string[];
   countries: string[];
   category: string;
   gamesCount: number;
@@ -87,20 +88,15 @@ interface AdminUser {
   role: string;
 }
 
-const COMMON_COUNTRIES = [
+const COMMON_CONTINENTS = [
   "Global",
-  "United Arab Emirates",
-  "United Kingdom",
-  "Malta",
-  "Curacao",
-  "Philippines",
-  "Brazil",
-  "United States",
-  "Singapore",
-  "India",
-  "Canada",
-  "Germany",
-  "Australia",
+  "Asia",
+  "Europe",
+  "North America",
+  "South America",
+  "Africa",
+  "Australia / Oceania",
+  "Antarctica",
 ];
 
 export default function AdminDashboardPage() {
@@ -123,20 +119,21 @@ export default function AdminDashboardPage() {
   const [companyProviders, setCompanyProviders] = useState<CompanyProviderItem[]>([]);
   const [companyProvidersLoading, setCompanyProvidersLoading] = useState(false);
   const [companySearchQuery, setCompanySearchQuery] = useState("");
-  const [companyCountryFilter, setCompanyCountryFilter] = useState("All");
+  const [companyContinentFilter, setCompanyContinentFilter] = useState("All");
 
   // Add / Edit Company Provider Modal State
   const [isCompanyModalOpen, setIsCompanyModalOpen] = useState(false);
   const [editingCompanyProvider, setEditingCompanyProvider] = useState<CompanyProviderItem | null>(null);
   const [companyFormSubmitting, setCompanyFormSubmitting] = useState(false);
   const [companyFormError, setCompanyFormError] = useState<string | null>(null);
-  const [customCountryInput, setCustomCountryInput] = useState("");
+  const [customContinentInput, setCustomContinentInput] = useState("");
   const [companyFormData, setCompanyFormData] = useState({
     name: "",
     logo: "/images/providers/pg-soft.png",
     description: "",
     priority: 1,
-    countries: ["Global", "United Arab Emirates", "United Kingdom", "Malta", "Curacao"],
+    continents: ["Asia", "Europe", "North America", "South America"],
+    countries: ["Asia", "Europe", "North America", "South America"],
     category: "Slots",
     gamesCount: 100,
     status: "active" as "active" | "inactive",
@@ -407,13 +404,14 @@ export default function AdminDashboardPage() {
   const openAddCompanyModal = () => {
     setEditingCompanyProvider(null);
     setCompanyFormError(null);
-    setCustomCountryInput("");
+    setCustomContinentInput("");
     setCompanyFormData({
       name: "",
       logo: "/images/providers/pg-soft.png",
       description: "",
       priority: (companyProviders.length + 1),
-      countries: ["Global", "United Arab Emirates", "United Kingdom", "Malta", "Curacao"],
+      continents: ["Asia", "Europe", "North America", "South America"],
+      countries: ["Asia", "Europe", "North America", "South America"],
       category: "Slots",
       gamesCount: 100,
       status: "active",
@@ -424,13 +422,21 @@ export default function AdminDashboardPage() {
   const openEditCompanyModal = (provider: CompanyProviderItem) => {
     setEditingCompanyProvider(provider);
     setCompanyFormError(null);
-    setCustomCountryInput("");
+    setCustomContinentInput("");
+    const assignedContinents =
+      provider.continents && provider.continents.length > 0
+        ? provider.continents
+        : provider.countries && provider.countries.length > 0
+        ? provider.countries
+        : ["Asia", "Europe"];
+
     setCompanyFormData({
       name: provider.name,
       logo: provider.logo || "/images/providers/pg-soft.png",
       description: provider.description || "",
       priority: provider.priority || 1,
-      countries: provider.countries && provider.countries.length > 0 ? provider.countries : ["Global"],
+      continents: assignedContinents,
+      countries: assignedContinents,
       category: provider.category || "Slots",
       gamesCount: provider.gamesCount || 50,
       status: provider.status || "active",
@@ -438,40 +444,49 @@ export default function AdminDashboardPage() {
     setIsCompanyModalOpen(true);
   };
 
-  const toggleCountryInForm = (countryName: string) => {
+  const toggleContinentInForm = (continentName: string) => {
     setCompanyFormData((prev) => {
-      const exists = prev.countries.includes(countryName);
-      if (exists) {
-        return {
-          ...prev,
-          countries: prev.countries.filter((c) => c !== countryName),
-        };
-      } else {
-        return {
-          ...prev,
-          countries: [...prev.countries, countryName],
-        };
-      }
+      const currentList = prev.continents || prev.countries || [];
+      const exists = currentList.includes(continentName);
+      const updated = exists
+        ? currentList.filter((c) => c !== continentName)
+        : [...currentList, continentName];
+      return {
+        ...prev,
+        continents: updated,
+        countries: updated,
+      };
     });
   };
 
-  const addCustomCountry = () => {
-    const trimmed = customCountryInput.trim();
+  const addCustomContinent = () => {
+    const trimmed = customContinentInput.trim();
     if (!trimmed) return;
-    if (!companyFormData.countries.includes(trimmed)) {
-      setCompanyFormData((prev) => ({
-        ...prev,
-        countries: [...prev.countries, trimmed],
-      }));
-    }
-    setCustomCountryInput("");
+    setCompanyFormData((prev) => {
+      const currentList = prev.continents || prev.countries || [];
+      if (!currentList.includes(trimmed)) {
+        const updated = [...currentList, trimmed];
+        return {
+          ...prev,
+          continents: updated,
+          countries: updated,
+        };
+      }
+      return prev;
+    });
+    setCustomContinentInput("");
   };
 
-  const removeCountryFromForm = (countryName: string) => {
-    setCompanyFormData((prev) => ({
-      ...prev,
-      countries: prev.countries.filter((c) => c !== countryName),
-    }));
+  const removeContinentFromForm = (continentName: string) => {
+    setCompanyFormData((prev) => {
+      const currentList = prev.continents || prev.countries || [];
+      const updated = currentList.filter((c) => c !== continentName);
+      return {
+        ...prev,
+        continents: updated,
+        countries: updated,
+      };
+    });
   };
 
   const handleSaveCompanyProvider = async (e: React.FormEvent) => {
@@ -519,20 +534,27 @@ export default function AdminDashboardPage() {
   const filteredCompanyProviders = useMemo(() => {
     return companyProviders.filter((p) => {
       const q = companySearchQuery.toLowerCase().trim();
+      const provContinents =
+        p.continents && p.continents.length > 0
+          ? p.continents
+          : p.countries && p.countries.length > 0
+          ? p.countries
+          : [];
+
       const matchesSearch =
         !q ||
         p.name.toLowerCase().includes(q) ||
         (p.description && p.description.toLowerCase().includes(q)) ||
-        p.countries.some((c) => c.toLowerCase().includes(q));
+        provContinents.some((c) => c.toLowerCase().includes(q));
 
-      const matchesCountry =
-        companyCountryFilter === "All" ||
-        p.countries.includes(companyCountryFilter) ||
-        p.countries.includes("Global");
+      const matchesContinent =
+        companyContinentFilter === "All" ||
+        provContinents.includes(companyContinentFilter) ||
+        provContinents.includes("Global");
 
-      return matchesSearch && matchesCountry;
+      return matchesSearch && matchesContinent;
     });
-  }, [companyProviders, companySearchQuery, companyCountryFilter]);
+  }, [companyProviders, companySearchQuery, companyContinentFilter]);
 
   // ===================== TOP GAMING PROVIDERS (Marquee Tab) =====================
   const fetchProviders = async () => {
@@ -1419,11 +1441,11 @@ export default function AdminDashboardPage() {
               </div>
 
               <div className="rounded-xl bg-[#0d0f17] border border-white/10 p-5 space-y-1">
-                <span className="text-xs text-zinc-400">Jurisdictions</span>
+                <span className="text-xs text-zinc-400">Target Coverage</span>
                 <p className="font-red-rose text-2xl font-bold text-blue-400">
-                  Global
+                  7 Continents
                 </p>
-                <span className="text-[11px] text-zinc-500">All countries mapped</span>
+                <span className="text-[11px] text-zinc-500">Global geo distribution</span>
               </div>
             </div>
 
@@ -1435,21 +1457,21 @@ export default function AdminDashboardPage() {
                   type="text"
                   value={companySearchQuery}
                   onChange={(e) => setCompanySearchQuery(e.target.value)}
-                  placeholder="Search by provider name, description, or country..."
+                  placeholder="Search by provider name, description, or continent..."
                   className="w-full pl-10 pr-4 py-2 bg-white/[0.04] border border-white/10 rounded-xl text-xs text-white placeholder:text-zinc-500 focus:outline-none focus:border-[#FF5722]"
                 />
               </div>
 
               <div className="flex items-center gap-3">
                 <div className="flex items-center gap-2">
-                  <span className="text-xs text-zinc-400">Country:</span>
+                  <span className="text-xs text-zinc-400">Continent:</span>
                   <select
-                    value={companyCountryFilter}
-                    onChange={(e) => setCompanyCountryFilter(e.target.value)}
+                    value={companyContinentFilter}
+                    onChange={(e) => setCompanyContinentFilter(e.target.value)}
                     className="px-3 py-1.5 bg-[#12141d] border border-white/10 rounded-xl text-xs text-white focus:outline-none focus:border-[#FF5722]"
                   >
-                    <option value="All">All Countries</option>
-                    {COMMON_COUNTRIES.map((c) => (
+                    <option value="All">All Continents</option>
+                    {COMMON_CONTINENTS.map((c) => (
                       <option key={c} value={c}>
                         {c}
                       </option>
@@ -1551,22 +1573,24 @@ export default function AdminDashboardPage() {
                         </p>
                       </div>
 
-                      {/* All Country Names Display */}
+                      {/* Supported Continents Display */}
                       <div className="space-y-1.5">
                         <span className="text-[10px] text-zinc-500 uppercase tracking-wider block font-semibold flex items-center gap-1">
                           <Globe className="w-3 h-3 text-[#FF5722]" />
-                          <span>Supported Countries ({provider.countries?.length || 0}):</span>
+                          <span>Supported Continents ({((provider.continents && provider.continents.length > 0) ? provider.continents : provider.countries || []).length}):</span>
                         </span>
                         <div className="flex items-center gap-1.5 flex-wrap max-h-24 overflow-y-auto">
-                          {(provider.countries && provider.countries.length > 0
+                          {((provider.continents && provider.continents.length > 0)
+                            ? provider.continents
+                            : provider.countries && provider.countries.length > 0
                             ? provider.countries
-                            : ["Global"]
-                          ).map((country) => (
+                            : ["Asia", "Europe"]
+                          ).map((continent) => (
                             <span
-                              key={country}
+                              key={continent}
                               className="text-[10px] px-2 py-0.5 rounded-md bg-white/[0.04] text-zinc-300 border border-white/[0.08]"
                             >
-                              {country}
+                              {continent}
                             </span>
                           ))}
                         </div>
@@ -2974,27 +2998,28 @@ export default function AdminDashboardPage() {
                 />
               </div>
 
-              {/* Row 4: Countries Supported (Show All Country Names) */}
+              {/* Row 4: Continents Supported (7 Continents Selection) */}
               <div className="space-y-2 pt-1 border-t border-white/[0.06]">
                 <div className="flex items-center justify-between">
                   <label className="text-zinc-300 font-medium flex items-center gap-1.5">
                     <Globe className="w-3.5 h-3.5 text-[#FF5722]" />
-                    <span>Countries Supported ({companyFormData.countries.length} selected)</span>
+                    <span>Continents Supported ({companyFormData.continents?.length || companyFormData.countries?.length || 0} selected)</span>
                   </label>
                   <span className="text-[10px] text-zinc-500">
-                    Click tags to toggle
+                    Click tags to toggle 7 continents
                   </span>
                 </div>
 
-                {/* Common country toggle chips */}
+                {/* Common continent toggle chips */}
                 <div className="flex items-center gap-1.5 flex-wrap">
-                  {COMMON_COUNTRIES.map((country) => {
-                    const selected = companyFormData.countries.includes(country);
+                  {COMMON_CONTINENTS.map((continent) => {
+                    const currentList = companyFormData.continents || companyFormData.countries || [];
+                    const selected = currentList.includes(continent);
                     return (
                       <button
-                        key={country}
+                        key={continent}
                         type="button"
-                        onClick={() => toggleCountryInForm(country)}
+                        onClick={() => toggleContinentInForm(continent)}
                         className={`text-[10px] px-2.5 py-1 rounded-md font-medium transition-colors cursor-pointer border ${
                           selected
                             ? "bg-[#FF5722] text-white border-[#FF5722]"
@@ -3002,44 +3027,44 @@ export default function AdminDashboardPage() {
                         }`}
                       >
                         {selected ? "✓ " : "+ "}
-                        {country}
+                        {continent}
                       </button>
                     );
                   })}
                 </div>
 
-                {/* Custom country add input */}
+                {/* Custom continent add input */}
                 <div className="flex gap-2 pt-1">
                   <input
                     type="text"
-                    value={customCountryInput}
-                    onChange={(e) => setCustomCountryInput(e.target.value)}
+                    value={customContinentInput}
+                    onChange={(e) => setCustomContinentInput(e.target.value)}
                     onKeyDown={(e) => {
                       if (e.key === "Enter") {
                         e.preventDefault();
-                        addCustomCountry();
+                        addCustomContinent();
                       }
                     }}
-                    placeholder="Type custom country name and press Enter..."
+                    placeholder="Type custom continent or region and press Enter..."
                     className="flex-1 px-3 py-1.5 bg-white/[0.04] border border-white/10 rounded-lg text-white text-xs focus:outline-none focus:border-[#FF5722]"
                   />
                   <button
                     type="button"
-                    onClick={addCustomCountry}
+                    onClick={addCustomContinent}
                     className="px-3 py-1.5 rounded-lg bg-white/[0.06] hover:bg-white/[0.1] text-xs font-medium text-white transition-colors cursor-pointer"
                   >
-                    Add Country
+                    Add Continent
                   </button>
                 </div>
 
-                {/* List of all active selected countries */}
+                {/* List of all active selected continents */}
                 <div className="p-2.5 rounded-lg bg-[#08090e] border border-white/[0.06] flex items-center gap-1.5 flex-wrap max-h-24 overflow-y-auto">
-                  {companyFormData.countries.length === 0 ? (
+                  {(companyFormData.continents || companyFormData.countries || []).length === 0 ? (
                     <span className="text-[11px] text-zinc-500">
-                      No countries selected. Click chips above to select.
+                      No continents selected. Click chips above to select.
                     </span>
                   ) : (
-                    companyFormData.countries.map((c) => (
+                    (companyFormData.continents || companyFormData.countries || []).map((c) => (
                       <span
                         key={c}
                         className="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded bg-white/[0.05] text-zinc-300 border border-white/10"
@@ -3047,7 +3072,7 @@ export default function AdminDashboardPage() {
                         <span>{c}</span>
                         <button
                           type="button"
-                          onClick={() => removeCountryFromForm(c)}
+                          onClick={() => removeContinentFromForm(c)}
                           className="hover:text-red-400 text-zinc-500"
                         >
                           ×

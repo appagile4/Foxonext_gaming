@@ -37,39 +37,34 @@ interface Provider {
   status: "active" | "inactive" | "testing" | "maintenance";
   apiStatus?: "connected" | "degraded" | "offline";
   rtpRange?: string;
+  continents?: string[];
   countries?: string[];
   description?: string;
 }
 
-const COUNTRIES = [
-  { code: "ALL", name: "All Countries & Regions", flag: "🌍" },
-  { code: "GLOBAL", name: "Global", flag: "🌐" },
-  { code: "UAE", name: "United Arab Emirates", flag: "🇦🇪" },
-  { code: "UK", name: "United Kingdom", flag: "🇬🇧" },
-  { code: "MALTA", name: "Malta", flag: "🇲🇹" },
-  { code: "CURACAO", name: "Curacao", flag: "🇨🇼" },
-  { code: "PH", name: "Philippines", flag: "🇵🇭" },
-  { code: "BR", name: "Brazil", flag: "🇧🇷" },
-  { code: "US", name: "United States", flag: "🇺🇸" },
-  { code: "IN", name: "India", flag: "🇮🇳" },
-  { code: "SG", name: "Singapore", flag: "🇸🇬" },
-  { code: "CA", name: "Canada", flag: "🇨🇦" },
+const CONTINENTS = [
+  { code: "ALL", name: "All Continents", flag: "🌐" },
+  { code: "ASIA", name: "Asia", flag: "🌏" },
+  { code: "EU", name: "Europe", flag: "🌍" },
+  { code: "NA", name: "North America", flag: "🌎" },
+  { code: "SA", name: "South America", flag: "🌎" },
+  { code: "AF", name: "Africa", flag: "🌍" },
+  { code: "OC", name: "Australia / Oceania", flag: "🌏" },
+  { code: "AN", name: "Antarctica", flag: "❄️" },
 ];
 
-const COUNTRY_FLAGS: Record<string, string> = {
+const CONTINENT_FLAGS: Record<string, string> = {
   Global: "🌐",
-  "United Arab Emirates": "🇦🇪",
-  "United Kingdom": "🇬🇧",
-  Malta: "🇲🇹",
-  Curacao: "🇨🇼",
-  Philippines: "🇵🇭",
-  Brazil: "🇧🇷",
-  "United States": "🇺🇸",
-  India: "🇮🇳",
-  Singapore: "🇸🇬",
-  Canada: "🇨🇦",
-  Germany: "🇩🇪",
-  Australia: "🇦🇺",
+  "All Continents": "🌐",
+  Asia: "🌏",
+  Europe: "🌍",
+  "North America": "🌎",
+  "South America": "🌎",
+  Africa: "🌍",
+  "Australia / Oceania": "🌏",
+  Oceania: "🌏",
+  Australia: "🌏",
+  Antarctica: "❄️",
 };
 
 const CATEGORIES = [
@@ -90,11 +85,11 @@ export default function ProvidersPage() {
 
   // Filter States
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedCountry, setSelectedCountry] = useState("All Countries & Regions");
+  const [selectedContinent, setSelectedContinent] = useState("All Continents");
   const [selectedCategory, setSelectedCategory] = useState("All");
-  const [countryDropdownOpen, setCountryDropdownOpen] = useState(false);
+  const [continentDropdownOpen, setContinentDropdownOpen] = useState(false);
 
-  const countryDropdownRef = useRef<HTMLDivElement>(null);
+  const continentDropdownRef = useRef<HTMLDivElement>(null);
 
   // Fetch Company Providers from dedicated backend API via .env API URL
   const fetchProviders = async () => {
@@ -130,10 +125,10 @@ export default function ProvidersPage() {
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (
-        countryDropdownRef.current &&
-        !countryDropdownRef.current.contains(e.target as Node)
+        continentDropdownRef.current &&
+        !continentDropdownRef.current.contains(e.target as Node)
       ) {
-        setCountryDropdownOpen(false);
+        setContinentDropdownOpen(false);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
@@ -155,29 +150,35 @@ export default function ProvidersPage() {
       const matchesCategory =
         selectedCategory === "All" || provider.category === selectedCategory;
 
-      // 3. Country Filter
-      let matchesCountry = true;
-      if (selectedCountry !== "All Countries & Regions") {
-        const provCountries = provider.countries || ["Global"];
-        matchesCountry =
-          provCountries.includes("Global") ||
-          provCountries.includes(selectedCountry);
+      // 3. Continent Filter
+      let matchesContinent = true;
+      if (selectedContinent !== "All Continents") {
+        const provContinents =
+          provider.continents && provider.continents.length > 0
+            ? provider.continents
+            : provider.countries && provider.countries.length > 0
+            ? provider.countries
+            : ["Global"];
+        matchesContinent =
+          provContinents.includes("Global") ||
+          provContinents.includes("All Continents") ||
+          provContinents.includes(selectedContinent);
       }
 
-      return matchesSearch && matchesCategory && matchesCountry;
+      return matchesSearch && matchesCategory && matchesContinent;
     });
-  }, [providers, searchQuery, selectedCategory, selectedCountry]);
+  }, [providers, searchQuery, selectedCategory, selectedContinent]);
 
-  const selectedCountryObj = useMemo(() => {
+  const selectedContinentObj = useMemo(() => {
     return (
-      COUNTRIES.find((c) => c.name === selectedCountry) || COUNTRIES[0]
+      CONTINENTS.find((c) => c.name === selectedContinent) || CONTINENTS[0]
     );
-  }, [selectedCountry]);
+  }, [selectedContinent]);
 
   const resetFilters = () => {
     setSearchQuery("");
     setSelectedCategory("All");
-    setSelectedCountry("All Countries & Regions");
+    setSelectedContinent("All Continents");
   };
 
   return (
@@ -293,54 +294,50 @@ export default function ProvidersPage() {
               )}
             </div>
 
-            {/* Country Selector Dropdown */}
-            <div className="relative" ref={countryDropdownRef}>
+            {/* Continent Selector Dropdown */}
+            <div className="relative" ref={continentDropdownRef}>
               <button
                 type="button"
-                onClick={() => setCountryDropdownOpen(!countryDropdownOpen)}
+                onClick={() => setContinentDropdownOpen(!continentDropdownOpen)}
                 className="w-full sm:w-64 flex items-center justify-between gap-3 px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-xs sm:text-sm font-medium text-white hover:border-[#FF5722]/50 transition-all cursor-pointer"
               >
                 <div className="flex items-center gap-2.5 truncate">
-                  <span className="text-base">{selectedCountryObj.flag}</span>
+                  <span className="text-base">{selectedContinentObj.flag}</span>
                   <span suppressHydrationWarning className="truncate">
-                    {selectedCountryObj.code === "ALL"
-                      ? (dict.providersPage?.allCountries || selectedCountryObj.name)
-                      : selectedCountryObj.name}
+                    {selectedContinentObj.name}
                   </span>
                 </div>
                 <ChevronDown
                   className={`w-4 h-4 text-zinc-400 transition-transform duration-200 flex-shrink-0 ${
-                    countryDropdownOpen ? "rotate-180" : ""
+                    continentDropdownOpen ? "rotate-180" : ""
                   }`}
                 />
               </button>
 
-              {countryDropdownOpen && (
+              {continentDropdownOpen && (
                 <div className="absolute right-0 top-full mt-2 w-72 rounded-xl bg-[#12141d] border border-white/15 shadow-2xl py-2 z-50 backdrop-blur-xl max-h-72 overflow-y-auto">
                   <div suppressHydrationWarning className="px-3 py-1.5 text-[10px] font-semibold uppercase tracking-wider text-zinc-400 border-b border-white/[0.06]">
-                    {dict.providersPage?.filterRegion || dict.providersPage?.allCountries || "Filter by Licensing Region"}
+                    Filter by Continent
                   </div>
-                  {COUNTRIES.map((c) => (
+                  {CONTINENTS.map((c) => (
                     <button
                       key={c.code}
                       type="button"
                       onClick={() => {
-                        setSelectedCountry(c.name);
-                        setCountryDropdownOpen(false);
+                        setSelectedContinent(c.name);
+                        setContinentDropdownOpen(false);
                       }}
                       className={`w-full flex items-center justify-between px-3.5 py-2 text-xs transition-colors cursor-pointer text-left ${
-                        selectedCountry === c.name
+                        selectedContinent === c.name
                           ? "text-[#FF5722] bg-[#FF5722]/10 font-semibold"
                           : "text-zinc-300 hover:text-white hover:bg-white/[0.06]"
                       }`}
                     >
                       <span className="flex items-center gap-2.5">
                         <span className="text-base">{c.flag}</span>
-                        <span suppressHydrationWarning>
-                          {c.code === "ALL" ? (dict.providersPage?.allCountries || c.name) : c.name}
-                        </span>
+                        <span suppressHydrationWarning>{c.name}</span>
                       </span>
-                      {selectedCountry === c.name && (
+                      {selectedContinent === c.name && (
                         <Check className="w-3.5 h-3.5 text-[#FF5722]" />
                       )}
                     </button>
@@ -350,20 +347,20 @@ export default function ProvidersPage() {
             </div>
           </div>
 
-          {/* Country Names & Regions Filter Pills Row & Counter */}
+          {/* Continents Filter Pills Row & Counter */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
             <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
               <span className="text-[11px] text-zinc-400 uppercase tracking-wider font-semibold flex items-center gap-1 shrink-0 mr-1">
                 <Globe className="w-3.5 h-3.5 text-[#FF5722]" />
-                Country:
+                Continent:
               </span>
-              {COUNTRIES.map((c) => {
-                const isSelected = selectedCountry === c.name;
+              {CONTINENTS.map((c) => {
+                const isSelected = selectedContinent === c.name;
                 return (
                   <button
                     key={c.code}
                     type="button"
-                    onClick={() => setSelectedCountry(c.name)}
+                    onClick={() => setSelectedContinent(c.name)}
                     className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all cursor-pointer whitespace-nowrap flex items-center gap-1.5 ${
                       isSelected
                         ? "bg-gradient-to-r from-[#FF5722] to-[#E94E1B] text-white shadow-[0_2px_12px_rgba(255,87,34,0.35)]"
@@ -371,7 +368,7 @@ export default function ProvidersPage() {
                     }`}
                   >
                     <span>{c.flag}</span>
-                    <span>{c.code === "ALL" ? (dict.providersPage?.allCountries || "All Countries") : c.name}</span>
+                    <span>{c.name}</span>
                   </button>
                 );
               })}
@@ -386,7 +383,7 @@ export default function ProvidersPage() {
                 {dict.providersPage.of} {providers.length} {dict.providersPage.providersCount}
               </span>
 
-              {(searchQuery || selectedCountry !== "All Countries & Regions") && (
+              {(searchQuery || selectedContinent !== "All Continents") && (
                 <button
                   onClick={resetFilters}
                   suppressHydrationWarning
@@ -478,19 +475,23 @@ export default function ProvidersPage() {
                         "Premier iGaming provider certified for global operators with high player retention."}
                     </p>
 
-                    {/* Supported Countries Tags */}
-                    {provider.countries && provider.countries.length > 0 && (
+                    {/* Supported Continents Tags */}
+                    {((provider.continents && provider.continents.length > 0) ||
+                      (provider.countries && provider.countries.length > 0)) && (
                       <div className="flex items-center gap-1.5 flex-wrap pt-1">
                         <span className="text-[11px] text-zinc-400 font-semibold uppercase tracking-wider flex items-center gap-1 mr-1">
                           <Globe className="w-3.5 h-3.5 text-[#FF5722]" />
-                          Supported Countries:
+                          Supported Continents:
                         </span>
-                        {provider.countries.map((c) => (
+                        {(provider.continents && provider.continents.length > 0
+                          ? provider.continents
+                          : provider.countries!
+                        ).map((c) => (
                           <span
                             key={c}
                             className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-white/[0.04] text-zinc-300 border border-white/10 hover:border-[#FF5722]/40 transition-colors"
                           >
-                            <span>{COUNTRY_FLAGS[c] || "📍"}</span>
+                            <span>{CONTINENT_FLAGS[c] || "🌐"}</span>
                             <span>{c}</span>
                           </span>
                         ))}
