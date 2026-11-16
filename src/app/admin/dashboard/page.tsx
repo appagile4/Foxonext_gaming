@@ -2952,36 +2952,6 @@ export default function AdminDashboardPage() {
                     </p>
                   )}
                 </div>
-
-                <div className="flex gap-2 items-center">
-                  <input
-                    type="text"
-                    value={companyFormData.logo}
-                    onChange={(e) =>
-                      setCompanyFormData({ ...companyFormData, logo: e.target.value })
-                    }
-                    placeholder="https://res.cloudinary.com/... or preset"
-                    className="flex-1 px-3 py-2 bg-white/[0.04] border border-white/10 rounded-lg text-white text-xs focus:outline-none focus:border-[#FF5722]"
-                  />
-                  <select
-                    onChange={(e) => {
-                      if (e.target.value) {
-                        setCompanyFormData({ ...companyFormData, logo: e.target.value });
-                      }
-                    }}
-                    className="px-2.5 py-2 bg-[#12141d] border border-white/10 rounded-lg text-zinc-300 focus:outline-none text-[11px]"
-                  >
-                    <option value="">Presets...</option>
-                    <option value="/images/providers/pg-soft.png">PG Soft</option>
-                    <option value="/images/providers/pragmatic.png">Pragmatic</option>
-                    <option value="/images/providers/jdb.png">JDB</option>
-                    <option value="/images/providers/spribe.png">SPRIBE</option>
-                    <option value="/images/providers/db-gaming.png">DB Gaming</option>
-                    <option value="/images/providers/in-out.png">IN OUT</option>
-                    <option value="/images/providers/pescaria.png">Pescaria</option>
-                    <option value="/images/providers/cq9.png">CQ9</option>
-                  </select>
-                </div>
               </div>
 
               {/* Row 3: Short Description */}
@@ -3269,36 +3239,6 @@ export default function AdminDashboardPage() {
                       {marqueeUploadError}
                     </p>
                   )}
-                </div>
-
-                <div className="flex gap-2 items-center">
-                  <input
-                    type="text"
-                    value={newProvider.logo}
-                    onChange={(e) =>
-                      setNewProvider({ ...newProvider, logo: e.target.value })
-                    }
-                    placeholder="https://res.cloudinary.com/... or preset"
-                    className="flex-1 px-3 py-2 bg-white/[0.04] border border-white/10 rounded-lg text-white text-xs focus:outline-none focus:border-[#FF5722]"
-                  />
-                  <select
-                    onChange={(e) => {
-                      if (e.target.value) {
-                        setNewProvider({ ...newProvider, logo: e.target.value });
-                      }
-                    }}
-                    className="px-2.5 py-2 bg-[#12141d] border border-white/10 rounded-lg text-zinc-300 focus:outline-none text-[11px]"
-                  >
-                    <option value="">Presets...</option>
-                    <option value="/images/providers/pg-soft.png">PG Soft</option>
-                    <option value="/images/providers/pragmatic.png">Pragmatic</option>
-                    <option value="/images/providers/jdb.png">JDB</option>
-                    <option value="/images/providers/spribe.png">SPRIBE</option>
-                    <option value="/images/providers/db-gaming.png">DB Gaming</option>
-                    <option value="/images/providers/in-out.png">IN OUT</option>
-                    <option value="/images/providers/pescaria.png">Pescaria</option>
-                    <option value="/images/providers/cq9.png">CQ9</option>
-                  </select>
                 </div>
               </div>
 
