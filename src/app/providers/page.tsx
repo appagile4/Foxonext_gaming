@@ -56,6 +56,22 @@ const COUNTRIES = [
   { code: "CA", name: "Canada", flag: "🇨🇦" },
 ];
 
+const COUNTRY_FLAGS: Record<string, string> = {
+  Global: "🌐",
+  "United Arab Emirates": "🇦🇪",
+  "United Kingdom": "🇬🇧",
+  Malta: "🇲🇹",
+  Curacao: "🇨🇼",
+  Philippines: "🇵🇭",
+  Brazil: "🇧🇷",
+  "United States": "🇺🇸",
+  India: "🇮🇳",
+  Singapore: "🇸🇬",
+  Canada: "🇨🇦",
+  Germany: "🇩🇪",
+  Australia: "🇦🇺",
+};
+
 const CATEGORIES = [
   "All",
   "Slots",
@@ -377,6 +393,32 @@ export default function ProvidersPage() {
               )}
             </div>
           </div>
+
+          {/* Country Names & Regions Filter Pills Row */}
+          <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none pt-1">
+            <span className="text-[11px] text-zinc-400 uppercase tracking-wider font-semibold flex items-center gap-1 shrink-0 mr-1">
+              <Globe className="w-3.5 h-3.5 text-[#FF5722]" />
+              Country:
+            </span>
+            {COUNTRIES.map((c) => {
+              const isSelected = selectedCountry === c.name;
+              return (
+                <button
+                  key={c.code}
+                  type="button"
+                  onClick={() => setSelectedCountry(c.name)}
+                  className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all cursor-pointer whitespace-nowrap flex items-center gap-1.5 ${
+                    isSelected
+                      ? "bg-gradient-to-r from-[#FF5722] to-[#E94E1B] text-white shadow-[0_2px_12px_rgba(255,87,34,0.35)]"
+                      : "bg-white/[0.04] text-zinc-400 hover:text-white hover:bg-white/[0.08] border border-white/[0.06]"
+                  }`}
+                >
+                  <span>{c.flag}</span>
+                  <span>{c.code === "ALL" ? (dict.providersPage?.allCountries || "All Countries") : c.name}</span>
+                </button>
+              );
+            })}
+          </div>
         </div>
       </section>
 
@@ -442,12 +484,40 @@ export default function ProvidersPage() {
                     />
                   </div>
 
-                  {/* Right: Description Only */}
-                  <div className="flex-1 min-w-0">
+                  {/* Right: Studio Details, Description & Supported Countries */}
+                  <div className="flex-1 min-w-0 space-y-3">
+                    <div className="flex items-center justify-between gap-3 flex-wrap">
+                      <h3 className="font-red-rose text-lg sm:text-xl font-bold text-white tracking-tight">
+                        {provider.name}
+                      </h3>
+                      <span className="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-[#FF5722]/15 text-[#FF5722] border border-[#FF5722]/30">
+                        {provider.category || "Slots"}
+                      </span>
+                    </div>
+
                     <p className="font-poppins text-sm sm:text-base text-zinc-300/90 leading-relaxed">
                       {provider.description ||
                         "Premier iGaming provider certified for global operators with high player retention."}
                     </p>
+
+                    {/* Supported Countries Tags */}
+                    {provider.countries && provider.countries.length > 0 && (
+                      <div className="flex items-center gap-1.5 flex-wrap pt-1">
+                        <span className="text-[11px] text-zinc-400 font-semibold uppercase tracking-wider flex items-center gap-1 mr-1">
+                          <Globe className="w-3.5 h-3.5 text-[#FF5722]" />
+                          Supported Countries:
+                        </span>
+                        {provider.countries.map((c) => (
+                          <span
+                            key={c}
+                            className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-white/[0.04] text-zinc-300 border border-white/10 hover:border-[#FF5722]/40 transition-colors"
+                          >
+                            <span>{COUNTRY_FLAGS[c] || "📍"}</span>
+                            <span>{c}</span>
+                          </span>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </div>
               ))}
