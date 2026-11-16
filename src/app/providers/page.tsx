@@ -350,28 +350,34 @@ export default function ProvidersPage() {
             </div>
           </div>
 
-          {/* Category Filter Pills & Counter */}
+          {/* Country Names & Regions Filter Pills Row & Counter */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
-            <div className="flex items-center gap-2 overflow-x-auto pb-1 sm:pb-0">
-              {CATEGORIES.map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => setSelectedCategory(cat)}
-                  suppressHydrationWarning
-                  className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all cursor-pointer whitespace-nowrap ${
-                    selectedCategory === cat
-                      ? "bg-gradient-to-r from-[#FF5722] to-[#E94E1B] text-white shadow-[0_2px_12px_rgba(255,87,34,0.35)]"
-                      : "bg-white/[0.04] text-zinc-400 hover:text-white hover:bg-white/[0.08] border border-white/[0.06]"
-                  }`}
-                >
-                  {cat === "All"
-                    ? (dict.common?.exploreMore ? dict.providersPage?.allCountries?.split(" ")[0] || "All" : "All")
-                    : cat}
-                </button>
-              ))}
+            <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
+              <span className="text-[11px] text-zinc-400 uppercase tracking-wider font-semibold flex items-center gap-1 shrink-0 mr-1">
+                <Globe className="w-3.5 h-3.5 text-[#FF5722]" />
+                Country:
+              </span>
+              {COUNTRIES.map((c) => {
+                const isSelected = selectedCountry === c.name;
+                return (
+                  <button
+                    key={c.code}
+                    type="button"
+                    onClick={() => setSelectedCountry(c.name)}
+                    className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all cursor-pointer whitespace-nowrap flex items-center gap-1.5 ${
+                      isSelected
+                        ? "bg-gradient-to-r from-[#FF5722] to-[#E94E1B] text-white shadow-[0_2px_12px_rgba(255,87,34,0.35)]"
+                        : "bg-white/[0.04] text-zinc-400 hover:text-white hover:bg-white/[0.08] border border-white/[0.06]"
+                    }`}
+                  >
+                    <span>{c.flag}</span>
+                    <span>{c.code === "ALL" ? (dict.providersPage?.allCountries || "All Countries") : c.name}</span>
+                  </button>
+                );
+              })}
             </div>
 
-            <div className="flex items-center gap-3 self-end sm:self-center">
+            <div className="flex items-center gap-3 shrink-0 self-end sm:self-center">
               <span suppressHydrationWarning className="text-zinc-400 text-xs">
                 {dict.providersPage.showing}{" "}
                 <span className="text-white font-semibold">
@@ -380,9 +386,7 @@ export default function ProvidersPage() {
                 {dict.providersPage.of} {providers.length} {dict.providersPage.providersCount}
               </span>
 
-              {(searchQuery ||
-                selectedCategory !== "All" ||
-                selectedCountry !== "All Countries & Regions") && (
+              {(searchQuery || selectedCountry !== "All Countries & Regions") && (
                 <button
                   onClick={resetFilters}
                   suppressHydrationWarning
@@ -392,32 +396,6 @@ export default function ProvidersPage() {
                 </button>
               )}
             </div>
-          </div>
-
-          {/* Country Names & Regions Filter Pills Row */}
-          <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none pt-1">
-            <span className="text-[11px] text-zinc-400 uppercase tracking-wider font-semibold flex items-center gap-1 shrink-0 mr-1">
-              <Globe className="w-3.5 h-3.5 text-[#FF5722]" />
-              Country:
-            </span>
-            {COUNTRIES.map((c) => {
-              const isSelected = selectedCountry === c.name;
-              return (
-                <button
-                  key={c.code}
-                  type="button"
-                  onClick={() => setSelectedCountry(c.name)}
-                  className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all cursor-pointer whitespace-nowrap flex items-center gap-1.5 ${
-                    isSelected
-                      ? "bg-gradient-to-r from-[#FF5722] to-[#E94E1B] text-white shadow-[0_2px_12px_rgba(255,87,34,0.35)]"
-                      : "bg-white/[0.04] text-zinc-400 hover:text-white hover:bg-white/[0.08] border border-white/[0.06]"
-                  }`}
-                >
-                  <span>{c.flag}</span>
-                  <span>{c.code === "ALL" ? (dict.providersPage?.allCountries || "All Countries") : c.name}</span>
-                </button>
-              );
-            })}
           </div>
         </div>
       </section>
