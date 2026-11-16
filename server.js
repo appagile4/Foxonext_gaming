@@ -31,6 +31,7 @@ const companyProviderRoutes = require('./routes/companyProviderRoutes');
 const socialLinksRoutes = require('./routes/socialLinksRoutes');
 const contactInfoRoutes = require('./routes/contactInfoRoutes');
 const inquiryRoutes = require('./routes/inquiryRoutes');
+const uploadRoutes = require('./routes/uploadRoutes');
 
 // Root Route & Health check
 app.get('/', (req, res) => {
@@ -69,6 +70,9 @@ app.use('/api/contact-info', contactInfoRoutes);
 
 // Inquiries / Leads API
 app.use('/api/inquiries', inquiryRoutes);
+
+// Cloudinary Image Upload API
+app.use('/api/upload', uploadRoutes);
 
 // Cloudinary verification route
 app.get('/api/cloudinary-check', async (req, res) => {
