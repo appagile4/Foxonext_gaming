@@ -18,11 +18,15 @@ const ENQUIRY_OPTIONS = [
 export function ContactSection() {
   const { dict } = useTranslation();
   const [contactInfo, setContactInfo] = useState({
+    showSection: true,
     phone: "+971 58 191 0073",
+    showPhone: true,
     email: "sales@cloudzy.com",
+    showEmail: true,
     companyName: "Cloudzy AI Information Technology LLC.",
     addressLine1: "Bin Dasmal Building 1, Office 80",
     addressLine2: "Al Goze Industrial First, Dubai · United Arab Emirates",
+    showAddress: true,
   });
 
   React.useEffect(() => {
@@ -132,119 +136,129 @@ export function ContactSection() {
             </div>
 
             {/* 2. Middle Row: Phone & Email Cards + 3D Chat Bubbles */}
-            <div className="grid grid-cols-1 sm:grid-cols-12 gap-5 sm:gap-6 items-center">
-              {/* Left Side: Stacked Phone & Email Cards (sm:col-span-6) */}
-              <div className="sm:col-span-6 space-y-4">
-                {/* Phone Card */}
-                <div className="rounded-xl sm:rounded-2xl bg-[#0e1017]/90 border border-white/[0.07] p-4 sm:p-5 space-y-1.5 transition-all duration-300 hover:border-[#FF5722]/40 shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
-                  <div className="flex items-center gap-2 text-[#FF5722]">
-                    <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[1.8]" />
-                    <span
-                      suppressHydrationWarning
-                      className="font-poppins text-xs sm:text-[13px] font-medium text-[#FF5722]"
-                      style={{
-                        fontFamily:
-                          "var(--font-poppins), 'Poppins', sans-serif",
-                      }}
-                    >
-                      {dict.contact.phone}
-                    </span>
-                  </div>
-                  <a
-                    href={`tel:${contactInfo.phone.replace(/\s+/g, "")}`}
-                    className="font-poppins text-xs sm:text-sm md:text-[15px] text-white font-medium hover:text-[#FF5722] transition-colors block tracking-wide"
-                    style={{
-                      fontFamily:
-                        "var(--font-poppins), 'Poppins', sans-serif",
-                    }}
-                  >
-                    {contactInfo.phone}
-                  </a>
+            {((contactInfo.showPhone !== false && !!contactInfo.phone) ||
+              (contactInfo.showEmail !== false && !!contactInfo.email)) && (
+              <div className="grid grid-cols-1 sm:grid-cols-12 gap-5 sm:gap-6 items-center">
+                {/* Left Side: Stacked Phone & Email Cards (sm:col-span-6) */}
+                <div className="sm:col-span-6 space-y-4">
+                  {/* Phone Card */}
+                  {contactInfo.showPhone !== false && !!contactInfo.phone && (
+                    <div className="rounded-xl sm:rounded-2xl bg-[#0e1017]/90 border border-white/[0.07] p-4 sm:p-5 space-y-1.5 transition-all duration-300 hover:border-[#FF5722]/40 shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
+                      <div className="flex items-center gap-2 text-[#FF5722]">
+                        <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[1.8]" />
+                        <span
+                          suppressHydrationWarning
+                          className="font-poppins text-xs sm:text-[13px] font-medium text-[#FF5722]"
+                          style={{
+                            fontFamily:
+                              "var(--font-poppins), 'Poppins', sans-serif",
+                          }}
+                        >
+                          {dict.contact.phone}
+                        </span>
+                      </div>
+                      <a
+                        href={`tel:${contactInfo.phone.replace(/\s+/g, "")}`}
+                        className="font-poppins text-xs sm:text-sm md:text-[15px] text-white font-medium hover:text-[#FF5722] transition-colors block tracking-wide"
+                        style={{
+                          fontFamily:
+                            "var(--font-poppins), 'Poppins', sans-serif",
+                        }}
+                      >
+                        {contactInfo.phone}
+                      </a>
+                    </div>
+                  )}
+
+                  {/* Email Card */}
+                  {contactInfo.showEmail !== false && !!contactInfo.email && (
+                    <div className="rounded-xl sm:rounded-2xl bg-[#0e1017]/90 border border-white/[0.07] p-4 sm:p-5 space-y-1.5 transition-all duration-300 hover:border-[#FF5722]/40 shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
+                      <div className="flex items-center gap-2 text-[#FF5722]">
+                        <span
+                          suppressHydrationWarning
+                          className="font-poppins text-xs sm:text-[13px] font-medium text-[#FF5722]"
+                          style={{
+                            fontFamily:
+                              "var(--font-poppins), 'Poppins', sans-serif",
+                          }}
+                        >
+                          @ {dict.contact.email}
+                        </span>
+                      </div>
+                      <a
+                        href={`mailto:${contactInfo.email}`}
+                        className="font-poppins text-xs sm:text-sm md:text-[15px] text-white font-medium hover:text-[#FF5722] transition-colors block tracking-wide"
+                        style={{
+                          fontFamily:
+                            "var(--font-poppins), 'Poppins', sans-serif",
+                        }}
+                      >
+                        {contactInfo.email}
+                      </a>
+                    </div>
+                  )}
                 </div>
 
-                {/* Email Card */}
-                <div className="rounded-xl sm:rounded-2xl bg-[#0e1017]/90 border border-white/[0.07] p-4 sm:p-5 space-y-1.5 transition-all duration-300 hover:border-[#FF5722]/40 shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
-                  <div className="flex items-center gap-2 text-[#FF5722]">
-                    <span
-                      suppressHydrationWarning
-                      className="font-poppins text-xs sm:text-[13px] font-medium text-[#FF5722]"
-                      style={{
-                        fontFamily:
-                          "var(--font-poppins), 'Poppins', sans-serif",
-                      }}
-                    >
-                      @ {dict.contact.email}
-                    </span>
+                {/* Right Side: 3D Glossy Yellow & Blue Speech Chat Bubbles (sm:col-span-6) */}
+                <div className="sm:col-span-6 flex items-center justify-center sm:justify-start">
+                  <div className="relative w-44 sm:w-52 lg:w-60 aspect-square flex items-center justify-center drop-shadow-[0_20px_35px_rgba(0,0,0,0.65)] hover:scale-105 transition-transform duration-500 ease-out">
+                    <Image
+                      src="/images/contact/chat-bubbles.png"
+                      alt="3D Chat Bubbles"
+                      width={752}
+                      height={752}
+                      className="w-full h-full object-contain filter drop-shadow-[0_15px_30px_rgba(255,180,0,0.25)]"
+                      priority
+                    />
                   </div>
-                  <a
-                    href={`mailto:${contactInfo.email}`}
-                    className="font-poppins text-xs sm:text-sm md:text-[15px] text-white font-medium hover:text-[#FF5722] transition-colors block tracking-wide"
-                    style={{
-                      fontFamily:
-                        "var(--font-poppins), 'Poppins', sans-serif",
-                    }}
-                  >
-                    {contactInfo.email}
-                  </a>
                 </div>
               </div>
-
-              {/* Right Side: 3D Glossy Yellow & Blue Speech Chat Bubbles (sm:col-span-6) */}
-              <div className="sm:col-span-6 flex items-center justify-center sm:justify-start">
-                <div className="relative w-44 sm:w-52 lg:w-60 aspect-square flex items-center justify-center drop-shadow-[0_20px_35px_rgba(0,0,0,0.65)] hover:scale-105 transition-transform duration-500 ease-out">
-                  <Image
-                    src="/images/contact/chat-bubbles.png"
-                    alt="3D Chat Bubbles"
-                    width={752}
-                    height={752}
-                    className="w-full h-full object-contain filter drop-shadow-[0_15px_30px_rgba(255,180,0,0.25)]"
-                    priority
-                  />
-                </div>
-              </div>
-            </div>
+            )}
 
             {/* 3. Bottom Row: Location Card with Blue Map Preview */}
-            <div className="rounded-xl sm:rounded-2xl bg-[#0e1017]/90 border border-white/[0.07] p-4 sm:p-5 flex flex-col sm:flex-row items-start gap-4 sm:gap-5 transition-all duration-300 hover:border-[#FF5722]/40 shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
-              {/* Map Preview Image */}
-              <div className="relative w-full sm:w-36 h-28 sm:h-28 rounded-lg overflow-hidden flex-shrink-0 border border-white/10 shadow-inner">
-                <Image
-                  src="/images/contact/map-preview.png"
-                  alt="Office Map Location - Dubai UAE"
-                  fill
-                  sizes="(max-width: 640px) 100vw, 150px"
-                  className="object-cover"
-                />
-              </div>
+            {contactInfo.showAddress !== false &&
+              (!!contactInfo.companyName || !!contactInfo.addressLine1 || !!contactInfo.addressLine2) && (
+                <div className="rounded-xl sm:rounded-2xl bg-[#0e1017]/90 border border-white/[0.07] p-4 sm:p-5 flex flex-col sm:flex-row items-start gap-4 sm:gap-5 transition-all duration-300 hover:border-[#FF5722]/40 shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
+                  {/* Map Preview Image */}
+                  <div className="relative w-full sm:w-36 h-28 sm:h-28 rounded-lg overflow-hidden flex-shrink-0 border border-white/10 shadow-inner">
+                    <Image
+                      src="/images/contact/map-preview.png"
+                      alt="Office Map Location - Dubai UAE"
+                      fill
+                      sizes="(max-width: 640px) 100vw, 150px"
+                      className="object-cover"
+                    />
+                  </div>
 
-              {/* Location Details */}
-              <div className="space-y-1.5 flex-1">
-                <div className="flex items-center gap-2 text-[#FF5722]">
-                  <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[1.8]" />
-                  <span
-                    className="font-poppins text-xs sm:text-[13px] font-medium text-[#FF5722]"
-                    style={{
-                      fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
-                    }}
-                  >
-                    Location
-                  </span>
+                  {/* Location Details */}
+                  <div className="space-y-1.5 flex-1">
+                    <div className="flex items-center gap-2 text-[#FF5722]">
+                      <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[1.8]" />
+                      <span
+                        className="font-poppins text-xs sm:text-[13px] font-medium text-[#FF5722]"
+                        style={{
+                          fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
+                        }}
+                      >
+                        Location
+                      </span>
+                    </div>
+                    <p
+                      className="font-poppins text-xs sm:text-sm text-zinc-300 leading-relaxed font-normal"
+                      style={{
+                        fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
+                      }}
+                    >
+                      {contactInfo.companyName}
+                      <br />
+                      {contactInfo.addressLine1}
+                      <br />
+                      {contactInfo.addressLine2}
+                    </p>
+                  </div>
                 </div>
-                <p
-                  className="font-poppins text-xs sm:text-sm text-zinc-300 leading-relaxed font-normal"
-                  style={{
-                    fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
-                  }}
-                >
-                  {contactInfo.companyName}
-                  <br />
-                  {contactInfo.addressLine1}
-                  <br />
-                  {contactInfo.addressLine2}
-                </p>
-              </div>
+              )}
             </div>
-          </div>
 
           {/* ================= RIGHT COLUMN: CONTACT FORM ================= */}
           <div className="lg:col-span-6 relative">

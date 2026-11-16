@@ -168,11 +168,15 @@ export default function AdminDashboardPage() {
 
   // Contact Info State
   const [contactForm, setContactForm] = useState({
+    showSection: true,
     phone: "+971 58 191 0073",
+    showPhone: true,
     email: "sales@cloudzy.com",
+    showEmail: true,
     companyName: "Cloudzy AI Information Technology LLC.",
     addressLine1: "Bin Dasmal Building 1, Office 80",
     addressLine2: "Al Goze Industrial First, Dubai · United Arab Emirates",
+    showAddress: true,
   });
   const [contactLoading, setContactLoading] = useState(false);
   const [contactStatus, setContactStatus] = useState<{
@@ -626,11 +630,15 @@ export default function AdminDashboardPage() {
       const data = await res.json();
       if (data.success && data.contactInfo) {
         setContactForm({
+          showSection: data.contactInfo.showSection !== false,
           phone: data.contactInfo.phone || "",
+          showPhone: data.contactInfo.showPhone !== false,
           email: data.contactInfo.email || "",
+          showEmail: data.contactInfo.showEmail !== false,
           companyName: data.contactInfo.companyName || "",
           addressLine1: data.contactInfo.addressLine1 || "",
           addressLine2: data.contactInfo.addressLine2 || "",
+          showAddress: data.contactInfo.showAddress !== false,
         });
       }
     } catch {
@@ -1757,52 +1765,117 @@ export default function AdminDashboardPage() {
             </div>
 
             {/* Live Website Preview Card */}
-            <div className="rounded-2xl bg-[#0d0f17] border border-white/10 p-6 space-y-4">
-              <div className="flex items-center justify-between border-b border-white/[0.08] pb-3">
-                <span className="text-xs font-semibold text-zinc-400 uppercase tracking-wider">
-                  Live Website Appearance Preview
-                </span>
-                <span className="text-[11px] px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-medium">
-                  Synced with Footer &amp; Contact Page
-                </span>
+            <div className="rounded-2xl bg-[#0d0f17] border border-white/10 p-6 space-y-4 shadow-xl">
+              <div className="flex items-center justify-between border-b border-white/[0.08] pb-3 flex-wrap gap-2">
+                <div className="space-y-1">
+                  <span className="text-[11px] font-semibold uppercase tracking-wider text-[#FF5722]">
+                    Live Website Appearance Preview
+                  </span>
+                  <h3 className="font-red-rose text-lg font-bold text-white">
+                    Contact Us
+                  </h3>
+                </div>
+                <div>
+                  {contactForm.showSection ? (
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/25">
+                      <Eye className="w-3.5 h-3.5" />
+                      Section Visible on Website
+                    </span>
+                  ) : (
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-red-500/10 text-red-400 border border-red-500/25">
+                      <EyeOff className="w-3.5 h-3.5" />
+                      Section Hidden from Footer
+                    </span>
+                  )}
+                </div>
               </div>
 
-              <div className="p-6 rounded-xl bg-[#07080c] border border-white/[0.07] max-w-md space-y-4">
+              {!contactForm.showSection && (
+                <div className="p-3 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-300 text-xs flex items-center gap-2">
+                  <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                  <span>The entire Contact Us section is currently <strong>Hidden</strong>. It will not appear on the website footer regardless of individual item toggles.</span>
+                </div>
+              )}
+
+              <div className="p-5 rounded-xl bg-[#07080c] border border-white/[0.07] max-w-md space-y-3.5">
                 <h4
-                  className="font-red-rose text-lg sm:text-xl font-bold text-white tracking-tight"
+                  className="font-red-rose text-base sm:text-lg font-bold text-white tracking-tight"
                   style={{ fontFamily: "var(--font-red-rose), 'Red Rose', serif" }}
                 >
                   Contact Us
                 </h4>
 
                 <div className="space-y-3 font-poppins text-xs sm:text-sm text-zinc-400">
-                  <div className="flex items-center gap-2.5">
-                    <Phone className="w-4 h-4 text-[#FF5722] flex-shrink-0" />
-                    <span className="text-zinc-200">{contactForm.phone || "No phone set"}</span>
-                  </div>
-                  <div className="flex items-center gap-2.5">
-                    <Mail className="w-4 h-4 text-[#FF5722] flex-shrink-0" />
-                    <span className="text-zinc-200">{contactForm.email || "No email set"}</span>
-                  </div>
-                  <div className="flex items-start gap-2.5 pt-1">
-                    <MapPin className="w-4 h-4 text-[#FF5722] flex-shrink-0 mt-0.5" />
-                    <div className="text-xs leading-relaxed text-zinc-400">
-                      <p className="text-zinc-200 font-medium">{contactForm.companyName}</p>
-                      <p>{contactForm.addressLine1}</p>
-                      <p>{contactForm.addressLine2}</p>
+                  {/* Phone Preview */}
+                  <div className={`flex items-center justify-between gap-2.5 ${
+                    contactForm.showSection && contactForm.showPhone && contactForm.phone
+                      ? "text-zinc-200"
+                      : "opacity-40 text-zinc-500"
+                  }`}>
+                    <div className="flex items-center gap-2.5">
+                      <Phone className="w-4 h-4 text-[#FF5722] flex-shrink-0" />
+                      <span>{contactForm.phone || "No phone set"}</span>
                     </div>
+                    {(!contactForm.showSection || !contactForm.showPhone) && (
+                      <span className="text-[10px] uppercase font-semibold text-zinc-500 border border-zinc-700 px-1.5 py-0.5 rounded">
+                        Hidden
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Email Preview */}
+                  <div className={`flex items-center justify-between gap-2.5 ${
+                    contactForm.showSection && contactForm.showEmail && contactForm.email
+                      ? "text-zinc-200"
+                      : "opacity-40 text-zinc-500"
+                  }`}>
+                    <div className="flex items-center gap-2.5">
+                      <Mail className="w-4 h-4 text-[#FF5722] flex-shrink-0" />
+                      <span>{contactForm.email || "No email set"}</span>
+                    </div>
+                    {(!contactForm.showSection || !contactForm.showEmail) && (
+                      <span className="text-[10px] uppercase font-semibold text-zinc-500 border border-zinc-700 px-1.5 py-0.5 rounded">
+                        Hidden
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Location Preview */}
+                  <div className={`flex items-start justify-between gap-2.5 pt-1 ${
+                    contactForm.showSection && contactForm.showAddress && (contactForm.companyName || contactForm.addressLine1 || contactForm.addressLine2)
+                      ? "text-zinc-400"
+                      : "opacity-40 text-zinc-500"
+                  }`}>
+                    <div className="flex items-start gap-2.5">
+                      <MapPin className="w-4 h-4 text-[#FF5722] flex-shrink-0 mt-0.5" />
+                      <div className="text-xs leading-relaxed">
+                        <p className="text-zinc-200 font-medium">{contactForm.companyName || "No company name"}</p>
+                        <p>{contactForm.addressLine1}</p>
+                        <p>{contactForm.addressLine2}</p>
+                      </div>
+                    </div>
+                    {(!contactForm.showSection || !contactForm.showAddress) && (
+                      <span className="text-[10px] uppercase font-semibold text-zinc-500 border border-zinc-700 px-1.5 py-0.5 rounded">
+                        Hidden
+                      </span>
+                    )}
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Edit Contact Form */}
-            <div className="rounded-2xl bg-[#0d0f17] border border-white/10 p-6 space-y-5">
+            <div className="rounded-2xl bg-[#0d0f17] border border-white/10 p-6 space-y-6">
               <div className="flex items-center gap-2">
                 <Building className="w-5 h-5 text-[#FF5722]" />
-                <h3 className="font-red-rose text-base font-bold text-white">
-                  Edit Contact Information
-                </h3>
+                <div>
+                  <h3 className="font-red-rose text-base font-bold text-white">
+                    Contact Details &amp; Visibility Settings
+                  </h3>
+                  <p className="text-xs text-zinc-400">
+                    Control which contact channels are displayed on the website footer and contact page
+                  </p>
+                </div>
               </div>
 
               {contactStatus.msg && (
@@ -1822,85 +1895,203 @@ export default function AdminDashboardPage() {
                 </div>
               )}
 
-              <form onSubmit={handleSaveContactInfo} className="space-y-5 text-xs">
-                <div className="space-y-1.5">
-                  <label className="text-zinc-300 font-medium flex items-center gap-2">
-                    <Phone className="w-3.5 h-3.5 text-[#FF5722]" />
-                    <span>Phone Number</span>
-                  </label>
-                  <input
-                    type="text"
-                    value={contactForm.phone}
-                    onChange={(e) =>
-                      setContactForm({ ...contactForm, phone: e.target.value })
+              <form onSubmit={handleSaveContactInfo} className="space-y-6 text-xs">
+                {/* Master Section Toggle Card */}
+                <div className="p-4 rounded-xl bg-white/[0.02] border border-white/10 flex items-center justify-between gap-4">
+                  <div className="space-y-0.5">
+                    <div className="flex items-center gap-2">
+                      <span className="text-sm font-semibold text-white">
+                        Display "Contact Us" Section on Footer
+                      </span>
+                      <span
+                        className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${
+                          contactForm.showSection
+                            ? "bg-emerald-500/15 text-emerald-400 border border-emerald-500/30"
+                            : "bg-zinc-500/15 text-zinc-400 border border-zinc-500/30"
+                        }`}
+                      >
+                        {contactForm.showSection ? "Section Enabled" : "Section Disabled"}
+                      </span>
+                    </div>
+                    <p className="text-xs text-zinc-400">
+                      When turned OFF, the entire Contact Us block will be hidden from the website footer.
+                    </p>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setContactForm({ ...contactForm, showSection: !contactForm.showSection })
                     }
-                    placeholder="+971 58 191 0073"
-                    className="w-full px-3.5 py-2.5 bg-white/[0.04] border border-white/10 rounded-xl text-white focus:outline-none focus:border-[#FF5722]"
-                  />
+                    className={`relative inline-flex h-7 w-13 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${
+                      contactForm.showSection ? "bg-[#E94E1B]" : "bg-white/15"
+                    }`}
+                  >
+                    <span
+                      className={`pointer-events-none inline-block h-6 w-6 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out ${
+                        contactForm.showSection ? "translate-x-6" : "translate-x-0"
+                      }`}
+                    />
+                  </button>
                 </div>
 
-                <div className="space-y-1.5">
-                  <label className="text-zinc-300 font-medium flex items-center gap-2">
-                    <Mail className="w-3.5 h-3.5 text-[#FF5722]" />
-                    <span>Inquiry &amp; Support Email</span>
-                  </label>
-                  <input
-                    type="email"
-                    value={contactForm.email}
-                    onChange={(e) =>
-                      setContactForm({ ...contactForm, email: e.target.value })
-                    }
-                    placeholder="sales@cloudzy.com"
-                    className="w-full px-3.5 py-2.5 bg-white/[0.04] border border-white/10 rounded-xl text-white focus:outline-none focus:border-[#FF5722]"
-                  />
-                </div>
+                {/* Individual Channel Settings */}
+                <div className="space-y-4 pt-1">
+                  <h4 className="text-xs font-semibold uppercase tracking-wider text-zinc-400">
+                    Individual Contact Channels &amp; Details
+                  </h4>
 
-                <div className="space-y-1.5">
-                  <label className="text-zinc-300 font-medium flex items-center gap-2">
-                    <Building className="w-3.5 h-3.5 text-[#FF5722]" />
-                    <span>Company Name / Entity</span>
-                  </label>
-                  <input
-                    type="text"
-                    value={contactForm.companyName}
-                    onChange={(e) =>
-                      setContactForm({ ...contactForm, companyName: e.target.value })
-                    }
-                    placeholder="Cloudzy AI Information Technology LLC."
-                    className="w-full px-3.5 py-2.5 bg-white/[0.04] border border-white/10 rounded-xl text-white focus:outline-none focus:border-[#FF5722]"
-                  />
-                </div>
+                  {/* 1. Phone Number */}
+                  <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.08] space-y-2">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <div className="w-6 h-6 rounded-md bg-[#121319] border border-white/10 flex items-center justify-center text-[#FF5722]">
+                          <Phone className="w-3.5 h-3.5" />
+                        </div>
+                        <label className="text-zinc-200 font-semibold text-xs">Phone Number</label>
+                      </div>
 
-                <div className="space-y-1.5">
-                  <label className="text-zinc-300 font-medium flex items-center gap-2">
-                    <MapPin className="w-3.5 h-3.5 text-[#FF5722]" />
-                    <span>Address Line 1</span>
-                  </label>
-                  <input
-                    type="text"
-                    value={contactForm.addressLine1}
-                    onChange={(e) =>
-                      setContactForm({ ...contactForm, addressLine1: e.target.value })
-                    }
-                    placeholder="Bin Dasmal Building 1, Office 80"
-                    className="w-full px-3.5 py-2.5 bg-white/[0.04] border border-white/10 rounded-xl text-white focus:outline-none focus:border-[#FF5722]"
-                  />
-                </div>
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setContactForm({ ...contactForm, showPhone: !contactForm.showPhone })
+                        }
+                        className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium cursor-pointer transition-colors ${
+                          contactForm.showPhone
+                            ? "bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 hover:bg-emerald-500/25"
+                            : "bg-white/5 text-zinc-400 border border-white/10 hover:bg-white/10"
+                        }`}
+                      >
+                        {contactForm.showPhone ? <Eye className="w-3.5 h-3.5" /> : <EyeOff className="w-3.5 h-3.5" />}
+                        <span>{contactForm.showPhone ? "Show" : "Hide"}</span>
+                      </button>
+                    </div>
 
-                <div className="space-y-1.5">
-                  <label className="text-zinc-300 font-medium flex items-center gap-2">
-                    <MapPin className="w-3.5 h-3.5 text-[#FF5722]" />
-                    <span>Address Line 2</span>
-                  </label>
-                  <input
-                    type="text"
-                    value={contactForm.addressLine2}
-                    onChange={(e) =>
-                      setContactForm({ ...contactForm, addressLine2: e.target.value })
-                    }
-                    placeholder="Al Goze Industrial First, Dubai · United Arab Emirates"
-                    className="w-full px-3.5 py-2.5 bg-white/[0.04] border border-white/10 rounded-xl text-white focus:outline-none focus:border-[#FF5722]"
-                  />
+                    <input
+                      type="text"
+                      value={contactForm.phone}
+                      onChange={(e) =>
+                        setContactForm({ ...contactForm, phone: e.target.value })
+                      }
+                      placeholder="+971 58 191 0073"
+                      className={`w-full px-3.5 py-2.5 bg-white/[0.04] border rounded-xl text-white focus:outline-none focus:border-[#FF5722] transition-opacity ${
+                        contactForm.showPhone ? "border-white/10" : "border-white/5 opacity-50"
+                      }`}
+                    />
+                  </div>
+
+                  {/* 2. Email Address */}
+                  <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.08] space-y-2">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <div className="w-6 h-6 rounded-md bg-[#121319] border border-white/10 flex items-center justify-center text-[#FF5722]">
+                          <Mail className="w-3.5 h-3.5" />
+                        </div>
+                        <label className="text-zinc-200 font-semibold text-xs">Email Address</label>
+                      </div>
+
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setContactForm({ ...contactForm, showEmail: !contactForm.showEmail })
+                        }
+                        className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium cursor-pointer transition-colors ${
+                          contactForm.showEmail
+                            ? "bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 hover:bg-emerald-500/25"
+                            : "bg-white/5 text-zinc-400 border border-white/10 hover:bg-white/10"
+                        }`}
+                      >
+                        {contactForm.showEmail ? <Eye className="w-3.5 h-3.5" /> : <EyeOff className="w-3.5 h-3.5" />}
+                        <span>{contactForm.showEmail ? "Show" : "Hide"}</span>
+                      </button>
+                    </div>
+
+                    <input
+                      type="email"
+                      value={contactForm.email}
+                      onChange={(e) =>
+                        setContactForm({ ...contactForm, email: e.target.value })
+                      }
+                      placeholder="sales@cloudzy.com"
+                      className={`w-full px-3.5 py-2.5 bg-white/[0.04] border rounded-xl text-white focus:outline-none focus:border-[#FF5722] transition-opacity ${
+                        contactForm.showEmail ? "border-white/10" : "border-white/5 opacity-50"
+                      }`}
+                    />
+                  </div>
+
+                  {/* 3. Physical Address & Location */}
+                  <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.08] space-y-3">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <div className="w-6 h-6 rounded-md bg-[#121319] border border-white/10 flex items-center justify-center text-[#FF5722]">
+                          <MapPin className="w-3.5 h-3.5" />
+                        </div>
+                        <label className="text-zinc-200 font-semibold text-xs">Company Name &amp; Physical Address</label>
+                      </div>
+
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setContactForm({ ...contactForm, showAddress: !contactForm.showAddress })
+                        }
+                        className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium cursor-pointer transition-colors ${
+                          contactForm.showAddress
+                            ? "bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 hover:bg-emerald-500/25"
+                            : "bg-white/5 text-zinc-400 border border-white/10 hover:bg-white/10"
+                        }`}
+                      >
+                        {contactForm.showAddress ? <Eye className="w-3.5 h-3.5" /> : <EyeOff className="w-3.5 h-3.5" />}
+                        <span>{contactForm.showAddress ? "Show" : "Hide"}</span>
+                      </button>
+                    </div>
+
+                    <div className="space-y-2">
+                      <div>
+                        <label className="text-zinc-400 text-[11px] block mb-1">Company Name / Entity</label>
+                        <input
+                          type="text"
+                          value={contactForm.companyName}
+                          onChange={(e) =>
+                            setContactForm({ ...contactForm, companyName: e.target.value })
+                          }
+                          placeholder="Cloudzy AI Information Technology LLC."
+                          className={`w-full px-3.5 py-2.5 bg-white/[0.04] border rounded-xl text-white focus:outline-none focus:border-[#FF5722] transition-opacity ${
+                            contactForm.showAddress ? "border-white/10" : "border-white/5 opacity-50"
+                          }`}
+                        />
+                      </div>
+
+                      <div>
+                        <label className="text-zinc-400 text-[11px] block mb-1">Address Line 1</label>
+                        <input
+                          type="text"
+                          value={contactForm.addressLine1}
+                          onChange={(e) =>
+                            setContactForm({ ...contactForm, addressLine1: e.target.value })
+                          }
+                          placeholder="Bin Dasmal Building 1, Office 80"
+                          className={`w-full px-3.5 py-2.5 bg-white/[0.04] border rounded-xl text-white focus:outline-none focus:border-[#FF5722] transition-opacity ${
+                            contactForm.showAddress ? "border-white/10" : "border-white/5 opacity-50"
+                          }`}
+                        />
+                      </div>
+
+                      <div>
+                        <label className="text-zinc-400 text-[11px] block mb-1">Address Line 2</label>
+                        <input
+                          type="text"
+                          value={contactForm.addressLine2}
+                          onChange={(e) =>
+                            setContactForm({ ...contactForm, addressLine2: e.target.value })
+                          }
+                          placeholder="Al Goze Industrial First, Dubai · United Arab Emirates"
+                          className={`w-full px-3.5 py-2.5 bg-white/[0.04] border rounded-xl text-white focus:outline-none focus:border-[#FF5722] transition-opacity ${
+                            contactForm.showAddress ? "border-white/10" : "border-white/5 opacity-50"
+                          }`}
+                        />
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
                 <div className="pt-2">
@@ -1910,7 +2101,7 @@ export default function AdminDashboardPage() {
                     className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-[#E94E1B] to-[#FF6229] hover:from-[#f05724] hover:to-[#ff6d36] text-white text-xs font-medium shadow-[0_4px_16px_rgba(233,78,27,0.35)] transition-all cursor-pointer flex items-center gap-2 disabled:opacity-50"
                   >
                     {contactLoading && <Loader2 className="w-3.5 h-3.5 animate-spin" />}
-                    <span>Save Contact Details</span>
+                    <span>Save Contact Details &amp; Visibility</span>
                   </button>
                 </div>
               </form>

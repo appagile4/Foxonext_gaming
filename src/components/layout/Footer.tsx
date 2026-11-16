@@ -24,11 +24,15 @@ export function Footer() {
   });
 
   const [contactInfo, setContactInfo] = React.useState({
+    showSection: true,
     phone: "+971 58 191 0073",
+    showPhone: true,
     email: "sales@cloudzy.com",
+    showEmail: true,
     companyName: "Cloudzy AI Information Technology LLC.",
     addressLine1: "Bin Dasmal Building 1, Office 80",
     addressLine2: "Al Goze Industrial First, Dubai · United Arab Emirates",
+    showAddress: true,
   });
 
   React.useEffect(() => {
@@ -216,52 +220,67 @@ export function Footer() {
           </div>
 
           {/* Column 5: Contact Us */}
-          <div className="space-y-4 sm:col-span-2 md:col-span-3 lg:col-span-1">
-            <h3
-              className="font-red-rose text-lg sm:text-xl font-bold text-white tracking-tight"
-              style={{ fontFamily: "var(--font-red-rose), 'Red Rose', serif" }}
-            >
-              {dict.nav.contactUs}
-            </h3>
-            <div
-              className="space-y-3 font-poppins text-xs sm:text-sm text-zinc-400"
-              style={{
-                fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
-              }}
-            >
-              {/* Phone */}
-              <div className="flex items-center gap-2.5">
-                <Phone className="w-4 h-4 text-[#FF5722] flex-shrink-0" />
-                <a
-                  href={`tel:${contactInfo.phone.replace(/\s+/g, "")}`}
-                  className="hover:text-white transition-colors duration-200"
+          {contactInfo.showSection !== false &&
+            ((contactInfo.showPhone !== false && !!contactInfo.phone) ||
+              (contactInfo.showEmail !== false && !!contactInfo.email) ||
+              (contactInfo.showAddress !== false &&
+                (!!contactInfo.companyName || !!contactInfo.addressLine1 || !!contactInfo.addressLine2))) && (
+              <div className="space-y-4 sm:col-span-2 md:col-span-3 lg:col-span-1">
+                <h3
+                  className="font-red-rose text-lg sm:text-xl font-bold text-white tracking-tight"
+                  style={{ fontFamily: "var(--font-red-rose), 'Red Rose', serif" }}
                 >
-                  {contactInfo.phone}
-                </a>
-              </div>
-
-              {/* Email */}
-              <div className="flex items-center gap-2.5">
-                <AtSign className="w-4 h-4 text-[#FF5722] flex-shrink-0" />
-                <a
-                  href={`mailto:${contactInfo.email}`}
-                  className="hover:text-white transition-colors duration-200"
+                  {dict.nav.contactUs}
+                </h3>
+                <div
+                  className="space-y-3 font-poppins text-xs sm:text-sm text-zinc-400"
+                  style={{
+                    fontFamily: "var(--font-poppins), 'Poppins', sans-serif",
+                  }}
                 >
-                  {contactInfo.email}
-                </a>
-              </div>
+                  {/* Phone */}
+                  {contactInfo.showPhone !== false && !!contactInfo.phone && (
+                    <div className="flex items-center gap-2.5">
+                      <Phone className="w-4 h-4 text-[#FF5722] flex-shrink-0" />
+                      <a
+                        href={`tel:${contactInfo.phone.replace(/\s+/g, "")}`}
+                        className="hover:text-white transition-colors duration-200"
+                      >
+                        {contactInfo.phone}
+                      </a>
+                    </div>
+                  )}
 
-              {/* Location Address */}
-              <div className="flex items-start gap-2.5 pt-1">
-                <MapPin className="w-4 h-4 text-[#FF5722] flex-shrink-0 mt-0.5" />
-                <div className="text-xs leading-relaxed text-zinc-400">
-                  <p className="text-zinc-300">{contactInfo.companyName}</p>
-                  <p>{contactInfo.addressLine1}</p>
-                  <p>{contactInfo.addressLine2}</p>
+                  {/* Email */}
+                  {contactInfo.showEmail !== false && !!contactInfo.email && (
+                    <div className="flex items-center gap-2.5">
+                      <AtSign className="w-4 h-4 text-[#FF5722] flex-shrink-0" />
+                      <a
+                        href={`mailto:${contactInfo.email}`}
+                        className="hover:text-white transition-colors duration-200"
+                      >
+                        {contactInfo.email}
+                      </a>
+                    </div>
+                  )}
+
+                  {/* Location Address */}
+                  {contactInfo.showAddress !== false &&
+                    (!!contactInfo.companyName || !!contactInfo.addressLine1 || !!contactInfo.addressLine2) && (
+                      <div className="flex items-start gap-2.5 pt-1">
+                        <MapPin className="w-4 h-4 text-[#FF5722] flex-shrink-0 mt-0.5" />
+                        <div className="text-xs leading-relaxed text-zinc-400">
+                          {contactInfo.companyName && (
+                            <p className="text-zinc-300">{contactInfo.companyName}</p>
+                          )}
+                          {contactInfo.addressLine1 && <p>{contactInfo.addressLine1}</p>}
+                          {contactInfo.addressLine2 && <p>{contactInfo.addressLine2}</p>}
+                        </div>
+                      </div>
+                    )}
                 </div>
               </div>
-            </div>
-          </div>
+            )}
         </div>
 
         {/* Our Social Links Section */}
