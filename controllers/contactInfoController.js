@@ -1,11 +1,15 @@
 const ContactInfo = require('../models/ContactInfo');
 
 const DEFAULT_CONTACT_INFO = {
+  showSection: true,
   phone: '+971 58 191 0073',
+  showPhone: true,
   email: 'sales@cloudzy.com',
+  showEmail: true,
   companyName: 'Cloudzy AI Information Technology LLC.',
   addressLine1: 'Bin Dasmal Building 1, Office 80',
   addressLine2: 'Al Goze Industrial First, Dubai · United Arab Emirates',
+  showAddress: true,
 };
 
 // @desc    Get Contact Us details
@@ -37,18 +41,32 @@ const getContactInfo = async (req, res) => {
 // @access  Private (Admin)
 const updateContactInfo = async (req, res) => {
   try {
-    const { phone, email, companyName, addressLine1, addressLine2 } = req.body;
+    const {
+      showSection,
+      phone,
+      showPhone,
+      email,
+      showEmail,
+      companyName,
+      addressLine1,
+      addressLine2,
+      showAddress,
+    } = req.body;
 
     let contact = await ContactInfo.findOne();
     if (!contact) {
       contact = new ContactInfo();
     }
 
+    if (showSection !== undefined) contact.showSection = Boolean(showSection);
     if (phone !== undefined) contact.phone = phone.trim();
+    if (showPhone !== undefined) contact.showPhone = Boolean(showPhone);
     if (email !== undefined) contact.email = email.trim();
+    if (showEmail !== undefined) contact.showEmail = Boolean(showEmail);
     if (companyName !== undefined) contact.companyName = companyName.trim();
     if (addressLine1 !== undefined) contact.addressLine1 = addressLine1.trim();
     if (addressLine2 !== undefined) contact.addressLine2 = addressLine2.trim();
+    if (showAddress !== undefined) contact.showAddress = Boolean(showAddress);
 
     await contact.save();
 
